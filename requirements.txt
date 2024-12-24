@@ -1,0 +1,8 @@
+pandas 
+requests
+beautifulsoup4 
+openai 
+selenium
+ollama
+python-dotenv
+openpyxl

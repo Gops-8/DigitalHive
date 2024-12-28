@@ -9,3 +9,22 @@ HEADERS = {
 }
 REQUEST_TIMEOUT = 10
 RATE_LIMIT_DELAY = 2  # seconds between requests
+
+# App configuration
+APP_CONFIG = {
+    'PAGE_TITLE': "Website Analysis Tool",
+    'PAGE_ICON': "🌐",
+    'LAYOUT': "wide"
+}
+
+# File paths
+PATHS = {
+    'INPUT_DIR': 'input',
+    'OUTPUT_DIR': 'output',
+    'SCRAPING_DIR': 'output/scraping',
+    'ANALYSIS_DIR': 'output/analysis'
+}
+
+# Create necessary directories
+for path in PATHS.values():
+    os.makedirs(path, exist_ok=True)

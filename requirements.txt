@@ -6,3 +6,5 @@ selenium
 ollama
 python-dotenv
 openpyxl
+streamlit 
+plotly

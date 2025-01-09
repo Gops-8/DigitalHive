@@ -1,4 +1,3 @@
-
 # src/analyzer/content_analyzer.py
 import json
 import requests
@@ -29,15 +28,13 @@ class ContentAnalyzer:
             'phones': phones
         }
 
-    
-
     def analyze_with_ollama(self, content: str, url: str) -> Dict:
         try:
             formatted_prompt = ANALYSIS_PROMPT.format(
                 url=url,
                 content=content[:4000]
             )
-
+            # print(f"Prompt: {formatted_prompt}")
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
@@ -64,6 +61,12 @@ class ContentAnalyzer:
                 analysis = json.loads(full_response[json_start:json_end])
             else:
                 raise ValueError("No valid JSON found in response")
+
+            # Validate keys in analysis
+            required_fields = ['keywords', 'headers']
+            for field in required_fields:
+                if field not in analysis:
+                    analysis[field] = []  # Default to empty list
 
             # Extract contact information
             contact_info = self._extract_contact_info(content)

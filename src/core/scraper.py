@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import re
 from config.config import HEADERS, REQUEST_TIMEOUT
 from urllib.parse import urlparse
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class WebScraper:
     def __init__(self):
@@ -14,7 +17,8 @@ class WebScraper:
             response = requests.get(
                 url, 
                 headers=self.headers, 
-                timeout=REQUEST_TIMEOUT
+                timeout=REQUEST_TIMEOUT,
+                verify=False
             )
             soup = BeautifulSoup(response.text, 'html.parser')
             

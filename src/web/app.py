@@ -34,7 +34,7 @@ class WebApp:
             st.session_state.results = None
 
     def run(self):
-        st.set_page_config(page_title="Website Analysis Tool", layout="wide")
+        st.set_page_config(page_title="DiGital-Hive", layout="wide")
         
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
@@ -42,7 +42,7 @@ class WebApp:
             self.show_main_page()
 
     def show_main_page(self):
-        st.title("🌐 Website Analysis Tool")
+        st.title("🌐 DiGital-Hive 🌐 ")
         
         if st.sidebar.button("Logout"):
             st.session_state.authenticated = False
@@ -60,107 +60,125 @@ class WebApp:
         # Display results only if available and processing is complete
         if not st.session_state.processing and st.session_state.results is not None:
             self.components.display_results(st.session_state.results)
-
+    
     def process_file(self, uploaded_file, advanced_analytics):
-        try:
-            os.makedirs('input', exist_ok=True)
-            os.makedirs('output/analysis', exist_ok=True)
+          try:
+              os.makedirs('input', exist_ok=True)
+              os.makedirs('output/analysis', exist_ok=True)
 
-            progress_bar = st.progress(0)
-            status = st.empty()
-            percent_complete = st.empty()
-            
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            input_path = f"input/temp_{timestamp}.xlsx"
-            with open(input_path, 'wb') as f:
-                f.write(uploaded_file.getbuffer())
-            
-            urls = self.processor.read_excel_to_url(input_path)
-            results = []
-            total_urls = len(urls)
+              progress_bar = st.progress(0)
+              status = st.empty()
+              percent_complete = st.empty()
+              
+              timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+              input_path = f"input/temp_{timestamp}.xlsx"
+              with open(input_path, 'wb') as f:
+                  f.write(uploaded_file.getbuffer())
+              
+              urls = self.processor.read_excel_to_url(input_path)
+              results = []
+              batch_size = 1000
+              total_batches = (len(urls) + batch_size - 1) // batch_size
 
-            for i, url in enumerate(urls):
-                if not st.session_state.processing:
-                    break  # Stop processing if flagged
+              for batch_number in range(total_batches):
+                  if not st.session_state.processing:
+                      break  # Stop processing if flagged
 
-                status.text(f"Processing {url}")
-                progress = (i + 1) / total_urls
-                progress_bar.progress(progress)
-                percent_complete.text(f"{int(progress * 100)}% Complete ({i + 1}/{total_urls})")
-                
-                try:
-                    # Process URL
-                    clean_url = self.processor.clean_url(url)
-                    scraped_data = self.scraper.scrape_website(clean_url)
-                    analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+                  # Extract current batch
+                  start_index = batch_number * batch_size
+                  end_index = min(start_index + batch_size, len(urls))
+                  batch_urls = urls[start_index:end_index]
 
-                    # Extract location and product for advanced analytics
-                    location = analysis.get('location', '')
-                    keywords = analysis.get('keywords', [])
-                    if not keywords:
-                        result.update({
-                                'top_competitors': '',
-                                'gmb_setup': '',
-                                'business_name': '',
-                                'non_indexed_pages': '',
-                                'status': 'partial error',
-                                'error': ' No keywords found'
-                            })
-                        results.append(result)
-                        continue
-                    
-                    top_key = keywords[0] 
-                    
-                    result = {
-                        'url': url,
-                        'status': 'success',
-                        **analysis
-                    }
+                  st.write(f"Processing Batch {batch_number + 1}/{total_batches}...")
 
-                    if advanced_analytics:
-                        try:
-                            top_competitors = self.analytics.find_top_competitors(top_key, location, clean_url, pages=1)
-                            gmb_setup = self.analytics.check_gmb_setup(clean_url)
-                            non_indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
+                  for i, url in enumerate(batch_urls):
+                      status.text(f"Processing URL: {url}")
+                      progress = ((batch_number * batch_size + i + 1) / len(urls))
+                      progress_bar.progress(progress)
+                      percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
 
-                            result.update({
-                                'top_competitors': top_competitors,
-                                'gmb_setup': gmb_setup,
-                                'non_indexed_pages': non_indexed_pages,
-                            })
-                        except Exception as e:
-                            result.update({
-                                'top_competitors': '',
-                                'gmb_setup': '',
-                                'business_name': '',
-                                'non_indexed_pages': '',
-                                'status': 'partial error',
-                                'error': str(e)
-                            })
+                      try:
+                          # Process URL
+                          clean_url = self.processor.clean_url(url)
+                          scraped_data = self.scraper.scrape_website(clean_url)
+                          analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
 
-                    results.append(result)
-                
-                except Exception as e:
-                    results.append({
-                        'url': url,
-                        'status': 'error',
-                        'error': str(e)
-                    })
+                          # Extract location and product for advanced analytics
+                          location = analysis.get('location', '')
+                          keywords = analysis.get('keywords', [])
+                          if not keywords:
+                              results.append({
+                                  'url': url,
+                                  'status': 'partial error',
+                                  'error': 'No keywords found',
+                                  'top_competitors': '',
+                                  'gmb_setup': '',
+                                  'business_name': '',
+                                  'non_indexed_pages': ''
+                              })
+                              continue
+                          
+                          top_key = keywords[0]
+                          
+                          result = {
+                              'url': url,
+                              'status': 'success',
+                              **analysis
+                          }
 
-            # Save final results to session state
-            df = pd.DataFrame(results)
-            st.session_state.results = df
+                          if advanced_analytics:
+                              try:
+                                  top_competitors = self.analytics.find_top_competitors(top_key, location, clean_url, pages=1)
+                                  gmb_setup, business_name = self.analytics.check_gmb_setup(clean_url)
+                                  non_indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
 
-            # Save results to a CSV file
-            output_file = f"output/analysis/results_{timestamp}.csv"
-            df.to_csv(output_file, index=False)
+                                  result.update({
+                                      'top_competitors': top_competitors,
+                                      'gmb_setup': gmb_setup,
+                                      'business_name': business_name,
+                                      'non_indexed_pages': non_indexed_pages,
+                                  })
+                              except Exception as e:
+                                  result.update({
+                                      'top_competitors': '',
+                                      'gmb_setup': '',
+                                      'business_name': '',
+                                      'non_indexed_pages': '',
+                                      'status': 'partial error',
+                                      'error': str(e)
+                                  })
 
-            # Reset processing state
-            st.session_state.processing = False
+                          results.append(result)
+                      
+                      except Exception as e:
+                          results.append({
+                              'url': url,
+                              'status': 'error',
+                              'error': str(e),
+                              'top_competitors': '',
+                              'gmb_setup': '',
+                              'business_name': '',
+                              'non_indexed_pages': ''
+                          })
 
-        except Exception as e:
-            st.error(f"Error: {str(e)}")
-            st.session_state.processing = False
+                  # Save intermediate results after each batch
+                  df = pd.DataFrame(results)
+                  st.session_state.results = df
+
+                  # Display results so far
+                  self.components.display_results(df)
+
+              # Save final results to a CSV file
+              output_file = f"output/analysis/results_{timestamp}.csv"
+              df.to_csv(output_file, index=False)
+
+              # Reset processing state
+              st.session_state.processing = False
+
+          except Exception as e:
+              st.error(f"Error: {str(e)}")
+              st.session_state.processing = False
+
 
 
 if __name__ == "__main__":

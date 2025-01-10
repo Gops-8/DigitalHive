@@ -1,13 +1,40 @@
 #!/bin/bash
 
-# Activate the virtual environment
-source ../dev/bin/activate
+# Display Start Message
+echo "========================================"
+echo "  Starting/Rebooting DigitalHive App"
+echo "========================================"
 
-# Navigate to the project directory
-# cd ~/work/market_analysis
+# Navigate to Project Directory
+echo "Navigating to project directory..."
+cd /mnt/c/Users/YourUsername/path/to/project || exit
 
-# Set PYTHONPATH to include the src directory
-export PYTHONPATH=$(pwd)
+# Activate Virtual Environment
+echo "Activating virtual environment..."
+source venv/bin/activate || { echo "Failed to activate venv"; exit 1; }
 
-# Start the server
-st src/web/app.py
+# Pull Latest Changes
+echo "Pulling latest changes from repository..."
+git pull https://github.com/Gops-8/DigitalHive.git || { echo "Failed to pull latest changes"; exit 1; }
+
+# Check if Port 8501 is in Use
+echo "Checking if Streamlit server is running on port 8501..."
+PORT=8501
+PID=$(lsof -i:$PORT -t)
+
+if [ -n "$PID" ]; then
+  echo "Streamlit server is running on port $PORT. Stopping it..."
+  kill -9 $PID || { echo "Failed to stop the process"; exit 1; }
+  echo "Streamlit server stopped."
+else
+  echo "No process found running on port $PORT."
+fi
+
+# Start the Streamlit Server
+echo "Starting Streamlit server..."
+streamlit run src/web/app.py --server.port=$PORT|| { echo "Failed to start the Streamlit server"; exit 1; }
+
+# Final Message
+echo "========================================"
+echo "  DigitalHive App is now running."
+echo "========================================"

@@ -11,14 +11,15 @@ services:
       - ./output:/app/output
     environment:
       - OLLAMA_URL=http://ollama:11434
-      - AUTH_CONFIG_URL=https://your-auth-config-url
+      - AUTH_CONFIG_URL=https://raw.githubusercontent.com/Gops-8/auth-config/main/config.json
     depends_on:
       - ollama
 
   ollama:
     image: ollama/ollama
     ports:
-      - "11434:11434"
+      - "11433:11434"
+      
     volumes:
       - ollama_data:/root/.ollama
 

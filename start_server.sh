@@ -7,7 +7,6 @@ echo "========================================"
 
 # Navigate to Project Directory
 echo "Navigating to project directory..."
-cd /mnt/c/Users/YourUsername/path/to/project || exit
 
 # Activate Virtual Environment
 echo "Activating virtual environment..."

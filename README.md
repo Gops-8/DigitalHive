@@ -1,7 +1,7 @@
-# Website Analysis Tool
+# Digital Hive
 
 ## Overview
-The Website Analysis Tool is a Python-based application designed to scrape websites, analyze their content, and generate insights using AI models. It is built with a modular architecture, using Streamlit for the user interface and several custom components for scraping, data processing, and analysis.
+The Digital Hive is a Python-based application designed to scrape websites, analyze their content, and generate insights using AI models. It is built with a modular architecture, using Streamlit for the user interface and several custom components for scraping, data processing, and analysis.
 
 ---
 
@@ -124,5 +124,5 @@ Feel free to contribute by submitting issues or pull requests. Ensure code quali
 
 - Built with [Streamlit](https://streamlit.io/).
 - Web scraping powered by [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/).
-- AI analysis enabled by Ollama's AI models.
+- AI analysis enabled by Microsft Phi4 (using Ollama)
 

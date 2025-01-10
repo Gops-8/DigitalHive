@@ -34,7 +34,7 @@ class WebApp:
             st.session_state.results = None
 
     def run(self):
-        st.set_page_config(page_title="DiGital-Hive", layout="wide")
+        st.set_page_config(page_title="Digital-Hive", layout="wide")
         
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
@@ -42,7 +42,7 @@ class WebApp:
             self.show_main_page()
 
     def show_main_page(self):
-        st.title("🌐 DiGital-Hive 🌐 ")
+        st.title("🌐 Digital-Hive 🌐 ")
         
         if st.sidebar.button("Logout"):
             st.session_state.authenticated = False

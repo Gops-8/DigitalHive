@@ -7,11 +7,11 @@ Focus on these key aspects:
 2. Business Name: Extract the specific name of the business.
 3. Products or Services: Identify and list the products or services mentioned. The list should be simple, clear, and concise, separated by commas.
    Example: "Bengal cats, Bengal kittens, Bengal adult cats."
-4. Target Audience: Summarize the target audience in a focused and specific statement, Give shorter version of the audiance group in 5 to 7 words 
+4. target_audience: Summarize the target audience in a focused and specific statement,only generate shorter version of the audiance group in 5 to 7 words 
    Example: "Women Intrested in Ethnic wear", "Women seeking Culture attire" , "Desing Enthusiats seeking luxury Home" etc
-5. Location of Business: If the location is mentioned, include it in the JSON if not return US.
+5. Location of Business: If the location is mentioned, include it in the JSON if not return United States.
 
-Ensure the JSON format is valid and does not include newlines, leading spaces, or any invalid characters.
+DO Ensure the JSON format is valid and does not include newlines, leading spaces, or any invalid characters.
 
 Required format:
 [
@@ -31,4 +31,4 @@ Required format:
 Website URL: {url}
 Content to analyze:
 {content}
-"""
+""" 

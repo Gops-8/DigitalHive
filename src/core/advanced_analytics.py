@@ -111,26 +111,23 @@ class AdvancedAnalytics:
             print(f"Error counting non-indexed pages for {url}: {e}")
         
         return 0
-    
+
     def count_total_pages(self, url):
-      """Estimate the total number of pages for a given domain."""
-      # Placeholder logic for total pages; adapt as needed based on your data source
-      try:
-          # For demonstration, let's assume the total pages come from the website sitemap or analysis
-          # Replace this with logic to count pages from your source
-          response = requests.get(f"{url}/sitemap.xml", headers=self.headers, timeout=10)
-          if response.status_code == 200:
-              # Example: Count <url> entries in the sitemap
-              from bs4 import BeautifulSoup
-              soup = BeautifulSoup(response.text, 'xml')
-              total_pages = len(soup.find_all('url'))
-              return total_pages
-          else:
-              return 100  # Default assumption for total pages
-      except Exception as e:
-          print(f"Error counting total pages for {url}: {e}")
-          return 100  # Default assumption for total pages
-    
+        """Estimate the total number of pages for a given domain."""
+        try:
+            response = requests.get(f"{url}/sitemap.xml", headers=self.headers, timeout=10)
+            if response.status_code == 200:
+                # Parse the response as XML using lxml
+                soup = BeautifulSoup(response.text, "lxml-xml")
+                total_pages = len(soup.find_all("url"))
+                return total_pages
+            else:
+                return 100  # Default assumption for total pages
+        except Exception as e:
+            print(f"Error counting total pages for {url}: {e}")
+            return 100  # Default assumption for total pages
+
+        
     def find_top_competitors_with_gmb_and_indexed_pages(self, product, location, pages=1):
         """Find top competitors, check GMB setup, and count indexed pages."""
         competitors = self.find_top_competitors(product, location, pages)

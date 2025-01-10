@@ -106,6 +106,7 @@ class WebApp:
                           # Extract location and product for advanced analytics
                           location = analysis.get('location', '')
                           keywords = analysis.get('keywords', [])
+                          business_name= analysis.get('business_name','')
                           if not keywords:
                               results.append({
                                   'url': url,
@@ -129,9 +130,12 @@ class WebApp:
                           if advanced_analytics:
                               try:
                                   top_competitors = self.analytics.find_top_competitors(top_key, location, clean_url, pages=1)
-                                  gmb_setup, business_name = self.analytics.check_gmb_setup(clean_url)
-                                  non_indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
-
+                                  gmb_setup = self.analytics.check_gmb_setup(clean_url)
+                                  indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
+                                  total_pages = self.analytics.count_total_pages(clean_url)
+                                  non_index_pages = total_pages - indexed_pages
+                                  if non_index_pages<0: non_index_pages=0 
+                                  
                                   result.update({
                                       'top_competitors': top_competitors,
                                       'gmb_setup': gmb_setup,

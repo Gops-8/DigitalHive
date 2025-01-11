@@ -13,7 +13,7 @@ from src.core.data_processer import DataProcessor
 from src.utils.components import Components
 from src.utils.auth import AuthManager
 from src.core.advanced_analytics import AdvancedAnalytics
-
+from src.utils.cache import AnalysisCache
 
 class WebApp:
     def __init__(self):
@@ -24,6 +24,7 @@ class WebApp:
         self.analyzer = ContentAnalyzer()
         self.auth_manager = AuthManager()
         self.analytics = AdvancedAnalytics()
+        self.cache = AnalysisCache()
 
     def init_session(self):
         if 'authenticated' not in st.session_state:
@@ -49,19 +50,25 @@ class WebApp:
             st.rerun()
 
         uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
-        advanced_analytics = st.checkbox("Advanced Analytics", help="Include GMB check, top competitors, and non-indexed pages in the results")
-
+        # advanced_analytics = st.checkbox("Advanced Analytics", help="Include GMB check, top competitors, and non-indexed pages in the results")
+        features = {
+            "basic": st.checkbox("Basic Features (keywords, business name, target audience, location, etc.),",value=True),
+            "top_competitor": st.checkbox("Top Competitors"),
+            "gmb": st.checkbox("Check GMB"),
+            "non_index_pages": st.checkbox("Check Non-Indexed Pages")
+          }
         if uploaded_file:
             st.info(f"Uploaded: {uploaded_file.name}")
+   
             if st.button("Start Analysis"):
                 st.session_state.processing = True
-                self.process_file(uploaded_file, advanced_analytics)
+                self.process_file(uploaded_file, features)
 
         # Display results only if available and processing is complete
         if not st.session_state.processing and st.session_state.results is not None:
             self.components.display_results(st.session_state.results)
     
-    def process_file(self, uploaded_file, advanced_analytics):
+    def process_file(self, uploaded_file, features):
           try:
               os.makedirs('input', exist_ok=True)
               os.makedirs('output/analysis', exist_ok=True)
@@ -77,7 +84,7 @@ class WebApp:
               
               urls = self.processor.read_excel_to_url(input_path)
               results = []
-              batch_size = 1000
+              batch_size = 100
               total_batches = (len(urls) + batch_size - 1) // batch_size
 
               for batch_number in range(total_batches):
@@ -90,9 +97,9 @@ class WebApp:
                   batch_urls = urls[start_index:end_index]
 
                   st.write(f"Processing Batch {batch_number + 1}/{total_batches}...")
-
+                  
                   for i, url in enumerate(batch_urls):
-                      status.text(f"Processing URL: {url}")
+                      status.text(f"Processing {start_index+i+1}/{len(urls)+1} URL: {url}")
                       progress = ((batch_number * batch_size + i + 1) / len(urls))
                       progress_bar.progress(progress)
                       percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
@@ -100,57 +107,49 @@ class WebApp:
                       try:
                           # Process URL
                           clean_url = self.processor.clean_url(url)
-                          scraped_data = self.scraper.scrape_website(clean_url)
+                          cached_data = self.cache.get(clean_url)
+                          if not cached_data:
+                                  scraped_data = self.scraper.scrape_website(clean_url)
+                                  self.cache.set(clean_url,scraped_data)
+                          else:
+                              scraped_data=cached_data
+                      
                           analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
 
                           # Extract location and product for advanced analytics
                           location = analysis.get('location', '')
-                          keywords = analysis.get('keywords', [])
-                          business_name= analysis.get('business_name','')
-                          if not keywords:
-                              results.append({
-                                  'url': url,
-                                  'status': 'partial error',
-                                  'error': 'No keywords found',
-                                  'top_competitors': '',
-                                  'gmb_setup': '',
-                                  'business_name': '',
-                                  'non_indexed_pages': ''
-                              })
-                              continue
-                          
+                          keywords = analysis.get('keywords', []) 
                           top_key = keywords[0]
-                          
                           result = {
                               'url': url,
                               'status': 'success',
                               **analysis
                           }
-
-                          if advanced_analytics:
+                          if features.get("top_competitor"):
                               try:
                                   top_competitors = self.analytics.find_top_competitors(top_key, location, clean_url, pages=1)
+                                  result["top_competitors"] = top_competitors
+                              except Exception as e:
+                                  result["top_competitors"] = ''
+                                  result['status'] = 'partial error'
+
+                          if features.get("gmb"):
+                              try:
                                   gmb_setup = self.analytics.check_gmb_setup(clean_url)
+                                  result["gmb_setup"] = gmb_setup
+                              except Exception as e:
+                                  result["gmb_setup"] = ''
+                                  result['status'] = 'partial error'
+
+                          if features.get("non_index_pages"):
+                              try:
                                   indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
                                   total_pages = self.analytics.count_total_pages(clean_url)
-                                  non_index_pages = total_pages - indexed_pages
-                                  if non_index_pages<0: non_index_pages=0 
-                                  
-                                  result.update({
-                                      'top_competitors': top_competitors,
-                                      'gmb_setup': gmb_setup,
-                                      'business_name': business_name,
-                                      'non_indexed_pages': non_indexed_pages,
-                                  })
+                                  non_index_pages = max(0, total_pages - indexed_pages)
+                                  result["non_indexed_pages"] = non_index_pages
                               except Exception as e:
-                                  result.update({
-                                      'top_competitors': '',
-                                      'gmb_setup': '',
-                                      'business_name': '',
-                                      'non_indexed_pages': '',
-                                      'status': 'partial error',
-                                      'error': str(e)
-                                  })
+                                  result["non_indexed_pages"] = ''
+                                  result['status']= 'partial error'
 
                           results.append(result)
                       

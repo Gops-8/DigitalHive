@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 APP_CONFIG = {
-    'PAGE_TITLE': "Website Analysis Tool",
+    'PAGE_TITLE': "Digital Hive",
     'PAGE_ICON': "🌐",
     'LAYOUT': "native"
 }
@@ -17,7 +17,7 @@ APP_CONFIG = {
 
 OLLAMA_CONFIG = {
     'BASE_URL': os.getenv('OLLAMA_URL', 'http://localhost:11434'),
-    'MODEL': os.getenv('OLLAMA_MODEL', 'phi4'),
+    'MODEL': os.getenv('OLLAMA_MODEL', 'llama3.1:8b'),
     'TEMPERATURE': 0.21
 }
 

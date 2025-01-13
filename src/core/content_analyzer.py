@@ -68,11 +68,11 @@ class ContentAnalyzer:
                 if field not in analysis:
                     analysis[field] = []  # Default to empty list
 
-            # Extract contact information
-            contact_info = self._extract_contact_info(content)
+            # # Extract contact information
+            # contact_info = self._extract_contact_info(content)
             
-            # Combine all information
-            analysis.update(contact_info)
+            # # Combine all information
+            # analysis.update(contact_info)
             
             return analysis
 

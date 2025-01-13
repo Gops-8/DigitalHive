@@ -52,10 +52,10 @@ class WebApp:
         uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         # advanced_analytics = st.checkbox("Advanced Analytics", help="Include GMB check, top competitors, and non-indexed pages in the results")
         features = {
-            "basic": st.checkbox("Basic Features (keywords, business name, target audience, location, etc.),",value=True),
+            "basic": st.checkbox("Basic Features (keywords, business name, target audience, product and services),",value=True),
             "top_competitor": st.checkbox("Top Competitors"),
-            "gmb": st.checkbox("Check GMB"),
-            "non_index_pages": st.checkbox("Check Non-Indexed Pages")
+            "gmb": st.checkbox("Check Google My Business"),
+            "non_index_pages": st.checkbox("Count Non-Indexed Pages")
           }
         if uploaded_file:
             st.info(f"Uploaded: {uploaded_file.name}")
@@ -99,7 +99,7 @@ class WebApp:
                   st.write(f"Processing Batch {batch_number + 1}/{total_batches}...")
                   
                   for i, url in enumerate(batch_urls):
-                      status.text(f"Processing {start_index+i+1}/{len(urls)+1} URL: {url}")
+                      status.text(f"Processing {start_index+i+1}/{len(urls)} URL: {url}")
                       progress = ((batch_number * batch_size + i + 1) / len(urls))
                       progress_bar.progress(progress)
                       percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
@@ -131,7 +131,7 @@ class WebApp:
                                   result["top_competitors"] = top_competitors
                               except Exception as e:
                                   result["top_competitors"] = ''
-                                  result['status'] = 'partial error'
+                                  result['status'] = f'partial error : Top Comp {e}'
 
                           if features.get("gmb"):
                               try:
@@ -139,7 +139,7 @@ class WebApp:
                                   result["gmb_setup"] = gmb_setup
                               except Exception as e:
                                   result["gmb_setup"] = ''
-                                  result['status'] = 'partial error'
+                                  result['status'] = f'partial error : GMB {e}'
 
                           if features.get("non_index_pages"):
                               try:
@@ -149,7 +149,7 @@ class WebApp:
                                   result["non_indexed_pages"] = non_index_pages
                               except Exception as e:
                                   result["non_indexed_pages"] = ''
-                                  result['status']= 'partial error'
+                                  result['status']= f'partial error: pages count {e}'
 
                           results.append(result)
                       
@@ -166,6 +166,7 @@ class WebApp:
 
                   # Save intermediate results after each batch
                   df = pd.DataFrame(results)
+                  df = df.fillna(' ')
                   st.session_state.results = df
 
                   # Display results so far

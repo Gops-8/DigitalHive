@@ -9,8 +9,29 @@ echo "========================================"
 echo "Navigating to project directory..."
 
 # Activate Virtual Environment
+VENV_DIR="venv"
+
+# Attempt to activate the virtual environment
 echo "Activating virtual environment..."
-source venv/bin/activate || { echo "Failed to activate venv"; exit 1; }
+source "$VENV_DIR/bin/activate" 2>/dev/null || {
+    echo "Virtual environment not found. Creating a new one..."
+
+    # Create a new virtual environment
+    python3 -m venv "$VENV_DIR" || { echo "Failed to create virtual environment"; exit 1; }
+
+    # Activate the newly created virtual environment
+    source "$VENV_DIR/bin/activate" || { echo "Failed to activate the newly created virtual environment"; exit 1; }
+
+    # Install required Python packages
+    echo "Installing required Python packages..."
+    if [ -f requirements.txt ]; then
+        pip install -r requirements.txt || { echo "Failed to install packages"; exit 1; }
+    else
+        echo "No requirements.txt found. Skipping package installation."
+    fi
+}
+
+echo "Virtual environment is activated and ready!"
 
 
 # Pull Latest Changes

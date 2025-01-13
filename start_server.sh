@@ -16,13 +16,16 @@ source venv/bin/activate || { echo "Failed to activate venv"; exit 1; }
 # Pull Latest Changes
 echo "Pulling latest changes from repository..."
 
-# Fetch the latest changes
-git fetch https://github.com/Gops-8/DigitalHive.git || { echo "Failed to fetch changes"; exit 1; }
+echo "Stashing local changes..."
+git stash push -m "Auto stash before pulling latest changes" || { echo "Failed to stash changes"; exit 1; }
 
-# Reset local changes and force match to the remote branch
-git reset --hard origin/$(git rev-parse --abbrev-ref HEAD) || { echo "Failed to reset local changes"; exit 1; }
+echo "Pulling latest changes from repository..."
+git pull https://github.com/Gops-8/DigitalHive.git || { echo "Failed to pull latest changes"; exit 1; }
 
-echo "Successfully synchronized with the remote repository, keeping remote changes!"
+echo "Applying stashed changes..."
+git stash apply || { echo "No stashed changes to apply"; }
+
+echo "Successfully pulled and applied local changes!"
 
 # Check if Port 8501 is in Use
 echo "Checking if Streamlit server is running on port 8501..."

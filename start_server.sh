@@ -12,9 +12,17 @@ echo "Navigating to project directory..."
 echo "Activating virtual environment..."
 source venv/bin/activate || { echo "Failed to activate venv"; exit 1; }
 
+
 # Pull Latest Changes
 echo "Pulling latest changes from repository..."
-git pull https://github.com/Gops-8/DigitalHive.git || { echo "Failed to pull latest changes"; exit 1; }
+
+# Fetch the latest changes
+git fetch https://github.com/Gops-8/DigitalHive.git || { echo "Failed to fetch changes"; exit 1; }
+
+# Reset local changes and force match to the remote branch
+git reset --hard origin/$(git rev-parse --abbrev-ref HEAD) || { echo "Failed to reset local changes"; exit 1; }
+
+echo "Successfully synchronized with the remote repository, keeping remote changes!"
 
 # Check if Port 8501 is in Use
 echo "Checking if Streamlit server is running on port 8501..."

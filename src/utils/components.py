@@ -45,7 +45,7 @@ class Components:
                 sanitized_df[column] = sanitized_df[column].astype(str)  # Convert to strings
 
         # Handle missing values
-        sanitized_df.fillna("N/A", inplace=True)
+        sanitized_df.fillna(" ", inplace=True)
 
         # Display the sanitized DataFrame
         st.dataframe(sanitized_df)

@@ -12,7 +12,7 @@ RATE_LIMIT_DELAY = 2  # seconds between requests
 
 # App configuration
 APP_CONFIG = {
-    'PAGE_TITLE': "Website Analysis Tool",
+    'PAGE_TITLE': "DigitalHive",
     'PAGE_ICON': "🌐",
     'LAYOUT': "wide"
 }

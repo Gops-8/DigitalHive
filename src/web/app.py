@@ -35,11 +35,14 @@ class WebApp:
             st.session_state.results = None
 
     def run(self):
-        st.set_page_config(page_title="Digital-Hive", layout="wide")
+        
         
         if not st.session_state.authenticated:
+            st.set_page_config(page_title="Digital-Hive",layout="centered")
             self.components.show_login(auth_manager=self.auth_manager)
+            
         else:
+            st.set_page_config(page_title="Digital-Hive",layout="wide")
             self.show_main_page()
 
     def show_main_page(self):
@@ -115,19 +118,43 @@ class WebApp:
                               scraped_data=cached_data
                       
                           analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
-
-                          # Extract location and product for advanced analytics
-                          location = analysis.get('location', '')
-                          keywords = analysis.get('keywords', []) 
-                          top_key = keywords[0]
+                          
                           result = {
                               'url': url,
                               'status': 'success',
-                              **analysis
                           }
+                          # Extract location and product for advanced analytics
+                          location        = analysis.get('location', '')
+                          keywords        = analysis.get('keywords', '') 
+                          target_audiences = analysis.get('target_audience', '') 
+                          business_name = analysis.get('business_name', '') 
+                          product_services = analysis.get('products_services', '') 
+
+                          keyword_list = keywords.split(',')
+                          result['business_name']=business_name
+                          for i in range(5):
+                            try:
+                              result[f'keyword_{i+1}']=keyword_list[i]
+                            except:
+                              result[f'keyword_{i+1}']=''
+
+                          product_services_list= product_services.split(',')
+                          for i in range(3):
+                            try:
+                              result[f'product_services_{i+1}']=product_services_list[i]
+                            except:
+                              result[f'product_services_{i+1}']=''
+
+                          target_audience_list= target_audiences.split(',')
+                          for i in range(3):
+                            try:
+                              result[f'target_audiance_{i+1}']=target_audience_list[i]
+                            except:
+                              result[f'target_audiance_{i+1}']=''    
+
                           if features.get("top_competitor"):
                               try:
-                                  top_competitors = self.analytics.find_top_competitors(top_key, location, clean_url, pages=1)
+                                  top_competitors = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=1)
                                   result["top_competitors"] = top_competitors
                               except Exception as e:
                                   result["top_competitors"] = ''

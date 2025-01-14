@@ -10,7 +10,6 @@ class AdvancedAnalytics:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
         
-
     def fetch_google_results(self, product, location, pages=1):
         """Fetch Google search results for a given product and location with rate limiting."""
         base_url = "https://www.google.com/search"
@@ -36,8 +35,10 @@ class AdvancedAnalytics:
         """Clean and filter URLs to extract unique competitors."""
         unique_urls = set()
         base_urls = []
-        excluded_domains = {"google", "facebook", "yelp", "instagram","wikipedia", "amazon","walmart","reddit","linkedin","etsy","youtube"}
 
+        with open('input/exculed_domain_list.txt', 'r') as file:
+              excluded_domains = {line.strip().lower() for line in file if line.strip()}
+        
         for url in urls:
             parsed = urlparse(url)
 

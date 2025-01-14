@@ -15,11 +15,14 @@ APP_CONFIG = {
 # llama3.2 3b
 # phi4
 
+import os
+
 OLLAMA_CONFIG = {
-    'BASE_URL': os.getenv('OLLAMA_URL', 'http://localhost:11434'),
+    'BASE_URL': os.getenv('OLLAMA_URL', 'http://ollama-api:11434'),
     'MODEL': os.getenv('OLLAMA_MODEL', 'llama3.1:8b'),
     'TEMPERATURE': 0.21
 }
+
 
 # Remote configuration URL (e.g., GitHub Gist or secure API endpoint)
 AUTH_CONFIG_URL = "https://raw.githubusercontent.com/Gops-8/auth-config/main/config.json"

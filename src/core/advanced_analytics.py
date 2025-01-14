@@ -36,7 +36,7 @@ class AdvancedAnalytics:
         unique_urls = set()
         base_urls = []
 
-        with open('input/exculed_domain_list.txt', 'r') as file:
+        with open('config/exculed_domain_list.txt', 'r') as file:
               excluded_domains = {line.strip().lower() for line in file if line.strip()}
         
         for url in urls:

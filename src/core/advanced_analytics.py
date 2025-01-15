@@ -36,16 +36,14 @@ class AdvancedAnalytics:
         unique_urls = set()
         base_urls = []
 
-        with open('config/exculed_domain_list.txt', 'r') as file:
+        with open('assets/exculed_domain_list.txt', 'r') as file:
               excluded_domains = {line.strip().lower() for line in file if line.strip()}
         
         for url in urls:
             parsed = urlparse(url)
-
             # Skip URLs with excluded domains
             if any(domain in parsed.netloc for domain in excluded_domains):
                 continue
-            
             # Extract base URL
             base_url = f"{parsed.scheme}://{parsed.netloc}"
 
@@ -55,7 +53,7 @@ class AdvancedAnalytics:
                 base_urls.append(base_url)
 
             # Stop when we have 5 unique URLs
-            if len(base_urls) == 5:
+            if len(base_urls) == 3:
                 break
 
         return base_urls
@@ -127,18 +125,6 @@ class AdvancedAnalytics:
         except Exception as e:
             print(f"Error counting total pages for {url}: {e}")
             return 100  # Default assumption for total pages
-
-        
-    def find_top_competitors_with_gmb_and_indexed_pages(self, product, location, pages=1):
-        """Find top competitors, check GMB setup, and count indexed pages."""
-        competitors = self.find_top_competitors(product, location, pages)
-        competitors_info = {
-            url: {
-                "gmb_setup": self.check_gmb_setup(url),
-                "indexed_pages": self.count_non_indexed_pages(url)
-            } for url in competitors
-        }
-        return competitors_info
 
     def find_top_competitors(self, product, location,origin_url, pages=1 ):
         """Find top competitors for a given product and location."""

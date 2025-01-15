@@ -4,8 +4,8 @@ __pycache__/
 *$py.class
 start_server.sh
 src/__pycache__/
-src/utils/__pycache__/
-src/core/__pycache__/
+src/utils/__pycache__
+src/core/__pycache__
 
 src/utils/__pycache__/*
 src/core/__pycache__/*
@@ -14,6 +14,7 @@ src/core/__pycache__/*
 input/
 output/
 # Distribution / packaging
+
 .Python
 build/
 develop-eggs/

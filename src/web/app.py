@@ -38,16 +38,24 @@ class WebApp:
         
         
         if not st.session_state.authenticated:
-            st.set_page_config(page_title="Corporate Ranking AI",layout="centered")
+            st.set_page_config(page_title="Corporate Ranking AI",layout="centered",page_icon="assets/logo.jpg")
             self.components.show_login(auth_manager=self.auth_manager)
             
         else:
-            st.set_page_config(page_title="Corporate Ranking AI",layout="wide")
+            st.set_page_config(page_title="Corporate Ranking AI",layout="wide",page_icon="assets/logo.jpg")
             self.show_main_page()
 
     def show_main_page(self):
-        st.title("Corporate Ranking AI  ")
-        
+        # st.image("assets/logo.jpg", width=200)
+        # st.title("Corporate Ranking AI ")
+        # Create two columns for layout
+        col1, col2 = st.columns([1, 6])  # Adjust column widths as needed
+
+        with col1:
+            st.image("assets/logo.jpg", width=150)  # Replace with your logo file path
+        with col2:
+            st.title("Corporate Ranking AI")
+
         if st.sidebar.button("Logout"):
             st.session_state.authenticated = False
             st.rerun()

@@ -38,15 +38,15 @@ class WebApp:
         
         
         if not st.session_state.authenticated:
-            st.set_page_config(page_title="Digital-Hive",layout="centered")
+            st.set_page_config(page_title="Corporate Ranking AI",layout="centered")
             self.components.show_login(auth_manager=self.auth_manager)
             
         else:
-            st.set_page_config(page_title="Digital-Hive",layout="wide")
+            st.set_page_config(page_title="Corporate Ranking AI",layout="wide")
             self.show_main_page()
 
     def show_main_page(self):
-        st.title("🌐 Digital-Hive 🌐 ")
+        st.title("Corporate Ranking AI  ")
         
         if st.sidebar.button("Logout"):
             st.session_state.authenticated = False
@@ -154,7 +154,7 @@ class WebApp:
 
                           if features.get("top_competitor"):
                               try:
-                                  top_competitors = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=1)
+                                  top_competitors = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=3)
                                   result["top_competitors"] = top_competitors
                               except Exception as e:
                                   result["top_competitors"] = ''

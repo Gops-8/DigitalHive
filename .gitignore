@@ -47,7 +47,7 @@ start_server.sh
 
 
 .python-version
-
+config/exculed_domain_list.txt
 
 
 Environments

@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import os
 import sys
-
+from time import time
 # Add the project root to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
@@ -61,6 +61,7 @@ class WebApp:
             st.rerun()
 
         uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
+        debug_mode = st.checkbox("Enable Debug Mode", help="Show detailed logs during execution")
         # advanced_analytics = st.checkbox("Advanced Analytics", help="Include GMB check, top competitors, and non-indexed pages in the results")
         features = {
             "basic": st.checkbox("Basic Features (keywords, business name, target audience, product and services),",value=True),
@@ -73,20 +74,22 @@ class WebApp:
    
             if st.button("Start Analysis"):
                 st.session_state.processing = True
-                self.process_file(uploaded_file, features)
+                self.process_file(uploaded_file, features,debug_mode)
 
         # Display results only if available and processing is complete
         if not st.session_state.processing and st.session_state.results is not None:
             self.components.display_results(st.session_state.results)
     
-    def process_file(self, uploaded_file, features):
+    def process_file(self, uploaded_file, features,debug_mode):
           try:
               os.makedirs('input', exist_ok=True)
               os.makedirs('output/analysis', exist_ok=True)
-
+              os.makedirs('output/debug_logs',exist_ok=True)
+              start_time=time()
               progress_bar = st.progress(0)
               status = st.empty()
               percent_complete = st.empty()
+              log_window = st.empty() if debug_mode else None
               
               timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
               input_path = f"input/temp_{timestamp}.xlsx"
@@ -97,11 +100,11 @@ class WebApp:
               results = []
               batch_size = 100
               total_batches = (len(urls) + batch_size - 1) // batch_size
-
+              debug_logs=f'----------------------- DEBUG LOGS : RUN on {timestamp}----------------------- \n\n\n'
               for batch_number in range(total_batches):
                   if not st.session_state.processing:
                       break  # Stop processing if flagged
-
+                  batch_results=[]
                   # Extract current batch
                   start_index = batch_number * batch_size
                   end_index = min(start_index + batch_size, len(urls))
@@ -110,7 +113,11 @@ class WebApp:
                   st.write(f"Processing Batch {batch_number + 1}/{total_batches}...")
                   
                   for i, url in enumerate(batch_urls):
+                      url_start_time = time()
                       status.text(f"Processing {start_index+i+1}/{len(urls)} URL: {url}")
+                      if debug_mode:
+                        status.text(f"Time Elapsed : {start_time-url_start_time:.2f} seconds , Efficiency :  {(start_time-url_start_time)/(start_index+i+1)} urls/second ")
+
                       progress = ((batch_number * batch_size + i + 1) / len(urls))
                       progress_bar.progress(progress)
                       percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
@@ -124,9 +131,21 @@ class WebApp:
                                   self.cache.set(clean_url,scraped_data)
                           else:
                               scraped_data=cached_data
-                      
+
+                          if debug_mode:
+                              scrap_end_time=time()
+                              txt=f"url{url}: scraping complete . time elapsed {url_start_time-scrap_end_time:.2f} seconds"
+                              debug_logs=debug_logs+'\n'+txt
+                              log_window.text(txt)
+
                           analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
-                          
+
+                          if debug_mode:
+                              ollama_end_time=time()
+                              txt=f"for url : {url} // Initial analysis complete . time elapsed {scrap_end_time-ollama_end_time:.2f} seconds"
+                              debug_logs=debug_logs+'\n'+txt
+                              log_window.text(txt)
+
                           result = {
                               'url': url,
                               'status': 'success',
@@ -167,6 +186,12 @@ class WebApp:
                               except Exception as e:
                                   result["top_competitors"] = ''
                                   result['status'] = f'partial error : Top Comp {e}'
+                                  
+                              if debug_mode:
+                                  tc_end_time=time()
+                                  txt=f"for url : {url} // Top competitor search complete . time elapsed {ollama_end_time-tc_end_time:.2f} seconds"
+                                  debug_logs=debug_logs+'\n'+txt
+                                  log_window.text(txt)
 
                           if features.get("gmb"):
                               try:
@@ -175,6 +200,12 @@ class WebApp:
                               except Exception as e:
                                   result["gmb_setup"] = ''
                                   result['status'] = f'partial error : GMB {e}'
+
+                              if debug_mode:
+                                  gmb_end_time=time()
+                                  txt=f"for url : {url} // GMB complete . time elapsed {tc_end_time-gmb_end_time:.2f} seconds"
+                                  debug_logs=debug_logs+'\n'+txt
+                                  log_window.text(txt)
 
                           if features.get("non_index_pages"):
                               try:
@@ -186,10 +217,25 @@ class WebApp:
                                   result["non_indexed_pages"] = ''
                                   result['status']= f'partial error: pages count {e}'
 
+                              if debug_mode:
+                                  ni_end_time=time()
+                                  txt=f"for url : {url} // GMB complete . time elapsed {gmb_end_time-ni_end_time:.2f} seconds"
+                                  debug_logs=debug_logs+'\n'+txt
+                                  log_window.text(txt)
+
                           results.append(result)
-                      
+                          batch_results.append(result)
                       except Exception as e:
                           results.append({
+                              'url': url,
+                              'status': 'error',
+                              'error': str(e),
+                              'top_competitors': '',
+                              'gmb_setup': '',
+                              'business_name': '',
+                              'non_indexed_pages': ''
+                          })
+                          batch_results.append({
                               'url': url,
                               'status': 'error',
                               'error': str(e),
@@ -202,17 +248,30 @@ class WebApp:
                   # Save intermediate results after each batch
                   df = pd.DataFrame(results)
                   df = df.fillna(' ')
-                  st.session_state.results = df
+                  df_batch = pd.DataFrame(batch_results)
+                  st.session_state.results = df_batch
 
                   # Display results so far
-                  self.components.display_results(df)
+                  self.components.display_results(df_batch)
 
               # Save final results to a CSV file
               output_file = f"output/analysis/results_{timestamp}.csv"
               df.to_csv(output_file, index=False)
+              if debug_mode:
+                  debug_path=f'output/debug_logs/log_{timestamp}.txt'
+                  with open(file=debug_path,mode='w') as f:
+                      f.write(debug_logs)
 
-              # Reset processing state
+                    # Reset processing state
               st.session_state.processing = False
+              st.download_button(
+                label="Download  Complete Result", 
+                data=open(output_file, 'rb').read(), 
+                file_name="results.csv", 
+                mime="text/csv"
+                )
+              st.session_state.processing = False
+              st.success("Processing complete! Results saved.")
 
           except Exception as e:
               st.error(f"Error: {str(e)}")

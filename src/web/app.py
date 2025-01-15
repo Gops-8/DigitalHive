@@ -115,9 +115,6 @@ class WebApp:
                   for i, url in enumerate(batch_urls):
                       url_start_time = time()
                       status.text(f"Processing {start_index+i+1}/{len(urls)} URL: {url}")
-                      if debug_mode:
-                        status.text(f"Time Elapsed : {start_time-url_start_time:.2f} seconds , Efficiency :  {(start_time-url_start_time)/(start_index+i+1)} urls/second ")
-
                       progress = ((batch_number * batch_size + i + 1) / len(urls))
                       progress_bar.progress(progress)
                       percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
@@ -134,7 +131,8 @@ class WebApp:
 
                           if debug_mode:
                               scrap_end_time=time()
-                              txt=f"url{url}: scraping complete . time elapsed {url_start_time-scrap_end_time:.2f} seconds"
+                              debug_logs=debug_logs+f'\n {url} \n'
+                              txt=f"webscrapping time : {scrap_end_time-url_start_time:.2f} seconds"
                               debug_logs=debug_logs+'\n'+txt
                               log_window.text(txt)
 
@@ -142,7 +140,7 @@ class WebApp:
 
                           if debug_mode:
                               ollama_end_time=time()
-                              txt=f"for url : {url} // Initial analysis complete . time elapsed {scrap_end_time-ollama_end_time:.2f} seconds"
+                              txt=f"AI Based analysis time : {ollama_end_time-scrap_end_time:.2f} seconds"
                               debug_logs=debug_logs+'\n'+txt
                               log_window.text(txt)
 
@@ -182,17 +180,21 @@ class WebApp:
                           if features.get("top_competitor"):
                               try:
                                   top_competitors = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=3)
-                                  result["top_competitors"] = top_competitors
+                                  for i,tc in enumerate(top_competitors):
+                                      result[f'top_competitors_{i+1}']=tc
                               except Exception as e:
-                                  result["top_competitors"] = ''
+                                  for i in range(1,4):
+                                    result[f'top_competitors_{i+1}'] = ''
                                   result['status'] = f'partial error : Top Comp {e}'
                                   
                               if debug_mode:
                                   tc_end_time=time()
-                                  txt=f"for url : {url} // Top competitor search complete . time elapsed {ollama_end_time-tc_end_time:.2f} seconds"
+                                  txt=f"Top Competitor search time : {tc_end_time-ollama_end_time:.2f} seconds"
                                   debug_logs=debug_logs+'\n'+txt
                                   log_window.text(txt)
-
+                          else:
+                              tc_end_time=time()
+                   
                           if features.get("gmb"):
                               try:
                                   gmb_setup = self.analytics.check_gmb_setup(clean_url)
@@ -203,9 +205,11 @@ class WebApp:
 
                               if debug_mode:
                                   gmb_end_time=time()
-                                  txt=f"for url : {url} // GMB complete . time elapsed {tc_end_time-gmb_end_time:.2f} seconds"
+                                  txt=f"GMB finding time : {gmb_end_time-tc_end_time:.2f} seconds"
                                   debug_logs=debug_logs+'\n'+txt
                                   log_window.text(txt)
+                          else:
+                              gmb_end_time=time()
 
                           if features.get("non_index_pages"):
                               try:
@@ -219,12 +223,13 @@ class WebApp:
 
                               if debug_mode:
                                   ni_end_time=time()
-                                  txt=f"for url : {url} // GMB complete . time elapsed {gmb_end_time-ni_end_time:.2f} seconds"
+                                  txt=f"Non Index Pages finding time: {ni_end_time-gmb_end_time:.2f} seconds"
                                   debug_logs=debug_logs+'\n'+txt
                                   log_window.text(txt)
 
                           results.append(result)
                           batch_results.append(result)
+
                       except Exception as e:
                           results.append({
                               'url': url,
@@ -258,6 +263,8 @@ class WebApp:
               output_file = f"output/analysis/results_{timestamp}.csv"
               df.to_csv(output_file, index=False)
               if debug_mode:
+                  end_time=time()
+                  debug_logs=debug_logs+f"\n processing Completed \n Total {len(df)} processed in {end_time-start_time:.2f} seconds"
                   debug_path=f'output/debug_logs/log_{timestamp}.txt'
                   with open(file=debug_path,mode='w') as f:
                       f.write(debug_logs)
@@ -265,7 +272,7 @@ class WebApp:
                     # Reset processing state
               st.session_state.processing = False
               st.download_button(
-                label="Download  Complete Result", 
+                label="Download Complete Result", 
                 data=open(output_file, 'rb').read(), 
                 file_name="results.csv", 
                 mime="text/csv"

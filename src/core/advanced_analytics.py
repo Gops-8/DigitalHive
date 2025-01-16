@@ -34,6 +34,7 @@ class AdvancedAnalytics:
                 "User-Agent": random.choice(USER_AGENTS)
             }
             response = requests.get(base_url, params=params, headers=headers)
+            time.sleep(2)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, 'html.parser')
 

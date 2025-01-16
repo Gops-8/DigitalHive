@@ -117,7 +117,7 @@ class WebApp:
                       status.text(f"Processing {start_index+i+1}/{len(urls)} URL: {url}")
                       progress = ((batch_number * batch_size + i + 1) / len(urls))
                       progress_bar.progress(progress)
-                      percent_complete.text(f"Batch {batch_number + 1}/{total_batches}: {int(progress * 100)}% Complete")
+
 
                       try:
                           # Process URL
@@ -179,13 +179,17 @@ class WebApp:
 
                           if features.get("top_competitor"):
                               try:
-                                  top_competitors = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=3)
-                                  for i,tc in enumerate(top_competitors):
-                                      result[f'top_competitors_{i+1}']=tc
+                                  top_competitors_list = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=3)
+                                  for i in range(3):
+                                      try:
+                                        result[f'top_competitors_{i+1}']=top_competitors_list[i]
+                                      except:
+                                        result[f'target_audiance_{i+1}']=''  
                               except Exception as e:
-                                  for i in range(1,4):
+                                  for i in range(3):
                                     result[f'top_competitors_{i+1}'] = ''
-                                  result['status'] = f'partial error : Top Comp {e}'
+                                  result['status'] = 'Partial Error'
+                                  result['error'] = f'Top Competitor error {e}'
                                   
                               if debug_mode:
                                   tc_end_time=time()
@@ -201,7 +205,8 @@ class WebApp:
                                   result["gmb_setup"] = gmb_setup
                               except Exception as e:
                                   result["gmb_setup"] = ''
-                                  result['status'] = f'partial error : GMB {e}'
+                                  result['status'] = 'Partial Error'
+                                  result['error'] = f'GMB error {e}'
 
                               if debug_mode:
                                   gmb_end_time=time()
@@ -219,7 +224,8 @@ class WebApp:
                                   result["non_indexed_pages"] = non_index_pages
                               except Exception as e:
                                   result["non_indexed_pages"] = ''
-                                  result['status']= f'partial error: pages count {e}'
+                                  result['status'] = 'Partial Error'
+                                  result['error'] = f'Non Index page find error {e}'
 
                               if debug_mode:
                                   ni_end_time=time()
@@ -228,7 +234,7 @@ class WebApp:
                                   log_window.text(txt)
 
                           results.append(result)
-                          batch_results.append(result)
+                          # batch_results.append(result)
 
                       except Exception as e:
                           results.append({
@@ -240,31 +246,32 @@ class WebApp:
                               'business_name': '',
                               'non_indexed_pages': ''
                           })
-                          batch_results.append({
-                              'url': url,
-                              'status': 'error',
-                              'error': str(e),
-                              'top_competitors': '',
-                              'gmb_setup': '',
-                              'business_name': '',
-                              'non_indexed_pages': ''
-                          })
+                          # batch_results.append({
+                          #     'url': url,
+                          #     'status': 'error',
+                          #     'error': str(e),
+                          #     'top_competitors': '',
+                          #     'gmb_setup': '',
+                          #     'business_name': '',
+                          #     'non_indexed_pages': ''
+                          # })
 
                   # Save intermediate results after each batch
                   df = pd.DataFrame(results)
                   df = df.fillna(' ')
-                  df_batch = pd.DataFrame(batch_results)
-                  st.session_state.results = df_batch
-
+                  # df_batch = pd.DataFrame(batch_results)
+                  st.session_state.results = df
+                  
                   # Display results so far
-                  self.components.display_results(df_batch)
+                  self.components.display_results(df)
 
               # Save final results to a CSV file
               output_file = f"output/analysis/results_{timestamp}.csv"
               df.to_csv(output_file, index=False)
+
               if debug_mode:
                   end_time=time()
-                  debug_logs=debug_logs+f"\n processing Completed \n Total {len(df)} processed in {end_time-start_time:.2f} seconds"
+                  debug_logs=debug_logs+f"\n processing Completed \n Total {len(df)} urls with {len(df[df['status'] == 'success'])} successful urls, processed in {end_time-start_time:.2f} seconds"
                   debug_path=f'output/debug_logs/log_{timestamp}.txt'
                   with open(file=debug_path,mode='w') as f:
                       f.write(debug_logs)

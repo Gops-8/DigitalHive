@@ -165,14 +165,13 @@ class WebApp:
 
 
     def process_advanced_analysis(self, uploaded_file, gmb_check, non_index_pages_check, search_method, api_key):
-        """Handles advanced analytics using the uploaded file."""
-        st.write("Processing advanced analysis...")
-
+        """Handles advanced analytics in batches using multithreading."""
+        
         # Create necessary directories
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
 
-        # Save the uploaded file
+        # Save uploaded file
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         input_path = f"input/temp_{timestamp}.{uploaded_file.name.split('.')[-1]}"
         with open(input_path, 'wb') as f:
@@ -181,16 +180,13 @@ class WebApp:
         # Identify file type and read accordingly
         try:
             if uploaded_file.name.endswith('.csv'):
-                st.write("Detected CSV file. Attempting to read...")
                 df = pd.read_csv(input_path)
             elif uploaded_file.name.endswith('.xlsx'):
-                st.write("Detected Excel file. Attempting to read...")
                 df = pd.read_excel(input_path)
             else:
                 st.error("Unsupported file format. Please upload a CSV or Excel file.")
                 return
 
-            st.write(f"File successfully read. Rows: {len(df)}, Columns: {len(df.columns)}")
         except Exception as e:
             st.error(f"Error reading file: {e}")
             return
@@ -200,57 +196,43 @@ class WebApp:
             return
 
         results = []
-        total_rows = len(df)
+        batch_size = 100
+        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
+        status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
 
-        st.write(f"Processing {total_rows} rows sequentially...")
+        # Process in batches with multithreading
+        for i in range(0, len(df), batch_size):
+            batch_rows = df.iloc[i:i + batch_size].to_dict(orient="records")
 
-        for index, row in df.iterrows():
-            st.write(f"🔍 Processing row {index}...")
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+                batch_results = list(executor.map(
+                    lambda row: self.process_row(row, search_method, api_key, gmb_check, non_index_pages_check),
+                    batch_rows
+                ))
 
-            # Call process_row(), which now returns a modified row with competitor columns
-            processed_row = self.process_row(row, search_method, api_key, gmb_check, non_index_pages_check)
+            results.extend(batch_results)
+            df_results = pd.DataFrame(results)
 
-            if processed_row:
-                results.append(processed_row)
+            if not df_results.empty:
+                st.session_state.results = df_results
+                self.components.display_results(df_results)
 
-            # Update progress bar
-            progress = (len(results) / total_rows)
-            progress_bar.progress(progress)
-            status_text.text(f"Processed {len(results)}/{total_rows} rows")
-
-        # Convert results to DataFrame and return full data
-        if results:
-            result_df = pd.DataFrame(results)
-
-            # Ensure 'status' column exists
-            if "status" not in result_df.columns:
-                st.error("❌ 'status' column missing from results! Fixing automatically...")
-                result_df["status"] = "error"
-
-            st.session_state.results = result_df
-            self.components.display_results(result_df)
-        else:
-            st.warning("No results to display.")
+            progress_bar.progress(min((i + batch_size) / len(df), 1.0))
+            status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
 
 
     def process_row(self, row, search_method, api_key, gmb_check, non_index_pages_check):
-        """Process a single row, prioritizing product_services first, then keywords."""
+        """Process a single row using multithreading and prioritize keyword search."""
         try:
-            st.write(f"🚀 Processing row: {row}")
+            # Extract search query: prioritize keywords, then use product_services
+            search_query = str(row.get('keyword_1', '')).strip()
+            if not search_query:
+                search_query = str(row.get('product_services_1', '')).strip()
 
-            # Check for search query: prioritize product_services, then fallback to keywords
-            search_query = str(row.get('product_services_1', '')).strip()
-            
-            if not search_query:  # If no product_services, try keywords
-                search_query = str(row.get('keyword_1', '')).strip()
-
-            if not search_query:  # If both are missing, skip the row
-                st.write("⚠️ Skipping row due to missing both product_services and keywords.")
+            if not search_query:
                 return {**row, "status": "skipped", "error": "No valid search query"}
-
-            st.write(f"✅ Using Search Query: {search_query}")
 
             # Perform the search
             try:
@@ -263,18 +245,16 @@ class WebApp:
                     return {**row, "status": "error", "error": search_result.get("error", "No search results")}
 
             except Exception as e:
-                st.error(f"❌ Error during search: {e}")
                 return {**row, "status": "error", "error": str(e)}
 
             # Clean & filter URLs
             competitors = self.analytics.clean_and_filter_urls(search_result, row.get('url', ''))
             if not competitors:
-                st.write(f"⚠️ No valid competitors found for {search_query}.")
                 return {**row, "status": "error", "error": "No valid competitors"}
 
             # Ensure we always return 3 competitor columns
-            competitor_data = {
-                **row,  # Retain original row data
+            return {
+                **row,
                 "search_query": search_query,
                 "status": "success",
                 "top_competitor_1": competitors[0] if len(competitors) > 0 else "",
@@ -282,11 +262,7 @@ class WebApp:
                 "top_competitor_3": competitors[2] if len(competitors) > 2 else ""
             }
 
-            st.write(f"✅ Final Processed result: {competitor_data}")
-            return competitor_data
-
         except Exception as e:
-            st.error(f"❌ Fatal Error processing row: {e}")
             return {**row, "status": "error", "error": str(e)}
 
 

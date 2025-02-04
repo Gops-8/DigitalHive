@@ -12,7 +12,7 @@ RATE_LIMIT_DELAY = 2  # seconds between requests
 
 # App configuration
 APP_CONFIG = {
-    'PAGE_TITLE': "DigitalHive",
+    'PAGE_TITLE': "Corporate Ranking AI",
     'PAGE_ICON': "🌐",
     'LAYOUT': "wide"
 }
@@ -28,3 +28,5 @@ PATHS = {
 # Create necessary directories
 for path in PATHS.values():
     os.makedirs(path, exist_ok=True)
+    
+# SCRAPE_API_KEY  = '678f5447f29bc3xNwg9SwoCCZ381'

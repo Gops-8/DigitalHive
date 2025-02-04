@@ -3,10 +3,17 @@ import pandas as pd
 from datetime import datetime
 import os
 import sys
-from time import time
-# Add the project root to the Python path
+import concurrent.futures
+import requests
+import json
+import hashlib
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Ensure the src directory is in the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
+# Import custom modules
 from src.core.scraper import WebScraper
 from src.core.content_analyzer import ContentAnalyzer
 from src.core.data_processer import DataProcessor
@@ -27,6 +34,7 @@ class WebApp:
         self.cache = AnalysisCache()
 
     def init_session(self):
+        """Initialize session state variables."""
         if 'authenticated' not in st.session_state:
             st.session_state.authenticated = False
         if 'processing' not in st.session_state:
@@ -35,262 +43,251 @@ class WebApp:
             st.session_state.results = None
 
     def run(self):
-        
-        
+        """Run the Streamlit app."""
         if not st.session_state.authenticated:
-            st.set_page_config(page_title="Corporate Ranking AI",layout="centered",page_icon="assets/logo.jpg")
+            st.set_page_config(page_title="Corporate Ranking AI", layout="centered", page_icon="assets/logo.jpg")
             self.components.show_login(auth_manager=self.auth_manager)
-            
         else:
-            st.set_page_config(page_title="Corporate Ranking AI",layout="wide",page_icon="assets/logo.jpg")
+            st.set_page_config(page_title="Corporate Ranking AI", layout="wide", page_icon="assets/logo.jpg")
             self.show_main_page()
 
     def show_main_page(self):
-        # st.image("assets/logo.jpg", width=200)
-        # st.title("Corporate Ranking AI ")
-        # Create two columns for layout
-        col1, col2 = st.columns([1, 6])  # Adjust column widths as needed
-
+        """Display the main page with tabs."""
+        col1, col2 = st.columns([1, 8])
         with col1:
-            st.image("assets/logo.jpg", width=150)  # Replace with your logo file path
+            st.image("assets/logo.jpg", width=100)
         with col2:
             st.title("Corporate Ranking AI")
-
-        if st.sidebar.button("Logout"):
-            st.session_state.authenticated = False
-            st.rerun()
-
+        
+        tabs = st.tabs(["AI-Powered Data Extractor", "Competitive Insights & SEO Analysis"])
+        
+        with tabs[0]:
+            st.markdown("**This tool extracts essential business information such as keywords, target audience, location, products, and services from the given URLs.**")
+            self.ai_based_extractor()
+        with tabs[1]:
+            st.markdown("**This tool provides advanced competitive insights, including Google My Business (GMB) verification, non-indexed pages analysis, and SEO visibility analysis.**")
+            self.competitive_insights()
+    
+    def ai_based_extractor(self):
+        """Handle the AI-Powered Data Extraction process."""
         uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
-        debug_mode = st.checkbox("Enable Debug Mode", help="Show detailed logs during execution")
-        # advanced_analytics = st.checkbox("Advanced Analytics", help="Include GMB check, top competitors, and non-indexed pages in the results")
-        features = {
-            "basic": st.checkbox("Basic Features (keywords, business name, target audience, product and services),",value=True),
-            "top_competitor": st.checkbox("Top Competitors"),
-            "gmb": st.checkbox("Check Google My Business"),
-            "non_index_pages": st.checkbox("Count Non-Indexed Pages")
-          }
         if uploaded_file:
             st.info(f"Uploaded: {uploaded_file.name}")
-   
-            if st.button("Start Analysis"):
-                st.session_state.processing = True
-                self.process_file(uploaded_file, features,debug_mode)
-
-        # Display results only if available and processing is complete
-        if not st.session_state.processing and st.session_state.results is not None:
-            self.components.display_results(st.session_state.results)
+            if st.button("Start Data Extraction"):
+                self.process_basic_analysis(uploaded_file)
     
-    def process_file(self, uploaded_file, features,debug_mode):
-          try:
-              os.makedirs('input', exist_ok=True)
-              os.makedirs('output/analysis', exist_ok=True)
-              os.makedirs('output/debug_logs',exist_ok=True)
-              start_time=time()
-              progress_bar = st.progress(0)
-              status = st.empty()
-              percent_complete = st.empty()
-              log_window = st.empty() if debug_mode else None
-              
-              timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-              input_path = f"input/temp_{timestamp}.xlsx"
-              with open(input_path, 'wb') as f:
-                  f.write(uploaded_file.getbuffer())
-              
-              urls = self.processor.read_excel_to_url(input_path)
-              results = []
-              batch_size = 100
-              total_batches = (len(urls) + batch_size - 1) // batch_size
-              debug_logs=f'----------------------- DEBUG LOGS : RUN on {timestamp}----------------------- \n\n\n'
-              for batch_number in range(total_batches):
-                  if not st.session_state.processing:
-                      break  # Stop processing if flagged
-                  batch_results=[]
-                  # Extract current batch
-                  start_index = batch_number * batch_size
-                  end_index = min(start_index + batch_size, len(urls))
-                  batch_urls = urls[start_index:end_index]
+    def competitive_insights(self):
+        """Handle the Competitive Insights & SEO Analysis process."""
+        search_method = st.selectbox(
+            "Select Search Method",
+            ("Basic Google Search", "Serper.dev API")
+        )
 
-                  st.write(f"Processing Batch {batch_number + 1}/{total_batches}...")
-                  
-                  for i, url in enumerate(batch_urls):
-                      url_start_time = time()
-                      status.text(f"Processing {start_index+i+1}/{len(urls)} URL: {url}")
-                      progress = ((batch_number * batch_size + i + 1) / len(urls))
-                      progress_bar.progress(progress)
+        api_key = None
+        if search_method == "Serper.dev API":
+            api_key = st.text_input("Enter your Serper.dev API Key", type="password")
+
+        uploaded_file = st.file_uploader("Upload AI-Powered Data Extractor Output (CSV)", type=['csv'])
+        if uploaded_file:
+            st.info(f"Uploaded: {uploaded_file.name}")
+            gmb_check = st.checkbox("Check Google My Business (GMB)")
+            non_index_pages_check = st.checkbox("Count Non-Indexed Pages")
+            if st.button("Start Competitive Insights Analysis"):
+                self.process_advanced_analysis(uploaded_file, gmb_check, non_index_pages_check, search_method, api_key)
+    
+    def process_basic_analysis(self, uploaded_file):
+        """Handles basic web scraping and content analysis in batches with caching and indicators"""
+        st.write("Processing basic analysis...")
+        os.makedirs('input', exist_ok=True)
+        os.makedirs('output/analysis', exist_ok=True)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        input_path = f"input/temp_{timestamp}.xlsx"
+        with open(input_path, 'wb') as f:
+            f.write(uploaded_file.getbuffer())
+        urls = self.processor.read_excel_to_url(input_path)
+        if not urls:
+            st.error("No URLs found in the uploaded file.")
+            return
+        results = []
+        batch_size = 100
+        total_batches = len(urls) // batch_size + (1 if len(urls) % batch_size > 0 else 0)
+        progress_bar = st.progress(0.0)
+        status_text = st.empty()
+        status_text.text(f"Total URLs: {len(urls)} | Processing in {total_batches} batches")
+        
+        for i in range(0, len(urls), batch_size):
+            batch_urls = urls[i:i + batch_size]
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+                batch_results = list(executor.map(self.process_url, batch_urls))
+            results.extend(batch_results)
+            df = pd.DataFrame(results)
+            if not df.empty:
+                st.session_state.results = df
+                self.components.display_results(df)
+            progress_bar.progress(min((i + batch_size) / len(urls), 1.0))
+            status_text.text(f"Currently Processing Batch {i // batch_size + 1} of {total_batches}")
+    
+    def process_url(self, url):
+        try:
+
+            clean_url = self.processor.clean_url(url)
+            cached_data = self.cache.get(clean_url)
+            if not cached_data:
+                scraped_data = self.scraper.scrape_website(clean_url)
+                self.cache.set(clean_url, scraped_data)
+            else:
+                scraped_data = cached_data
+            
+            analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+            location = analysis.get('location', '')
+            keywords = analysis.get('keywords', '')
+            target_audiences = analysis.get('target_audience', '')
+            business_name = analysis.get('business_name', '')
+            product_services = analysis.get('products_services', '')
+            
+            if not keywords and not product_services:
+                return {'url': url, 'status': 'error', 'error': 'Missing keywords and products'}
+            
+            result = {'url': url, 'status': 'success', 'business_name': business_name, 'location': location}
+            keyword_list = keywords.split(',')
+            for i in range(5):
+                result[f'keyword_{i+1}'] = keyword_list[i] if i < len(keyword_list) else ''
+            product_services_list = product_services.split(',')
+            for i in range(3):
+                result[f'product_services_{i+1}'] = product_services_list[i] if i < len(product_services_list) else ''
+            target_audience_list = target_audiences.split(',')
+            for i in range(3):
+                result[f'target_audiance_{i+1}'] = target_audience_list[i] if i < len(target_audience_list) else ''
+            
+            return result
+        except Exception as e:
+            return {'url': url, 'status': 'error', 'error': str(e)}
 
 
-                      try:
-                          # Process URL
-                          clean_url = self.processor.clean_url(url)
-                          cached_data = self.cache.get(clean_url)
-                          if not cached_data:
-                                  scraped_data = self.scraper.scrape_website(clean_url)
-                                  self.cache.set(clean_url,scraped_data)
-                          else:
-                              scraped_data=cached_data
+    def process_advanced_analysis(self, uploaded_file, gmb_check, non_index_pages_check, search_method, api_key):
+        """Handles advanced analytics using the uploaded file."""
+        st.write("Processing advanced analysis...")
 
-                          if debug_mode:
-                              scrap_end_time=time()
-                              debug_logs=debug_logs+f'\n {url} \n'
-                              txt=f"webscrapping time : {scrap_end_time-url_start_time:.2f} seconds"
-                              debug_logs=debug_logs+'\n'+txt
-                              log_window.text(txt)
+        # Create necessary directories
+        os.makedirs('input', exist_ok=True)
+        os.makedirs('output/analysis', exist_ok=True)
 
-                          analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+        # Save the uploaded file
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        input_path = f"input/temp_{timestamp}.{uploaded_file.name.split('.')[-1]}"
+        with open(input_path, 'wb') as f:
+            f.write(uploaded_file.getbuffer())
 
-                          if debug_mode:
-                              ollama_end_time=time()
-                              txt=f"AI Based analysis time : {ollama_end_time-scrap_end_time:.2f} seconds"
-                              debug_logs=debug_logs+'\n'+txt
-                              log_window.text(txt)
+        # Identify file type and read accordingly
+        try:
+            if uploaded_file.name.endswith('.csv'):
+                st.write("Detected CSV file. Attempting to read...")
+                df = pd.read_csv(input_path)
+            elif uploaded_file.name.endswith('.xlsx'):
+                st.write("Detected Excel file. Attempting to read...")
+                df = pd.read_excel(input_path)
+            else:
+                st.error("Unsupported file format. Please upload a CSV or Excel file.")
+                return
 
-                          result = {
-                              'url': url,
-                              'status': 'success',
-                          }
-                          # Extract location and product for advanced analytics
-                          location        = analysis.get('location', '')
-                          keywords        = analysis.get('keywords', '') 
-                          target_audiences = analysis.get('target_audience', '') 
-                          business_name = analysis.get('business_name', '') 
-                          product_services = analysis.get('products_services', '') 
+            st.write(f"File successfully read. Rows: {len(df)}, Columns: {len(df.columns)}")
+        except Exception as e:
+            st.error(f"Error reading file: {e}")
+            return
 
-                          keyword_list = keywords.split(',')
-                          result['business_name']=business_name
-                          for i in range(5):
-                            try:
-                              result[f'keyword_{i+1}']=keyword_list[i]
-                            except:
-                              result[f'keyword_{i+1}']=''
+        if df.empty:
+            st.error("Uploaded file is empty or invalid.")
+            return
 
-                          product_services_list= product_services.split(',')
-                          for i in range(3):
-                            try:
-                              result[f'product_services_{i+1}']=product_services_list[i]
-                            except:
-                              result[f'product_services_{i+1}']=''
+        results = []
+        total_rows = len(df)
+        progress_bar = st.progress(0.0)
+        status_text = st.empty()
 
-                          target_audience_list= target_audiences.split(',')
-                          for i in range(3):
-                            try:
-                              result[f'target_audiance_{i+1}']=target_audience_list[i]
-                            except:
-                              result[f'target_audiance_{i+1}']=''    
+        st.write(f"Processing {total_rows} rows sequentially...")
 
-                          if features.get("top_competitor"):
-                              try:
-                                  top_competitors_list = self.analytics.find_top_competitors(keyword_list[0], location, clean_url, pages=3)
-                                  for i in range(3):
-                                      try:
-                                        result[f'top_competitors_{i+1}']=top_competitors_list[i]
-                                      except:
-                                        result[f'target_audiance_{i+1}']=''  
-                              except Exception as e:
-                                  for i in range(3):
-                                    result[f'top_competitors_{i+1}'] = ''
-                                  result['status'] = 'Partial Error'
-                                  result['error'] = f'Top Competitor error {e}'
-                                  
-                              if debug_mode:
-                                  tc_end_time=time()
-                                  txt=f"Top Competitor search time : {tc_end_time-ollama_end_time:.2f} seconds"
-                                  debug_logs=debug_logs+'\n'+txt
-                                  log_window.text(txt)
-                          else:
-                              tc_end_time=time()
-                   
-                          if features.get("gmb"):
-                              try:
-                                  gmb_setup = self.analytics.check_gmb_setup(clean_url)
-                                  result["gmb_setup"] = gmb_setup
-                              except Exception as e:
-                                  result["gmb_setup"] = ''
-                                  result['status'] = 'Partial Error'
-                                  result['error'] = f'GMB error {e}'
+        for index, row in df.iterrows():
+            st.write(f"🔍 Processing row {index}...")
 
-                              if debug_mode:
-                                  gmb_end_time=time()
-                                  txt=f"GMB finding time : {gmb_end_time-tc_end_time:.2f} seconds"
-                                  debug_logs=debug_logs+'\n'+txt
-                                  log_window.text(txt)
-                          else:
-                              gmb_end_time=time()
+            # Call process_row(), which now returns a modified row with competitor columns
+            processed_row = self.process_row(row, search_method, api_key, gmb_check, non_index_pages_check)
 
-                          if features.get("non_index_pages"):
-                              try:
-                                  indexed_pages = self.analytics.count_non_indexed_pages(clean_url)
-                                  total_pages = self.analytics.count_total_pages(clean_url)
-                                  non_index_pages = max(0, total_pages - indexed_pages)
-                                  result["non_indexed_pages"] = non_index_pages
-                              except Exception as e:
-                                  result["non_indexed_pages"] = ''
-                                  result['status'] = 'Partial Error'
-                                  result['error'] = f'Non Index page find error {e}'
+            if processed_row:
+                results.append(processed_row)
 
-                              if debug_mode:
-                                  ni_end_time=time()
-                                  txt=f"Non Index Pages finding time: {ni_end_time-gmb_end_time:.2f} seconds"
-                                  debug_logs=debug_logs+'\n'+txt
-                                  log_window.text(txt)
+            # Update progress bar
+            progress = (len(results) / total_rows)
+            progress_bar.progress(progress)
+            status_text.text(f"Processed {len(results)}/{total_rows} rows")
 
-                          results.append(result)
-                          # batch_results.append(result)
+        # Convert results to DataFrame and return full data
+        if results:
+            result_df = pd.DataFrame(results)
 
-                      except Exception as e:
-                          results.append({
-                              'url': url,
-                              'status': 'error',
-                              'error': str(e),
-                              'top_competitors': '',
-                              'gmb_setup': '',
-                              'business_name': '',
-                              'non_indexed_pages': ''
-                          })
-                          # batch_results.append({
-                          #     'url': url,
-                          #     'status': 'error',
-                          #     'error': str(e),
-                          #     'top_competitors': '',
-                          #     'gmb_setup': '',
-                          #     'business_name': '',
-                          #     'non_indexed_pages': ''
-                          # })
+            # Ensure 'status' column exists
+            if "status" not in result_df.columns:
+                st.error("❌ 'status' column missing from results! Fixing automatically...")
+                result_df["status"] = "error"
 
-                  # Save intermediate results after each batch
-                  df = pd.DataFrame(results)
-                  df = df.fillna(' ')
-                  # df_batch = pd.DataFrame(batch_results)
-                  st.session_state.results = df
-                  
-                  # Display results so far
-                  self.components.display_results(df)
+            st.session_state.results = result_df
+            self.components.display_results(result_df)
+        else:
+            st.warning("No results to display.")
 
-              # Save final results to a CSV file
-              output_file = f"output/analysis/results_{timestamp}.csv"
-              df.to_csv(output_file, index=False)
 
-              if debug_mode:
-                  end_time=time()
-                  debug_logs=debug_logs+f"\n processing Completed \n Total {len(df)} urls with {len(df[df['status'] == 'success'])} successful urls, processed in {end_time-start_time:.2f} seconds"
-                  debug_path=f'output/debug_logs/log_{timestamp}.txt'
-                  with open(file=debug_path,mode='w') as f:
-                      f.write(debug_logs)
+    def process_row(self, row, search_method, api_key, gmb_check, non_index_pages_check):
+        """Process a single row, prioritizing product_services first, then keywords."""
+        try:
+            st.write(f"🚀 Processing row: {row}")
 
-                    # Reset processing state
-              st.session_state.processing = False
-              st.download_button(
-                label="Download Complete Result", 
-                data=open(output_file, 'rb').read(), 
-                file_name="results.csv", 
-                mime="text/csv"
-                )
-              st.session_state.processing = False
-              st.success("Processing complete! Results saved.")
+            # Check for search query: prioritize product_services, then fallback to keywords
+            search_query = str(row.get('product_services_1', '')).strip()
+            
+            if not search_query:  # If no product_services, try keywords
+                search_query = str(row.get('keyword_1', '')).strip()
 
-          except Exception as e:
-              st.error(f"Error: {str(e)}")
-              st.session_state.processing = False
+            if not search_query:  # If both are missing, skip the row
+                st.write("⚠️ Skipping row due to missing both product_services and keywords.")
+                return {**row, "status": "skipped", "error": "No valid search query"}
 
+            st.write(f"✅ Using Search Query: {search_query}")
+
+            # Perform the search
+            try:
+                if search_method == "Serper.dev API" and api_key:
+                    search_result = self.analytics.search_serper(search_query, api_key)
+                else:
+                    search_result = self.analytics.fetch_google_results(search_query, row.get('location', ''))
+
+                if not search_result or isinstance(search_result, dict) and "error" in search_result:
+                    return {**row, "status": "error", "error": search_result.get("error", "No search results")}
+
+            except Exception as e:
+                st.error(f"❌ Error during search: {e}")
+                return {**row, "status": "error", "error": str(e)}
+
+            # Clean & filter URLs
+            competitors = self.analytics.clean_and_filter_urls(search_result, row.get('url', ''))
+            if not competitors:
+                st.write(f"⚠️ No valid competitors found for {search_query}.")
+                return {**row, "status": "error", "error": "No valid competitors"}
+
+            # Ensure we always return 3 competitor columns
+            competitor_data = {
+                **row,  # Retain original row data
+                "search_query": search_query,
+                "status": "success",
+                "top_competitor_1": competitors[0] if len(competitors) > 0 else "",
+                "top_competitor_2": competitors[1] if len(competitors) > 1 else "",
+                "top_competitor_3": competitors[2] if len(competitors) > 2 else ""
+            }
+
+            st.write(f"✅ Final Processed result: {competitor_data}")
+            return competitor_data
+
+        except Exception as e:
+            st.error(f"❌ Fatal Error processing row: {e}")
+            return {**row, "status": "error", "error": str(e)}
 
 
 if __name__ == "__main__":

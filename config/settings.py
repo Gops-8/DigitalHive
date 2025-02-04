@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 APP_CONFIG = {
-    'PAGE_TITLE': "Digital Hive",
-    'PAGE_ICON': "🌐",
+    'PAGE_TITLE': "Corporate Ranking AI",
+    'PAGE_ICON': "assets/logo.jpg",
     'LAYOUT': "native"
 }
 ## models  tested 
@@ -14,13 +14,15 @@ APP_CONFIG = {
 # hermes3 8b
 # llama3.2 3b
 # phi4
+# deepseek-r1:1.5b
+# deepseek-r1:14b
 
 import os
 
 OLLAMA_CONFIG = {
     'BASE_URL': os.getenv('OLLAMA_URL', 'http://localhost:11434'),
     'MODEL': os.getenv('OLLAMA_MODEL', 'llama3.1:8b'),
-    'TEMPERATURE': 0.3
+    'TEMPERATURE': 0.2
 }
 
 

@@ -28,17 +28,18 @@ class ContentAnalyzer:
             'phones': phones
         }
 
-    def analyze_with_ollama(self, content: str, url: str) -> Dict:
+    def analyze_with_ollama(self, content: str, url: str, model=None) -> Dict:
         try:
             formatted_prompt = ANALYSIS_PROMPT.format(
                 url=url,
                 content=content[:4000]
             )
+            model_to_infer = model or self.model
             # print(f"Prompt: {formatted_prompt}")
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
-                    "model": self.model,
+                    "model": model_to_infer,
                     "prompt": formatted_prompt,
                     "temperature": OLLAMA_CONFIG['TEMPERATURE'],
                     "format": "json"

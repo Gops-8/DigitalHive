@@ -28,10 +28,10 @@ class WebApp:
         self.components = Components()
         self.scraper = WebScraper()
         self.processor = DataProcessor()
-        self.analyzer = ContentAnalyzer()
         self.auth_manager = AuthManager()
         self.analytics = AdvancedAnalytics()
         self.cache = AnalysisCache()
+        self.model = None
 
     def init_session(self):
         """Initialize session state variables."""
@@ -41,6 +41,8 @@ class WebApp:
             st.session_state.processing = False
         if 'results' not in st.session_state:
             st.session_state.results = None
+        if 'selected_model' not in st.session_state:
+            st.session_state.selected_model = "llama3.1:8b"
 
     def run(self):
         """Run the Streamlit app."""
@@ -62,16 +64,39 @@ class WebApp:
         tabs = st.tabs(["AI-Powered Data Extractor", "Competitive Insights & SEO Analysis"])
         
         with tabs[0]:
-            st.markdown("**This tool extracts essential business information such as keywords, target audience, location, products, and services from the given URLs.**")
+            st.markdown("""
+            **AI-Powered Data Extractor:**
+            - Extracts essential business information such as:
+              - Keywords
+              - Target audience
+              - Location
+              - Products & Services
+            - Expected Input: Excel file with a single column containg URLS.
+            """)
             self.ai_based_extractor()
+        
         with tabs[1]:
-            st.markdown("**This tool provides advanced competitive insights, including Google My Business (GMB) verification, non-indexed pages analysis, and SEO visibility analysis.**")
+            st.markdown("""
+            **Competitive Insights & SEO Analysis:**
+            - Provides advanced insights such as:
+              - Google My Business (GMB) verification
+              - Non-indexed pages analysis
+              - SEO visibility insights
+            - Expected Input: CSV output from AI-Powered Data Extractor with business-related details
+                         (must have Keywords_1, product_serivices_1, urls ).
+            - Expected Output: CSV file with additional insights
+            """)
             self.competitive_insights()
     
     def ai_based_extractor(self):
         """Handle the AI-Powered Data Extraction process."""
+        if 'selected_model' not in st.session_state:
+                st.session_state.selected_model = "llama3.2:3b"
         uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         if uploaded_file:
+            st.session_state.selected_model  = st.selectbox("Select Model", ["llama3.1:8b", 
+                                                   "llama3.2:3b", "llama3.2"])
+
             st.info(f"Uploaded: {uploaded_file.name}")
             if st.button("Start Data Extraction"):
                 self.process_basic_analysis(uploaded_file)
@@ -114,11 +139,12 @@ class WebApp:
         progress_bar = st.progress(0.0)
         status_text = st.empty()
         status_text.text(f"Total URLs: {len(urls)} | Processing in {total_batches} batches")
-        
+        selected_model = st.session_state.selected_model
         for i in range(0, len(urls), batch_size):
             batch_urls = urls[i:i + batch_size]
-            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-                batch_results = list(executor.map(self.process_url, batch_urls))
+            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+                # Pass the selected_model to process_url using a lambda or partial
+                batch_results = list(executor.map(lambda url: self.process_url(url, selected_model), batch_urls))
             results.extend(batch_results)
             df = pd.DataFrame(results)
             if not df.empty:
@@ -126,10 +152,9 @@ class WebApp:
                 self.components.display_results(df)
             progress_bar.progress(min((i + batch_size) / len(urls), 1.0))
             status_text.text(f"Currently Processing Batch {i // batch_size + 1} of {total_batches}")
-    
-    def process_url(self, url):
-        try:
 
+    def process_url(self, url, model):
+        try:
             clean_url = self.processor.clean_url(url)
             cached_data = self.cache.get(clean_url)
             if not cached_data:
@@ -137,8 +162,8 @@ class WebApp:
                 self.cache.set(clean_url, scraped_data)
             else:
                 scraped_data = cached_data
-            
-            analysis = self.analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+            analyzer = ContentAnalyzer(model=model)
+            analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
             location = analysis.get('location', '')
             keywords = analysis.get('keywords', '')
             target_audiences = analysis.get('target_audience', '')
@@ -166,7 +191,7 @@ class WebApp:
 
     def process_advanced_analysis(self, uploaded_file, gmb_check, non_index_pages_check, search_method, api_key):
         """Handles advanced analytics in batches using multithreading."""
-        
+
         # Create necessary directories
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)

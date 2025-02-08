@@ -8,18 +8,26 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from src.utils.cache import AnalysisCache
 from src.utils.rate_limiter import RateLimiter
+import logging
 
+# Configure logging for this module
+logging.basicConfig(
+    level=logging.DEBUG,  # Adjust log level as needed
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 class AdvancedAnalytics:
     def __init__(self):
         self.cache = AnalysisCache()
+        logging.debug("Initialized AdvancedAnalytics with cache.")
 
     def hash_query(self, query):
-        """Generate a unique hash for a given query to use as a cache key."""
-        return hashlib.md5(query.encode('utf-8')).hexdigest()
+        hash_value = hashlib.md5(query.encode('utf-8')).hexdigest()
+        logging.debug("Hashed query '%s' to '%s'", query, hash_value)
+        return hash_value
 
     def fetch_google_results(self, product, location, pages=1):
-        """Fetch Google search results for a given product and location with rate limiting and retries."""
+        logging.debug("Fetching Google results for product: '%s' in location: '%s'", product, location)
         base_url = "https://www.google.com/search"
         query = f"{product} in {location}"
         all_links = []
@@ -35,37 +43,37 @@ class AdvancedAnalytics:
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
                 "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1"
             ]
-
             headers = {"User-Agent": random.choice(USER_AGENTS)}
 
-            for _ in range(3):  # Retry up to 3 times
+            for attempt in range(3):  # Retry up to 3 times
                 try:
+                    logging.debug("Attempt %d: Sending request to Google for query: '%s'", attempt+1, query)
                     response = requests.get(base_url, params=params, headers=headers)
+                    logging.debug("Response status code: %s", response.status_code)
                     response.raise_for_status()
                     
                     if response.status_code == 429:
-                        print("⚠️ Google is rate-limiting us. Retrying after 60 seconds...")
+                        logging.warning("Google is rate-limiting us. Retrying after 60 seconds...")
                         time.sleep(60)
                         continue
 
                     soup = BeautifulSoup(response.text, 'html.parser')
-
                     for result in soup.select('a'):
                         href = result.get('href')
                         if href and 'http' in href:
                             all_links.append(href)
-
+                    logging.debug("Fetched %d links from Google", len(all_links))
                     return all_links
 
                 except requests.exceptions.RequestException as e:
-                    print(f"❌ Error fetching Google results: {e}")
+                    logging.error("Error fetching Google results on attempt %d: %s", attempt+1, str(e))
                     time.sleep(5)  # Wait before retrying
 
-        return all_links  # Return whatever links were found
-
+        logging.debug("Returning %d links after retries", len(all_links))
+        return all_links
 
     def clean_and_filter_urls(self, urls, origin_url):
-        """Clean and filter URLs to extract unique competitors."""
+        logging.debug("Cleaning and filtering URLs, origin_url: %s", origin_url)
         unique_urls = set()
         base_urls = []
         known_domains = {
@@ -75,20 +83,20 @@ class AdvancedAnalytics:
             "gravatar", "nytimes", "jquery", "microsoft", "stripe", "reuters",
             "ebay", "wordpress", "etsy", "yelp", "tripadvisor", "glassdoor", 
             "trustpilot", "yellowpages", "linkedin", "bbb.org", "quora", "wikipedia",
-            "angieslist", "homestars", "houzz", "sitejabber", 'linkedin', 'instagram', 'mastercard'
+            "angieslist", "homestars", "houzz", "sitejabber", "linkedin", "instagram", "mastercard"
         }
-
         tld_exclusions = {".gov", ".org", ".edu", ".chat", ".blog", ".kpmg"}
         exclusions = {}
         try:
-          with open('assets/domain_list.txt', 'r') as file:
-              for line in file:
-                  domain = line.strip().lower()
-                  if domain:
-                      key = domain[0]
-                      exclusions.setdefault(key, set()).add(domain)
+            with open('assets/domain_list.txt', 'r') as file:
+                for line in file:
+                    domain = line.strip().lower()
+                    if domain:
+                        key = domain[0]
+                        exclusions.setdefault(key, set()).add(domain)
+            logging.debug("Loaded exclusions from domain_list.txt")
         except FileNotFoundError:
-            print("⚠️ Domain list file not found. Skipping exclusions.")
+            logging.warning("Domain list file not found. Skipping exclusions.")
 
         for url in urls:
             parsed = urlparse(url)
@@ -108,44 +116,32 @@ class AdvancedAnalytics:
                 unique_urls.add(base_url)
                 base_urls.append(base_url)
 
-            # Stop when we have 3 unique URLs
             if len(base_urls) == 3:
                 break
 
+        logging.debug("Filtered competitors: %s", base_urls)
         return base_urls
 
     def check_gmb_listing(self, business_name, location):
-        """Check if a business has a Google My Business listing."""
+        logging.debug("Checking GMB listing for business: '%s', location: '%s'", business_name, location)
         search_query = f"{business_name} {location}"
         search_results = self.fetch_google_results(search_query, location)
         for url in search_results:
             if "google.com/maps/place/" in url:
+                logging.debug("Found GMB listing for business: '%s'", business_name)
                 return True
+        logging.debug("No GMB listing found for business: '%s'", business_name)
         return False
 
     def analyze_non_indexed_pages(self, domain):
-        """Estimate the number of non-indexed pages for a given domain."""
+        logging.debug("Analyzing non-indexed pages for domain: '%s'", domain)
         # Placeholder for non-indexed pages analysis logic
-        # This would involve comparing the total number of pages on the website
-        # to the number indexed by Google, possibly using tools like Screaming Frog
         return 0
 
     def analyze_competitors(self, data, search_method="Basic Google Search", api_key=None, gmb_check=False, non_index_pages_check=False):
-        """
-        Analyze competitors based on products and keywords.
-
-        Parameters:
-        - data: DataFrame containing 'product_services' and 'keywords' columns.
-        - search_method: 'Basic Google Search' or 'Serper.dev API'.
-        - api_key: API key for Serper.dev if selected.
-        - gmb_check: Boolean to indicate if GMB listing check is required.
-        - non_index_pages_check: Boolean to indicate if non-indexed pages analysis is required.
-
-        Returns:
-        - DataFrame with competitor analysis results.
-        """
+        logging.debug("Analyzing competitors for provided data")
+        results = []  # Ensure results is initialized
         for index, row in data.iterrows():
-            # Ensure strings, avoid NaN issues
             product_services = str(row.get('product_services', '')).strip()
             keywords = str(row.get('keywords', '')).strip()
 
@@ -154,25 +150,24 @@ class AdvancedAnalytics:
             search_terms = [term.strip() for term in products + keywords if term.strip()]
 
             if not search_terms:
-                print(f"⚠️ Skipping row {index} due to missing search terms.")
+                logging.warning("Skipping row %d due to missing search terms.", index)
                 continue
 
             for term in search_terms:
                 cache_key = self.hash_query(term)
                 cached_result = self.cache.get(cache_key)
-
                 if cached_result:
                     search_result = cached_result
+                    logging.debug("Cache hit for term: '%s'", term)
                 else:
                     if search_method == "Serper.dev API" and api_key:
                         search_result = self.search_serper(term, api_key)
                     else:
                         search_result = self.fetch_google_results(term, row.get('location', ''))
-
                     self.cache.set(cache_key, search_result)
+                    logging.debug("Cache set for term: '%s'", term)
 
                 competitors = self.clean_and_filter_urls(search_result, row.get('url', ''))
-
                 result = {
                     'search_term': term,
                     'competitors': competitors
@@ -185,57 +180,50 @@ class AdvancedAnalytics:
                     result['non_indexed_pages'] = self.analyze_non_indexed_pages(row.get('url', ''))
 
                 results.append(result)
+                logging.debug("Analyzed competitors for term: '%s': %s", term, result)
 
+        logging.debug("Completed competitor analysis. Total results: %d", len(results))
         return pd.DataFrame(results)
 
     def search_serper(self, query, api_key):
-        """Perform a search using the Serper.dev API with caching and better error handling."""
-        print(f"🔍 Performing Serper.dev API search for: {query}")
-
-        # Check cache first
+        logging.debug("Performing Serper.dev API search for query: '%s'", query)
         cache_key = self.hash_query(query)
         cached_result = self.cache.get(cache_key)
         if cached_result:
-            print(f"🟢 Cache hit for query: {query}")
+            logging.debug("Cache hit for Serper.dev query: '%s'", query)
             return cached_result
 
         headers = {
             "X-API-KEY": api_key,
             "Content-Type": "application/json"
         }
-
         payload = json.dumps({
             "q": query,
             "hl": "en",
             "gl": "us",
             "num": 10
         })
-
         url = "https://google.serper.dev/search"
 
         try:
             response = requests.post(url, headers=headers, data=payload)
+            logging.debug("Serper.dev API response status code: %s", response.status_code)
             response.raise_for_status()
-
             result = response.json()
-            
             links = [item.get("link") for item in result.get("organic", []) if item.get("link")]
-
             if not links:
-                print(f"⚠️ No results found for query: {query}")
+                logging.warning("No results found for query: '%s'", query)
                 return {"error": f"No results found for query: {query}"}
-
-            # Store result in cache
             self.cache.set(cache_key, links)
-            print(f"✅ Retrieved {len(links)} results for query: {query}")
+            logging.info("Retrieved %d results for query: '%s'", len(links), query)
             return links
 
         except requests.exceptions.RequestException as e:
-            error_message = f"❌ API request failed: {str(e)}"
-            print(error_message)
+            error_message = f"API request failed: {str(e)}"
+            logging.error("Serper.dev API request failed for query '%s': %s", query, error_message)
             return {"error": error_message}
 
         except json.JSONDecodeError:
-            error_message = f"❌ Failed to parse JSON response from Serper.dev for query: {query}"
-            print(error_message)
+            error_message = f"Failed to parse JSON response from Serper.dev for query: {query}"
+            logging.error("JSON decode error for query '%s': %s", query, error_message)
             return {"error": error_message}

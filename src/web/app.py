@@ -160,7 +160,7 @@ class WebApp:
         for i in range(0, len(urls), batch_size):
             batch_urls = urls[i:i + batch_size]
             logging.debug("Processing batch %d: %s", i // batch_size + 1, batch_urls)
-            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
                 # Pass the selected_model to process_url using a lambda or partial
                 batch_results = list(executor.map(lambda url: self.process_url(url, selected_model), batch_urls))
             results.extend(batch_results)

@@ -10,6 +10,21 @@ import hashlib
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging  # Import logging module
+import time
+
+
+def timer(func):
+    """Decorator to measure the runtime of functions."""
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()  # or time.time()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        elapsed = end_time - start_time
+        # Log the elapsed time; you can also show it in the Streamlit interface.
+        logging.info("Function %s took %.2f seconds", func.__name__, elapsed)
+        st.write(f"Function **{func.__name__}** took **{elapsed:.2f}** seconds to complete.")
+        return result
+    return wrapper
 
 # Configure logging
 logging.basicConfig(
@@ -131,7 +146,7 @@ class WebApp:
             if st.button("Start Competitive Insights Analysis"):
                 logging.debug("Start Competitive Insights Analysis button pressed.")
                 self.process_advanced_analysis(uploaded_file, gmb_check, non_index_pages_check, search_method, api_key)
-    
+    @timer
     def process_basic_analysis(self, uploaded_file):
         """Handles basic web scraping and content analysis in batches with caching and indicators"""
         logging.debug("Processing basic analysis started.")
@@ -150,14 +165,16 @@ class WebApp:
             logging.error("No URLs found in the uploaded file.")
             return
         results = []
-        batch_size = 20
+        batch_size = 40
         total_batches = len(urls) // batch_size + (1 if len(urls) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
+        timer_text = st.empty() 
         status_text.text(f"Total URLs: {len(urls)} | Processing in {total_batches} batches")
         selected_model = st.session_state.selected_model
         logging.debug("Selected model for analysis: %s", selected_model)
         for i in range(0, len(urls), batch_size):
+            batch_start = time.perf_counter() 
             batch_urls = urls[i:i + batch_size]
             logging.debug("Processing batch %d: %s", i // batch_size + 1, batch_urls)
             with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
@@ -171,6 +188,9 @@ class WebApp:
             progress_bar.progress(min((i + batch_size) / len(urls), 1.0))
             status_text.text(f"Currently Processing Batch {i // batch_size + 1} of {total_batches}")
             logging.debug("Completed batch %d", i // batch_size + 1)
+            batch_end = time.perf_counter()  # End timer for this batch
+            elapsed = batch_end - batch_start
+            timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
         logging.debug("Basic analysis completed.")
 
     def process_url(self, url, model):
@@ -214,7 +234,7 @@ class WebApp:
         except Exception as e:
             logging.error("Error processing URL %s: %s", url, e)
             return {'url': url, 'status': 'error', 'error': str(e)}
-
+    @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, non_index_pages_check, search_method, api_key):
         """Handles advanced analytics in batches using multithreading."""
         logging.debug("Processing advanced analysis started.")
@@ -265,6 +285,7 @@ class WebApp:
 
         # Process in batches with multithreading
         for i in range(0, len(df), batch_size):
+            batch_start = time.perf_counter()
             batch_rows = df.iloc[i:i + batch_size].to_dict(orient="records")
             logging.debug("Processing advanced analysis batch %d", i // batch_size + 1)
             with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:

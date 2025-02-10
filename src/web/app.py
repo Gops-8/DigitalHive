@@ -123,7 +123,7 @@ class WebApp:
         if search_method == "Serper.dev API":
             api_key = st.text_input("Enter your Serper.dev API Key", type="password")
 
-        uploaded_file = st.file_uploader("Upload AI-Powered Data Extractor Output (CSV)", type=['csv'])
+        uploaded_file = st.file_uploader("Upload AI-Powered Data Extractor Output (CSV or Excel)", type=['csv', 'xlsx', 'xls'])
         if uploaded_file:
             st.info(f"Uploaded: {uploaded_file.name}")
             gmb_check = st.checkbox("Check Google My Business (GMB)")
@@ -232,7 +232,12 @@ class WebApp:
         # Identify file type and read accordingly
         try:
             if uploaded_file.name.endswith('.csv'):
-                df = pd.read_csv(input_path)
+                # df = pd.read_csv(input_path)
+                try:
+                    df = pd.read_csv(input_path)
+                except UnicodeDecodeError as e:
+                    logging.warning("UTF-8 decoding failed: %s. Trying ISO-8859-1 encoding.", e)
+                    df = pd.read_csv(input_path, encoding='ISO-8859-1')
             elif uploaded_file.name.endswith('.xlsx'):
                 df = pd.read_excel(input_path)
             else:

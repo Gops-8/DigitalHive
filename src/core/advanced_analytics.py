@@ -75,7 +75,7 @@ class AdvancedAnalytics:
     def clean_and_filter_urls(self, urls, origin_url):
         logging.debug("Cleaning and filtering URLs, origin_url: %s", origin_url)
         unique_urls = set()
-        base_urls = []
+        filtered_competitors = []
         known_domains = {
             "twitter", "paypal", "cloudflare", "google", "facebook", "pinterest",
             "apple", "youtube", "shopify", "amazon", "tiktok", "squarespace",
@@ -83,23 +83,31 @@ class AdvancedAnalytics:
             "gravatar", "nytimes", "jquery", "microsoft", "stripe", "reuters",
             "ebay", "wordpress", "etsy", "yelp", "tripadvisor", "glassdoor", 
             "trustpilot", "yellowpages", "linkedin", "bbb.org", "quora", "wikipedia",
-            "angieslist", "homestars", "houzz", "sitejabber", "linkedin", "instagram", "mastercard"
+            "angieslist", "homestars", "houzz", "sitejabber", "instagram", "mastercard", "reddit"
         }
         tld_exclusions = {".gov", ".org", ".edu", ".chat", ".blog", ".kpmg"}
         exclusions = {}
         try:
-            with open('assets/domain_list.txt', 'r') as file:
+            # Load domains to be excluded from assets/domain_name.txt
+            with open('assets/domain_name.txt', 'r') as file:
                 for line in file:
                     domain = line.strip().lower()
                     if domain:
                         key = domain[0]
                         exclusions.setdefault(key, set()).add(domain)
-            logging.debug("Loaded exclusions from domain_list.txt")
+            logging.debug("Loaded exclusions from assets/domain_name.txt")
         except FileNotFoundError:
-            logging.warning("Domain list file not found. Skipping exclusions.")
+            logging.warning("Domain exclusion file not found. Skipping exclusions.")
 
-        for url in urls:
-            parsed = urlparse(url)
+        for item in urls:
+            if isinstance(item, dict):
+                url_str = item.get("link", "")
+                position = item.get("position")
+            else:
+                url_str = item
+                position = None
+
+            parsed = urlparse(url_str)
             base_url = f"{parsed.scheme}://{parsed.netloc}"
             domain = parsed.netloc.lower()
             if not domain:
@@ -114,35 +122,76 @@ class AdvancedAnalytics:
 
             if base_url not in unique_urls and base_url != origin_url:
                 unique_urls.add(base_url)
-                base_urls.append(base_url)
-
-            if len(base_urls) == 3:
+                filtered_competitors.append({"link": base_url, "position": position})
+            if len(filtered_competitors) == 3:
                 break
 
-        logging.debug("Filtered competitors: %s", base_urls)
-        return base_urls
+        logging.debug("Filtered competitors: %s", filtered_competitors)
+        return filtered_competitors
+
 
     def check_gmb_listing(self, business_name, location):
-        logging.debug("Checking GMB listing for business: '%s', location: '%s'", business_name, location)
-        search_query = f"{business_name} {location}"
-        search_results = self.fetch_google_results(search_query, location)
-        for url in search_results:
-            if "google.com/maps/place/" in url:
-                logging.debug("Found GMB listing for business: '%s'", business_name)
-                return True
-        logging.debug("No GMB listing found for business: '%s'", business_name)
-        return False
+            """
+            Checks if a Google My Business (GMB) listing exists for the business.
+            Returns a dictionary with:
+                - 'exists': Boolean indicating if a listing was found.
+                - 'url': The URL of the listing if found (otherwise None).
+            """
+            logging.debug("Checking GMB listing for business: '%s', location: '%s'", business_name, location)
+            # Modify the search query to include a hint for GMB listings.
+            search_query = f"{business_name} {location} Google My Business"
+            search_results = self.fetch_google_results(search_query, location)
+            for item in search_results:
+                # item may be a simple URL string
+                url = item if isinstance(item, str) else item.get("link", "")
+                if "google.com/maps/place/" in url:
+                    logging.debug("Found GMB listing for business: '%s': %s", business_name, url)
+                    return {"exists": True, "url": url}
+            logging.debug("No GMB listing found for business: '%s'", business_name)
+            return {"exists": False, "url": None}
 
     def analyze_non_indexed_pages(self, domain):
+        """
+        Attempts to fetch the sitemap from the domain and then examines a limited
+        number of pages to count how many have meta robots directives with 'noindex'.
+        Returns the count of such pages.
+        """
         logging.debug("Analyzing non-indexed pages for domain: '%s'", domain)
-        # Placeholder for non-indexed pages analysis logic
-        return 0
+        # Construct sitemap URL (assumes sitemap.xml is in the root)
+        sitemap_url = domain.rstrip('/') + '/sitemap.xml'
+        try:
+            response = requests.get(sitemap_url, timeout=10)
+            if response.status_code != 200:
+                logging.warning("Sitemap not found at %s (status code %d)", sitemap_url, response.status_code)
+                return 0
+            # Parse the XML sitemap
+            soup = BeautifulSoup(response.content, 'xml')
+            loc_tags = soup.find_all('loc')
+            urls = [tag.text for tag in loc_tags]
+            count_noindex = 0
+            # For performance, limit to the first 20 URLs
+            for url in urls[:20]:
+                try:
+                    page_response = requests.get(url, timeout=5)
+                    if page_response.status_code == 200:
+                        page_soup = BeautifulSoup(page_response.text, 'html.parser')
+                        meta_robots = page_soup.find('meta', attrs={'name': 'robots'})
+                        if meta_robots and 'noindex' in meta_robots.get('content', '').lower():
+                            count_noindex += 1
+                except Exception as e:
+                    logging.error("Error fetching URL %s: %s", url, e)
+            logging.debug("Found %d non-index pages out of %d sitemap URLs", count_noindex, len(urls))
+            return count_noindex
+        except Exception as e:
+            logging.error("Error fetching sitemap from %s: %s", sitemap_url, e)
+            return 0
+
 
     def analyze_competitors(self, data, search_method="Basic Google Search", api_key=None, gmb_check=False, non_index_pages_check=False):
         logging.debug("Analyzing competitors for provided data")
         results = []  # Ensure results is initialized
         for index, row in data.iterrows():
-            product_services = str(row.get('product_services', '')).strip()
+            product_services = str(row.get('Product/Services', '')).strip()
             keywords = str(row.get('keywords', '')).strip()
 
             products = product_services.split(',') if product_services else []
@@ -210,13 +259,18 @@ class AdvancedAnalytics:
             logging.debug("Serper.dev API response status code: %s", response.status_code)
             response.raise_for_status()
             result = response.json()
-            links = [item.get("link") for item in result.get("organic", []) if item.get("link")]
-            if not links:
+            # Build a list of dictionaries containing both link and position.
+            results_list = [
+                {"link": item.get("link"), "position": item.get("position")}
+                for item in result.get("organic", [])
+                if item.get("link")
+            ]
+            if not results_list:
                 logging.warning("No results found for query: '%s'", query)
                 return {"error": f"No results found for query: {query}"}
-            self.cache.set(cache_key, links)
-            logging.info("Retrieved %d results for query: '%s'", len(links), query)
-            return links
+            self.cache.set(cache_key, results_list)
+            logging.info("Retrieved %d results for query: '%s'", len(results_list), query)
+            return results_list
 
         except requests.exceptions.RequestException as e:
             error_message = f"API request failed: {str(e)}"

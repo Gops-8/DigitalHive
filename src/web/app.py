@@ -138,10 +138,12 @@ class WebApp:
         with gmb_cols[1]:
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         # Three-column layout for search method, API key input, and submit button.
-        cols = st.columns(2)
+        cols = st.columns(3)
         with cols[0]:
-            search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
+            uploaded_file = st.file_uploader("Upload Competitive Analysis Input File (CSV/XLS/XLSX)", type=['csv', 'xlsx', 'xls'])
         with cols[1]:
+            search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
+        with cols[2]:
             api_key_input = None
             if search_method == "Basic Google Search":
                 st.info("Basic Google Search selected. No API key required.")
@@ -157,14 +159,7 @@ class WebApp:
              st.success("API Key stored for this session.")
              
         api_key = st.session_state.get("serper_api", None)
-        file_cols = st.columns(2)
-        with file_cols[0]:
-            uploaded_file = st.file_uploader("Upload Competitive Analysis Input File (CSV/XLS/XLSX)", type=['csv', 'xlsx', 'xls'])
-        with file_cols[1]:
-            # if uploaded_file:
-            #     st.markdown("<br><br>", unsafe_allow_html=True)
-            #     st.info(f"Uploaded: {uploaded_file.name}")
-            pass 
+
         if uploaded_file:
             try:
                 if uploaded_file.name.endswith('.csv'):

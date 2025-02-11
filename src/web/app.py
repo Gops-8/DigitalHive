@@ -95,19 +95,20 @@ class WebApp:
 
     def ai_based_extractor(self):
         st.markdown("""
-**DATA EXTRACTION FACTORS**
+          **DATA EXTRACTION FACTORS**
 
-· **Business Name**  
-· **Business Location**  
-· **Keywords (5)**  
-· **Product/Service (3)**  
-· **Target Audience (3)**  
+          · **Business Name**  
+          · **Business Location**  
+          · **Keywords (5)**  
+          · **Product/Service (3)**  
+          · **Target Audience (3)**  
 
-· **Input Format:** (CSV/XLS/XLSX) with must have website’s name as input information (Heading of the column must be **Domain**).  
-· **Output Format:** XLSX/CSV
+          · **Input Format:** (CSV/XLS/XLSX) with must have website’s name as input information (Heading of the column must be **Domain**).  
+          · **Output Format:** XLSX/CSV
         """)
+        st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b"])
         if 'selected_model' not in st.session_state:
-            st.session_state.selected_model = "llama3.2:3b"
+            st.session_state.selected_model = "llama3.1:8b"
         uploader_cols = st.columns(2)
         with uploader_cols[0]:
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
@@ -115,7 +116,7 @@ class WebApp:
             if uploaded_file:
                 st.info(f"Uploaded: {uploaded_file.name}")
         if uploaded_file:
-            st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b", "llama3.2:3b", "llama3.2"])
+            
             if st.button("Start Data Extraction"):
                 self.process_basic_analysis(uploaded_file)
 
@@ -444,6 +445,73 @@ class WebApp:
                 "GMB Status": "",
                 "Error": str(e)
             }
+    def process_url(self, url, model):
+        """
+        Processes a single URL for basic extraction.
+        Returns a dictionary with keys:
+        Domain, Business Name, Business Location, Keyword 1-5, 
+        Product/Service 1-3, Target Audience 1-3, Status, Error.
+        """
+        logging.debug("Processing URL: %s with model: %s", url, model)
+        try:
+            clean_url = self.processor.clean_url(url)
+            cached_data = self.cache.get(clean_url)
+            if not cached_data:
+                scraped_data = self.scraper.scrape_website(clean_url)
+                self.cache.set(clean_url, scraped_data)
+                logging.debug("Scraped data for URL %s", clean_url)
+            else:
+                scraped_data = cached_data
+                logging.debug("Using cached data for URL %s", clean_url)
+            analyzer = ContentAnalyzer(model=model)
+            analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+            logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
+            business_name = analysis.get('business_name', '')
+            location = analysis.get('location', '')
+            keywords = analysis.get('keywords', '')
+            product_services = analysis.get('products_services', '')
+            target_audiences = analysis.get('target_audience', '')
+            if not keywords and not product_services:
+                logging.warning("Missing keywords and products for URL %s", url)
+                return {
+                    "Domain": url,
+                    "Business Name": "",
+                    "Business Location": "",
+                    "Keyword 1": "", "Keyword 2": "", "Keyword 3": "", "Keyword 4": "", "Keyword 5": "",
+                    "Product/Service 1": "", "Product/Service 2": "", "Product/Service 3": "",
+                    "Target Audience 1": "", "Target Audience 2": "", "Target Audience 3": "",
+                    "Status": "error",
+                    "Error": "Missing keywords and products"
+                }
+            result = {
+                "Domain": url,
+                "Business Name": business_name,
+                "Business Location": location,
+                "Status": "success"
+            }
+            keyword_list = [k.strip() for k in keywords.split(',')] if keywords else []
+            for i in range(5):
+                result[f"Keyword {i+1}"] = keyword_list[i] if i < len(keyword_list) else ""
+            product_services_list = [p.strip() for p in product_services.split(',')] if product_services else []
+            for i in range(3):
+                result[f"Product/Service {i+1}"] = product_services_list[i] if i < len(product_services_list) else ""
+            target_audience_list = [t.strip() for t in target_audiences.split(',')] if target_audiences else []
+            for i in range(3):
+                result[f"Target Audience {i+1}"] = target_audience_list[i] if i < len(target_audience_list) else ""
+            return result
+        except Exception as e:
+            logging.error("Error processing URL %s: %s", url, e)
+            return {
+                "Domain": url,
+                "Business Name": "",
+                "Business Location": "",
+                "Keyword 1": "", "Keyword 2": "", "Keyword 3": "", "Keyword 4": "", "Keyword 5": "",
+                "Product/Service 1": "", "Product/Service 2": "", "Product/Service 3": "",
+                "Target Audience 1": "", "Target Audience 2": "", "Target Audience 3": "",
+                "Status": "error",
+                "Error": str(e)
+            }
+
 
 if __name__ == "__main__":
     logging.debug("Starting WebApp.")

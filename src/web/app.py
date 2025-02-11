@@ -55,7 +55,6 @@ class WebApp:
         self.model = None
 
     def init_session(self):
-        """Initialize session state variables."""
         if 'authenticated' not in st.session_state:
             st.session_state.authenticated = False
         if 'processing' not in st.session_state:
@@ -67,32 +66,34 @@ class WebApp:
         logging.debug("Session initialized: %s", st.session_state)
 
     def run(self):
-        """Run the Streamlit app."""
+        # Force light mode and apply custom CSS to style buttons.
+        st.set_page_config(page_title="Corporate Ranking AI", layout="wide", page_icon="assets/logo.jpg")
+        st.markdown(
+            """
+            <style>
+            body { background-color: #ffffff; }
+            .stButton>button { background-color: #4CAF50; color: white; border: none; }
+            </style>
+            """, unsafe_allow_html=True)
         if not st.session_state.authenticated:
-            st.set_page_config(page_title="Corporate Ranking AI", layout="centered", page_icon="assets/logo.jpg")
             self.components.show_login(auth_manager=self.auth_manager)
         else:
-            st.set_page_config(page_title="Corporate Ranking AI", layout="wide", page_icon="assets/logo.jpg")
             self.show_main_page()
 
     def show_main_page(self):
-        """Display the main page with tabs."""
-        logging.debug("Displaying main page.")
         col1, col2 = st.columns([1, 8])
         with col1:
             st.image("assets/logo.jpg", width=100)
         with col2:
             st.title("Corporate Ranking AI")
-        
         # Updated tab names.
         tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITVE INSIGHTS"])
         with tabs[0]:
             self.ai_based_extractor()
         with tabs[1]:
             self.competitive_insights()
-    
+
     def ai_based_extractor(self):
-        """Handle the AI-Powered Data Extraction process."""
         st.markdown("""
 **DATA EXTRACTION FACTORS**
 
@@ -105,25 +106,20 @@ class WebApp:
 · **Input Format:** (CSV/XLS/XLSX) with must have website’s name as input information (Heading of the column must be **Domain**).  
 · **Output Format:** XLSX/CSV
         """)
-        logging.debug("Starting AI-based extractor.")
         if 'selected_model' not in st.session_state:
             st.session_state.selected_model = "llama3.2:3b"
-        
         uploader_cols = st.columns(2)
         with uploader_cols[0]:
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         with uploader_cols[1]:
             if uploaded_file:
                 st.info(f"Uploaded: {uploaded_file.name}")
-        
         if uploaded_file:
             st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b", "llama3.2:3b", "llama3.2"])
             if st.button("Start Data Extraction"):
-                logging.debug("Start Data Extraction button pressed.")
                 self.process_basic_analysis(uploaded_file)
-    
+
     def competitive_insights(self):
-        """Handle the Competitive Insights process."""
         st.markdown("""
 **COMPETITIVE ANALYSIS FACTORS**
 
@@ -135,22 +131,16 @@ class WebApp:
 · **Input Format:** (CSV/XLS/XLSX) with must have Website’s name, **Keyword 1**, **Product/Service 1** as input information (Heading of the column must be **Domain**, **Keyword 1**, **Product/Service 1**).  
 · **Output Format:** XLSX/CSV
         """)
-        logging.debug("Starting Competitive Insights analysis.")
-        
-        # GMB checkbox and radio button for number of pages (side by side)
+        # GMB checkbox and radio button for SERP pages.
         gmb_cols = st.columns(2)
         with gmb_cols[0]:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
         with gmb_cols[1]:
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
-        
         # Three-column layout for search method, API key input, and submit button.
         cols = st.columns(3)
         with cols[0]:
-            search_method = st.selectbox(
-                "Select Search Method",
-                ("Serper.dev API", "Basic Google Search")
-            )
+            search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
         with cols[1]:
             api_key_input = None
             if search_method == "Basic Google Search":
@@ -165,10 +155,7 @@ class WebApp:
             if st.button("Submit API Key"):
                 st.session_state.serper_api = api_key_input
                 st.success("API Key stored for this session.")
-        
         api_key = st.session_state.get("serper_api", None)
-        
-        # File uploader and file info side by side.
         file_cols = st.columns(2)
         with file_cols[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File (CSV/XLS/XLSX)", type=['csv', 'xlsx', 'xls'])
@@ -176,10 +163,7 @@ class WebApp:
             if uploaded_file:
                 st.markdown("<br><br>", unsafe_allow_html=True)
                 st.info(f"Uploaded: {uploaded_file.name}")
-        
-        # When file is uploaded, check required columns and then start analysis.
         if uploaded_file:
-            # Read the file into a DataFrame.
             try:
                 if uploaded_file.name.endswith('.csv'):
                     df_input = pd.read_csv(uploaded_file)
@@ -187,21 +171,13 @@ class WebApp:
                     df_input = pd.read_excel(uploaded_file)
             except Exception as e:
                 st.error("Error reading the input file.")
-                logging.error("Error reading input file: %s", e)
                 return
-            
-            # Check for required columns.
             required_columns = {"Domain", "Keyword 1", "Product/Service 1"}
             if not required_columns.issubset(set(df_input.columns)):
                 st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
-                logging.error("Required columns missing in input file.")
                 return
-
             if st.button("Start Analysis"):
-                logging.debug("Start Competitive Insights Analysis button pressed.")
                 self.process_advanced_analysis(uploaded_file, gmb_check, no_of_pages, search_method, api_key)
-        
-        # Download button for advanced analysis results.
         if st.session_state.get("results") is not None:
             st.markdown("<br>", unsafe_allow_html=True)
             st.write("### Download Competitive Analysis Results")
@@ -218,11 +194,6 @@ class WebApp:
 
     @timer
     def process_basic_analysis(self, uploaded_file):
-        """Handles basic data extraction from an Excel file.
-        Expects a column 'Domain'. Output columns (appended after Domain):
-        Business Name, Business Location, Keyword 1-5, Product/Service 1-3, Target Audience 1-3, Status, Error.
-        """
-        logging.debug("Processing basic analysis started.")
         st.write("Processing basic analysis...")
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
@@ -230,18 +201,14 @@ class WebApp:
         input_path = f"input/temp_{timestamp}.xlsx"
         with open(input_path, 'wb') as f:
             f.write(uploaded_file.getbuffer())
-        logging.debug("File saved to %s", input_path)
         try:
             df_input = pd.read_excel(input_path)
         except Exception as e:
             st.error("Error reading the Excel file.")
-            logging.error("Error reading Excel file: %s", e)
             return
         if "Domain" not in df_input.columns:
             st.error("Input file must have a column named 'Domain'.")
-            logging.error("Domain column not found.")
             return
-
         rows = df_input.to_dict(orient="records")
         results = []
         batch_size = 40
@@ -251,7 +218,6 @@ class WebApp:
         timer_text = st.empty()
         status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
         selected_model = st.session_state.selected_model
-        logging.debug("Selected model for analysis: %s", selected_model)
         for i in range(0, len(rows), batch_size):
             batch_start = time.perf_counter()
             batch_rows = rows[i:i+batch_size]
@@ -259,11 +225,10 @@ class WebApp:
                 batch_results = list(executor.map(lambda row: self.process_url(row["Domain"], selected_model), batch_rows))
             results.extend(batch_results)
             progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
-            status_text.text(f"Currently Processing Batch {i // batch_size + 1} of {total_batches}")
+            status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
             batch_end = time.perf_counter()
             elapsed = batch_end - batch_start
             timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
-        # Merge the results back into the original DataFrame.
         new_columns = ["Business Name", "Business Location",
                        "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
                        "Product/Service 1", "Product/Service 2", "Product/Service 3",
@@ -287,62 +252,42 @@ class WebApp:
             file_name="basic_analysis_results.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
-        logging.debug("Basic analysis completed.")
 
     @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key):
-        """
-        Handles competitive insights analysis.
-        Expects an input file with columns: Domain, Keyword 1, Product/Service 1.
-        Processes records in batches of 100.
-        New output columns:
-        Domain, Keyword 1, Product/Service 1, Search Query, Top Competitor 1, Serp Rank 1,
-        Top Competitor 2, Serp Rank 2, Top Competitor 3, Serp Rank 3, GMB Status, Error.
-        """
-        logging.debug("Processing advanced analysis started.")
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         input_path = f"input/temp_{timestamp}.{uploaded_file.name.split('.')[-1]}"
         with open(input_path, 'wb') as f:
             f.write(uploaded_file.getbuffer())
-        logging.debug("Advanced analysis file saved to %s", input_path)
         try:
             if uploaded_file.name.endswith('.csv'):
                 try:
                     df = pd.read_csv(input_path)
                 except UnicodeDecodeError as e:
-                    logging.warning("UTF-8 decoding failed: %s. Trying ISO-8859-1 encoding.", e)
                     df = pd.read_csv(input_path, encoding='ISO-8859-1')
             elif uploaded_file.name.endswith('.xlsx'):
                 df = pd.read_excel(input_path)
             else:
                 st.error("Unsupported file format. Please upload a CSV or Excel file.")
-                logging.error("Unsupported file format: %s", uploaded_file.name)
                 return
         except Exception as e:
             st.error(f"Error reading file: {e}")
-            logging.error("Error reading file: %s", e)
             return
-
-        # Check if required columns are present.
         required_columns = {"Domain", "Keyword 1", "Product/Service 1"}
         if not required_columns.issubset(set(df.columns)):
             st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
-            logging.error("Required columns missing in input file.")
             return
-
         results = []
         batch_size = 100
         total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
         status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
-        logging.debug("Advanced analysis: %d rows to process in %d batches", len(df), total_batches)
         for i in range(0, len(df), batch_size):
             batch_start = time.perf_counter()
             batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
-            logging.debug("Processing advanced analysis batch %d", i // batch_size + 1)
             with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
                 batch_results = list(executor.map(
                     lambda row: self.process_row(row, search_method, api_key, gmb_check, no_of_pages),
@@ -351,15 +296,12 @@ class WebApp:
             results.extend(batch_results)
             progress_bar.progress(min((i + batch_size) / len(df), 1.0))
             status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-            logging.debug("Completed advanced analysis batch %d", i // batch_size + 1)
-        logging.debug("Advanced analysis completed.")
-        # Define new output columns.
         new_columns = ["Keyword 1", "Product/Service 1", "Search Query",
                        "Top Competitor 1", "Serp Rank 1",
                        "Top Competitor 2", "Serp Rank 2",
                        "Top Competitor 3", "Serp Rank 3",
                        "GMB Status", "Error"]
-        df_output = df.copy()  # Preserve original columns (including Domain)
+        df_output = df.copy()
         for col in new_columns:
             df_output[col] = ""
         for idx, result in enumerate(results):
@@ -379,58 +321,93 @@ class WebApp:
         )
 
     def process_row(self, row, search_method, api_key, gmb_check, no_of_pages):
-        """
-        Processes a single row for competitive analysis.
-        Expects input fields: Domain, Keyword 1, Product/Service 1.
-        Outputs:
-        Domain, Keyword 1, Product/Service 1, Search Query, Top Competitor 1, Serp Rank 1,
-        Top Competitor 2, Serp Rank 2, Top Competitor 3, Serp Rank 3, GMB Status, Error.
-        """
         logging.debug("Processing row: %s", row)
         try:
             domain = str(row.get("Domain", "")).strip()
             keyword = str(row.get("Keyword 1", "")).strip()
             product = str(row.get("Product/Service 1", "")).strip()
             if not domain:
-                logging.warning("Missing Domain in row: %s", row)
-                return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                        "Search Query": "", "Top Competitor 1": "", "Serp Rank 1": "",
-                        "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                        "GMB Status": "", "Error": "Missing Domain"}
-            # Construct search query from Keyword and Product.
+                return {
+                    "Domain": domain,
+                    "Keyword 1": keyword,
+                    "Product/Service 1": product,
+                    "Search Query": "",
+                    "Top Competitor 1": "",
+                    "Serp Rank 1": "",
+                    "Top Competitor 2": "",
+                    "Serp Rank 2": "",
+                    "Top Competitor 3": "",
+                    "Serp Rank 3": "",
+                    "GMB Status": "",
+                    "Error": "Missing Domain"
+                }
             search_query = keyword if keyword else product
             if not search_query:
-                logging.warning("No valid search query in row: %s", row)
-                return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                        "Search Query": "", "Top Competitor 1": "", "Serp Rank 1": "",
-                        "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                        "GMB Status": "", "Error": "No valid search query"}
-            # Perform search.
+                return {
+                    "Domain": domain,
+                    "Keyword 1": keyword,
+                    "Product/Service 1": product,
+                    "Search Query": "",
+                    "Top Competitor 1": "",
+                    "Serp Rank 1": "",
+                    "Top Competitor 2": "",
+                    "Serp Rank 2": "",
+                    "Top Competitor 3": "",
+                    "Serp Rank 3": "",
+                    "GMB Status": "",
+                    "Error": "No valid search query"
+                }
             try:
                 if search_method == "Serper.dev API" and api_key:
                     search_result = self.analytics.search_serper(search_query, api_key)
                 else:
-                    search_result = self.analytics.fetch_google_results(search_query, row.get('Domain', ''), pages=no_of_pages)
+                    search_result = self.analytics.fetch_google_results(search_query, domain, pages=no_of_pages)
                 if not search_result or (isinstance(search_result, dict) and "error" in search_result):
-                    logging.error("Search error for query '%s': %s", search_query, search_result)
-                    return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                            "Search Query": search_query, "Top Competitor 1": "", "Serp Rank 1": "",
-                            "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                            "GMB Status": "", "Error": search_result.get("error", "No search results")}
+                    return {
+                        "Domain": domain,
+                        "Keyword 1": keyword,
+                        "Product/Service 1": product,
+                        "Search Query": search_query,
+                        "Top Competitor 1": "",
+                        "Serp Rank 1": "",
+                        "Top Competitor 2": "",
+                        "Serp Rank 2": "",
+                        "Top Competitor 3": "",
+                        "Serp Rank 3": "",
+                        "GMB Status": "",
+                        "Error": search_result.get("error", "No search results")
+                    }
             except Exception as e:
-                logging.error("Exception during search for query '%s': %s", search_query, e)
-                return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                        "Search Query": search_query, "Top Competitor 1": "", "Serp Rank 1": "",
-                        "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                        "GMB Status": "", "Error": str(e)}
-            # Clean & filter URLs (assumed to return list of dicts with keys "link" and "position")
+                return {
+                    "Domain": domain,
+                    "Keyword 1": keyword,
+                    "Product/Service 1": product,
+                    "Search Query": search_query,
+                    "Top Competitor 1": "",
+                    "Serp Rank 1": "",
+                    "Top Competitor 2": "",
+                    "Serp Rank 2": "",
+                    "Top Competitor 3": "",
+                    "Serp Rank 3": "",
+                    "GMB Status": "",
+                    "Error": str(e)
+                }
             competitors = self.analytics.clean_and_filter_urls(search_result, domain)
             if not competitors:
-                logging.error("No valid competitors found for query '%s'", search_query)
-                return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                        "Search Query": search_query, "Top Competitor 1": "", "Serp Rank 1": "",
-                        "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                        "GMB Status": "", "Error": "No valid competitors"}
+                return {
+                    "Domain": domain,
+                    "Keyword 1": keyword,
+                    "Product/Service 1": product,
+                    "Search Query": search_query,
+                    "Top Competitor 1": "",
+                    "Serp Rank 1": "",
+                    "Top Competitor 2": "",
+                    "Serp Rank 2": "",
+                    "Top Competitor 3": "",
+                    "Serp Rank 3": "",
+                    "GMB Status": "",
+                    "Error": "No valid competitors"
+                }
             result = {
                 "Domain": domain,
                 "Keyword 1": keyword,
@@ -438,7 +415,6 @@ class WebApp:
                 "Search Query": search_query,
                 "GMB Status": ""
             }
-            # Populate competitor details.
             for i in range(3):
                 if i < len(competitors):
                     result[f"Top Competitor {i+1}"] = competitors[i].get("link", "")
@@ -446,21 +422,28 @@ class WebApp:
                 else:
                     result[f"Top Competitor {i+1}"] = ""
                     result[f"Serp Rank {i+1}"] = ""
-            # Check GMB listing if requested.
             if gmb_check:
                 gmb_result = self.analytics.check_gmb_listing(keyword, domain)
                 result["GMB Status"] = "Found" if gmb_result.get("exists") else "Not Found"
             else:
                 result["GMB Status"] = "Not Checked"
             result["Error"] = ""
-            logging.debug("Processed row result: %s", result)
             return result
         except Exception as e:
-            logging.error("Error processing row %s: %s", row, e)
-            return {"Domain": domain, "Keyword 1": keyword, "Product/Service 1": product,
-                    "Search Query": "", "Top Competitor 1": "", "Serp Rank 1": "",
-                    "Top Competitor 2": "", "Serp Rank 2": "", "Top Competitor 3": "", "Serp Rank 3": "",
-                    "GMB Status": "", "Error": str(e)}
+            return {
+                "Domain": domain,
+                "Keyword 1": keyword,
+                "Product/Service 1": product,
+                "Search Query": "",
+                "Top Competitor 1": "",
+                "Serp Rank 1": "",
+                "Top Competitor 2": "",
+                "Serp Rank 2": "",
+                "Top Competitor 3": "",
+                "Serp Rank 3": "",
+                "GMB Status": "",
+                "Error": str(e)
+            }
 
 if __name__ == "__main__":
     logging.debug("Starting WebApp.")

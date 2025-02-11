@@ -138,7 +138,7 @@ class WebApp:
         with gmb_cols[1]:
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         # Three-column layout for search method, API key input, and submit button.
-        cols = st.columns(3)
+        cols = st.columns(2)
         with cols[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
         with cols[1]:
@@ -151,18 +151,20 @@ class WebApp:
                 else:
                     st.write("API Key submitted already.")
                     api_key_input = st.text_input("To update your Serper.dev API Key", type="password")
-        with cols[2]:
-            if st.button("Submit API Key"):
-                st.session_state.serper_api = api_key_input
-                st.success("API Key stored for this session.")
+        
+        if st.button("Submit API Key"):
+             st.session_state.serper_api = api_key_input
+             st.success("API Key stored for this session.")
+             
         api_key = st.session_state.get("serper_api", None)
         file_cols = st.columns(2)
         with file_cols[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File (CSV/XLS/XLSX)", type=['csv', 'xlsx', 'xls'])
         with file_cols[1]:
-            if uploaded_file:
-                st.markdown("<br><br>", unsafe_allow_html=True)
-                st.info(f"Uploaded: {uploaded_file.name}")
+            # if uploaded_file:
+            #     st.markdown("<br><br>", unsafe_allow_html=True)
+            #     st.info(f"Uploaded: {uploaded_file.name}")
+            pass 
         if uploaded_file:
             try:
                 if uploaded_file.name.endswith('.csv'):
@@ -209,6 +211,7 @@ class WebApp:
         if "Domain" not in df_input.columns:
             st.error("Input file must have a column named 'Domain'.")
             return
+
         rows = df_input.to_dict(orient="records")
         results = []
         batch_size = 40
@@ -218,6 +221,7 @@ class WebApp:
         timer_text = st.empty()
         status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
         selected_model = st.session_state.selected_model
+
         for i in range(0, len(rows), batch_size):
             batch_start = time.perf_counter()
             batch_rows = rows[i:i+batch_size]
@@ -229,11 +233,18 @@ class WebApp:
             batch_end = time.perf_counter()
             elapsed = batch_end - batch_start
             timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
+            
+            # Update display after each batch
+            interim_df = pd.DataFrame(results)
+            if not interim_df.empty:
+                self.components.display_results(interim_df)
+        
+        # Final merge (if needed) and download button creation
         new_columns = ["Business Name", "Business Location",
-                       "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
-                       "Product/Service 1", "Product/Service 2", "Product/Service 3",
-                       "Target Audience 1", "Target Audience 2", "Target Audience 3",
-                       "Status", "Error"]
+                      "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
+                      "Product/Service 1", "Product/Service 2", "Product/Service 3",
+                      "Target Audience 1", "Target Audience 2", "Target Audience 3",
+                      "Status", "Error"]
         df_output = df_input.copy()
         for col in new_columns:
             df_output[col] = ""
@@ -252,6 +263,7 @@ class WebApp:
             file_name="basic_analysis_results.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
+
 
     @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key):
@@ -275,10 +287,12 @@ class WebApp:
         except Exception as e:
             st.error(f"Error reading file: {e}")
             return
+
         required_columns = {"Domain", "Keyword 1", "Product/Service 1"}
         if not required_columns.issubset(set(df.columns)):
             st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
             return
+
         results = []
         batch_size = 100
         total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
@@ -296,11 +310,17 @@ class WebApp:
             results.extend(batch_results)
             progress_bar.progress(min((i + batch_size) / len(df), 1.0))
             status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
+            
+            # Display interim results after each batch
+            interim_df = pd.DataFrame(results)
+            if not interim_df.empty:
+                self.components.display_results(interim_df)
+        logging.debug("Advanced analysis completed.")
         new_columns = ["Keyword 1", "Product/Service 1", "Search Query",
-                       "Top Competitor 1", "Serp Rank 1",
-                       "Top Competitor 2", "Serp Rank 2",
-                       "Top Competitor 3", "Serp Rank 3",
-                       "GMB Status", "Error"]
+                      "Top Competitor 1", "Serp Rank 1",
+                      "Top Competitor 2", "Serp Rank 2",
+                      "Top Competitor 3", "Serp Rank 3",
+                      "GMB Status", "Error"]
         df_output = df.copy()
         for col in new_columns:
             df_output[col] = ""
@@ -339,6 +359,7 @@ class WebApp:
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
                     "GMB Status": "",
+                    "Status": "error",
                     "Error": "Missing Domain"
                 }
             search_query = keyword if keyword else product
@@ -355,6 +376,7 @@ class WebApp:
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
                     "GMB Status": "",
+                    "Status": "error",
                     "Error": "No valid search query"
                 }
             try:
@@ -375,6 +397,7 @@ class WebApp:
                         "Top Competitor 3": "",
                         "Serp Rank 3": "",
                         "GMB Status": "",
+                        "Status": "error",
                         "Error": search_result.get("error", "No search results")
                     }
             except Exception as e:
@@ -390,6 +413,7 @@ class WebApp:
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
                     "GMB Status": "",
+                    "Status": "error",
                     "Error": str(e)
                 }
             competitors = self.analytics.clean_and_filter_urls(search_result, domain)
@@ -406,6 +430,7 @@ class WebApp:
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
                     "GMB Status": "",
+                    "Status": "error",
                     "Error": "No valid competitors"
                 }
             result = {
@@ -427,6 +452,7 @@ class WebApp:
                 result["GMB Status"] = "Found" if gmb_result.get("exists") else "Not Found"
             else:
                 result["GMB Status"] = "Not Checked"
+            result["Status"] = "success"
             result["Error"] = ""
             return result
         except Exception as e:
@@ -442,8 +468,10 @@ class WebApp:
                 "Top Competitor 3": "",
                 "Serp Rank 3": "",
                 "GMB Status": "",
+                "Status": "error",
                 "Error": str(e)
             }
+
     def process_url(self, url, model):
         """
         Processes a single URL for basic extraction.

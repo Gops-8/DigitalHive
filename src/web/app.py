@@ -87,7 +87,7 @@ class WebApp:
         with col2:
             st.title("Corporate Ranking AI")
         # Updated tab names.
-        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITVE INSIGHTS"])
+        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITIVE INSIGHTS"])
         with tabs[0]:
             self.ai_based_extractor()
         with tabs[1]:
@@ -106,31 +106,30 @@ class WebApp:
           · **Input Format:** (CSV/XLS/XLSX) with must have website’s name as input information (Heading of the column must be **Domain**).  
           · **Output Format:** XLSX/CSV
         """)
-        st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b"])
-        if 'selected_model' not in st.session_state:
-            st.session_state.selected_model = "llama3.1:8b"
+
         uploader_cols = st.columns(2)
         with uploader_cols[0]:
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         with uploader_cols[1]:
-            if uploaded_file:
-                st.info(f"Uploaded: {uploaded_file.name}")
+             st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b"])
+             if 'selected_model' not in st.session_state:
+                st.session_state.selected_model = "llama3.1:8b"
+          
         if uploaded_file:
-            
             if st.button("Start Data Extraction"):
                 self.process_basic_analysis(uploaded_file)
 
     def competitive_insights(self):
         st.markdown("""
-**COMPETITIVE ANALYSIS FACTORS**
+          **COMPETITIVE ANALYSIS FACTORS**
 
-· Top Competitor 1 (Website Only)  
-· Top Competitor 2 (Website Only)  
-· Top Competitor 1 SERP Rank  
-· Top Competitor 2 SERP Rank  
+          · Top Competitor 1 (Website Only)  
+          · Top Competitor 2 (Website Only)  
+          · Top Competitor 1 SERP Rank  
+          · Top Competitor 2 SERP Rank  
 
-· **Input Format:** (CSV/XLS/XLSX) with must have Website’s name, **Keyword 1**, **Product/Service 1** as input information (Heading of the column must be **Domain**, **Keyword 1**, **Product/Service 1**).  
-· **Output Format:** XLSX/CSV
+          · **Input Format:** (CSV/XLS/XLSX) with must have Website’s name, **Keyword 1**, **Product/Service 1** as input information (Heading of the column must be **Domain**, **Keyword 1**, **Product/Service 1**).  
+          · **Output Format:** XLSX/CSV
         """)
         # GMB checkbox and radio button for SERP pages.
         gmb_cols = st.columns(2)

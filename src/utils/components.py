@@ -24,30 +24,20 @@ class Components:
 
 
 
-    def display_results(self, df):
+     def display_results(self, df):
         st.success("Analysis complete!")
-
         col1, col2, col3 = st.columns(3)
         total = len(df)
-        successful = len(df[df['status'] == 'success'])
+        successful = len(df[df['Status'] == 'success'])
         failed = total - successful
 
         col1.metric("Total URLs", total)
         col2.metric("Successful", successful)
         col3.metric("Failed", failed)
 
-        # Sanitize DataFrame before displaying
         sanitized_df = df.copy()
-
-        # Ensure consistent column types
         for column in sanitized_df.columns:
-            if sanitized_df[column].dtype == 'object':  # Check for mixed types
-                sanitized_df[column] = sanitized_df[column].astype(str)  # Convert to strings
-
-        # Handle missing values
-        # sanitized_df.fillna(" ", inplace=True)
+            if sanitized_df[column].dtype == 'object':
+                sanitized_df[column] = sanitized_df[column].astype(str)
         sanitized_df = sanitized_df.fillna(' ')
-        # Display the sanitized DataFrame
         st.dataframe(sanitized_df)
-
-

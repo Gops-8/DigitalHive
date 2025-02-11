@@ -24,7 +24,7 @@ class Components:
 
 
 
-     def display_results(self, df):
+    def display_results(self, df):
         st.success("Analysis complete!")
         col1, col2, col3 = st.columns(3)
         total = len(df)

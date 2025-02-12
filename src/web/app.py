@@ -109,7 +109,8 @@ class WebApp:
             st.image("assets/logo.jpg", width=100)
         with col2:
             st.title("Corporate Ranking AI")
-        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITIVE INSIGHTS"])
+        # Provide a key to preserve the active tab state across reruns.
+        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITIVE INSIGHTS"], key="main_tabs")
         with tabs[0]:
             self.ai_based_extractor()
         with tabs[1]:
@@ -134,11 +135,22 @@ class WebApp:
         with cols[0]:
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         with cols[1]:
-            st.session_state.selected_model = st.selectbox("Select Model", ["llama3.1:8b",'llama3.2:latest','deepseek-r1:32b','llama3.3:70b','olmo2:13b'])
+            st.session_state.selected_model = st.selectbox("Select Model", 
+                ["llama3.1:8b", "llama3.2:latest", "deepseek-r1:32b", "llama3.3:70b", "olmo2:13b"])
+        
+        # New parameters for Batch Size and Max Workers
+        st.markdown("#### Advanced Options")
+        advanced_cols = st.columns(2)
+        with advanced_cols[0]:
+            batch_options = [16, 32, 64]
+            selected_batch_size = st.selectbox("Select Batch Size", options=batch_options, index=1)
+        with advanced_cols[1]:
+            max_workers_options = [8, 16, 32]
+            selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, index=1)
         
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
-            self.process_basic_analysis(uploaded_file)
+            self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
         st.markdown('</div>', unsafe_allow_html=True)
 
     def competitive_insights(self):
@@ -165,7 +177,6 @@ class WebApp:
                 if "serper_api" not in st.session_state:
                     api_key_input = st.text_input("Enter your Serper.dev API Key", type="password")
                 else:
-                    # st.write("API Key submitted already.")
                     api_key_input = st.text_input("To update your Serper.dev API Key", type="password")
             else:
                 st.info("Basic Google Search selected. No API key required.")
@@ -184,7 +195,16 @@ class WebApp:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         
-
+        # New parameters for Batch Size and Max Workers for competitive analysis
+        st.markdown("#### Advanced Options")
+        comp_cols = st.columns(2)
+        with comp_cols[0]:
+            comp_batch_options = [20, 40, 60]
+            comp_selected_batch_size = st.selectbox("Select Batch Size", options=comp_batch_options, index=1, key="comp_batch")
+        with comp_cols[1]:
+            comp_max_workers_options = [8, 16, 32]
+            comp_selected_max_workers = st.selectbox("Select Max Workers", options=comp_max_workers_options, index=0, key="comp_workers")
+        
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
             self.process_advanced_analysis(
@@ -192,12 +212,14 @@ class WebApp:
                 gmb_check, 
                 no_of_pages, 
                 search_method, 
-                st.session_state.get("serper_api", None)
+                st.session_state.get("serper_api", None),
+                comp_selected_batch_size,
+                comp_selected_max_workers
             )
         st.markdown('</div>', unsafe_allow_html=True)
 
     @timer
-    def process_basic_analysis(self, uploaded_file):
+    def process_basic_analysis(self, uploaded_file, batch_size, max_workers):
         st.write("Processing basic analysis...")
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
@@ -215,7 +237,6 @@ class WebApp:
             return
         rows = df_input.to_dict(orient="records")
         results = []
-        batch_size = 40
         total_batches = len(rows) // batch_size + (1 if len(rows) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
@@ -225,7 +246,7 @@ class WebApp:
         for i in range(0, len(rows), batch_size):
             batch_start = time.perf_counter()
             batch_rows = rows[i:i+batch_size]
-            with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
                 batch_results = list(executor.map(lambda row: self.process_url(row["Domain"], selected_model), batch_rows))
             results.extend(batch_results)
             progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
@@ -247,7 +268,6 @@ class WebApp:
         for idx, result in enumerate(results):
             for col in new_columns:
                 df_output.at[idx, col] = result.get(col, "")
-        # Ensure the Status column exists
         if "Status" not in df_output.columns:
             df_output["Status"] = ""
         st.session_state.results = df_output
@@ -264,7 +284,7 @@ class WebApp:
         )
 
     @timer
-    def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key):
+    def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -291,7 +311,6 @@ class WebApp:
             st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
             return
         results = []
-        batch_size = 100
         total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
@@ -299,7 +318,7 @@ class WebApp:
         for i in range(0, len(df), batch_size):
             batch_start = time.perf_counter()
             batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
-            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
                 batch_results = list(executor.map(
                     lambda row: self.process_row(row, search_method, api_key, gmb_check, no_of_pages),
                     batch_rows

@@ -68,7 +68,6 @@ class WebApp:
             layout="wide", 
             page_icon="assets/logo.jpg"
         )
-        # Force light mode and style buttons with custom CSS
         st.markdown(
             """
             <style>
@@ -84,24 +83,10 @@ class WebApp:
             </style>
             """, unsafe_allow_html=True)
         if not st.session_state.authenticated:
-            # Login page remains narrow
             self.components.show_login(auth_manager=self.auth_manager)
         else:
             self.show_main_page()
-            # --- Download Button displayed below tabs on the main page ---
-            if st.session_state.get("results") is not None:
-                st.markdown("<br>", unsafe_allow_html=True)
-                st.write("### Download Analysis Results")
-                output = io.BytesIO()
-                with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                    st.session_state.results.to_excel(writer, sheet_name='Results', index=False)
-                output.seek(0)
-                st.download_button(
-                    label="Download Excel File",
-                    data=output,
-                    file_name="analysis_results.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
+            # The download button logic has been removed.
 
     def show_main_page(self):
         col1, col2 = st.columns([1, 8])
@@ -109,8 +94,7 @@ class WebApp:
             st.image("assets/logo.jpg", width=100)
         with col2:
             st.title("Corporate Ranking AI")
-        # Provide a key to preserve the active tab state across reruns.
-        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITIVE INSIGHTS"], key="main_tabs")
+        tabs = st.tabs(["AI-POWERED DATA EXTRACTOR", "COMPETITIVE INSIGHTS"])
         with tabs[0]:
             self.ai_based_extractor()
         with tabs[1]:
@@ -128,30 +112,27 @@ class WebApp:
           · **Target Audience (3)**  
 
           · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).  
-          · **Output Format:** XLSX/CSV
+          · **Output Format:** Displayed on screen
         """
         )
-        cols = st.columns([3, 2])
+        # Divide the tab into two parts: left (40%) and right (60%)
+        cols = st.columns([2, 3])
         with cols[0]:
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
         with cols[1]:
             st.session_state.selected_model = st.selectbox("Select Model", 
                 ["llama3.1:8b", "llama3.2:latest", "deepseek-r1:32b", "llama3.3:70b", "olmo2:13b"])
-        
-        # New parameters for Batch Size and Max Workers
-        st.markdown("#### Advanced Options")
-        advanced_cols = st.columns(2)
-        with advanced_cols[0]:
-            batch_options = [16, 32, 64]
-            selected_batch_size = st.selectbox("Select Batch Size", options=batch_options, index=1)
-        with advanced_cols[1]:
-            max_workers_options = [8, 16, 32]
-            selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, index=1)
-        
-        st.markdown('<div class="small-button">', unsafe_allow_html=True)
+            max_workers_options = [8, 16, 24]
+            selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
+            base_batch_sizes = [16, 32, 48, 64, 86]
+            filtered_batch_sizes = [bs for bs in base_batch_sizes if bs % selected_max_workers == 0]
+            if not filtered_batch_sizes:
+                filtered_batch_sizes = base_batch_sizes
+            selected_batch_size = st.selectbox("Select Batch Size", options=filtered_batch_sizes)
+
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
             self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
-        st.markdown('</div>', unsafe_allow_html=True)
+
 
     def competitive_insights(self):
         st.markdown(
@@ -164,10 +145,9 @@ class WebApp:
           · Top Competitor 2 SERP Rank  
 
           · **Input Format:** (CSV/XLS/XLSX) with the columns **Domain**, **Keyword 1**, **Product/Service 1**.  
-          · **Output Format:** XLSX/CSV
+          · **Output Format:** Displayed on screen
         """
         )
-        # --- Row 1: Search Method, API Key Input, and Submit Button in one row ---
         row1 = st.columns(3)
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
@@ -186,25 +166,20 @@ class WebApp:
                 st.session_state.serper_api = api_key_input
                 st.success("API Key stored for this session.")
             st.markdown('</div>', unsafe_allow_html=True)
-
-        # --- Row 2: File Uploader on Left (50% width) and GMB/Pages on Right (50% width) ---
-        row2 = st.columns(2)
+        base_batch_sizes = [16, 32, 48, 64, 86]
+        max_workers_options = [8, 16, 24]
+        row2 = st.columns([2,3])
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
         with row2[1]:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
-        
-        # New parameters for Batch Size and Max Workers for competitive analysis
-        st.markdown("#### Advanced Options")
-        comp_cols = st.columns(2)
-        with comp_cols[0]:
-            comp_batch_options = [20, 40, 60]
-            comp_selected_batch_size = st.selectbox("Select Batch Size", options=comp_batch_options, index=1, key="comp_batch")
-        with comp_cols[1]:
-            comp_max_workers_options = [8, 16, 32]
-            comp_selected_max_workers = st.selectbox("Select Max Workers", options=comp_max_workers_options, index=0, key="comp_workers")
-        
+            comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
+        # st.markdown("#### Advanced Options")
+            filtered_comp_batch_sizes = [bs for bs in base_batch_sizes if bs % comp_selected_max_workers == 0]
+            if not filtered_comp_batch_sizes:
+                filtered_comp_batch_sizes = base_batch_sizes
+            comp_selected_batch_size = st.selectbox("Select Batch Size", options=filtered_comp_batch_sizes, key="comp_batch")
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
             self.process_advanced_analysis(
@@ -257,31 +232,16 @@ class WebApp:
             interim_df = pd.DataFrame(results)
             if not interim_df.empty:
                 self.components.display_results(interim_df)
-        new_columns = ["Business Name", "Business Location",
-                       "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
-                       "Product/Service 1", "Product/Service 2", "Product/Service 3",
-                       "Target Audience 1", "Target Audience 2", "Target Audience 3",
-                       "Status", "Error"]
-        df_output = df_input.copy()
-        for col in new_columns:
-            df_output[col] = ""
-        for idx, result in enumerate(results):
-            for col in new_columns:
-                df_output.at[idx, col] = result.get(col, "")
-        if "Status" not in df_output.columns:
-            df_output["Status"] = ""
-        st.session_state.results = df_output
-        self.components.display_results(df_output)
-        output = io.BytesIO()
-        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-            df_output.to_excel(writer, sheet_name='Results', index=False)
-        output.seek(0)
-        st.download_button(
-            label="Download Analysis Results (Excel)",
-            data=output,
-            file_name="basic_analysis_results.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+        # Store results in session state for display
+        st.session_state.results = df_input.assign(**{
+            col: [result.get(col, "") for result in results]
+            for col in ["Business Name", "Business Location",
+                        "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
+                        "Product/Service 1", "Product/Service 2", "Product/Service 3",
+                        "Target Audience 1", "Target Audience 2", "Target Audience 3",
+                        "Status", "Error"]
+        })
+        self.components.display_results(st.session_state.results)
 
     @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
@@ -330,31 +290,16 @@ class WebApp:
             if not interim_df.empty:
                 self.components.display_results(interim_df)
         logging.debug("Advanced analysis completed.")
-        new_columns = ["Keyword 1", "Product/Service 1", "Search Query",
-                       "Top Competitor 1", "Serp Rank 1",
-                       "Top Competitor 2", "Serp Rank 2",
-                       "Top Competitor 3", "Serp Rank 3",
-                       "GMB Status", "Error", "Status"]
-        df_output = df.copy()
-        for col in new_columns:
-            df_output[col] = ""
-        for idx, result in enumerate(results):
-            for col in new_columns:
-                df_output.at[idx, col] = result.get(col, "")
-        if "Status" not in df_output.columns:
-            df_output["Status"] = ""
-        st.session_state.results = df_output
-        self.components.display_results(df_output)
-        output = io.BytesIO()
-        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-            df_output.to_excel(writer, sheet_name='Results', index=False)
-        output.seek(0)
-        st.download_button(
-            label="Download Competitive Analysis Results (Excel)",
-            data=output,
-            file_name="competitive_analysis_results.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+        # Store results in session state for display
+        st.session_state.results = df.assign(**{
+            col: [result.get(col, "") for result in results]
+            for col in ["Keyword 1", "Product/Service 1", "Search Query",
+                        "Top Competitor 1", "Serp Rank 1",
+                        "Top Competitor 2", "Serp Rank 2",
+                        "Top Competitor 3", "Serp Rank 3",
+                        "GMB Status", "Error", "Status"]
+        })
+        self.components.display_results(st.session_state.results)
 
     def process_row(self, row, search_method, api_key, gmb_check, no_of_pages):
         logging.debug("Processing row: %s", row)
@@ -503,7 +448,6 @@ class WebApp:
             analyzer = ContentAnalyzer(model=model)
             analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
             logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
-            # Extract analysis data with defaults
             business_name = analysis.get('business_name', '')
             location = analysis.get('location', '')
             keywords = analysis.get('keywords', '')

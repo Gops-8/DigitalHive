@@ -44,6 +44,7 @@ class Components:
         # Remove the default index and add a serial number column starting from 1.
         sanitized_df.reset_index(drop=True, inplace=True)
         sanitized_df.index = sanitized_df.index + 1
-        sanitized_df.insert(0, "Sl No", sanitized_df.index)
+        # sanitized_df.insert(0, "Sl No", sanitized_df.index)
+        # sanitized_df.drop_index( inplace=True)
         st.dataframe(sanitized_df, use_container_width=True)
 

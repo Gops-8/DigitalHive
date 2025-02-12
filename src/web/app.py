@@ -25,7 +25,7 @@ def timer(func):
     return wrapper
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
@@ -71,17 +71,36 @@ class WebApp:
         st.markdown(
             """
             <style>
-            body { background-color: #ffffff; }
-            /* Style small buttons */
-            .small-button button {
-                font-size: 12px !important;
-                padding: 3px 8px !important;
+            /* Background image for the main app container */
+            [data-testid="stAppViewContainer"] {
+                background-image: url("assets/background.svg") !important;
+                background-size: cover !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: fixed !important;
+            }
+            
+            /* Green button styling for all Streamlit buttons */
+            [data-testid="stButton"] > div > button {
                 background-color: #4CAF50 !important;
                 color: white !important;
                 border: none !important;
+                padding: 8px 16px !important;
+                font-size: 14px !important;
+                cursor: pointer !important;
+            }
+            
+            /* Optional hover effect */
+            [data-testid="stButton"] > div > button:hover {
+                background-color: #45a049 !important;
             }
             </style>
-            """, unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True
+        )
+
+
+          
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
         else:
@@ -89,7 +108,7 @@ class WebApp:
             # The download button logic has been removed.
 
     def show_main_page(self):
-        col1, col2 = st.columns([1, 8])
+        col1, col2 = st.columns([2, 7])
         with col1:
             st.image("assets/logo.jpg", width=100)
         with col2:
@@ -115,23 +134,37 @@ class WebApp:
           · **Output Format:** Displayed on screen
         """
         )
-        # Divide the tab into two parts: left (40%) and right (60%)
-        cols = st.columns([2, 3])
-        with cols[0]:
+        # Use two columns: left (40%) and right (60%)
+        col1, col2 = st.columns([4, 2])  # Adjust the ratio as needed
+
+        with col1:
+            st.subheader("1. Upload File")
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
-        with cols[1]:
-            st.session_state.selected_model = st.selectbox("Select Model", 
-                ["llama3.1:8b", "llama3.2:latest", "deepseek-r1:32b", "llama3.3:70b", "olmo2:13b"])
+
+            st.subheader("2. Select Model")
+            st.session_state.selected_model = st.selectbox(
+                "Select Model", 
+                ["llama3.1:8b", "llama3.2:latest", "deepseek-r1:32b", "llama3.3:70b", "olmo2:13b"]
+            )
+
+        with col2:
+            st.subheader("3. Advanced Options")
             max_workers_options = [8, 16, 24]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
+
             base_batch_sizes = [16, 32, 48, 64, 86]
+            # Filter batch sizes to those that are multiples of the selected max workers
             filtered_batch_sizes = [bs for bs in base_batch_sizes if bs % selected_max_workers == 0]
             if not filtered_batch_sizes:
                 filtered_batch_sizes = base_batch_sizes
             selected_batch_size = st.selectbox("Select Batch Size", options=filtered_batch_sizes)
 
+        # Place the action button below both columns
+        st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
             self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
+        st.markdown('</div>', unsafe_allow_html=True)
+
 
 
     def competitive_insights(self):
@@ -148,7 +181,10 @@ class WebApp:
           · **Output Format:** Displayed on screen
         """
         )
-        row1 = st.columns(3)
+
+
+        # --- Row 1: Search Method, API Key, and Submit Button ---
+        row1 = st.columns([1.3, 2, 1])
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
         with row1[1]:
@@ -157,7 +193,7 @@ class WebApp:
                 if "serper_api" not in st.session_state:
                     api_key_input = st.text_input("Enter your Serper.dev API Key", type="password")
                 else:
-                    api_key_input = st.text_input("To update your Serper.dev API Key", type="password")
+                    api_key_input = st.text_input("Update your Serper.dev API Key", type="password")
             else:
                 st.info("Basic Google Search selected. No API key required.")
         with row1[2]:
@@ -166,32 +202,39 @@ class WebApp:
                 st.session_state.serper_api = api_key_input
                 st.success("API Key stored for this session.")
             st.markdown('</div>', unsafe_allow_html=True)
-        base_batch_sizes = [16, 32, 48, 64, 86]
-        max_workers_options = [8, 16, 24]
-        row2 = st.columns([2,3])
+
+        # --- Row 2: Left (File & Basic Options), Right (Advanced Options) ---
+        row2 = st.columns([2, 2])  # Adjust ratios as needed (e.g., [1.5, 2], etc.)
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
-        with row2[1]:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
+
+        with row2[1]:
+            max_workers_options = [8, 16, 24]
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
-        # st.markdown("#### Advanced Options")
+            
+            base_batch_sizes = [16, 32, 48, 64, 86]
             filtered_comp_batch_sizes = [bs for bs in base_batch_sizes if bs % comp_selected_max_workers == 0]
             if not filtered_comp_batch_sizes:
                 filtered_comp_batch_sizes = base_batch_sizes
             comp_selected_batch_size = st.selectbox("Select Batch Size", options=filtered_comp_batch_sizes, key="comp_batch")
+
+        # --- Action Button ---
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
-            self.process_advanced_analysis(
-                uploaded_file, 
-                gmb_check, 
-                no_of_pages, 
-                search_method, 
+            self.process_competitive_analysis(
+                uploaded_file,
+                gmb_check,
+                no_of_pages,
+                search_method,
                 st.session_state.get("serper_api", None),
                 comp_selected_batch_size,
                 comp_selected_max_workers
             )
         st.markdown('</div>', unsafe_allow_html=True)
+
+
 
     @timer
     def process_basic_analysis(self, uploaded_file, batch_size, max_workers):

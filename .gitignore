@@ -6,7 +6,7 @@ start_server.sh
 src/__pycache__/
 src/utils/__pycache__
 src/core/__pycache__
-
+assets/domain_list.txt 
 src/utils/__pycache__/*
 src/core/__pycache__/*
 # C extensions

@@ -1,15 +1,12 @@
-# components.py
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import datetime  
-import streamlit as st
 import uuid
 
 class Components:
     def __init__(self):
         pass
-
     def show_login(self, auth_manager):
         st.title("🔐 Login")
         with st.form("login"):
@@ -21,8 +18,6 @@ class Components:
                     st.rerun()
                 else:
                     st.error("Invalid credentials")
-
-
 
     def display_results(self, df):
         st.success("Analysis complete!")
@@ -36,8 +31,19 @@ class Components:
         col3.metric("Failed", failed)
 
         sanitized_df = df.copy()
+        # Convert object columns to string and fill NaN values with a blank space.
         for column in sanitized_df.columns:
             if sanitized_df[column].dtype == 'object':
                 sanitized_df[column] = sanitized_df[column].astype(str)
         sanitized_df = sanitized_df.fillna(' ')
-        st.dataframe(sanitized_df)
+
+        # Replace numeric zeros with an empty string.
+        for col in sanitized_df.select_dtypes(include=['number']).columns:
+            sanitized_df[col] = sanitized_df[col].replace(0, '')
+
+        # Remove the default index and add a serial number column starting from 1.
+        sanitized_df.reset_index(drop=True, inplace=True)
+        sanitized_df.index = sanitized_df.index + 1
+        sanitized_df.insert(0, "Sl No", sanitized_df.index)
+        st.dataframe(sanitized_df, use_container_width=True)
+

@@ -477,44 +477,68 @@ class WebApp:
             }
 
     def process_url(self, url, model):
-        logging.debug("Processing URL: %s with model: %s", url, model)
-        try:
-            clean_url = self.processor.clean_url(url)
-            cached_data = self.cache.get(clean_url)
-            if not cached_data:
-                scraped_data = self.scraper.scrape_website(clean_url)
-                self.cache.set(clean_url, scraped_data)
-                logging.debug("Scraped data for URL %s", clean_url)
-            else:
-                scraped_data = cached_data
-                logging.debug("Using cached data for URL %s", clean_url)
-            analyzer = ContentAnalyzer(model=model)
-            analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
-            logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
-            business_name = analysis.get('business_name', '')
-            location = analysis.get('location', '')
-            keywords = analysis.get('keywords', '')
-            product_services = analysis.get('products_services', '')
-            target_audiences = analysis.get('target_audience', '')
-            return {
-                "Business Name": business_name,
-                "Business Location": location,
-                "Keyword 1": keywords,
-                "Product/Service 1": product_services,
-                "Target Audience 1": target_audiences,
-                "Status": "success",
-                "Error": ""
-            }
-        except Exception as e:
-            return {
-                "Business Name": "",
-                "Business Location": "",
-                "Keyword 1": "",
-                "Product/Service 1": "",
-                "Target Audience 1": "",
-                "Status": "error",
-                "Error": str(e)
-            }
+          logging.debug("Processing URL: %s with model: %s", url, model)
+          try:
+              clean_url = self.processor.clean_url(url)
+              cached_data = self.cache.get(clean_url)
+              if not cached_data:
+                  scraped_data = self.scraper.scrape_website(clean_url)
+                  self.cache.set(clean_url, scraped_data)
+                  logging.debug("Scraped data for URL %s", clean_url)
+              else:
+                  scraped_data = cached_data
+                  logging.debug("Using cached data for URL %s", clean_url)
+              
+              analyzer = ContentAnalyzer(model=model)
+              analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+              logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
+              
+              business_name = analysis.get('business_name', '')
+              location = analysis.get('location', '')
+              
+              # Process keywords: ensure we get exactly 5
+              keywords = analysis.get('keywords', [])
+              if isinstance(keywords, str):
+                  keywords = [kw.strip() for kw in keywords.split(',')]
+              keywords = (keywords + [""] * 5)[:5]
+              
+              # Process product/services: ensure we get exactly 3
+              product_services = analysis.get('products_services', [])
+              if isinstance(product_services, str):
+                  product_services = [ps.strip() for ps in product_services.split(',')]
+              product_services = (product_services + [""] * 3)[:3]
+              
+              # Process target audiences: ensure we get exactly 3
+              target_audiences = analysis.get('target_audience', [])
+              if isinstance(target_audiences, str):
+                  target_audiences = [ta.strip() for ta in target_audiences.split(',')]
+              target_audiences = (target_audiences + [""] * 3)[:3]
+              
+              result = {
+                  "Business Name": business_name,
+                  "Business Location": location,
+                  "Status": "success",
+                  "Error": ""
+              }
+              # Add five keywords
+              for i, kw in enumerate(keywords, start=1):
+                  result[f"Keyword {i}"] = kw
+              # Add three product/services
+              for i, ps in enumerate(product_services, start=1):
+                  result[f"Product/Service {i}"] = ps
+              # Add three target audiences
+              for i, ta in enumerate(target_audiences, start=1):
+                  result[f"Target Audience {i}"] = ta
+
+              return result
+
+          except Exception as e:
+              return {
+                  "Business Name": "",
+                  "Business Location": "",
+                  "Status": "error",
+                  "Error": str(e)
+              }
 
 if __name__ == "__main__":
     app = WebApp()

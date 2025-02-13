@@ -496,44 +496,49 @@ class WebApp:
               business_name = analysis.get('business_name', '')
               location = analysis.get('location', '')
               
-              # Process keywords: ensure we get exactly 5
+              # Process keywords: ensure exactly 5 keywords.
               keywords = analysis.get('keywords', [])
               if isinstance(keywords, str):
                   keywords = [kw.strip() for kw in keywords.split(',')]
               keywords = (keywords + [""] * 5)[:5]
               
-              # Process product/services: ensure we get exactly 3
+              # Process product/services: ensure exactly 3, even if more than 20 are returned.
               product_services = analysis.get('products_services', [])
               if isinstance(product_services, str):
                   product_services = [ps.strip() for ps in product_services.split(',')]
               product_services = (product_services + [""] * 3)[:3]
               
-              # Process target audiences: ensure we get exactly 3
+              # Process target audiences: ensure exactly 3.
               target_audiences = analysis.get('target_audience', [])
               if isinstance(target_audiences, str):
                   target_audiences = [ta.strip() for ta in target_audiences.split(',')]
               target_audiences = (target_audiences + [""] * 3)[:3]
               
-              result = {
-                  "Business Name": business_name,
-                  "Business Location": location,
-                  "Status": "success",
-                  "Error": ""
-              }
-              # Add five keywords
+              # Build the result dictionary with "Domain", "Business Name", and "Business Location" first,
+              # then the 5 keywords, 3 product/services, and 3 target audiences,
+              # and finally "Status" and "Error".
+              result = {}
+              result["Domain"] = clean_url
+              result["Business Name"] = business_name
+              result["Business Location"] = location
+              
               for i, kw in enumerate(keywords, start=1):
                   result[f"Keyword {i}"] = kw
-              # Add three product/services
+              
               for i, ps in enumerate(product_services, start=1):
                   result[f"Product/Service {i}"] = ps
-              # Add three target audiences
+              
               for i, ta in enumerate(target_audiences, start=1):
                   result[f"Target Audience {i}"] = ta
-
+              
+              result["Status"] = "success"
+              result["Error"] = ""
+              
               return result
 
           except Exception as e:
               return {
+                  "Domain": "",
                   "Business Name": "",
                   "Business Location": "",
                   "Status": "error",

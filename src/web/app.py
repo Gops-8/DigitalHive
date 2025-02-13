@@ -223,7 +223,7 @@ class WebApp:
         # --- Action Button ---
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
-            self.process_competitive_analysis(
+            self.process_advanced_analysis(
                 uploaded_file,
                 gmb_check,
                 no_of_pages,

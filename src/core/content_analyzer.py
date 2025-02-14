@@ -41,16 +41,20 @@ class ContentAnalyzer:
     def analyze_with_ollama(self, content: str, url: str, model=None) -> Dict:
         try:
             logging.debug("Starting Ollama analysis for URL: %s", url)
-            formatted_prompt = ANALYSIS_PROMPT.format(
-                url=url,
-                content=content[:4000]
-            )
+
             logging.debug("Formatted prompt: %s", formatted_prompt)
             model_to_infer = model or self.model
             if model_to_infer in ["deepseek-r1:32b", "llama3.3:70b"]:
-                timeout=300
+                timeout=600
+                size=6000
             else:
                 timeout=120
+                size=4000
+
+            formatted_prompt = ANALYSIS_PROMPT.format(
+                url=url,
+                content=content[:size]
+            )
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={

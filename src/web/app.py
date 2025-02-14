@@ -211,14 +211,14 @@ class WebApp:
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
 
         with row2[1]:
-            max_workers_options = [8, 16, 24]
+            max_workers_options = [8, 16, 24, 28]
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
             
-            base_batch_sizes = [16, 32, 48, 64, 86]
-            filtered_comp_batch_sizes = [bs for bs in base_batch_sizes if bs % comp_selected_max_workers == 0]
-            if not filtered_comp_batch_sizes:
-                filtered_comp_batch_sizes = base_batch_sizes
-            comp_selected_batch_size = st.selectbox("Select Batch Size", options=filtered_comp_batch_sizes, key="comp_batch")
+            base_batch_sizes = [8,16,24,32,48,64,80,106]
+            # filtered_comp_batch_sizes = base_batch_sizes
+            # if not filtered_comp_batch_sizes:
+            #     filtered_comp_batch_sizes = base_batch_sizes
+            comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
 
         # --- Action Button ---
         st.markdown('<div class="small-button">', unsafe_allow_html=True)

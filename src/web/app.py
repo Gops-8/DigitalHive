@@ -152,7 +152,7 @@ class WebApp:
             max_workers_options = [8, 16, 24, 28]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
 
-            base_batch_sizes = [16, 28, 32, 48, 56, 64, 86 ,108]
+            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72 , 80 ,84,96 ,112 ,120,140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
         # Place the action button below both columns
         st.markdown('<div class="small-button">', unsafe_allow_html=True)

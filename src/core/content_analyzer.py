@@ -47,7 +47,7 @@ class ContentAnalyzer:
             )
             logging.debug("Formatted prompt: %s", formatted_prompt)
             model_to_infer = model or self.model
-            if model_to_infer in []"deepseek-r1:32b", "llama3.3:70b"]:
+            if model_to_infer in ["deepseek-r1:32b", "llama3.3:70b"]:
                 timeout=300
             else:
                 timeout=120

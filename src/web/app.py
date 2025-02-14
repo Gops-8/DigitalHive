@@ -69,35 +69,35 @@ class WebApp:
             page_icon="assets/logo.jpg"
         )
         st.markdown(
-                """
-                <style>
-                /* Background image for the main app container */
-                [data-testid="stAppViewContainer"] {
-                    background-image: url("assets/background.svg") !important;
-                    background-size: cover !important;
-                    background-position: center !important;
-                    background-repeat: no-repeat !important;
-                    background-attachment: fixed !important;
-                }
-                
-                /* Green button styling for all Streamlit buttons */
-                [data-testid="stButton"] > div > button {
-                    background-color: #4CAF50 !important;
-                    color: white !important;
-                    border: none !important;
-                    padding: 8px 16px !important;
-                    font-size: 14px !important;
-                    cursor: pointer !important;
-                }
-                
-                /* Optional hover effect */
-                [data-testid="stButton"] > div > button:hover {
-                    background-color: #45a049 !important;
-                }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+            """
+            <style>
+            /* Background image for the main app container */
+            [data-testid="stAppViewContainer"] {
+                background-image: url("assets/background.svg") !important;
+                background-size: cover !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: fixed !important;
+            }
+            
+            /* Green button styling for all Streamlit buttons */
+            [data-testid="stButton"] > div > button {
+                background-color: #4CAF50 !important;
+                color: white !important;
+                border: none !important;
+                padding: 8px 16px !important;
+                font-size: 14px !important;
+                cursor: pointer !important;
+            }
+            
+            /* Optional hover effect */
+            [data-testid="stButton"] > div > button:hover {
+                background-color: #45a049 !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
 
           

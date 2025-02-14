@@ -153,11 +153,11 @@ class WebApp:
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
 
             base_batch_sizes = [16, 28, 32, 48, 56, 64, 86 ,108]
-
+            selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
         # Place the action button below both columns
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
-            self.process_basic_analysis(uploaded_file, base_batch_sizes, selected_max_workers)
+            self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
         st.markdown('</div>', unsafe_allow_html=True)
 
 
@@ -209,7 +209,7 @@ class WebApp:
             max_workers_options = [8, 16, 24, 28]
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
             
-            base_batch_sizes = [8,16,24,28,32,48,58,64,80,106]
+            base_batch_sizes = [8,16,24,28,32,48,64,80,106]
             # filtered_comp_batch_sizes = base_batch_sizes
             # if not filtered_comp_batch_sizes:
             #     filtered_comp_batch_sizes = base_batch_sizes

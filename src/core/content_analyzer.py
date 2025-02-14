@@ -47,6 +47,10 @@ class ContentAnalyzer:
             )
             logging.debug("Formatted prompt: %s", formatted_prompt)
             model_to_infer = model or self.model
+            if model_to_infer in []"deepseek-r1:32b", "llama3.3:70b"]:
+                timeout=300
+            else:
+                timeout=120
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
@@ -55,7 +59,7 @@ class ContentAnalyzer:
                     "temperature": OLLAMA_CONFIG['TEMPERATURE'],
                     "format": "json"
                 },
-                  timeout=120  # Add a timeout here
+                  timeout=timeout  # Add a timeout here
             )
             logging.debug("Ollama response status code: %s", response.status_code)
             response.raise_for_status()

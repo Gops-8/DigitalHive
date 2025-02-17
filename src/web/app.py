@@ -492,8 +492,14 @@ class WebApp:
               keywords = analysis.get('keywords', [])
               if isinstance(keywords, str):
                   keywords = [kw.strip() for kw in keywords.split(',')]
+              US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
+                     "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
+                     "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
+                     "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+                     "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"}
+              keywords = [kw for kw in keywords if kw.upper() not in US_STATES]
               keywords = (keywords + [""] * 5)[:5]
-              
+
               # Process product/services: ensure exactly 3, even if more than 20 are returned.
               product_services = analysis.get('products_services', [])
               if isinstance(product_services, str):
@@ -510,7 +516,7 @@ class WebApp:
               # then the 5 keywords, 3 product/services, and 3 target audiences,
               # and finally "Status" and "Error".
               result = {}
-              result["Domain"] = clean_url
+              result["Domain"] = url
               result["Business Name"] = business_name
               result["Business Location"] = location
               
@@ -530,7 +536,7 @@ class WebApp:
 
           except Exception as e:
               return {
-                  "Domain": "",
+                  "Domain": url,
                   "Business Name": "",
                   "Business Location": "",
                   "Status": "error",

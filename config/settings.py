@@ -22,7 +22,7 @@ import os
 OLLAMA_CONFIG = {
     'BASE_URL': os.getenv('OLLAMA_URL', 'http://localhost:11434'),
     'MODEL': os.getenv('OLLAMA_MODEL', 'llama3.2:3b'),
-    'TEMPERATURE': 0.2
+    'TEMPERATURE': 0.15
 }
 
 

@@ -4,7 +4,8 @@ Only respond with the JSON, no other text.
 
 Focus on these key aspects:
 1. Keywords: Identify at least five detailed, long-tail keywords related to the product or service , separated by commas , avoid returning single word keywords if possible 
-          ensure the keywords are specific and relevant to the business and doesnot have comma in between the words
+          ensure the keywords are specific and relevant to the business and doesnot have comma in between the words.
+          Example : "Boutique Guest House South Africa" , "Bengal Cats for Sale in California" etc
 2. Business Name: Extract the specific name of the business.
 3. Products or Services: Identify and list the products or services mentioned. The list should be simple, clear, and concise, separated by commas.
         Example: "Bengal cats, Bengal kittens, Bengal adult cats."

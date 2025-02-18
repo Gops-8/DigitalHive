@@ -144,7 +144,7 @@ class WebApp:
             st.subheader("2. Select Model")
             st.session_state.selected_model = st.selectbox(
                 "Select Model", 
-                ["llama3.1:8b", "qwen2.5:14b", "deepseek-r1:32b", "llama3.3:70b", "olmo2:13b"]
+                ["llama3.1:8b","llama3.3:70b", "qwen2.5:14b","qwen2.5:32b","qwen2.5:72b" ,"deepseek-r1:32b",  "olmo2:13b"]
             )
 
         with col2:

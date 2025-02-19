@@ -25,7 +25,7 @@ def timer(func):
     return wrapper
 
 logging.basicConfig(
-    level=logging.ERROR,
+    level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
@@ -131,7 +131,7 @@ class WebApp:
           · **Target Audience (3)**  
 
           · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).  
-          · **Output Format:** Displayed on screen
+          · **Output Format:**  XLSX/CSV 
         """
         )
         # Use two columns: left (40%) and right (60%)
@@ -497,7 +497,7 @@ class WebApp:
                      "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
                      "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
                      "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"}
-              keywords = [kw for kw in keywords if kw.upper() not in US_STATES]
+              keywords = [kw.replace('_',' ') for kw in keywords if kw.upper() not in US_STATES]
               keywords = (keywords + [""] * 5)[:5]
 
               # Process product/services: ensure exactly 3, even if more than 20 are returned.

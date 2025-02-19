@@ -33,6 +33,6 @@ Required format:
 ]
 
 Website URL: {url}
-Content to analyze:
+Content to analyze:    
 {content}
 """ 

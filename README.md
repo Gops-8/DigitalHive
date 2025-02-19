@@ -1,7 +1,7 @@
-# Digital Hive
+# Corporate Ranking AI
 
 ## Overview
-The Digital Hive is a Python-based application designed to scrape websites, analyze their content, and generate insights using AI models. It is built with a modular architecture, using Streamlit for the user interface and several custom components for scraping, data processing, and analysis.
+The Corporate Ranking AI is a Python-based application designed to scrape websites, analyze their content, and generate insights using AI models. It is built with a modular architecture, using Streamlit for the user interface and several custom components for scraping, data processing, and analysis.
 
 ---
 

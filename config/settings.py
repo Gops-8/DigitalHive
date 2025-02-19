@@ -8,6 +8,8 @@ APP_CONFIG = {
     'PAGE_ICON': "assets/logo.jpg",
     'LAYOUT': "native"
 }
+
+
 ## models  tested 
 # llama 2 7b 
 # llama3.1:8b

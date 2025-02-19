@@ -28,6 +28,9 @@ class WebScraper:
             ])
             text_content = re.sub(r'\s+', ' ', text_content).strip()
             
+            if not text_content:
+                raise Exception(f"Unable to access the website or content is blank for {url}")
+
             # Extract metadata
             metadata = {
                 'title': soup.title.text if soup.title else '',

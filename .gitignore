@@ -45,7 +45,7 @@ start_server.sh
 *.sh
 # Jupyter Notebook
 .ipynb_checkpoints
-
+logs/*
 
 .python-version
 config/exculed_domain_list.txt

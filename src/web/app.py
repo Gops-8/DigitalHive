@@ -30,7 +30,7 @@ if not os.path.exists("logs"):
     os.makedirs("logs")
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler("logs/debug.log"),
@@ -53,7 +53,7 @@ def fix_keyword_spacing(keyword: str) -> str:
     # Replace underscores with spaces
     keyword = keyword.replace('_', ' ')
     # Insert a space before capital letters (if preceded by a lowercase letter)
-    # keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
+    keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
     return keyword.strip()
 
 # --------------------- WebApp Class (UI) ---------------------
@@ -156,7 +156,7 @@ class WebApp:
             st.subheader("2. Select Model")
             st.session_state.selected_model = st.selectbox(
                 "Select Model", 
-                ["llama3.1:8b", "llama3.3:70b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5:72b", "deepseek-r1:32b", "olmo2:13b"]
+                ["llama3.1:8b", "llama3.3:70b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5:7b", "deepseek-r1:32b", "olmo2:13b"]
             )
         with col2:
             st.subheader("3. Advanced Options")

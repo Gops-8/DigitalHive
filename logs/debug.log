@@ -3062,3 +3062,789 @@ Product Solutions Company News Resources Contact Menu Product Solutions Company 
 2025-02-20 12:50:43,134 - DEBUG - Starting new HTTP connection (1): localhost:11434
 2025-02-20 12:50:43,526 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
     sasda aaw 
+2025-02-20 19:00:41,796 - DEBUG - Session initialized: {'selected_model': 'llama3.1:8b', 'processing': False, 'results': None, 'authenticated': False}
+2025-02-20 19:00:41,797 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:00:42,240 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:00:42,240 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:00:42,308 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-20 19:00:42,308 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-20 19:00:42,328 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:00:42,329 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:01:21,898 - DEBUG - Session initialized: {'processing': False, 'results': None, 'authenticated': False, 'FormSubmitter:login-Login': True, 'selected_model': 'llama3.1:8b'}
+2025-02-20 19:01:21,899 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:01:23,150 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:01:23,150 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:01:23,169 - DEBUG - Session initialized: {'processing': False, 'results': None, 'authenticated': True, 'FormSubmitter:login-Login': False, 'selected_model': 'llama3.1:8b'}
+2025-02-20 19:01:23,170 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:01:23,326 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:01:23,326 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:01:31,975 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:01:31,975 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:01:31,979 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:01:31,979 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:01:37,475 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:01:37,475 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:01:37,475 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:01:37,475 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:01:57,249 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-20 19:01:57,249 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-20 19:01:57,282 - DEBUG - Session initialized: {'selected_model': 'llama3.1:8b', 'processing': False, 'results': None, 'authenticated': False}
+2025-02-20 19:01:57,282 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:01:57,424 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:01:57,425 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:01:59,869 - DEBUG - Session initialized: {'processing': False, 'results': None, 'authenticated': False, 'FormSubmitter:login-Login': True, 'selected_model': 'llama3.1:8b'}
+2025-02-20 19:01:59,870 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:01:59,998 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:01:59,999 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:02:00,016 - DEBUG - Session initialized: {'processing': False, 'results': None, 'authenticated': True, 'FormSubmitter:login-Login': False, 'selected_model': 'llama3.1:8b'}
+2025-02-20 19:02:00,017 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:02:00,165 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:02:00,165 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:02:02,855 - DEBUG - Session initialized: {'processing': False, 'comp_batch': 8, 'submit_api_key': False, 'results': None, 'authenticated': True, 'selected_model': 'llama3.1:8b', 'comp_workers': 8}
+2025-02-20 19:02:02,856 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:02:03,020 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:02:03,020 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:02:05,528 - DEBUG - Session initialized: {'processing': False, 'comp_batch': 8, 'submit_api_key': False, 'results': None, 'authenticated': True, 'selected_model': 'llama3.1:8b', 'comp_workers': 8, 'start_data_ext': False}
+2025-02-20 19:02:05,528 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:02:05,647 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:02:05,648 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:02:06,441 - DEBUG - Session initialized: {'processing': False, 'comp_batch': 8, 'submit_api_key': False, 'results': None, 'authenticated': True, 'selected_model': 'qwen2.5:14b', 'comp_workers': 8, 'start_data_ext': True}
+2025-02-20 19:02:06,442 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 19:02:06,568 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-20 19:02:06,568 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-20 19:02:06,652 - DEBUG - Processing URL: londonspiritscompetition.com with model: qwen2.5:14b
+2025-02-20 19:02:06,653 - DEBUG - Using cached data for URL https://londonspiritscompetition.com
+2025-02-20 19:02:06,654 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:06,654 - DEBUG - Starting Ollama analysis for URL: https://londonspiritscompetition.com
+2025-02-20 19:02:06,654 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://londonspiritscompetition.com
+Content to analyze:
+London Wine Competition London Spirits Competition London Beer Competition Registration Deadline 28 February 2025 Judging Date 25 & 26 March 2025 Winners Announcement 22 April 2025 Competition About Judging Process Participating Events Awards Experts and Ambassadors In The Press FAQ Contact Entry Info How To Enter Winning Impact Key Deadlines and Pricing Shipping Instructions Terms and Conditions Judges Winners 2024 Winners 2023 Winners 2022 Winners 2021 Winners 2019 Winners 2018 Winners Promote Your Win Medals and Press Images Press Section Order Stickers Blog Videos Spirits Companies Spirits Enter Now My Account Your Email Your Password If you have not registered for LSC yet, please click here and register first. Need to recover your password? click here Final Deadline to Enter: February 28. Gain Industry Recognition. 2025 Judging 25 & 26 March 2025, London, UK Open For Entry Judges Enter Now Testimonials About the competition Judging Process + Q (Quality Score) + Value Score (V) + Package Score (P) = London Spirits Competition Score Learn More Enter Your Spirits Key Deadlines Don't miss the early bird deadline of November 30, 2024. Learn More About Judges 2025 Judges Get feedback from Top Bartenders, Mixologists, Bar Managers and Trade Buyers. View Judges View Winners 2024 Winners Winners of our 2024 edition View Past Winners Testimonials Being a medal winner at the LSC has had a significant impact on our sales. One of our business goals for the year was to gain more traction in the on-trade. Recognition from LSC has acted as a seal of approval in this respect as the competition is judged by some of the world's leading figures from the hospitality sector. This includes a listing with a high-end UK-wide department store whose buyer was on the judging panel. This also includes the opening up of a new export market after we were approached by an importer who had seen coverage of our success. This is no coincidence. The LSC team did a superb job of promoting the competition and providing a platform for the medal winners. North Uist Distillery Co "Retailers and wholesalers who were 'indifferent' to our products are now queuing up at ‘our door'. The curiosity it has caused amongst the trade and public has increased our sales dramatically. Finally, the award has caused BBC South Today and BBC Radio Oxford to interview us, giving even greater exposure." - Chalgrove Artisan Distillery Chalgrove Artisan Distillery "We were thrilled not just for the recognition, but because it comes from a comprehensively considered competition that aims to reward whiskeys that are high quality and attractively packaged." - Andrea Myers, Vice President of Marketing for Heaven's Door. Heaven's Door "Winning a Gold medal and Best Package really is fantastic! I and my wife have worked on the project for over 2 and a half years, so it really is amazing to get such positive feedback after working so hard on this project." - Mallorca Distillery Mallorca Distillery Gordon Chalmers, Head Distiller and Co-owner of Tamborine Mountain Distillery, Queensland, Australia, shares his opinion on the London Spirits Competition: “Only one word needed: fantastic!” Tamborine Mountain Distillery The London Spirits Competition provided us with an independent evaluation of our products and invaluable feedback about tasting notes. We were happy with the individualized feedback and care taken by organizers to ensure products arrived on time and were given the attention they deserved. We will definitely enter again. “Winning Gold medals at the London Spirits Competition has proven to be a powerful mechanism to attract international buyers to Headlands’ products. This triggered us to advertise medals through online and print media to promote the Headlands’ portfolio and further illustrate the unique selling points of our products. “With international food and spirits awards proliferating, it can become unclear what the worth of a gold medal is. The London Spirits Competition is
+
+2025-02-20 19:02:06,654 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:07,028 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:02:07,028 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:02:14,201 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:17,193 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:17,193 - DEBUG - Full response from Ollama: {
+    "keywords": "London wine competition,london spirits entry,british beer contest,specialty drinks contest,wine spirit awards",
+    "business_name": "London Wine Competition London Spirits Competition",
+    "products_services": "Wine competition,Spirit competition,Beer competition,Industry recognition,Awards promotion",
+    "target_audience": "Beverage producers,Distilleries,Food and drink wholesalers",
+    "location": "London, UK"
+}
+2025-02-20 19:02:17,193 - DEBUG - Parsed analysis JSON: {'keywords': 'London wine competition,london spirits entry,british beer contest,specialty drinks contest,wine spirit awards', 'business_name': 'London Wine Competition London Spirits Competition', 'products_services': 'Wine competition,Spirit competition,Beer competition,Industry recognition,Awards promotion', 'target_audience': 'Beverage producers,Distilleries,Food and drink wholesalers', 'location': 'London, UK'}
+2025-02-20 19:02:17,193 - DEBUG - Analysis result for URL https://londonspiritscompetition.com: {'keywords': 'London wine competition,london spirits entry,british beer contest,specialty drinks contest,wine spirit awards', 'business_name': 'London Wine Competition London Spirits Competition', 'products_services': 'Wine competition,Spirit competition,Beer competition,Industry recognition,Awards promotion', 'target_audience': 'Beverage producers,Distilleries,Food and drink wholesalers', 'location': 'London, UK'}
+2025-02-20 19:02:17,193 - DEBUG - Processed record for URL londonspiritscompetition.com in 10.54 seconds
+2025-02-20 19:02:17,193 - DEBUG - Processing URL: sorryonmute.com with model: qwen2.5:14b
+2025-02-20 19:02:17,194 - DEBUG - Using cached data for URL https://sorryonmute.com
+2025-02-20 19:02:17,194 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:17,194 - DEBUG - Starting Ollama analysis for URL: https://sorryonmute.com
+2025-02-20 19:02:17,194 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://sorryonmute.com
+Content to analyze:
+Interested in Virtual Team Building Events? Meet - Interested in Virtual Team Building Events? Meet - Interested in Virtual Team Building Events? Meet - Interested in Virtual Team Building Events? Meet - All ArticleSoftware ReviewTeam BuildingRemote WorkAdvertise with us Subscribe Now All ArticleSoftware ReviewTeam BuildingRemote WorkAdvertise with us Subscribe Now All ArticleSoftware ReviewTeam BuildingRemote WorkAdvertise with us Search for: Search for: Search for: We are an HR and Remote Work Publication Embracing the Future of Work from Anywhere. We are an HR and Remote Work Publication Embracing the Future of Work from Anywhere. We are an HR and Remote Work Publication Embracing the Future of Work from Anywhere. We are an HR and Remote Work Publication Embracing the Future of Work from Anywhere. As Featured in As Featured in As Featured in Our Full List of Articles Team Building 8 mins November 8, 2023 | By Preethi Jathanna10 Best Team Building Activities For IT Professionals to Bond Beyond Code When it comes to the need for team building, IT professionals top the list as they are often involved in complex coding and troubleshooting which barely gives them a chance to bond beyond the screen. … Read More Team Building 8 mins 13 Best Virtual Women’s Day Celebration Ideas in 2025 to “Accelerate Action” February 4, 2025 | By Preethi Jathanna Team Building 10 mins 13 Virtual St. Patrick’s Day Games and Activities for Team Celebrations February 4, 2025 | By Preethi Jathanna Team Building 10 mins 21 Valentine’s Gifts for Work Your Coworkers Will Love January 28, 2025 | By Preethi Jathanna Team Building 9 mins 10 Virtual Chinese New Year Ideas and Activities for a Fun Celebration January 7, 2025 | By Preethi Jathanna Software Review 19 mins 20 Best Employee Engagement Software For 2022 & Beyond January 7, 2025 | By Aakash Gupta Our Full List of Articles Our Full List of Articles Team Building 8 mins November 8, 2023 | By Preethi Jathanna10 Best Team Building Activities For IT Professionals to Bond Beyond Code When it comes to the need for team building, IT professionals top the list as they are often involved in complex coding and troubleshooting which barely gives them a chance to bond beyond the screen. … Read More Team Building 8 mins 13 Best Virtual Women’s Day Celebration Ideas in 2025 to “Accelerate Action” February 4, 2025 | By Preethi Jathanna Team Building 10 mins 13 Virtual St. Patrick’s Day Games and Activities for Team Celebrations February 4, 2025 | By Preethi Jathanna Team Building 10 mins 21 Valentine’s Gifts for Work Your Coworkers Will Love January 28, 2025 | By Preethi Jathanna Team Building 9 mins 10 Virtual Chinese New Year Ideas and Activities for a Fun Celebration January 7, 2025 | By Preethi Jathanna Software Review 19 mins 20 Best Employee Engagement Software For 2022 & Beyond January 7, 2025 | By Aakash Gupta Team Building 8 mins November 8, 2023 | By Preethi Jathanna10 Best Team Building Activities For IT Professionals to Bond Beyond Code When it comes to the need for team building, IT professionals top the list as they are often involved in complex coding and troubleshooting which barely gives them a chance to bond beyond the screen. … Read More Team Building 8 mins November 8, 2023 | By Preethi Jathanna10 Best Team Building Activities For IT Professionals to Bond Beyond Code When it comes to the need for team building, IT professionals top the list as they are often involved in complex coding and troubleshooting which barely gives them a chance to bond beyond the screen. … Read More Team Building 8 mins November 8, 2023 | By Preethi Jathanna 10 Best Team Building Activities For IT Professionals to Bond Beyond Code When it comes to the need for team building, IT professionals top the list as they are often involved in complex coding and troubleshooting which barely gives them a chance to bond beyond the screen. … Team Building 8 mins 13 Best Virtual Women’s Day Celebration Ideas in 2025 to “Accelerate A
+
+2025-02-20 19:02:17,194 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:17,793 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:20,126 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:20,126 - DEBUG - Full response from Ollama: {
+    "keywords": "virtual team building, remote work activities, HR publications, employee engagement software, virtual women's day",
+    "business_name": "Sorry on Mute",
+    "products_services": "HR and Remote Work Publications, Virtual Team Building Events, Software Reviews",
+    "target_audience": "Remote Workers, IT Professionals, HR Managers, Corporate Teams",
+    "location": "Anywhere"
+}
+2025-02-20 19:02:20,126 - DEBUG - Parsed analysis JSON: {'keywords': "virtual team building, remote work activities, HR publications, employee engagement software, virtual women's day", 'business_name': 'Sorry on Mute', 'products_services': 'HR and Remote Work Publications, Virtual Team Building Events, Software Reviews', 'target_audience': 'Remote Workers, IT Professionals, HR Managers, Corporate Teams', 'location': 'Anywhere'}
+2025-02-20 19:02:20,126 - DEBUG - Analysis result for URL https://sorryonmute.com: {'keywords': "virtual team building, remote work activities, HR publications, employee engagement software, virtual women's day", 'business_name': 'Sorry on Mute', 'products_services': 'HR and Remote Work Publications, Virtual Team Building Events, Software Reviews', 'target_audience': 'Remote Workers, IT Professionals, HR Managers, Corporate Teams', 'location': 'Anywhere'}
+2025-02-20 19:02:20,126 - DEBUG - Processed record for URL sorryonmute.com in 2.93 seconds
+2025-02-20 19:02:20,126 - DEBUG - Processing URL: arsnetwork.com with model: qwen2.5:14b
+2025-02-20 19:02:20,127 - DEBUG - Starting new HTTPS connection (1): arsnetwork.com:443
+2025-02-20 19:02:20,446 - DEBUG - https://arsnetwork.com:443 "GET / HTTP/1.1" 301 167
+2025-02-20 19:02:20,446 - DEBUG - Starting new HTTPS connection (1): www.arsnetwork.com:443
+2025-02-20 19:02:21,726 - DEBUG - https://www.arsnetwork.com:443 "GET / HTTP/1.1" 200 None
+2025-02-20 19:02:21,731 - DEBUG - Processed record for URL arsnetwork.com in 1.61 seconds
+2025-02-20 19:02:21,731 - DEBUG - Processing URL: alexanderalfano.com with model: qwen2.5:14b
+2025-02-20 19:02:21,732 - DEBUG - Using cached data for URL https://alexanderalfano.com
+2025-02-20 19:02:21,732 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:21,732 - DEBUG - Starting Ollama analysis for URL: https://alexanderalfano.com
+2025-02-20 19:02:21,732 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://alexanderalfano.com
+Content to analyze:
+Menu Menu HomeBooksBlog Menu HomeBooksBlog HomeBooksBlog Alexander Joseph AlfanoAttorney at LawAlexander Joseph Alfano is the Director and Chief Legal Counsel of Financial Legal Group INC.Financial Legal Group INC2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States+1 (305) 728 1341+1 (305) 450 8550[email protected] Alexander Alfano@groupfinanciallegalAlexander Joseph Alfano has built a distinguished legal career since earning his Juris Doctor (J.D.) degree from Saint Thomas University in Miami, Florida, in 1993. Afterward, he was inducted into the Florida Bar in October 1993 and has actively practiced law in the state since. Alexander’s legal expertise broadened significantly over the years, marked by his admittance to the New York Bar in July 2016 after successfully passing the bar examination in February 2015. His legal practice further expanded with his admission to the Washington D.C. Bar in July 2018 and the Texas Bar in February 2020.In addition to his state bar memberships, Alexander Joseph Alfano is a member of the Association of Certified Fraud Examiners (ACFE) since October 2018, reflecting his commitment to excellence in the legal profession. His credentials also include membership in the Federal Bar, authorizing him to practice in the US District Court for both the Southern and Central Districts of Florida.Alexander’s legal acumen is complemented by a deep understanding of financial matters, evidenced by his Master of Science in Taxation obtained from Florida International University in Miami, Florida, in the year 2000. This advanced degree has equipped him to offer specialized financial advice and tax planning services to a select clientele, further enhancing the breadth of his professional services.Financial Legal Group INCLocation 2655 Le Jeune Road, Fourth Floor Coral Gables, Florida 33134 United States+1 (305) 728 1341 Alexander Joseph AlfanoAttorney at LawAlexander Joseph Alfano is the Director and Chief Legal Counsel of Financial Legal Group INC.Financial Legal Group INC2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States+1 (305) 728 1341+1 (305) 450 8550[email protected] Alexander Alfano@groupfinanciallegalAlexander Joseph Alfano has built a distinguished legal career since earning his Juris Doctor (J.D.) degree from Saint Thomas University in Miami, Florida, in 1993. Afterward, he was inducted into the Florida Bar in October 1993 and has actively practiced law in the state since. Alexander’s legal expertise broadened significantly over the years, marked by his admittance to the New York Bar in July 2016 after successfully passing the bar examination in February 2015. His legal practice further expanded with his admission to the Washington D.C. Bar in July 2018 and the Texas Bar in February 2020.In addition to his state bar memberships, Alexander Joseph Alfano is a member of the Association of Certified Fraud Examiners (ACFE) since October 2018, reflecting his commitment to excellence in the legal profession. His credentials also include membership in the Federal Bar, authorizing him to practice in the US District Court for both the Southern and Central Districts of Florida.Alexander’s legal acumen is complemented by a deep understanding of financial matters, evidenced by his Master of Science in Taxation obtained from Florida International University in Miami, Florida, in the year 2000. This advanced degree has equipped him to offer specialized financial advice and tax planning services to a select clientele, further enhancing the breadth of his professional services.Financial Legal Group INCLocation 2655 Le Jeune Road, Fourth Floor Coral Gables, Florida 33134 United States+1 (305) 728 1341 Alexander Joseph AlfanoAttorney at LawAlexander Joseph Alfano is the Director and Chief Legal Counsel of Financial Legal Group INC.Financial Legal Group INC2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States+1 (305) 728 1341+1 (305) 450 8550[email protected
+
+2025-02-20 19:02:21,733 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:22,302 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:25,061 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:25,061 - DEBUG - Full response from Ollama: {
+    "keywords": "financial legal services, tax planning attorney, fraud examiner florida, legal counsel services, corporate law firm",
+    "business_name": "Financial Legal Group INC",
+    "products_services": "legal representation, tax planning, financial advice, fraud examination, legal counseling",
+    "target_audience": "corporate clients, small businesses, high net worth individuals, startups, entrepreneurs",
+    "location": "2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States"
+}
+2025-02-20 19:02:25,061 - DEBUG - Parsed analysis JSON: {'keywords': 'financial legal services, tax planning attorney, fraud examiner florida, legal counsel services, corporate law firm', 'business_name': 'Financial Legal Group INC', 'products_services': 'legal representation, tax planning, financial advice, fraud examination, legal counseling', 'target_audience': 'corporate clients, small businesses, high net worth individuals, startups, entrepreneurs', 'location': '2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States'}
+2025-02-20 19:02:25,061 - DEBUG - Analysis result for URL https://alexanderalfano.com: {'keywords': 'financial legal services, tax planning attorney, fraud examiner florida, legal counsel services, corporate law firm', 'business_name': 'Financial Legal Group INC', 'products_services': 'legal representation, tax planning, financial advice, fraud examination, legal counseling', 'target_audience': 'corporate clients, small businesses, high net worth individuals, startups, entrepreneurs', 'location': '2655 Le Jeune Road, Fifth Floor Coral Gables, Florida 33134 United States'}
+2025-02-20 19:02:25,062 - DEBUG - Processed record for URL alexanderalfano.com in 3.33 seconds
+2025-02-20 19:02:25,062 - DEBUG - Processing URL: carolinaroofingprosllc.net with model: qwen2.5:14b
+2025-02-20 19:02:25,062 - DEBUG - Using cached data for URL https://carolinaroofingprosllc.net
+2025-02-20 19:02:25,062 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:25,062 - DEBUG - Starting Ollama analysis for URL: https://carolinaroofingprosllc.net
+2025-02-20 19:02:25,062 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://carolinaroofingprosllc.net
+Content to analyze:
+Home About Us Services Contact × Home About Us Services Contact (704) 818-7587 "Get the Job done right the first time" Offering Roofing, Siding, Gutters, Interior Services & More Roofing Services in North Carolina Are you looking for easy and efficient home repair services?Well, look no further because we have got your back. “Your Home, Our Priority” Protect Your Home with Carolina Roofing Pro’s -Your trusted partner for roofing, siding, gutters, and more! At Carolina Roofing Pro’s, we provide top-quality service and craftsmanship to ensure your home stays safe and beautiful. Whether you need a new roof, repairs, or maintenance, our expert team is here to deliver results you can count on. Delivering Precision & Excellence We offer full-service restoration from start to finish and handle all of the insurance claims so you don’t have to worry.Let us take care of your home, so you can focus on what matters most.Call us today for your free consultation! Learn More Contact Us 218 W Broad St. Ste 27Statesville, NC 28677, US (704) 818-7587 or (704) 380-4283 Check us out on Facebook! Check us out on Instagram! [email protected] 8:00 AM - 5:00 PM But can call for emergency after hour service GC License # 101425 Financing available!**Loans are subject to credit approval. Home Improvement Loans offered through Upgrade are made by Cross River Bank, Member FDIC, Equal Housing Lender. Upgrade, Inc(NMLS #1548935) holds the following State licenses HomeAbout UsServicesContact © 2021, Carolina Roofing Pros LLC. All Rights Reserved. Home About Us Services Contact × Home About Us Services Contact (704) 818-7587 Home About Us Services Contact × Home About Us Services Contact (704) 818-7587 Home About Us Services Contact × Home About Us Services Contact (704) 818-7587 Home About Us Services Contact × Home About Us Services Contact (704) 818-7587 Home About Us Services Contact × Home About Us Services Contact Home About Us Services Contact × Home About Us Services Contact Home About Us Services Contact × Home About Us Services Contact Home About Us Services Contact × Home About Us Services Contact Home About Us Services Contact × Home About Us Services Contact × Home About Us Services Contact × (704) 818-7587 (704) 818-7587 (704) 818-7587 (704) 818-7587 (704) 818-7587 "Get the Job done right the first time" Offering Roofing, Siding, Gutters, Interior Services & More Roofing Services in North Carolina Are you looking for easy and efficient home repair services?Well, look no further because we have got your back. “Your Home, Our Priority” Protect Your Home with Carolina Roofing Pro’s -Your trusted partner for roofing, siding, gutters, and more! At Carolina Roofing Pro’s, we provide top-quality service and craftsmanship to ensure your home stays safe and beautiful. Whether you need a new roof, repairs, or maintenance, our expert team is here to deliver results you can count on. Delivering Precision & Excellence We offer full-service restoration from start to finish and handle all of the insurance claims so you don’t have to worry.Let us take care of your home, so you can focus on what matters most.Call us today for your free consultation! Learn More Contact Us "Get the Job done right the first time" Offering Roofing, Siding, Gutters, Interior Services & More Roofing Services in North Carolina Are you looking for easy and efficient home repair services?Well, look no further because we have got your back. “Your Home, Our Priority” Protect Your Home with Carolina Roofing Pro’s -Your trusted partner for roofing, siding, gutters, and more! At Carolina Roofing Pro’s, we provide top-quality service and craftsmanship to ensure your home stays safe and beautiful. Whether you need a new roof, repairs, or maintenance, our expert team is here to deliver results you can count on. Delivering Precision & Excellence We offer full-service restoration from start to finish and handle all of the insurance claims so you don’t have to worry.Let us take care of your home, s
+
+2025-02-20 19:02:25,063 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:25,592 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:28,647 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:28,648 - DEBUG - Full response from Ollama: {
+    "keywords": "roof repair north carolina, siding installation services, gutter maintenance professionals, interior home repairs, trusted roofing contractor",
+    "business_name": "Carolina Roofing Pros LLC",
+    "products_services": "Roofing, Siding, Gutters, Interior Services, Home Repair, Full-service Restoration, Insurance Claim Handling",
+    "target_audience": "Homeowners needing roof repair, Property owners seeking siding services, Individuals requiring gutter maintenance, Clients interested in interior repairs",
+    "location": "218 W Broad St. Ste 27StatesvilleNC28677"
+}
+2025-02-20 19:02:28,648 - DEBUG - Parsed analysis JSON: {'keywords': 'roof repair north carolina, siding installation services, gutter maintenance professionals, interior home repairs, trusted roofing contractor', 'business_name': 'Carolina Roofing Pros LLC', 'products_services': 'Roofing, Siding, Gutters, Interior Services, Home Repair, Full-service Restoration, Insurance Claim Handling', 'target_audience': 'Homeowners needing roof repair, Property owners seeking siding services, Individuals requiring gutter maintenance, Clients interested in interior repairs', 'location': '218 W Broad St. Ste 27StatesvilleNC28677'}
+2025-02-20 19:02:28,648 - DEBUG - Analysis result for URL https://carolinaroofingprosllc.net: {'keywords': 'roof repair north carolina, siding installation services, gutter maintenance professionals, interior home repairs, trusted roofing contractor', 'business_name': 'Carolina Roofing Pros LLC', 'products_services': 'Roofing, Siding, Gutters, Interior Services, Home Repair, Full-service Restoration, Insurance Claim Handling', 'target_audience': 'Homeowners needing roof repair, Property owners seeking siding services, Individuals requiring gutter maintenance, Clients interested in interior repairs', 'location': '218 W Broad St. Ste 27StatesvilleNC28677'}
+2025-02-20 19:02:28,648 - DEBUG - Processed record for URL carolinaroofingprosllc.net in 3.59 seconds
+2025-02-20 19:02:28,648 - DEBUG - Processing URL: powerwashco.us with model: qwen2.5:14b
+2025-02-20 19:02:28,649 - DEBUG - Using cached data for URL https://powerwashco.us
+2025-02-20 19:02:28,649 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:28,649 - DEBUG - Starting Ollama analysis for URL: https://powerwashco.us
+2025-02-20 19:02:28,649 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://powerwashco.us
+Content to analyze:
+Home About Gallery Contact Home About Gallery Contact +(1) 562-644-6260 Home About Blog Gallery Cleaning Packages Services Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Contact Home About Blog Gallery Cleaning Packages Services Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Contact +(1) 562-644-6260 +(1) 562-644-6260 Home About Blog Gallery Cleaning Packages Services Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Contact Home About Blog Gallery Cleaning Packages Services Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Contact Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Residential Garage & Driveway Cleaning Residential Roof & Gutter Cleaning Past Cleaning Projects Home About Gallery Contact Home About Gallery Contact +(1) 562-644-6260 Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact Home About Gallery Contact +(1) 562-644-6260 +(1) 562-644-6260 +(1) 562-644-6260 +(1) 562-644-6260 +(1) 562-644-6260 +(1) 562-644-6260 +(1) 562-644-6260 Home About Blog Gallery Cleaning Packages Services Commercial Power Washing Commercial Awning & Canopy Cleaning Commercial Exterior Cleaning Commercial Graffiti Removal Commercial Parking Lot Cleaning Catch Basin & Trench Drain Cleaning Corporate Services Corporate Exterior Cleaning Corporate Parking Lot Cleaning Trash Enclosure Services Residential Power Washing Residential Deck & Patio Cleaning Resi
+
+2025-02-20 19:02:28,649 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:29,047 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:33,151 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:33,151 - DEBUG - Full response from Ollama: {
+    "keywords": "commercial power washing services, awning cleaning company, exterior building wash, graffiti removal service, parking lot pressure cleaning",
+    "business_name": "Power Wash Co.",
+    "products_services": "Commercial power washing, awning and canopy cleaning, exterior cleaning, graffiti removal, parking lot cleaning, catch basin and trench drain cleaning, corporate exterior cleaning, residential power washing, deck and patio cleaning, garage and driveway cleaning, roof and gutter cleaning",
+    "target_audience": "Business owners requiring exterior maintenance, property managers seeking professional cleaning, homeowners needing roof and gutter services",
+    "location": "Los Angeles"
+}
+2025-02-20 19:02:33,151 - DEBUG - Parsed analysis JSON: {'keywords': 'commercial power washing services, awning cleaning company, exterior building wash, graffiti removal service, parking lot pressure cleaning', 'business_name': 'Power Wash Co.', 'products_services': 'Commercial power washing, awning and canopy cleaning, exterior cleaning, graffiti removal, parking lot cleaning, catch basin and trench drain cleaning, corporate exterior cleaning, residential power washing, deck and patio cleaning, garage and driveway cleaning, roof and gutter cleaning', 'target_audience': 'Business owners requiring exterior maintenance, property managers seeking professional cleaning, homeowners needing roof and gutter services', 'location': 'Los Angeles'}
+2025-02-20 19:02:33,152 - DEBUG - Analysis result for URL https://powerwashco.us: {'keywords': 'commercial power washing services, awning cleaning company, exterior building wash, graffiti removal service, parking lot pressure cleaning', 'business_name': 'Power Wash Co.', 'products_services': 'Commercial power washing, awning and canopy cleaning, exterior cleaning, graffiti removal, parking lot cleaning, catch basin and trench drain cleaning, corporate exterior cleaning, residential power washing, deck and patio cleaning, garage and driveway cleaning, roof and gutter cleaning', 'target_audience': 'Business owners requiring exterior maintenance, property managers seeking professional cleaning, homeowners needing roof and gutter services', 'location': 'Los Angeles'}
+2025-02-20 19:02:33,152 - DEBUG - Processed record for URL powerwashco.us in 3.40 seconds
+2025-02-20 19:02:33,152 - DEBUG - Processing URL: aaronjanderson.com with model: qwen2.5:14b
+2025-02-20 19:02:33,152 - DEBUG - Using cached data for URL https://aaronjanderson.com
+2025-02-20 19:02:33,152 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:33,152 - DEBUG - Starting Ollama analysis for URL: https://aaronjanderson.com
+2025-02-20 19:02:33,152 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://aaronjanderson.com
+Content to analyze:
+0 Skip to Content Blog About Speaking Writing Open Menu Close Menu Blog About Speaking Writing Open Menu Close Menu Blog About Speaking Writing “As we have opportunity, let us do good to all people.” -Galatians 6:10 faith, public square, relationships, theology Aaron Anderson 9/26/24 faith, public square, relationships, theology Aaron Anderson 9/26/24 How Do Christians Live in a Divided Political Age? Jesus gave his followers a blueprint for earthly political action when he said, “Seek first his kingdom and his righteousness” (Matthew 6:33). A Christian’s perspective, priorities, and posture on earthly politics must be shaped by the Kingdom of God. Read More leadership, friends, personal development, faith, growth, relationships, church, public square Aaron Anderson 1/17/24 leadership, friends, personal development, faith, growth, relationships, church, public square Aaron Anderson 1/17/24 Are You an Illuminator or a Diminisher? A Guest Blog from my good friend, Pastor Aaron Kunce. 30% of people ask questions of the people around them and are persistently curious about others. They are Illuminators. The other 70% might be perfectly nice people, but they don’t ask questions. They are Diminishers. Read More leadership, public square, relationships Aaron Anderson 1/10/24 leadership, public square, relationships Aaron Anderson 1/10/24 13 Reasons to Avoid Collaboration Collaboration is hard. Here are 13 reasons people use to justify collaboration. Read More leadership, public square, personal development Aaron Anderson 10/25/23 leadership, public square, personal development Aaron Anderson 10/25/23 Unlocking the Secrets of Leading as an Outsider in York County It is no secret that leading as an outsider in York County can be a challenge. There is an unseen graveyard of outsiders who burst onto the scene and crashed and burned here. Read More faith, public square, leadership, personal development, growth, relationships Aaron Anderson 10/12/23 faith, public square, leadership, personal development, growth, relationships Aaron Anderson 10/12/23 Want to Become a Better Employee? Pray for Your Co-Workers The vast majority of us want to become better employees. Have you ever considered that one tactic toward that end is to pray for your co-workers? Read More family, church, personal development, friends, faith, relationships, marriage Aaron Anderson 10/4/23 family, church, personal development, friends, faith, relationships, marriage Aaron Anderson 10/4/23 The Last Word Spoken About You Whether we like to wrestle with it or not, each of us will one day breathe our last. Our families will be left to craft a service order for our funeral and names will be assigned to speak about you.What last word will be spoken about you? Read More public square, rebuild, church, personal development, friends, growth, leadership, relationships, poverty Aaron Anderson 9/27/23 public square, rebuild, church, personal development, friends, growth, leadership, relationships, poverty Aaron Anderson 9/27/23 The York County Voices That Need to Be Silenced Surely there is some person in York County whose voice is a nuisance to you. Read More leadership, marriage, personal development, family, public square, rebuild, friends, growth, relationships, poverty Aaron Anderson 9/20/23 leadership, marriage, personal development, family, public square, rebuild, friends, growth, relationships, poverty Aaron Anderson 9/20/23 To Love York County When It Doesn’t Love You Back York County has not always been the easiest place to love. Our family’s move to York in 2004 from Raleigh, North Carolina was a bit of a culture shock. Read More faith, family, friends, church, public square, marriage, relationships Aaron Anderson 9/14/23 faith, family, friends, church, public square, marriage, relationships Aaron Anderson 9/14/23 Top Things the Anderson Family Loves About York County There are a lot of great things to do and places to go that make for a great quality of life and a great
+
+2025-02-20 19:02:33,153 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:33,645 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:35,787 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:35,787 - DEBUG - Full response from Ollama: {
+    "keywords": "public speaking engagements, faith-based leadership, relationship building seminars, personal development workshops, community engagement strategies",
+    "business_name": "Aaron J. Anderson",
+    "products_services": "Speaking Engagements, Writing Services, Leadership Coaching, Personal Development Workshops",
+    "target_audience": "Faith Leaders, Community Builders, Corporate Executives, Nonprofit Professionals",
+    "location": "York County"
+}
+2025-02-20 19:02:35,787 - DEBUG - Parsed analysis JSON: {'keywords': 'public speaking engagements, faith-based leadership, relationship building seminars, personal development workshops, community engagement strategies', 'business_name': 'Aaron J. Anderson', 'products_services': 'Speaking Engagements, Writing Services, Leadership Coaching, Personal Development Workshops', 'target_audience': 'Faith Leaders, Community Builders, Corporate Executives, Nonprofit Professionals', 'location': 'York County'}
+2025-02-20 19:02:35,787 - DEBUG - Analysis result for URL https://aaronjanderson.com: {'keywords': 'public speaking engagements, faith-based leadership, relationship building seminars, personal development workshops, community engagement strategies', 'business_name': 'Aaron J. Anderson', 'products_services': 'Speaking Engagements, Writing Services, Leadership Coaching, Personal Development Workshops', 'target_audience': 'Faith Leaders, Community Builders, Corporate Executives, Nonprofit Professionals', 'location': 'York County'}
+2025-02-20 19:02:35,787 - DEBUG - Processed record for URL aaronjanderson.com in 2.64 seconds
+2025-02-20 19:02:35,787 - DEBUG - Processing URL: rotorooterhamilton.ca with model: qwen2.5:14b
+2025-02-20 19:02:35,788 - DEBUG - Using cached data for URL https://rotorooterhamilton.ca
+2025-02-20 19:02:35,788 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:35,788 - DEBUG - Starting Ollama analysis for URL: https://rotorooterhamilton.ca
+2025-02-20 19:02:35,788 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://rotorooterhamilton.ca
+Content to analyze:
+top of page aaron.atkinson@rrsc.com905-545-0940 HomeAbout UsServices Drain CleaningSewer Line Excavation Basement WaterproofingResidential Plumbing Commercial Plumbing FAQContact Us The Reliable Plumbing Service Roto-Rooter Plumbers offers a range of plumbing and emergency plumbing services for Hamilton and the surrounding region.Call Now Choose Roto-Rooter Plumbers for Expert Plumbing Service in Hamilton and the Surrounding RegionWhen you need a reliable plumber that you can trust to make the repairs you need, call Roto-Rooter Plumbers. We aim to offer a comprehensive and reliable plumbing service for homeowners and business owners in the Hamilton region, including Brantford and Burlington. It’s easy to think you can DIY your plumbing problems. You’ve probably fixed a lot of other issues on your own, why should this be any different? But plumbing is a different beast. A mistake can turn a minor problem into a major problem, with a much bigger expense attached. Instead, you should turn to a professional with the know-how to address the issue. Roto-Rooter has been servicing the plumbing needs of homeowners for over eight decades. Our experienced plumbers can help you with the following issues: Clogged drains and gutters Broken pipes Leaky pipes Sewer line blockages Clogged sinks Toilet malfunctions And more ​ When you’re looking for the best plumber available to fix your pipes, clean your drains, and snake your lines, you call Roto-Rooter Plumbers. Contact us today for a quote.Promotions and Special Offers We offer 10% off for seniors!Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any plumbing or drain cleaning service. Schedule a service today to claim this discount. Save $20 on any 
+
+2025-02-20 19:02:35,788 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:36,245 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:38,417 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:38,417 - DEBUG - Full response from Ollama: {"keywords": "Hamilton plumber, emergency plumbing Hamilton, residential plumbing Hamilton, commercial plumbing services, basement waterproofing Hamilton", "business_name": "Roto-Rooter Plumbers", "products_services": "drain cleaning, sewer line excavation, basement waterproofing, residential plumbing, commercial plumbing", "target_audience": "homeowners needing repairs, business owners in Hamilton, seniors seeking discounts", "location": "Hamilton and surrounding region"}
+2025-02-20 19:02:38,417 - DEBUG - Parsed analysis JSON: {'keywords': 'Hamilton plumber, emergency plumbing Hamilton, residential plumbing Hamilton, commercial plumbing services, basement waterproofing Hamilton', 'business_name': 'Roto-Rooter Plumbers', 'products_services': 'drain cleaning, sewer line excavation, basement waterproofing, residential plumbing, commercial plumbing', 'target_audience': 'homeowners needing repairs, business owners in Hamilton, seniors seeking discounts', 'location': 'Hamilton and surrounding region'}
+2025-02-20 19:02:38,417 - DEBUG - Analysis result for URL https://rotorooterhamilton.ca: {'keywords': 'Hamilton plumber, emergency plumbing Hamilton, residential plumbing Hamilton, commercial plumbing services, basement waterproofing Hamilton', 'business_name': 'Roto-Rooter Plumbers', 'products_services': 'drain cleaning, sewer line excavation, basement waterproofing, residential plumbing, commercial plumbing', 'target_audience': 'homeowners needing repairs, business owners in Hamilton, seniors seeking discounts', 'location': 'Hamilton and surrounding region'}
+2025-02-20 19:02:38,417 - DEBUG - Processed record for URL rotorooterhamilton.ca in 2.63 seconds
+2025-02-20 19:02:38,433 - DEBUG - Processing URL: beechesgolfclub.com with model: qwen2.5:14b
+2025-02-20 19:02:38,433 - DEBUG - Using cached data for URL https://beechesgolfclub.com
+2025-02-20 19:02:38,433 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:38,433 - DEBUG - Starting Ollama analysis for URL: https://beechesgolfclub.com
+2025-02-20 19:02:38,433 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://beechesgolfclub.com
+Content to analyze:
+FacebookMailJoin Our E Club Call us at (269) 637-2600 Golf Course Course Details Score Card Club News Rates Banquet Hall Club Calendar Tee Times Contact Menu Menu Book A Tee Time Course and Driving Range Open to Public Events HallBeeches Golf Club See Our Event Services COURSE INFO GIFT CARDS CONTACT US Join Our E-Club SUBSCRIBE NOW Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Latest NewsFollow us on FacebookFind Us ©Copyright Beeches Golf Club Powered by Teesnap. | Privacy Policy | Terms and Conditions | Contact Us FacebookMail FacebookMailJoin Our E Club Call us at (269) 637-2600 FacebookMailJoin Our E Club Call us at (269) 637-2600 Call us at (269) 637-2600 Call us at (269) 637-2600 Golf Course Course Details Score Card Club News Rates Banquet Hall Club Calendar Tee Times Contact Menu Menu Golf Course Course Details Score Card Club News Rates Banquet Hall Club Calendar Tee Times Contact Menu Menu Golf Course Course Details Score Card Club News Rates Banquet Hall Club Calendar Tee Times Contact Menu Menu Golf Course Course Details Score Card Club News Rates Banquet Hall Club Calendar Tee Times Contact Menu Menu Book A Tee Time Course and Driving Range Open to Public Events HallBeeches Golf Club See Our Event Services COURSE INFO GIFT CARDS CONTACT US Join Our E-Club SUBSCRIBE NOW Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Latest NewsFollow us on FacebookFind Us ©Copyright Beeches Golf Club Powered by Teesnap. | Privacy Policy | Terms and Conditions | Contact Us FacebookMail Book A Tee Time Book A Tee Time Book A Tee Time Book A Tee Time Book A Tee Time Book A Tee Time Book A Tee Time Book A Tee Time Course and Driving Range Open to Public Course and Driving Range Open to Public Course and Driving Range Open to Public Course and Driving Range Open to Public Course and Driving Range Open to Public Course and Driving Range Open to Public Course and Driving Range Open to Public Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club See Our Event Services Events HallBeeches Golf Club Events Hall Beeches Golf Club Beeches Golf Club See Our Event Services COURSE INFO GIFT CARDS CONTACT US COURSE INFO COURSE INFO COURSE INFO COURSE INFO GIFT CARDS GIFT CARDS GIFT CARDS GIFT CARDS CONTACT US CONTACT US CONTACT US CONTACT US Join Our E-Club SUBSCRIBE NOW Join Our E-Club SUBSCRIBE NOW Join Our E-Club SUBSCRIBE NOW Join Our E-Club SUBSCRIBE NOW Join Our E-Club SUBSCRIBE NOW Join Our E-Club SUBSCRIBE NOW Join Our E-Club Join Our E-Club SUBSCRIBE NOW Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Latest NewsFollow us on FacebookFind Us Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Latest NewsFollow us on FacebookFind Us Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Beeches Golf Club 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 09601 68th Street South Haven MI 49090 TEL: (269) 637-2600 Latest News Latest News Follow us on Facebook Follow us on Facebook Find Us Find Us ©Copyright Beeches Golf Club Powered by Teesnap. | Privacy Policy | Terms and Conditions | Contact Us FacebookMail
+
+2025-02-20 19:02:38,434 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:38,971 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:41,120 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:41,120 - DEBUG - Full response from Ollama: {"keywords": "public golf course, banquet hall rental, south haven golf, event services michigan, tee time booking", "business_name": "Beeches Golf Club", "products_services": "golf courses, driving range, banquets, events, gift cards", "target_audience": "golf enthusiasts, business professionals, event planners", "location": "68th Street South Haven MI 49090"}
+2025-02-20 19:02:41,120 - DEBUG - Parsed analysis JSON: {'keywords': 'public golf course, banquet hall rental, south haven golf, event services michigan, tee time booking', 'business_name': 'Beeches Golf Club', 'products_services': 'golf courses, driving range, banquets, events, gift cards', 'target_audience': 'golf enthusiasts, business professionals, event planners', 'location': '68th Street South Haven MI 49090'}
+2025-02-20 19:02:41,120 - DEBUG - Analysis result for URL https://beechesgolfclub.com: {'keywords': 'public golf course, banquet hall rental, south haven golf, event services michigan, tee time booking', 'business_name': 'Beeches Golf Club', 'products_services': 'golf courses, driving range, banquets, events, gift cards', 'target_audience': 'golf enthusiasts, business professionals, event planners', 'location': '68th Street South Haven MI 49090'}
+2025-02-20 19:02:41,120 - DEBUG - Processed record for URL beechesgolfclub.com in 2.69 seconds
+2025-02-20 19:02:41,120 - DEBUG - Processing URL: cheapsoberlivinginsurance.com with model: qwen2.5:14b
+2025-02-20 19:02:41,121 - DEBUG - Using cached data for URL https://cheapsoberlivinginsurance.com
+2025-02-20 19:02:41,121 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:41,121 - DEBUG - Starting Ollama analysis for URL: https://cheapsoberlivinginsurance.com
+2025-02-20 19:02:41,121 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cheapsoberlivinginsurance.com
+Content to analyze:
+Home Insurance Coverage Video Resources FAQ Contact Select Page Sober Living Home Insurance Affordable and Comprehensive Insurance coverage tailored for owners of sober living homes Quote now ; Sober Living Operators have their own unique exposures when it comes to insurance. Most incorrectly believe that standard homeowner/landlord insurance policies will cover them and their business. They could not be more wrong! A sober living home is a business and needs proper insurance. Not only is there liability and property exposure but there is also professional liability, workers compensation, and sexual and physical harassment exposure.. add it all up and you have a need for a comprehensive commercial policy. The good news: You have come to the right place! Simply click on the Get Quote button and let our agents get you the right coverage at the right price! Quote now Commercial Liability Even though you may only have a few tenants, there are always uncertainties. We help provide the best risk management advice to protect your business and assets. Liability could protect you from the acts of your tenants as well as guests. Property Coverage Whether you own or rent the home, there is a good chance you need to insure it. Even more importantly is that coverage may also include loss of rents in the event of a covered claim. That coverage alone could save you from financial ruin! Business Auto – Non-Owned Auto If you have a business vehicle then we can help, however, if you have a house manager use their own car and do a few errands for the home you may have an exposure. We can add hired/non owner coverage to protect the operator in the event an employee drives their own car in the name of the business. Professional Liability – Errors and Omissions Perhaps the most misunderstood and under-utilized coverage for a Sober Living Home is professional liability. It is also known as Errors and Omission (E&O). Most of your tenants have come to you because they have relied on your advice or expertise. The reliance on your expertise creates possible exposure that only this coverage can provide. Often, we are told that there is simply a standard tenant landlord relationship. But that does not hold up when there are morning rituals, counseling, trips to 12 step and more. To protect your business and income, you need to have professional liability Sexual & Physical Harassment Sober living homes are not immune to possible tenant harassment by managers or other tenants. There can lapses of judgment or sobriety that can result in a lawsuit being slapped on the owner or operator regardless of how well they know the manager and tenants. Coverage from some carriers is mandatory in some states due to the litigious exposure. Cyber Insurance Cyber Insurance plays an important role in a sober living environment. A data breach with HIPPA law information could require out of pocket expenses as well as payments to third parties who may sue for damages. We can review and determine what your individual needs are. Workers Compensation Workers compensation for sober living homes covers employees inured on the job or for work related illnesses. Additional exposure for those that have vehicles whether owned by the company or individually by the employee. Umbrella – Excess Umbrella insurance provides additional layers of protection to your existing insurance policies. Some third parties will require higher limits than standard policies provide.. We’ll help find the right solution to cover all your business needs Quote now Coping with Challenges in Sober Living Operations: Top Ten Concerns and Solutions Feb 20, 2024Operating a sober living home involves navigating a complex web of legal, ethical, and medical responsibilities. Insurance is a critical component in ensuring that you are protected against the array of risks associated with this type of care facility. Below are some... read more Essential Checklist to Safeguard Your Sober Living Home from Liability Claims F
+
+2025-02-20 19:02:41,121 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:41,518 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:44,438 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:44,439 - DEBUG - Full response from Ollama: {
+    "keywords": "sober living insurance, affordable sober homes insurance, comprehensive commercial policy, professional liability coverage, workers compensation",
+    "business_name": "Cheap Sober Living Insurance",
+    "products_services": "Homeowner/Landlord Insurance, Commercial Liability, Property Coverage, Business Auto, Professional Liability, Sexual and Physical Harassment Coverage, Cyber Insurance, Workers Compensation, Umbrella/Excess Insurance",
+    "target_audience": "Sober living home operators, owners of sober homes, facility managers, counselors, housing providers, business owners",
+    "location": "Not specified"
+}
+2025-02-20 19:02:44,439 - DEBUG - Parsed analysis JSON: {'keywords': 'sober living insurance, affordable sober homes insurance, comprehensive commercial policy, professional liability coverage, workers compensation', 'business_name': 'Cheap Sober Living Insurance', 'products_services': 'Homeowner/Landlord Insurance, Commercial Liability, Property Coverage, Business Auto, Professional Liability, Sexual and Physical Harassment Coverage, Cyber Insurance, Workers Compensation, Umbrella/Excess Insurance', 'target_audience': 'Sober living home operators, owners of sober homes, facility managers, counselors, housing providers, business owners', 'location': 'Not specified'}
+2025-02-20 19:02:44,439 - DEBUG - Analysis result for URL https://cheapsoberlivinginsurance.com: {'keywords': 'sober living insurance, affordable sober homes insurance, comprehensive commercial policy, professional liability coverage, workers compensation', 'business_name': 'Cheap Sober Living Insurance', 'products_services': 'Homeowner/Landlord Insurance, Commercial Liability, Property Coverage, Business Auto, Professional Liability, Sexual and Physical Harassment Coverage, Cyber Insurance, Workers Compensation, Umbrella/Excess Insurance', 'target_audience': 'Sober living home operators, owners of sober homes, facility managers, counselors, housing providers, business owners', 'location': 'Not specified'}
+2025-02-20 19:02:44,439 - DEBUG - Processed record for URL cheapsoberlivinginsurance.com in 3.32 seconds
+2025-02-20 19:02:44,439 - DEBUG - Processing URL: wholemars.net with model: qwen2.5:14b
+2025-02-20 19:02:44,439 - DEBUG - Using cached data for URL https://wholemars.net
+2025-02-20 19:02:44,439 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:44,439 - DEBUG - Starting Ollama analysis for URL: https://wholemars.net
+2025-02-20 19:02:44,439 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://wholemars.net
+Content to analyze:
+Skip to content Menu About Become a Patron Email Updates The Story Whole Mars Catalog Access to tools for the new world Written by Steve on February 13, 2024February 13, 2024 Conroy’s Flowers Torrance is the best place to get Valentine’s Day Flowers for someone you love! Can you feel it? Love is in the air. It’s Valentine’s Day this week and if you’re in the South Bay region of Los Angeles County (where I grew up), I want to remind you that Conroy’s Flowers Torrance is the official flower shop of Whole Mars! They’re offering 20% off your order when you […] Written by Steve on December 10, 2023December 10, 2023 “No Rushing While Brushing” Books Make a Great Holiday Gift or Stocking Stuffer for Kids As we enter the holiday season, I wanted to recommend a great series of children’s books: No Rushing While Brushing. These books were written by my aunt, Dr. Humairah Shah, a professional dentist, and recently won 2022 Children’s Book of the Year, as you can see on the cover. They’re great for teaching young kids […] Written by Steve on November 6, 2023 Subscribe to The EV Universe, My Favorite EV Newsletter These days it seems like everyone is talking about The EV Universe. Every week people are messaging me about stories they saw in Jaan’s regular newsletter, and the number of subscribers keeps hitting new all time highs every week. This should be no surprise — The EV Universe is, in my opinion, the best EV […] Written by Steve on September 5, 2023 Get in Shape with Aerobis Fitness Equipment Use the code %newyou% at checkout to save 10% off your order at Aerobis.com We talk a lot about innovation and sustainable tech here at Whole Mars, but today I want to take a slight detour and focus on your personal well-being — the sustainability of your body, if you will. The future definitely looks […] Written by Steve on July 14, 2023July 14, 2023 Go Subscribe to The EV Universe Newsletter Now These are incredibly exciting times, as the EV transition accelerates across the globe. If you’re like me, you can’t get enough Tesla & EV news but find that there’s so much constant buzz that it’s easy to miss the stories that really matter. That’s why I’ve been telling everyone to go sign up for my […] Written by Steve on May 29, 2023 Big thanks to Jowua, maker of awesome Tesla accessories Get 5% off when you use this link or the code “WHOLEMARS” at checkout. I want to give a big thank you from the bottom of my heart to Jowua (pronounced Joe-uh) for sponsoring Whole Mars this week. Not only does Jowua make a ton of amazing Tesla accessories, they’re also a great member of […] Written by Steve on March 5, 2023 Sponsored by MathAndScience.com Hey there Whole Martians! Our good friend Jason Gibson from MathAndScience.com has sponsored our blog this week, and we couldn’t be more excited! Now, you may be wondering what a math and science guy like Jason has to do with our beloved Tesla, but let me tell you, he’s a diehard fan just like the […] Written by Steve on February 26, 2023 Sponsored by MagBak Huge shoutout to MagBak for sponsoring Whole Mars web & twitter feed this week! Use the code WHOLEMARS and get 15% off your order. This is a really cool product that’s right up my ally: the MagBak Magsafe Wireless Charger for Tesla Model 3 and Model Y. Long before I’d ever heard of Tesla, I’ve […] Written by Steve on February 19, 2023February 24, 2023 Sponsored by ScentWedge This week, Whole Mars is sponsored by ScentWedge. This is a product I love designed specifically for Tesla drivers, so I’m really excited to share it with everyone this week. When you have a Tesla with a sleek minimalist interior, you don’t want to ruin it with one of those ugly hanging air fresheners you […] Written by Steve on October 12, 2022 Thank you to everyone who has donated I just wanted to say thank you again to everyone who has supported Whole Mars financially by donating to the legal fund, super following, Patreon, or whatever. One would think that nearly 4 years after Aaron J
+
+2025-02-20 19:02:44,440 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:44,970 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:46,841 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:46,842 - DEBUG - Full response from Ollama: {
+    "keywords": "sustainable tech, personal well-being, children's books, electric vehicles, tesla accessories",
+    "business_name": "Whole Mars",
+    "products_services": "blogging, newsletter subscriptions, product sponsorships, content creation",
+    "target_audience": "tech enthusiasts, EV owners, parents, fitness enthusiasts",
+    "location": "online"
+}
+2025-02-20 19:02:46,842 - DEBUG - Parsed analysis JSON: {'keywords': "sustainable tech, personal well-being, children's books, electric vehicles, tesla accessories", 'business_name': 'Whole Mars', 'products_services': 'blogging, newsletter subscriptions, product sponsorships, content creation', 'target_audience': 'tech enthusiasts, EV owners, parents, fitness enthusiasts', 'location': 'online'}
+2025-02-20 19:02:46,842 - DEBUG - Analysis result for URL https://wholemars.net: {'keywords': "sustainable tech, personal well-being, children's books, electric vehicles, tesla accessories", 'business_name': 'Whole Mars', 'products_services': 'blogging, newsletter subscriptions, product sponsorships, content creation', 'target_audience': 'tech enthusiasts, EV owners, parents, fitness enthusiasts', 'location': 'online'}
+2025-02-20 19:02:46,842 - DEBUG - Processed record for URL wholemars.net in 2.40 seconds
+2025-02-20 19:02:46,842 - DEBUG - Processing URL: fivestarmobiledetailing.com with model: qwen2.5:14b
+2025-02-20 19:02:46,842 - DEBUG - Using cached data for URL https://fivestarmobiledetailing.com
+2025-02-20 19:02:46,843 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:46,843 - DEBUG - Starting Ollama analysis for URL: https://fivestarmobiledetailing.com
+2025-02-20 19:02:46,843 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://fivestarmobiledetailing.com
+Content to analyze:
+HomeDetailing ServicesBasic DetailPremium DetailDeluxe DetailCeramic CoatingPaint CorrectionWraps & DecalsEngine CleaningHeadlight RestorationClaybar & WaxPet Hair RemovalPaint Protection FilmWindow TintOur WorkService AreaDenton Mobile Detailing txCorinth Mobile Detailing txLake Dallas Mobile Detailing txKrum Mobile Detailing txHighland Village Mobile Detailing txLantana Mobile Detailing txLittle Elm Mobile Detailing txFlower Mound Mobile Detailing txLewisville Mobile Detailing txArgyle Mobile Detailing txNorthlake Mobile Detailing txRoanoke Mobile Detailing TXContact UsHomeDetailing ServicesBasic DetailPremium DetailDeluxe DetailCeramic CoatingPaint CorrectionWraps & DecalsEngine CleaningHeadlight RestorationClaybar & WaxPet Hair RemovalPaint Protection FilmWindow TintOur WorkService AreaDenton Mobile Detailing txCorinth Mobile Detailing txLake Dallas Mobile Detailing txKrum Mobile Detailing txHighland Village Mobile Detailing txLantana Mobile Detailing txLittle Elm Mobile Detailing txFlower Mound Mobile Detailing txLewisville Mobile Detailing txArgyle Mobile Detailing txNorthlake Mobile Detailing txRoanoke Mobile Detailing TXContact UsGet a Quote!Five Star Mobile Detailing, Tint and Power WashingBecause Every Detail CountsFive Star Mobile Detailing And Tint is a veteran owned and operated business. We are committed to providing the highest quality auto services in the North DFW area. Now Hiring!DetailingWindow TintCeramic CoatingPaint Protection FilmPaint CorrectionWraps and DecalsRV Power WashingHome Power WashingSemi Truck Power WashingCheck Out Our Blog!Bring back that new car feeling.Get a Quote!Car Detailing Denton TxFive Star Mobile Detailing and Tint is a reputable and highly sought-after automotive care provider in Denton, TX. With their commitment to excellence, they have established themselves as the go-to destination for Denton car detailing. Specializing in car detailing Denton, TX, their team of skilled professionals ensures that every vehicle receives the utmost care and attention to detail.Whether you're in need of auto detailing in Denton or looking for mobile detailing services in Denton, TX, Five Star Mobile Detailing and Tint has you covered. Their comprehensive range of services caters to all your automotive needs. From interior cleaning and vacuuming to exterior polishing and waxing, they leave no stone unturned in their pursuit of perfection.When it comes to auto detailing Denton, TX, Five Star Mobile Detailing and Tint stands out for their meticulous approach. Their experienced technicians are equipped with the latest tools and techniques to deliver exceptional results. They understand that each vehicle is unique, and they tailor their services accordingly to ensure the best possible outcome.For those seeking the convenience of mobile detailing Denton, TX, Five Star Mobile Detailing and Tint brings their expertise right to your doorstep. Their mobilecar detailing Denton, TX, service is designed to save you time and effort. You no longer have to worry about driving to a facility or waiting in line. Instead, their team will come equipped with all the necessary supplies and equipment to transform your vehicle on-site.When it comes to auto detailing Denton, TX, Five Star Mobile Detailing and Tint stands out for their meticulous approach. Their experienced technicians are equipped with the latest tools and techniques to deliver exceptional results. They understand that each vehicle is unique, and they tailor their services accordingly to ensure the best possible outcome.For those seeking the convenience of mobile detailing Denton, TX, Five Star Mobile Detailing and Tint brings their expertise right to your doorstep. Their mobilecar detailing Denton, TX, service is designed to save you time and effort. You no longer have to worry about driving to a facility or waiting in line. Instead, their team will come equipped with all the necessary supplies and equipment to transform your vehicle on-site.Â©2023 www.fi
+
+2025-02-20 19:02:46,843 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:47,282 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:50,427 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:50,428 - DEBUG - Full response from Ollama: {
+    "keywords": "mobile car detailing denton tx,veteran owned auto services,dfw area mobile detailing,denton ceramic coating,car paint protection film",
+    "business_name": "Five Star Mobile Detailing and Tint",
+    "products_services": "Car Detailing,Denton TX,Ceramic Coating,Paint Protection Film,Paint Correction,Wraps Decals,Engine Cleaning,Headlight Restoration,Claybar Wax,Pet Hair Removal,Mobile Power Washing",
+    "target_audience": "Denton residents,auto enthusiasts,military veterans,business owners,vehicle collectors",
+    "location": "North DFW Area"
+}
+2025-02-20 19:02:50,428 - DEBUG - Parsed analysis JSON: {'keywords': 'mobile car detailing denton tx,veteran owned auto services,dfw area mobile detailing,denton ceramic coating,car paint protection film', 'business_name': 'Five Star Mobile Detailing and Tint', 'products_services': 'Car Detailing,Denton TX,Ceramic Coating,Paint Protection Film,Paint Correction,Wraps Decals,Engine Cleaning,Headlight Restoration,Claybar Wax,Pet Hair Removal,Mobile Power Washing', 'target_audience': 'Denton residents,auto enthusiasts,military veterans,business owners,vehicle collectors', 'location': 'North DFW Area'}
+2025-02-20 19:02:50,428 - DEBUG - Analysis result for URL https://fivestarmobiledetailing.com: {'keywords': 'mobile car detailing denton tx,veteran owned auto services,dfw area mobile detailing,denton ceramic coating,car paint protection film', 'business_name': 'Five Star Mobile Detailing and Tint', 'products_services': 'Car Detailing,Denton TX,Ceramic Coating,Paint Protection Film,Paint Correction,Wraps Decals,Engine Cleaning,Headlight Restoration,Claybar Wax,Pet Hair Removal,Mobile Power Washing', 'target_audience': 'Denton residents,auto enthusiasts,military veterans,business owners,vehicle collectors', 'location': 'North DFW Area'}
+2025-02-20 19:02:50,428 - DEBUG - Processed record for URL fivestarmobiledetailing.com in 3.59 seconds
+2025-02-20 19:02:50,428 - DEBUG - Processing URL: bansheehills.com with model: qwen2.5:14b
+2025-02-20 19:02:50,428 - DEBUG - Using cached data for URL https://bansheehills.com
+2025-02-20 19:02:50,429 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:50,429 - DEBUG - Starting Ollama analysis for URL: https://bansheehills.com
+2025-02-20 19:02:50,429 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://bansheehills.com
+Content to analyze:
+top of pageHomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items.Western Australia's Premiere Genre Film ProfessionalsBanshee Hillsemail: aaron.mccann@bansheehills.com phone: +61 411 251 426Learn Morebottom of page top of pageHomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items.Western Australia's Premiere Genre Film ProfessionalsBanshee Hillsemail: aaron.mccann@bansheehills.com phone: +61 411 251 426Learn Morebottom of page top of page HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items.Western Australia's Premiere Genre Film ProfessionalsBanshee Hillsemail: aaron.mccann@bansheehills.com phone: +61 411 251 426Learn More HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items.Western Australia's Premiere Genre Film ProfessionalsBanshee Hillsemail: aaron.mccann@bansheehills.com phone: +61 411 251 426Learn More HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Action)Big Red - Feature (Sci-Fi/Comedy)Spawn of Kaitlyn - TV (Horror/Comedy)Jonesy - Feature (Thriller/Comedy)A Cracked Christmas (Comedy)ContactMoreUse tab to navigate through the menu items. HomeAbout UsPressThe TeamIn DevelopmentThe Juggers Are Coming (Documentary)Inspector Vengence - Feature (Acti
+
+2025-02-20 19:02:50,429 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:51,037 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:53,156 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:53,156 - DEBUG - Full response from Ollama: {
+    "keywords": "western australia film production, genre film professionals, banshee hills films, independent horror comedy, sci-fi thriller feature",
+    "business_name": "Banshee Hills",
+    "products_services": "film production, documentary making, television series, feature films",
+    "target_audience": "film enthusiasts, genre movie lovers, independent filmmakers, western australia residents",
+    "location": "Western Australia"
+}
+2025-02-20 19:02:53,156 - DEBUG - Parsed analysis JSON: {'keywords': 'western australia film production, genre film professionals, banshee hills films, independent horror comedy, sci-fi thriller feature', 'business_name': 'Banshee Hills', 'products_services': 'film production, documentary making, television series, feature films', 'target_audience': 'film enthusiasts, genre movie lovers, independent filmmakers, western australia residents', 'location': 'Western Australia'}
+2025-02-20 19:02:53,156 - DEBUG - Analysis result for URL https://bansheehills.com: {'keywords': 'western australia film production, genre film professionals, banshee hills films, independent horror comedy, sci-fi thriller feature', 'business_name': 'Banshee Hills', 'products_services': 'film production, documentary making, television series, feature films', 'target_audience': 'film enthusiasts, genre movie lovers, independent filmmakers, western australia residents', 'location': 'Western Australia'}
+2025-02-20 19:02:53,156 - DEBUG - Processed record for URL bansheehills.com in 2.73 seconds
+2025-02-20 19:02:53,156 - DEBUG - Processing URL: aaronpsherry.com with model: qwen2.5:14b
+2025-02-20 19:02:53,157 - DEBUG - Using cached data for URL https://aaronpsherry.com
+2025-02-20 19:02:53,157 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:53,157 - DEBUG - Starting Ollama analysis for URL: https://aaronpsherry.com
+2025-02-20 19:02:53,157 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://aaronpsherry.com
+Content to analyze:
+0 Skip to Content Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Contact Aaron P. Sherry is an actor based in the Southeast US. Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry Resume Contact aaron.p.sherry@gmail.com 0 0 Skip to Content Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Aaron P. Sherry Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Bio + Resume Media Gallery Headshots Stills BTS + Promo Headshots Stills BTS + Promo Headshots Stills BTS + Promo Life Outside Contact Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Contact Open Menu Close Menu Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Aaron P. Sherry Aaron P. Sherry Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Bio + Resume Media Gallery Headshots Stills BTS + Promo Life Outside Bio + Resume Media Gallery Headshots Stills BTS + Promo Headshots Stills BTS + Promo Headshots Stills BTS + Promo Life Outside Contact Contact Open Menu Close Menu Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Contact Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Contact Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Contact Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Bio + Resume Media Folder: Gallery Back Headshots Stills BTS + Promo Life Outside Bio + Resume Bio + Resume Media Media Folder: Gallery Folder: Gallery Back Headshots Stills BTS + Promo Back Headshots Stills BTS + Promo Back Headshots Headshots Stills Stills BTS + Promo BTS + Promo Life Outside Life Outside Contact Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Aaron P. Sherry is an actor based in the Southeast US. Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry Resume Contact aaron.p.sherry@gmail.com Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry Resume Contact aaron.p.sherry@gmail.com Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry Resume Contact aaron.p.sherry@gmail.com Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry Resume Contact aaron.p.sherry@gmail.com Links Links Links Links Links Aaron P Sherry on:IMDBActors Access Aaron P Sherry on:IMDBActors Access Aaron P Sherry on:IMDBActors Access Aaron P Sherry on:IMDBActors Access Aaron P Sherry on: IMDB Actors Access Aaron P Sherry Resume Aaron P Sherry Resume Aaron P Sherry Resume Aaron P Sherry Resume Contact Contact Contact Contact Contact aaron.p.sherry@gmail.com aaron.p.sherry@gmail.com aaron.p.sherry@gmail.com aar
+
+2025-02-20 19:02:53,157 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:53,655 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:55,776 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:55,776 - DEBUG - Full response from Ollama: {
+    "keywords": "actor southeast us, professional headshots gallery, acting resume download, media portfolio actor, bts promo photos",
+    "business_name": "Aaron P. Sherry",
+    "products_services": "acting services, headshot photography, resume distribution, media portfolio management",
+    "target_audience": "casting directors, film producers, talent agents, production companies",
+    "location": "Southeast US"
+}
+2025-02-20 19:02:55,776 - DEBUG - Parsed analysis JSON: {'keywords': 'actor southeast us, professional headshots gallery, acting resume download, media portfolio actor, bts promo photos', 'business_name': 'Aaron P. Sherry', 'products_services': 'acting services, headshot photography, resume distribution, media portfolio management', 'target_audience': 'casting directors, film producers, talent agents, production companies', 'location': 'Southeast US'}
+2025-02-20 19:02:55,776 - DEBUG - Analysis result for URL https://aaronpsherry.com: {'keywords': 'actor southeast us, professional headshots gallery, acting resume download, media portfolio actor, bts promo photos', 'business_name': 'Aaron P. Sherry', 'products_services': 'acting services, headshot photography, resume distribution, media portfolio management', 'target_audience': 'casting directors, film producers, talent agents, production companies', 'location': 'Southeast US'}
+2025-02-20 19:02:55,777 - DEBUG - Processed record for URL aaronpsherry.com in 2.62 seconds
+2025-02-20 19:02:55,777 - DEBUG - Processing URL: kyha.com with model: qwen2.5:14b
+2025-02-20 19:02:55,777 - DEBUG - Using cached data for URL https://kyha.com
+2025-02-20 19:02:55,777 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:55,777 - DEBUG - Starting Ollama analysis for URL: https://kyha.com
+2025-02-20 19:02:55,777 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://kyha.com
+Content to analyze:
+Member Portal Menu Menu Member Portal About Kentucky Hospital Association Board of Trustees Committees & Forums Other KHA Boards & Committees Awards Publications Hospital Directory KHA Staff Search Sponsors Other Health Care Entities News Archive Advocacy Kentucky Hospital Impact Map 2025 Day at the Legislature KHAPAC 2025 Legislative Priorities VoterVoice 340B Drug Discount Program Certificate of Need Workforce Challenges State & Federal Issues Financial Policy Focus Areas Medicare Advantage Emergency Preparedness KY Trauma System Sexual Assault Response Small & Rural Hospitals What is a Swing Bed? Swing Bed Directory Data Center Data Tools Data Reports Quality & Safety Utilization Workforce Transparency Workforce Hospital Talent Pipeline Management Workforce Project Asset List Data Reports & Resources Careers Health Care Student Scholarships Partners Workplace Violence Prevention Workforce Newsletter Additional Workforce Resources Safety & Quality KHA Quality Website Kentucky Institute for Patient Safety and Quality (KIPSQ) Kentucky Statewide Opioid Stewardship (KYSOS) Nurse Staffing Committee Consortium Events and Education Event Calendar Annual Convention Leadership Development Workshop Quality Conference Mid-South Critical Access & Rural Hospital Conference Webinars & Town Halls Sponsorship Opportunities KHA Solutions Group Affinity Partner Program Employee Benefits Property & Casualty Professional and General Liability Claims Management Kentucky Hospital Insurance Company About Kentucky Hospital Association Board of Trustees Committees & Forums Other KHA Boards & Committees Awards Publications Hospital Directory KHA Staff Search Sponsors Other Health Care Entities News Archive Advocacy Kentucky Hospital Impact Map 2025 Day at the Legislature KHAPAC 2025 Legislative Priorities VoterVoice 340B Drug Discount Program Certificate of Need Workforce Challenges State & Federal Issues Financial Policy Focus Areas Medicare Advantage Emergency Preparedness KY Trauma System Sexual Assault Response Small & Rural Hospitals What is a Swing Bed? Swing Bed Directory Data Center Data Tools Data Reports Quality & Safety Utilization Workforce Transparency Workforce Hospital Talent Pipeline Management Workforce Project Asset List Data Reports & Resources Careers Health Care Student Scholarships Partners Workplace Violence Prevention Workforce Newsletter Additional Workforce Resources Safety & Quality KHA Quality Website Kentucky Institute for Patient Safety and Quality (KIPSQ) Kentucky Statewide Opioid Stewardship (KYSOS) Nurse Staffing Committee Consortium Events and Education Event Calendar Annual Convention Leadership Development Workshop Quality Conference Mid-South Critical Access & Rural Hospital Conference Webinars & Town Halls Sponsorship Opportunities KHA Solutions Group Affinity Partner Program Employee Benefits Property & Casualty Professional and General Liability Claims Management Kentucky Hospital Insurance Company Helping Hospitals Serve Their Patients and Communities Kentucky hospitals provide countless services in their communities, from high quality patient care to employment opportunities to significant economic contributions. KHA is here to support hospitals and help them be their best! Learn More KHAPAC Careers at Kentucky Hospitals Medicare Advantage Resources KHA Quality Conference March 17-19, 2025 Marriott Lexington Griffin Gate Golf Resort & Spa Don’t miss your chance to draw inspiration and insights from peers across the Commonwealth whose commitment to quality is as passionate as your own! Learn More Find a Hospital Search by County, Zip Code, Hospital Type, and Services Offered Search Kentucky Hospitals News & Announcements News February 12, 2025 Kentucky Hospital Association Condemns Scurrilous Allegations Regarding Abortion and Child Mutilation KHA strongly condemns allegations that any Kentucky hospital uses savings from the 340B drug pricing program to engage in behavior that would be illegal under Kentucky l
+
+2025-02-20 19:02:55,778 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:56,151 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:02:58,420 - DEBUG - Ollama response status code: 200
+2025-02-20 19:02:58,421 - DEBUG - Full response from Ollama: {
+    "keywords": "Kentucky healthcare services, rural hospitals support, patient safety initiatives, workforce development programs, swing bed directory",
+    "business_name": "Kentucky Hospital Association",
+    "products_services": "hospital advocacy, data tools, quality improvement, education events, workforce management",
+    "target_audience": "hospitals in Kentucky, healthcare professionals, rural hospital staff, patient safety advocates, health policy makers",
+    "location": "Kentucky"
+}
+2025-02-20 19:02:58,421 - DEBUG - Parsed analysis JSON: {'keywords': 'Kentucky healthcare services, rural hospitals support, patient safety initiatives, workforce development programs, swing bed directory', 'business_name': 'Kentucky Hospital Association', 'products_services': 'hospital advocacy, data tools, quality improvement, education events, workforce management', 'target_audience': 'hospitals in Kentucky, healthcare professionals, rural hospital staff, patient safety advocates, health policy makers', 'location': 'Kentucky'}
+2025-02-20 19:02:58,421 - DEBUG - Analysis result for URL https://kyha.com: {'keywords': 'Kentucky healthcare services, rural hospitals support, patient safety initiatives, workforce development programs, swing bed directory', 'business_name': 'Kentucky Hospital Association', 'products_services': 'hospital advocacy, data tools, quality improvement, education events, workforce management', 'target_audience': 'hospitals in Kentucky, healthcare professionals, rural hospital staff, patient safety advocates, health policy makers', 'location': 'Kentucky'}
+2025-02-20 19:02:58,421 - DEBUG - Processed record for URL kyha.com in 2.64 seconds
+2025-02-20 19:02:58,421 - DEBUG - Processing URL: raceweather.net with model: qwen2.5:14b
+2025-02-20 19:02:58,421 - DEBUG - Using cached data for URL https://raceweather.net
+2025-02-20 19:02:58,421 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: qwen2.5:14b
+2025-02-20 19:02:58,421 - DEBUG - Starting Ollama analysis for URL: https://raceweather.net
+2025-02-20 19:02:58,421 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://raceweather.net
+Content to analyze:
+0 Skip to Content NASCAR About Us Insights Contact Us Open Menu Close Menu NASCAR About Us Insights Contact Us Open Menu Close Menu NASCAR About Us Insights Contact Us Wednesday 2/12 Mostly Sunny High: 84°F - Low: N/A°F Wind: S 5-15 mph Thursday 2/13 Partly Cloudy w/ PM Showers & T-Storms High: 86°F - Low: 69°F Wind: SW 5-15 mph Friday 2/14 Foggy & Mostly Cloudy w/ A Scattered Shower High: 67°F - Low: 60°F Wind: NE 10-25 mph Saturday 2/15 Partly Cloudy to Partly Sunny High: 72°F - Low: 64°F Wind: SE 5-15 mph Sunday 2/16 Overcast With Showers & Isolated T-Storms High: 80°F - Low: 68°F Wind: SW 15-25 mph Daytona International Speedway -NASCAR RaceWeather Forecast Daytona International Speedway -NASCAR Weekend Schedule Wednesday 2/1210:05 AM - NASCAR Cup Series - Practice 18:15 PM - NASCAR Cup Series - QualifyingThursday 2/134:05 PM - ARCA Series - Practice5:05 PM - NASCAR Truck Series - Practice7:00 PM - NASCAR Cup Series - Duel 18:45 PM - NASCAR Cup Series - Duel 2Friday 2/141:30 PM - ARCA Series - Qualifying3:00 PM - NASCAR Truck Series - Qualifying4:35 PM - NASCAR Xfinity Series - Practice5:35 PM - NASCAR Cup Series - Practice 27:30 PM - NASCAR Truck Series - Fresh From Florida 250Sat 2/1510:00 AM - NASCAR Xfinity Series - Qualifying12:00 PM - ARCA Series - Daytona ARCA 2003:05 PM - NASCAR Cup Series - Practice 35:00 PM - NASCAR Xfinity Series - United Rentals 300Sun 2/162:30 PM - NASCAR Cup Series - Daytona 500All Times Are Eastern Time Daytona International Speedway -NASCAR Weather Forecast Discussion Football season is over, now it’s time for NASCAR. On Wednesday, a strong upper-level trough is forecasted to sit over the Northern Great Plains. A strong jet streak is also forecasted to extend from the Ohio River Valley up into the New England region. Through Wednesday into Thursday, a surface low-pressure system is forecasted to move from Texas Northeastward through the Ohio River Valley and up into New England. This low-pressure system will extend a cold front into the Southeastern United States. There’s good model agreement that the cold front should move through the Daytona Region around midnight Thursday into Friday. Ahead of this front on Thursday afternoon, models also agree on scattered thunderstorms initiating prior to the front moving through. Timing could vary, but as of right now expect storms to be in the area from 4PM to 7 PM on Thursday. After these storms move through, the convection that was initiated by the cold front should die out before reaching Daytona. After the cold front moves through, Some showers could linger around the region through the day. Expect skies to calm into Saturday.As we move into the weekend, a second upper-level trough is forecasted to move through the US. The trough is forecasted to deepen as it moves Eastward, and by Saturday afternoon lead to a surface low-pressure system forming over Mississippi. As we work into Saturday night into Sunday, this surface low-pressure system is forecasted to move Northeastward. This low-pressure system is forecasted to be much stronger than the previous one and should be further South. This will lead to a stronger trailing cold front impacting the Daytona Region sometime on Sunday. Again, it’s too far out to give any accurate timing on the frontal passage, but current models have it passing the Daytona Region sometime between Noon & 6 PM, BUT EXPECT THIS TO CHANGE AS WE GET CLOSER TO THE 500.We will continue to update the forecast throughout the week!Updated February 12, 2025, 10:50 AM EDT AdvertisingSpace Available Daytona Beach, Florida WEATHER AdvertisingSpace Available More about Daytona International Speedway The history of Daytona International Speedway began in 1953 when Bill France Sr. realized the days of racing on the beach were numbered due to spreading land usage of a rapidly growing population and huge race crowds. France put his plans for the future of racing in Daytona Beach, Florida in motion on April 4, 1953 with a proposal to const
+
+2025-02-20 19:02:58,422 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-20 19:02:58,958 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-20 19:03:01,161 - DEBUG - Ollama response status code: 200
+2025-02-20 19:03:01,161 - DEBUG - Full response from Ollama: {
+    "keywords": "NASCAR weather forecast, Daytona race weather, NASCAR weekend schedule, Daytona International Speedway events, NASCAR track conditions",
+    "business_name": "RaceWeather.net",
+    "products_services": "race weather forecasts, event schedules, weather updates for NASCAR races",
+    "target_audience": "NASCAR fans, racing enthusiasts, event planners, drivers, spectators",
+    "location": "Daytona Beach, Florida"
+}
+2025-02-20 19:03:01,161 - DEBUG - Parsed analysis JSON: {'keywords': 'NASCAR weather forecast, Daytona race weather, NASCAR weekend schedule, Daytona International Speedway events, NASCAR track conditions', 'business_name': 'RaceWeather.net', 'products_services': 'race weather forecasts, event schedules, weather updates for NASCAR races', 'target_audience': 'NASCAR fans, racing enthusiasts, event planners, drivers, spectators', 'location': 'Daytona Beach, Florida'}
+2025-02-20 19:03:01,161 - DEBUG - Analysis result for URL https://raceweather.net: {'keywords': 'NASCAR weather forecast, Daytona race weather, NASCAR weekend schedule, Daytona International Speedway events, NASCAR track conditions', 'business_name': 'RaceWeather.net', 'products_services': 'race weather forecasts, event schedules, weather updates for NASCAR races', 'target_audience': 'NASCAR fans, racing enthusiasts, event planners, drivers, spectators', 'location': 'Daytona Beach, Florida'}
+2025-02-20 19:03:01,161 - DEBUG - Processed record for URL raceweather.net in 2.74 seconds
+2025-02-20 19:03:01,173 - INFO - Function process_basic_analysis took 53.49 seconds
+2025-02-20 19:03:22,226 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:22,227 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:22,231 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:22,231 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:30,957 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:30,958 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:30,963 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:30,963 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:35,974 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:35,974 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:42,124 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:42,124 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:47,135 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:47,136 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:52,147 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:52,148 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:03:57,178 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:03:57,179 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:04:02,195 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:04:02,195 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:04:07,207 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:04:07,207 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:04:13,321 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:04:13,321 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:04:31,136 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-20 19:04:31,137 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-20 19:04:31,141 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-20 19:04:31,141 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-20 19:05:01,489 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:01,489 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:01,496 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:01,496 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:05,121 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:05,122 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:06,055 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-20 19:05:06,055 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-20 19:05:06,509 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:06,510 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:11,526 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:11,526 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:16,543 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:16,543 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:22,611 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:22,611 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:27,623 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:27,623 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:32,635 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:32,635 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:37,649 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:37,649 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:42,662 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:42,662 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:47,675 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:47,675 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:53,786 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:53,786 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:05:58,797 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:05:58,797 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:06:03,809 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:06:03,810 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:06:08,822 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:06:08,822 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-20 19:06:13,834 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-20 19:06:13,834 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>

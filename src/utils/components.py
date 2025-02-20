@@ -36,7 +36,7 @@ class Components:
             if sanitized_df[column].dtype == 'object':
                 sanitized_df[column] = sanitized_df[column].astype(str)
         sanitized_df = sanitized_df.fillna(' ')
-
+        sanitized_df.replace('nan', ' ', inplace=True)
         # Replace numeric zeros with an empty string.
         for col in sanitized_df.select_dtypes(include=['number']).columns:
             sanitized_df[col] = sanitized_df[col].replace(0, '')

@@ -47,6 +47,7 @@ start_server.sh
 .ipynb_checkpoints
 logs/*
 logs
+logs/debug.log
 
 .python-version
 config/exculed_domain_list.txt

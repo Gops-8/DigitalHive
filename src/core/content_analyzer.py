@@ -38,7 +38,7 @@ class ContentAnalyzer:
             'phones': phones
         }
 
-    def analyze_with_ollama(self, content: str, url: str, model=None) -> Dict:
+    def analyze_with_ollama(self, content: str, url: str, model=None) -> dict:
         try:
             logging.debug("Starting Ollama analysis for URL: %s", url)
             formatted_prompt = ANALYSIS_PROMPT.format(
@@ -47,11 +47,8 @@ class ContentAnalyzer:
             )
             logging.debug("Formatted prompt: %s", formatted_prompt)
             model_to_infer = model or self.model
-            if model_to_infer in ["deepseek-r1:32b", "llama3.3:70b"]:
-                timeout=600
-            else:
-                timeout=120
-                
+            timeout = 300 if model_to_infer in ["deepseek-r1:32b", "llama3.3:70b"] else 120
+
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
@@ -60,12 +57,11 @@ class ContentAnalyzer:
                     "temperature": OLLAMA_CONFIG['TEMPERATURE'],
                     "format": "json"
                 },
-                  timeout=timeout  # Add a timeout here
+                timeout=timeout
             )
             logging.debug("Ollama response status code: %s", response.status_code)
             response.raise_for_status()
-            
-            # Parse Ollama response
+
             full_response = ""
             for line in response.iter_lines():
                 if line:
@@ -74,7 +70,6 @@ class ContentAnalyzer:
                         full_response += data['response']
             logging.debug("Full response from Ollama: %s", full_response)
             
-            # Extract JSON from response
             json_start = full_response.find('{')
             json_end = full_response.rfind('}') + 1
             if json_start >= 0 and json_end > json_start:
@@ -83,18 +78,26 @@ class ContentAnalyzer:
             else:
                 raise ValueError("No valid JSON found in response")
 
-            # Validate keys in analysis
-            required_fields = ['keywords', 'headers']
+            # Validate required keys; if missing, assign defaults
+            required_fields = ['keywords', 'business_name', 'products_services', 'target_audience', 'location']
             for field in required_fields:
                 if field not in analysis:
-                    logging.warning("Field '%s' not found in analysis. Setting default empty list.", field)
-                    analysis[field] = []  # Default to empty list
+                    logging.warning("Field '%s' not found in analysis. Setting default empty value.", field)
+                    analysis[field] = ""
 
             return analysis
 
         except Exception as e:
             logging.error("Error in Ollama analysis for URL %s: %s", url, str(e))
-            raise Exception(f"Error in Ollama analysis: {str(e)}")
+            # Fallback: Return a default JSON so processing can continue
+            return {
+                "keywords": "",
+                "business_name": "",
+                "products_services": "",
+                "target_audience": "",
+                "location": "United States",
+                "error": f"Fallback triggered: {str(e)}"
+            }
 
     def process_scraped_data(self, input_json: str, output_file: str = None) -> Dict:
         """Process scraped data from JSON file"""

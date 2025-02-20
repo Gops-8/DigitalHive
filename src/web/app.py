@@ -53,7 +53,7 @@ def fix_keyword_spacing(keyword: str) -> str:
     # Replace underscores with spaces
     keyword = keyword.replace('_', ' ')
     # Insert a space before capital letters (if preceded by a lowercase letter)
-    keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
+    # keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
     return keyword.strip()
 
 # --------------------- WebApp Class (UI) ---------------------

@@ -11,6 +11,7 @@ import time
 import io
 from urllib.parse import urlparse
 import logging
+import re
 
 def timer(func):
     """Decorator to measure the runtime of functions."""
@@ -24,9 +25,17 @@ def timer(func):
         return result
     return wrapper
 
+# Ensure the logs directory exists
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+
 logging.basicConfig(
     level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("logs/debug.log"),
+        logging.StreamHandler()
+    ]
 )
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -38,6 +47,14 @@ from src.utils.components import Components
 from src.utils.auth import AuthManager
 from src.core.advanced_analytics import AdvancedAnalytics
 from src.utils.cache import AnalysisCache
+
+# Helper function to fix keyword spacing
+def fix_keyword_spacing(keyword: str) -> str:
+    # Replace underscores with spaces
+    keyword = keyword.replace('_', ' ')
+    # Insert a space before capital letters (if preceded by a lowercase letter)
+    keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
+    return keyword.strip()
 
 # --------------------- WebApp Class (UI) ---------------------
 class WebApp:
@@ -99,13 +116,10 @@ class WebApp:
             unsafe_allow_html=True
         )
 
-
-          
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
         else:
             self.show_main_page()
-            # The download button logic has been removed.
 
     def show_main_page(self):
         col1, col2 = st.columns([2, 7])
@@ -131,36 +145,30 @@ class WebApp:
           · **Target Audience (3)**  
 
           · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).  
-          · **Output Format:**  XLSX/CSV 
+          · **Output Format:** XLSX/CSV 
         """
         )
-        # Use two columns: left (40%) and right (60%)
-        col1, col2 = st.columns([4, 2])  # Adjust the ratio as needed
-
+        # Two columns: left for file upload & model select, right for advanced options
+        col1, col2 = st.columns([4, 2])
         with col1:
             st.subheader("1. Upload File")
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
-
             st.subheader("2. Select Model")
             st.session_state.selected_model = st.selectbox(
                 "Select Model", 
-                ["llama3.1:8b","llama3.3:70b", "qwen2.5:14b","qwen2.5:32b","qwen2.5:72b" ,"deepseek-r1:32b",  "olmo2:13b"]
+                ["llama3.1:8b", "llama3.3:70b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5:72b", "deepseek-r1:32b", "olmo2:13b"]
             )
-
         with col2:
             st.subheader("3. Advanced Options")
             max_workers_options = [8, 16, 24, 28]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
-
-            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72 , 80 ,84,96 ,112 ,120,140]
+            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72, 80, 84, 96, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
-        # Place the action button below both columns
+            
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
             self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
         st.markdown('</div>', unsafe_allow_html=True)
-
-
 
     def competitive_insights(self):
         st.markdown(
@@ -176,9 +184,7 @@ class WebApp:
           · **Output Format:** Displayed on screen
         """
         )
-
-
-        # --- Row 1: Search Method, API Key, and Submit Button ---
+        # Row 1: Search Method, API Key, Submit Button
         row1 = st.columns([1.3, 2, 1])
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
@@ -197,22 +203,18 @@ class WebApp:
                 st.session_state.serper_api = api_key_input
                 st.success("API Key stored for this session.")
             st.markdown('</div>', unsafe_allow_html=True)
-
-        # --- Row 2: Left (File & Basic Options), Right (Advanced Options) ---
-        row2 = st.columns([2, 2])  # Adjust ratios as needed (e.g., [1.5, 2], etc.)
+        # Row 2: Two columns for file upload & basic options (left) and advanced options (right)
+        row2 = st.columns([2, 2])
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
-
         with row2[1]:
-
             max_workers_options = [8, 16, 24, 28]
-            comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")            
-            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72 , 80 ,84,96 ,112 ,120,140]
+            comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
+            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72, 80, 84, 96, 112, 120, 140]
             comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
-
-        # --- Action Button ---
+            
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
             self.process_advanced_analysis(
@@ -225,8 +227,6 @@ class WebApp:
                 comp_selected_max_workers
             )
         st.markdown('</div>', unsafe_allow_html=True)
-
-
 
     @timer
     def process_basic_analysis(self, uploaded_file, batch_size, max_workers):
@@ -252,22 +252,30 @@ class WebApp:
         status_text = st.empty()
         timer_text = st.empty()
         status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
+        
         selected_model = st.session_state.selected_model
-        for i in range(0, len(rows), batch_size):
-            batch_start = time.perf_counter()
-            batch_rows = rows[i:i+batch_size]
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                batch_results = list(executor.map(lambda row: self.process_url(row["Domain"], selected_model), batch_rows))
-            results.extend(batch_results)
-            progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
-            status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-            batch_end = time.perf_counter()
-            elapsed = batch_end - batch_start
-            timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
-            interim_df = pd.DataFrame(results)
-            if not interim_df.empty:
-                self.components.display_results(interim_df)
-        # Store results in session state for display
+        
+        with st.spinner("Processing basic analysis..."):
+            for i in range(0, len(rows), batch_size):
+                batch_start = time.perf_counter()
+                batch_rows = rows[i:i+batch_size]
+                batch_results = []
+                for row in batch_rows:
+                    rec_start = time.perf_counter()
+                    res = self.process_url(row["Domain"], selected_model)
+                    rec_elapsed = time.perf_counter() - rec_start
+                    logging.debug("Processed record for URL %s in %.2f seconds", row["Domain"], rec_elapsed)
+                    batch_results.append(res)
+                results.extend(batch_results)
+                batch_end = time.perf_counter()
+                elapsed = batch_end - batch_start
+                progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
+                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
+                timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
+                interim_df = pd.DataFrame(results)
+                if not interim_df.empty:
+                    self.components.display_results(interim_df)
+        
         st.session_state.results = df_input.assign(**{
             col: [result.get(col, "") for result in results]
             for col in ["Business Name", "Business Location",
@@ -310,22 +318,29 @@ class WebApp:
         progress_bar = st.progress(0.0)
         status_text = st.empty()
         status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
-        for i in range(0, len(df), batch_size):
-            batch_start = time.perf_counter()
-            batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                batch_results = list(executor.map(
-                    lambda row: self.process_row(row, search_method, api_key, gmb_check, no_of_pages),
-                    batch_rows
-                ))
-            results.extend(batch_results)
-            progress_bar.progress(min((i + batch_size) / len(df), 1.0))
-            status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-            interim_df = pd.DataFrame(results)
-            if not interim_df.empty:
-                self.components.display_results(interim_df)
+        
+        with st.spinner("Processing advanced analysis..."):
+            for i in range(0, len(df), batch_size):
+                batch_start = time.perf_counter()
+                batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
+                batch_results = []
+                for row in batch_rows:
+                    rec_start = time.perf_counter()
+                    res = self.process_row(row, search_method, api_key, gmb_check, no_of_pages)
+                    rec_elapsed = time.perf_counter() - rec_start
+                    logging.debug("Processed record for URL %s in advanced analysis in %.2f seconds", row.get("Domain", "N/A"), rec_elapsed)
+                    batch_results.append(res)
+                results.extend(batch_results)
+                progress_bar.progress(min((i + batch_size) / len(df), 1.0))
+                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
+                batch_end = time.perf_counter()
+                elapsed = batch_end - batch_start
+                logging.debug("Batch %d processed in %.2f seconds", i // batch_size + 1, elapsed)
+                interim_df = pd.DataFrame(results)
+                if not interim_df.empty:
+                    self.components.display_results(interim_df)
+        
         logging.debug("Advanced analysis completed.")
-        # Store results in session state for display
         st.session_state.results = df.assign(**{
             col: [result.get(col, "") for result in results]
             for col in ["Keyword 1", "Product/Service 1", "Search Query",
@@ -469,79 +484,77 @@ class WebApp:
             }
 
     def process_url(self, url, model):
-          logging.debug("Processing URL: %s with model: %s", url, model)
-          try:
-              clean_url = self.processor.clean_url(url)
-              cached_data = self.cache.get(clean_url)
-              if not cached_data:
-                  scraped_data = self.scraper.scrape_website(clean_url)
-                  self.cache.set(clean_url, scraped_data)
-                  logging.debug("Scraped data for URL %s", clean_url)
-              else:
-                  scraped_data = cached_data
-                  logging.debug("Using cached data for URL %s", clean_url)
-              
-              analyzer = ContentAnalyzer(model=model)
-              analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
-              logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
-              
-              business_name = analysis.get('business_name', '')
-              location = analysis.get('location', '')
-              
-              # Process keywords: ensure exactly 5 keywords.
-              keywords = analysis.get('keywords', [])
-              if isinstance(keywords, str):
-                  keywords = [kw.strip() for kw in keywords.split(',')]
-              US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
-                     "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
-                     "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
-                     "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
-                     "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"}
-              keywords = [kw.replace('_',' ') for kw in keywords if kw.upper() not in US_STATES]
-              keywords = (keywords + [""] * 5)[:5]
+        logging.debug("Processing URL: %s with model: %s", url, model)
+        try:
+            clean_url = self.processor.clean_url(url)
+            cached_data = self.cache.get(clean_url)
+            if not cached_data:
+                scraped_data = self.scraper.scrape_website(clean_url)
+                self.cache.set(clean_url, scraped_data)
+                logging.debug("Scraped data for URL %s", clean_url)
+            else:
+                scraped_data = cached_data
+                logging.debug("Using cached data for URL %s", clean_url)
+            
+            analyzer = ContentAnalyzer(model=model)
+            analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
+            logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
+            
+            business_name = analysis.get('business_name', '')
+            location = analysis.get('location', '')
+            
+            # Process keywords: ensure exactly 5 keywords.
+            keywords = analysis.get('keywords', [])
+            if isinstance(keywords, str):
+                keywords = [kw.strip() for kw in keywords.split(',')]
+            # Replace underscores with space and fix camelcase issues, and filter out US state codes.
+            US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
+                         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
+                         "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
+                         "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+                         "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"}
+            keywords = [fix_keyword_spacing(kw) for kw in keywords if kw.upper() not in US_STATES]
+            keywords = (keywords + [""] * 5)[:5]
+            
+            # Process product/services: ensure exactly 3.
+            product_services = analysis.get('products_services', [])
+            if isinstance(product_services, str):
+                product_services = [ps.strip() for ps in product_services.split(',')]
+            product_services = (product_services + [""] * 3)[:3]
+            
+            # Process target audiences: ensure exactly 3.
+            target_audiences = analysis.get('target_audience', [])
+            if isinstance(target_audiences, str):
+                target_audiences = [ta.strip() for ta in target_audiences.split(',')]
+            target_audiences = (target_audiences + [""] * 3)[:3]
+            
+            result = {}
+            result["Domain"] = url
+            result["Business Name"] = business_name
+            result["Business Location"] = location
+            
+            for i, kw in enumerate(keywords, start=1):
+                result[f"Keyword {i}"] = kw
+            
+            for i, ps in enumerate(product_services, start=1):
+                result[f"Product/Service {i}"] = ps
+            
+            for i, ta in enumerate(target_audiences, start=1):
+                result[f"Target Audience {i}"] = ta
+            
+            result["Status"] = "success"
+            result["Error"] = ""
+            
+            return result
 
-              # Process product/services: ensure exactly 3, even if more than 20 are returned.
-              product_services = analysis.get('products_services', [])
-              if isinstance(product_services, str):
-                  product_services = [ps.strip() for ps in product_services.split(',')]
-              product_services = (product_services + [""] * 3)[:3]
-              
-              # Process target audiences: ensure exactly 3.
-              target_audiences = analysis.get('target_audience', [])
-              if isinstance(target_audiences, str):
-                  target_audiences = [ta.strip() for ta in target_audiences.split(',')]
-              target_audiences = (target_audiences + [""] * 3)[:3]
-              
-              # Build the result dictionary with "Domain", "Business Name", and "Business Location" first,
-              # then the 5 keywords, 3 product/services, and 3 target audiences,
-              # and finally "Status" and "Error".
-              result = {}
-              result["Domain"] = url
-              result["Business Name"] = business_name
-              result["Business Location"] = location
-              
-              for i, kw in enumerate(keywords, start=1):
-                  result[f"Keyword {i}"] = kw
-              
-              for i, ps in enumerate(product_services, start=1):
-                  result[f"Product/Service {i}"] = ps
-              
-              for i, ta in enumerate(target_audiences, start=1):
-                  result[f"Target Audience {i}"] = ta
-              
-              result["Status"] = "success"
-              result["Error"] = ""
-              
-              return result
-
-          except Exception as e:
-              return {
-                  "Domain": url,
-                  "Business Name": "",
-                  "Business Location": "",
-                  "Status": "error",
-                  "Error": str(e)
-              }
+        except Exception as e:
+            return {
+                "Domain": url,
+                "Business Name": "",
+                "Business Location": "",
+                "Status": "error",
+                "Error": str(e)
+            }
 
 if __name__ == "__main__":
     app = WebApp()

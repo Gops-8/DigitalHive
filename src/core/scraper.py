@@ -24,9 +24,9 @@ class WebScraper:
             if response.status_code != 200:
                 raise Exception(f"HTTP error {response.status_code} for {url}")
             
-            # Check if response contains known Cloudflare error patterns
-            if "Error code 520" in response.text or "Cloudflare" in response.text:
-                raise Exception(f"Cloudflare error encountered for {url}")
+            # # Check if response contains known Cloudflare error patterns
+            # if "Error code 520" in response.text or "Cloudflare" in response.text:
+            #     raise Exception(f"Cloudflare error encountered for {url}")
             
             soup = BeautifulSoup(response.text, 'html.parser')
             

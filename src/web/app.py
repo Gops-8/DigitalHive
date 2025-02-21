@@ -12,6 +12,7 @@ import io
 from urllib.parse import urlparse
 import logging
 import re
+import asyncio  # Added for async support
 
 def timer(func):
     """Decorator to measure the runtime of functions."""
@@ -30,7 +31,7 @@ if not os.path.exists("logs"):
     os.makedirs("logs")
 
 logging.basicConfig(
-    level=logging.ERROR,
+    level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler("logs/debug.log"),
@@ -48,7 +49,6 @@ from src.utils.auth import AuthManager
 from src.core.advanced_analytics import AdvancedAnalytics
 from src.utils.cache import AnalysisCache
 
-# Helper function to fix keyword spacing
 def fix_keyword_spacing(keyword: str) -> str:
     # Replace underscores with spaces
     keyword = keyword.replace('_', ' ')
@@ -148,7 +148,6 @@ class WebApp:
           · **Output Format:** XLSX/CSV 
         """
         )
-        # Two columns: left for file upload & model select, right for advanced options
         col1, col2 = st.columns([4, 2])
         with col1:
             st.subheader("1. Upload File")
@@ -160,7 +159,7 @@ class WebApp:
             )
         with col2:
             st.subheader("3. Advanced Options")
-            max_workers_options = [8, 16, 20 , 24, 28]
+            max_workers_options = [8, 16, 20, 24, 28]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
             base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72, 80, 84, 96, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
@@ -184,7 +183,6 @@ class WebApp:
           · **Output Format:** Displayed on screen
         """
         )
-        # Row 1: Search Method, API Key, Submit Button
         row1 = st.columns([1.3, 2, 1])
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
@@ -203,7 +201,6 @@ class WebApp:
                 st.session_state.serper_api = api_key_input
                 st.success("API Key stored for this session.")
             st.markdown('</div>', unsafe_allow_html=True)
-        # Row 2: Two columns for file upload & basic options (left) and advanced options (right)
         row2 = st.columns([2, 2])
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
@@ -230,7 +227,7 @@ class WebApp:
 
     @timer
     def process_basic_analysis(self, uploaded_file, batch_size, max_workers):
-        st.write("Processing basic analysis...")
+        st.write("Processing basic analysis asynchronously...")
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -246,26 +243,24 @@ class WebApp:
             st.error("Input file must have a column named 'Domain'.")
             return
         rows = df_input.to_dict(orient="records")
-        results = []
-        total_batches = len(rows) // batch_size + (1 if len(rows) % batch_size > 0 else 0)
         progress_bar = st.progress(0.0)
         status_text = st.empty()
         timer_text = st.empty()
+        total_batches = len(rows) // batch_size + (1 if len(rows) % batch_size > 0 else 0)
         status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
-        
         selected_model = st.session_state.selected_model
-        
-        with st.spinner("Processing basic analysis..."):
+
+        async def process_batches():
+            results = []
             for i in range(0, len(rows), batch_size):
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
-                batch_results = []
-                for row in batch_rows:
-                    rec_start = time.perf_counter()
-                    res = self.process_url(row["Domain"], selected_model)
-                    rec_elapsed = time.perf_counter() - rec_start
-                    logging.debug("Processed record for URL %s in %.2f seconds", row["Domain"], rec_elapsed)
-                    batch_results.append(res)
+                # Launch each URL processing in a separate thread concurrently
+                tasks = [
+                    asyncio.to_thread(self.process_url, row["Domain"], selected_model)
+                    for row in batch_rows
+                ]
+                batch_results = await asyncio.gather(*tasks)
                 results.extend(batch_results)
                 batch_end = time.perf_counter()
                 elapsed = batch_end - batch_start
@@ -275,7 +270,9 @@ class WebApp:
                 interim_df = pd.DataFrame(results)
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
-        
+            return results
+
+        results = asyncio.run(process_batches())
         st.session_state.results = df_input.assign(**{
             col: [result.get(col, "") for result in results]
             for col in ["Business Name", "Business Location",
@@ -503,11 +500,9 @@ class WebApp:
             business_name = analysis.get('business_name', '')
             location = analysis.get('location', '')
             
-            # Process keywords: ensure exactly 5 keywords.
             keywords = analysis.get('keywords', [])
             if isinstance(keywords, str):
                 keywords = [kw.strip() for kw in keywords.split(',')]
-            # Replace underscores with space and fix camelcase issues, and filter out US state codes.
             US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
                          "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
                          "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
@@ -516,13 +511,11 @@ class WebApp:
             keywords = [fix_keyword_spacing(kw) for kw in keywords if kw.upper() not in US_STATES]
             keywords = (keywords + [""] * 5)[:5]
             
-            # Process product/services: ensure exactly 3.
             product_services = analysis.get('products_services', [])
             if isinstance(product_services, str):
                 product_services = [ps.strip() for ps in product_services.split(',')]
             product_services = (product_services + [""] * 3)[:3]
             
-            # Process target audiences: ensure exactly 3.
             target_audiences = analysis.get('target_audience', [])
             if isinstance(target_audiences, str):
                 target_audiences = [ta.strip() for ta in target_audiences.split(',')]

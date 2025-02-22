@@ -12,7 +12,7 @@ import io
 from urllib.parse import urlparse
 import logging
 import re
-import asyncio  # Added for async support
+import asyncio
 
 def timer(func):
     """Decorator to measure the runtime of functions."""
@@ -30,13 +30,29 @@ def timer(func):
 if not os.path.exists("logs"):
     os.makedirs("logs")
 
+# --- Logging with IST Timestamps ---
+import time
+class ISTFormatter(logging.Formatter):
+    def converter(self, timestamp):
+        # Offset of 19800 seconds equals 5.5 hours (IST)
+        return time.gmtime(timestamp + 19800)
+
+    def formatTime(self, record, datefmt=None):
+        ct = self.converter(record.created)
+        if datefmt:
+            s = time.strftime(datefmt, ct)
+        else:
+            s = time.strftime("%Y-%m-%d %H:%M:%S", ct)
+        return s
+
+formatter = ISTFormatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler("logs/debug.log")
+file_handler.setFormatter(formatter)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
 logging.basicConfig(
     level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("logs/debug.log"),
-        logging.StreamHandler()
-    ]
+    handlers=[file_handler, stream_handler]
 )
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -85,13 +101,12 @@ class WebApp:
             layout="wide", 
             page_icon="assets/logo.jpg"
         )
-        # Updated CSS: using div.stButton selectors for button styling
         st.markdown(
             """
             <style>
             /* Gradient background for the main app container */
             [data-testid="stAppViewContainer"] {
-                background-image: linear-gradient(135deg, #ffffff, #add8e6) !important;
+                background-image: linear-gradient(135deg, #ffffff,rgb(211, 211, 211)) !important;
                 background-size: cover !important;
                 background-position: center !important;
             }
@@ -114,8 +129,6 @@ class WebApp:
             """,
             unsafe_allow_html=True
         )
-
-
         
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
@@ -160,9 +173,9 @@ class WebApp:
             )
         with col2:
             st.subheader("3. Advanced Options")
-            max_workers_options = [8, 16, 20, 24,25, 28,50]
+            max_workers_options = [8, 16, 20, 24, 25, 28, 50]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
-            base_batch_sizes = [8, 16, 24, 25 ,28, 32, 40, 48,50, 56, 64, 72,75, 80, 84, 96,100, 112, 120, 140]
+            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
             # NEW: Cache Reference Option for AI extractor
             cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_extractor")
@@ -210,9 +223,9 @@ class WebApp:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         with row2[1]:
-            max_workers_options = [8, 16, 24,25, 28,32]
+            max_workers_options = [8, 16, 24, 25, 28, 32]
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
-            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48,50, 56, 64, 72,75, 80, 84, 96,100, 112, 120, 140]
+            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
             comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
             # NEW: Cache Reference Option for Competitive Analysis
             cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")
@@ -259,20 +272,44 @@ class WebApp:
 
         async def process_batches():
             results = []
+            TIMEOUT_SECONDS = 240  # Timeout per URL processing task (in seconds)
             for i in range(0, len(rows), batch_size):
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
-                tasks = [
-                    asyncio.to_thread(self.process_url, row["Domain"], selected_model)
-                    for row in batch_rows
-                ]
-                batch_results = await asyncio.gather(*tasks)
-                results.extend(batch_results)
-                batch_end = time.perf_counter()
-                elapsed = batch_end - batch_start
+                tasks = []
+                for row in batch_rows:
+                    task = asyncio.wait_for(
+                        asyncio.to_thread(self.process_url, row["Domain"], selected_model, row.get("Email ID", "")),
+                        timeout=TIMEOUT_SECONDS
+                    )
+                    tasks.append(task)
+                batch_results = await asyncio.gather(*tasks, return_exceptions=True)
+                # Process task results – catch timeouts or other exceptions
+                for idx, result in enumerate(batch_results):
+                    if isinstance(result, asyncio.TimeoutError):
+                        logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
+                        result = {
+                            "Domain": batch_rows[idx].get("Domain", ""),
+                            "Business Name": "",
+                            "Business Location": "",
+                            "Status": "error",
+                            "Error": f"Timeout after {TIMEOUT_SECONDS} seconds",
+                            "Email ID": batch_rows[idx].get("Email ID", "")
+                        }
+                    elif isinstance(result, Exception):
+                        logging.error("Error processing URL %s: %s", batch_rows[idx].get("Domain"), str(result))
+                        result = {
+                            "Domain": batch_rows[idx].get("Domain", ""),
+                            "Business Name": "",
+                            "Business Location": "",
+                            "Status": "error",
+                            "Error": str(result),
+                            "Email ID": batch_rows[idx].get("Email ID", "")
+                        }
+                    results.append(result)
                 progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
                 status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-                timer_text.text(f"Batch {i // batch_size + 1} processed in {elapsed:.2f} seconds")
+                timer_text.text(f"Batch {i // batch_size + 1} processed in {time.perf_counter() - batch_start:.2f} seconds")
                 interim_df = pd.DataFrame(results)
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
@@ -287,11 +324,11 @@ class WebApp:
                         "Target Audience 1", "Target Audience 2", "Target Audience 3",
                         "Status", "Error"]
         })
-        # Preserve "Email ID" if present
+        # Preserve "Email ID" if it exists in the input
         if "Email ID" in df_input.columns:
             st.session_state.results["Email ID"] = df_input["Email ID"]
         self.components.display_results(st.session_state.results)
-        # NEW: Provide an Excel download button for the results using the static fragment method
+        # NEW: Provide an Excel download button for the results
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
 
     @timer
@@ -358,7 +395,6 @@ class WebApp:
                         "GMB Status", "Error", "Status"]
         })
         self.components.display_results(st.session_state.results)
-        # NEW: Provide an Excel download button for the results using the static fragment method
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
 
     def process_row(self, row, search_method, api_key, gmb_check, no_of_pages):
@@ -513,7 +549,7 @@ class WebApp:
                 "Error": str(e)
             }
 
-    def process_url(self, url, model):
+    def process_url(self, url, model, email_id=""):
         logging.debug("Processing URL: %s with model: %s", url, model)
         try:
             clean_url = self.processor.clean_url(url)
@@ -575,6 +611,7 @@ class WebApp:
             
             result["Status"] = "success"
             result["Error"] = ""
+            result["Email ID"] = email_id  # Pass along the Email ID
             
             return result
 
@@ -584,13 +621,14 @@ class WebApp:
                 "Business Name": "",
                 "Business Location": "",
                 "Status": "error",
-                "Error": str(e)
+                "Error": str(e),
+                "Email ID": email_id
             }
 
     @staticmethod
     @st.fragment
     def download_results_excel_static(results, timestamp):
-        # Provide a download button for the final results stored in 'results'
+        # Provide a download button for the final results
         if results is not None:
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:

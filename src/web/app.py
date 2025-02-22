@@ -89,13 +89,11 @@ class WebApp:
         st.markdown(
             """
             <style>
-            /* Background image for the main app container */
+            /* Gradient background for the main app container */
             [data-testid="stAppViewContainer"] {
-                background-image: url("assets/background.svg") !important;
+                background-image: linear-gradient(135deg, #ffffff, #add8e6) !important;
                 background-size: cover !important;
                 background-position: center !important;
-                background-repeat: no-repeat !important;
-                background-attachment: fixed !important;
             }
             
             /* Green button styling for all Streamlit buttons */
@@ -116,6 +114,8 @@ class WebApp:
             """,
             unsafe_allow_html=True
         )
+
+
         
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
@@ -494,8 +494,7 @@ class WebApp:
                 result["GMB Status"] = "Not Checked"
             result["Status"] = "success"
             result["Error"] = ""
-            if use_cache:
-                self.cache.set(cache_key, result)
+            self.cache.set(cache_key, result)
             return result
         except Exception as e:
             return {

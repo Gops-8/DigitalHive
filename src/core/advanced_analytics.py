@@ -73,32 +73,15 @@ class AdvancedAnalytics:
         logging.debug("Cleaning and filtering URLs, origin_url: %s", origin_url)
         unique_urls = set()
         filtered_competitors = []
-        known_domains = {
-            "twitter", "paypal", "cloudflare", "google", "facebook", "pinterest",
-            "apple", "youtube", "shopify", "amazon", "tiktok", "squarespace",
-            "gmail", "blogspot.com", "adobe", "tumblr", "medium", "soundcloud",
-            "gravatar", "nytimes", "jquery", "microsoft", "stripe", "reuters",
-            "ebay", "wordpress", "etsy", "yelp", "tripadvisor", "glassdoor", 
-            "trustpilot", "yellowpages", "linkedin", "bbb.org", "quora", "wikipedia",
-            "angieslist", "homestars", "houzz", "sitejabber", "instagram", "mastercard", "reddit"
-        }
-        tld_exclusions = {".gov", ".org", ".edu", ".chat", ".blog", ".kpmg"}
-        exclusions = {}
-        try:
-            # Load domains to be excluded from assets/domain_name.txt
-            with open('assets/domain_name.txt', 'r') as file:
-                for line in file:
-                    domain = line.strip().lower()
-                    if domain:
-                        key = domain[0]
-                        exclusions.setdefault(key, set()).add(domain)
-            logging.debug("Loaded exclusions from assets/domain_name.txt")
-        except FileNotFoundError:
-            logging.warning("Domain exclusion file not found. Skipping exclusions.")
+        # ... (your known_domains, tld_exclusions, and exclusions loading code)
+
+        # Normalize the origin URL
+        origin_url_normalized = origin_url if origin_url.startswith("http") else "http://" + origin_url
 
         for item in urls:
             if isinstance(item, dict):
                 url_str = item.get("link", "")
+                # Optionally, you can capture the provided position even if not used later.
                 position = item.get("position")
             else:
                 url_str = item
@@ -117,7 +100,7 @@ class AdvancedAnalytics:
             if first_letter in exclusions and domain in exclusions[first_letter]:
                 continue
 
-            if base_url not in unique_urls and base_url != origin_url:
+            if base_url not in unique_urls and base_url != origin_url_normalized:
                 unique_urls.add(base_url)
                 filtered_competitors.append({"link": base_url, "position": position})
             if len(filtered_competitors) == 3:

@@ -160,9 +160,9 @@ class WebApp:
             )
         with col2:
             st.subheader("3. Advanced Options")
-            max_workers_options = [8, 16, 20, 24, 28]
+            max_workers_options = [8, 16, 20, 24,25, 28,50]
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
-            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72, 80, 84, 96, 112, 120, 140]
+            base_batch_sizes = [8, 16, 24, 25 ,28, 32, 40, 48,50, 56, 64, 72,75, 80, 84, 96,100, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
             # NEW: Cache Reference Option for AI extractor
             cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_extractor")
@@ -210,9 +210,9 @@ class WebApp:
             gmb_check = st.checkbox("Check Google My Business (GMB)")
             no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         with row2[1]:
-            max_workers_options = [8, 16, 24, 28]
+            max_workers_options = [8, 16, 24,25, 28,32]
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
-            base_batch_sizes = [8, 16, 24, 28, 32, 40, 48, 56, 64, 72, 80, 84, 96, 112, 120, 140]
+            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48,50, 56, 64, 72,75, 80, 84, 96,100, 112, 120, 140]
             comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
             # NEW: Cache Reference Option for Competitive Analysis
             cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")

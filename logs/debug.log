@@ -22588,3 +22588,1111 @@ HOME COMPANY About Board & Management Corporate Directory Corporate Governance P
 2025-02-22 18:25:32 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
 2025-02-22 18:25:33 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
 2025-02-22 18:25:33 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:34 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:34 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:35 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:35 - DEBUG - Full response from Ollama: {
+    "keywords": "swedish online casinos, casinos without swedish license, best no deposit bonus casino",
+    "business_name": "Casinoutanlicens",
+    "products_services": "online casinos, slots, live odds, betting, poker, lotto, pay n play, trustly & zimpler, bitcoin casino, cryptocurrency casino",
+    "target_audience": "Swedish players, online gamblers in Sweden",
+    "location": "Global, with focus on Sweden"
+}
+2025-02-22 18:25:35 - DEBUG - Parsed analysis JSON: {'keywords': 'swedish online casinos, casinos without swedish license, best no deposit bonus casino', 'business_name': 'Casinoutanlicens', 'products_services': 'online casinos, slots, live odds, betting, poker, lotto, pay n play, trustly & zimpler, bitcoin casino, cryptocurrency casino', 'target_audience': 'Swedish players, online gamblers in Sweden', 'location': 'Global, with focus on Sweden'}
+2025-02-22 18:25:35 - DEBUG - Analysis result for URL https://casinoutanlicens.com: {'keywords': 'swedish online casinos, casinos without swedish license, best no deposit bonus casino', 'business_name': 'Casinoutanlicens', 'products_services': 'online casinos, slots, live odds, betting, poker, lotto, pay n play, trustly & zimpler, bitcoin casino, cryptocurrency casino', 'target_audience': 'Swedish players, online gamblers in Sweden', 'location': 'Global, with focus on Sweden'}
+2025-02-22 18:25:36 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:36 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:36 - DEBUG - Full response from Ollama: {
+  "keywords": "norfolk island accommodation, norfolk island hotel rooms, burnt pine hotels, norfolk island self contained apartments, norfolk island restaurant and bar",
+  "business_name": "Castaway Norfolk Island",
+  "products_services": "hotel style and self contained apartments, complimentary use of beach towels, snorkelling gear and picnic rugs, restaurant for lunch, BBQ and communal kitchen, bar with daily opening hours",
+  "target_audience": "tourists, travelers, holidaymakers, couples, families",
+  "location": "Burnt Pine, Norfolk Island"
+}
+2025-02-22 18:25:36 - DEBUG - Parsed analysis JSON: {'keywords': 'norfolk island accommodation, norfolk island hotel rooms, burnt pine hotels, norfolk island self contained apartments, norfolk island restaurant and bar', 'business_name': 'Castaway Norfolk Island', 'products_services': 'hotel style and self contained apartments, complimentary use of beach towels, snorkelling gear and picnic rugs, restaurant for lunch, BBQ and communal kitchen, bar with daily opening hours', 'target_audience': 'tourists, travelers, holidaymakers, couples, families', 'location': 'Burnt Pine, Norfolk Island'}
+2025-02-22 18:25:36 - DEBUG - Analysis result for URL https://castawaynorfolkisland.com: {'keywords': 'norfolk island accommodation, norfolk island hotel rooms, burnt pine hotels, norfolk island self contained apartments, norfolk island restaurant and bar', 'business_name': 'Castaway Norfolk Island', 'products_services': 'hotel style and self contained apartments, complimentary use of beach towels, snorkelling gear and picnic rugs, restaurant for lunch, BBQ and communal kitchen, bar with daily opening hours', 'target_audience': 'tourists, travelers, holidaymakers, couples, families', 'location': 'Burnt Pine, Norfolk Island'}
+2025-02-22 18:25:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:37 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:37 - DEBUG - Full response from Ollama: {
+    "keywords": "casinos en ligne français, jeux d'argent, bonus de bienvenue, casinos fiables, casinos sécurisés",
+    "business_name": "Casinoenlignefiable.com",
+    "products_services": "casinos en ligne, jeux de hasard, machine à sous, blackjack, roulette, poker en ligne, baccara, bingo, craps, keno",
+    "target_audience": "joueurs débutants et confirmés, francophones",
+    "location": "Pas de localisation spécifique mentionnée"
+}
+2025-02-22 18:25:37 - DEBUG - Parsed analysis JSON: {'keywords': "casinos en ligne français, jeux d'argent, bonus de bienvenue, casinos fiables, casinos sécurisés", 'business_name': 'Casinoenlignefiable.com', 'products_services': 'casinos en ligne, jeux de hasard, machine à sous, blackjack, roulette, poker en ligne, baccara, bingo, craps, keno', 'target_audience': 'joueurs débutants et confirmés, francophones', 'location': 'Pas de localisation spécifique mentionnée'}
+2025-02-22 18:25:37 - DEBUG - Analysis result for URL https://casinoenlignefiable.com: {'keywords': "casinos en ligne français, jeux d'argent, bonus de bienvenue, casinos fiables, casinos sécurisés", 'business_name': 'Casinoenlignefiable.com', 'products_services': 'casinos en ligne, jeux de hasard, machine à sous, blackjack, roulette, poker en ligne, baccara, bingo, craps, keno', 'target_audience': 'joueurs débutants et confirmés, francophones', 'location': 'Pas de localisation spécifique mentionnée'}
+2025-02-22 18:25:37 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:38 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:38 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:38 - DEBUG - Full response from Ollama: {
+    "keywords": "envios desde usa, servicio aereo latinoamericano, mudanzas internacionales, paquetes desde china, servicios logísticos america latina",
+    "business_name": "Casillero Latino",
+    "products_services": "Servicio Aéreo, Servicio Maritimo, Mudanzas Internacionales, Casillero Virtual, Lo Compramos por Ti, Rastreo de Paquetes",
+    "target_audience": "Negocios y particulares enviando paquetes a America Latina",
+    "location": "USA, CHINA y toda America Latina"
+}
+2025-02-22 18:25:38 - DEBUG - Parsed analysis JSON: {'keywords': 'envios desde usa, servicio aereo latinoamericano, mudanzas internacionales, paquetes desde china, servicios logísticos america latina', 'business_name': 'Casillero Latino', 'products_services': 'Servicio Aéreo, Servicio Maritimo, Mudanzas Internacionales, Casillero Virtual, Lo Compramos por Ti, Rastreo de Paquetes', 'target_audience': 'Negocios y particulares enviando paquetes a America Latina', 'location': 'USA, CHINA y toda America Latina'}
+2025-02-22 18:25:38 - DEBUG - Analysis result for URL https://casillerolatino.com: {'keywords': 'envios desde usa, servicio aereo latinoamericano, mudanzas internacionales, paquetes desde china, servicios logísticos america latina', 'business_name': 'Casillero Latino', 'products_services': 'Servicio Aéreo, Servicio Maritimo, Mudanzas Internacionales, Casillero Virtual, Lo Compramos por Ti, Rastreo de Paquetes', 'target_audience': 'Negocios y particulares enviando paquetes a America Latina', 'location': 'USA, CHINA y toda America Latina'}
+2025-02-22 18:25:38 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:40 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:40 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:40 - DEBUG - Full response from Ollama: {
+  "keywords": "online casino games, roulette strategies, blackjack bonuses, slots reviews, live dealer casinos",
+  "business_name": "Casinotics.com",
+  "products_services": "casino reviews, new casinos, online slots, table games, video poker, roulette, blackjack, bingo, craps, poker, software providers",
+  "target_audience": "gamblers, casino enthusiasts, beginners",
+  "location": "Global"
+}
+2025-02-22 18:25:40 - DEBUG - Parsed analysis JSON: {'keywords': 'online casino games, roulette strategies, blackjack bonuses, slots reviews, live dealer casinos', 'business_name': 'Casinotics.com', 'products_services': 'casino reviews, new casinos, online slots, table games, video poker, roulette, blackjack, bingo, craps, poker, software providers', 'target_audience': 'gamblers, casino enthusiasts, beginners', 'location': 'Global'}
+2025-02-22 18:25:40 - DEBUG - Analysis result for URL https://casinotics.com: {'keywords': 'online casino games, roulette strategies, blackjack bonuses, slots reviews, live dealer casinos', 'business_name': 'Casinotics.com', 'products_services': 'casino reviews, new casinos, online slots, table games, video poker, roulette, blackjack, bingo, craps, poker, software providers', 'target_audience': 'gamblers, casino enthusiasts, beginners', 'location': 'Global'}
+2025-02-22 18:25:40 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:40 - DEBUG - Full response from Ollama: {
+    "keywords": "australian copper exploration projects, copper mining companies, mineral exploration australia, critical minerals reserves, australian mining industry",
+    "business_name": "New Frontier Minerals Limited",
+    "products_services": "copper exploration, mineral exploration, diversified minerals resources exploration",
+    "target_audience": "mining investors, corporate governance professionals, geologists and engineers, investment analysts",
+    "location": "Australia"
+}
+2025-02-22 18:25:40 - DEBUG - Parsed analysis JSON: {'keywords': 'australian copper exploration projects, copper mining companies, mineral exploration australia, critical minerals reserves, australian mining industry', 'business_name': 'New Frontier Minerals Limited', 'products_services': 'copper exploration, mineral exploration, diversified minerals resources exploration', 'target_audience': 'mining investors, corporate governance professionals, geologists and engineers, investment analysts', 'location': 'Australia'}
+2025-02-22 18:25:40 - DEBUG - Analysis result for URL https://castillocopper.com: {'keywords': 'australian copper exploration projects, copper mining companies, mineral exploration australia, critical minerals reserves, australian mining industry', 'business_name': 'New Frontier Minerals Limited', 'products_services': 'copper exploration, mineral exploration, diversified minerals resources exploration', 'target_audience': 'mining investors, corporate governance professionals, geologists and engineers, investment analysts', 'location': 'Australia'}
+2025-02-22 18:25:41 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:41 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:41 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:41 - DEBUG - Full response from Ollama: {
+    "keywords": "implantes dentales, cirugia oral, ortodoncia especializada, tratamientos odontológicos, salud bucodental",
+    "business_name": "Castelldent",
+    "products_services": "Implantes dentales, Cirugía oral, Ortodoncia, Estética dental, Prótesis, Odontología general, Odontopediatría",
+    "target_audience": "Adultos mayores, Familias con niños, Personas preocupadas por la salud bucodental, Pacientes que buscan tratamientos especializados",
+    "location": "Castelldefels"
+}
+2025-02-22 18:25:41 - DEBUG - Parsed analysis JSON: {'keywords': 'implantes dentales, cirugia oral, ortodoncia especializada, tratamientos odontológicos, salud bucodental', 'business_name': 'Castelldent', 'products_services': 'Implantes dentales, Cirugía oral, Ortodoncia, Estética dental, Prótesis, Odontología general, Odontopediatría', 'target_audience': 'Adultos mayores, Familias con niños, Personas preocupadas por la salud bucodental, Pacientes que buscan tratamientos especializados', 'location': 'Castelldefels'}
+2025-02-22 18:25:41 - DEBUG - Analysis result for URL https://castelldent.com: {'keywords': 'implantes dentales, cirugia oral, ortodoncia especializada, tratamientos odontológicos, salud bucodental', 'business_name': 'Castelldent', 'products_services': 'Implantes dentales, Cirugía oral, Ortodoncia, Estética dental, Prótesis, Odontología general, Odontopediatría', 'target_audience': 'Adultos mayores, Familias con niños, Personas preocupadas por la salud bucodental, Pacientes que buscan tratamientos especializados', 'location': 'Castelldefels'}
+2025-02-22 18:25:41 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:41 - DEBUG - Full response from Ollama: {
+    "keywords": "hotel rural españa, restaurante en guadalajara, eventos mondejar, turismo alcarria, hotel en guadalajara",
+    "business_name": "Casona de Torres",
+    "products_services": "Hotel, Restaurant, Sala de Eventos, Actividades Gastronómico, Weekend con Delito, Turismo en la zona",
+    "target_audience": "Casual travelers, Foodies, Couples seeking romantic getaways, Business professionals for events and meetings, Adventure seekers",
+    "location": "Calle Mayor 1, 19110 Mondejar (Guadalajara)"
+}
+2025-02-22 18:25:41 - DEBUG - Parsed analysis JSON: {'keywords': 'hotel rural españa, restaurante en guadalajara, eventos mondejar, turismo alcarria, hotel en guadalajara', 'business_name': 'Casona de Torres', 'products_services': 'Hotel, Restaurant, Sala de Eventos, Actividades Gastronómico, Weekend con Delito, Turismo en la zona', 'target_audience': 'Casual travelers, Foodies, Couples seeking romantic getaways, Business professionals for events and meetings, Adventure seekers', 'location': 'Calle Mayor 1, 19110 Mondejar (Guadalajara)'}
+2025-02-22 18:25:41 - DEBUG - Analysis result for URL https://casonadetorres.com: {'keywords': 'hotel rural españa, restaurante en guadalajara, eventos mondejar, turismo alcarria, hotel en guadalajara', 'business_name': 'Casona de Torres', 'products_services': 'Hotel, Restaurant, Sala de Eventos, Actividades Gastronómico, Weekend con Delito, Turismo en la zona', 'target_audience': 'Casual travelers, Foodies, Couples seeking romantic getaways, Business professionals for events and meetings, Adventure seekers', 'location': 'Calle Mayor 1, 19110 Mondejar (Guadalajara)'}
+2025-02-22 18:25:41 - DEBUG - Processing URL: castleberryinc.com with model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Processing URL: castleforbescollege.com with model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Processing URL: castlepeakadvisors.com with model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Using cached data for URL https://castleberryinc.com
+2025-02-22 18:25:41 - DEBUG - Using cached data for URL https://castleforbescollege.com
+2025-02-22 18:25:41 - DEBUG - Using cached data for URL https://castlepeakadvisors.com
+2025-02-22 18:25:41 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:25:41 - DEBUG - Starting Ollama analysis for URL: https://castleberryinc.com
+2025-02-22 18:25:41 - DEBUG - Starting Ollama analysis for URL: https://castleforbescollege.com
+2025-02-22 18:25:41 - DEBUG - Starting Ollama analysis for URL: https://castlepeakadvisors.com
+2025-02-22 18:25:41 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://castleberryinc.com
+Content to analyze:
+Call 24/7 365 for Emergency Service (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); Call 24/7 365 for Emergency Service (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com Call 24/7 365 for Emergency Service (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com Call 24/7 365 for Emergency Service (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com Call 24/7 365 for Emergency Service Call 24/7 365 for Emergency Service Call 24/7 365 for Emergency Service (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com (936) 237-3030 Lufkin/Conroe (979) 703-8715 Bryan/College Station info@castleberryinc.com Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us Home About Management Services News FAQs Careers Contact Us !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9649bd7e8a93c664557635f43/35c88c0c2add4cbadfc2277e2.js"); Safe & Secure. How It Should Be. Empowering Businesses of All Sizes with Premier IT & Cybersecurity Solutions for Over 25 Years. Castleberry Services: Where cutting-edge expertise meets old-school business practices. Whether your company is new or established, big or small, we can prepare you for the challenges of today’s digital landscape. Ready for peace of mind? Let’s get started! Schedule a Consultation Explore Services Network Protection Your digital assets need to be protected at all costs. Our comprehensive approach includes firewalls, i
+
+2025-02-22 18:25:41 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://castleforbescollege.com
+Content to analyze:
+en it fr es pt about us let’s talk community Flywire NexPay TransferMate Menu about us let’s talk community Flywire NexPay TransferMate en it fr es pt en it fr es pt en it fr es pt en it fr es pt en it fr es pt about us let’s talk community Flywire NexPay TransferMate Menu about us let’s talk community Flywire NexPay TransferMate about us let’s talk community Flywire NexPay TransferMate Menu about us let’s talk community Flywire NexPay TransferMate about us let’s talk community Flywire NexPay TransferMate Menu about us let’s talk community Flywire NexPay TransferMate about us let’s talk community Flywire NexPay TransferMate Menu about us let’s talk community Flywire NexPay TransferMate Menu our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now our courses accommodation jobsearch price list blog english test book now about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk english test book now english test book now about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu about us our courses placement test accommodation jobsearch programme community blog price list Flywire NexPay TransferMate let’s talk Menu english test book now english test book now english test book now english test book now english test book now english test book now english test book now english test book now General English Course You will learn the fundamental basis of the English language learn more about us WELCOME TO CASTLEFORBES COLLEGE We are a friendly student-oriented school in the ever interesting city of Dublin, offering our students English courses that insist upon academic excellence. Our purpose is to give our students the most personal and unforgettable experience in Ireland, fostering friendship among all our students, teachers and staff members. more class hours + 0 students + 0 different nationalities + 0 google reviews 3 Estudiar en esta escuela es la mejor opción en Dublin!! Excelentes profesores, excelente organización y una atención por parte de la administración que no encontrarás en la ciudad!! Si estas en España pensando en practicar ingles en Dublin, no lo pienses más, ven a Castleforbes!!! no te arrepentirás!! Leslie Salinas Spain When I Approached this English school, I found a few comments and it’s a pleasure to write one 
+
+2025-02-22 18:25:41 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://castlepeakadvisors.com
+Content to analyze:
+0 Skip to Content Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us We provide strategic options and solutions for deep-tech companies Learn more Learn more NEWS:Eric Almgren Appointed to Texas Semiconductor Innovation Consortium Executive Committee Services Castle Peak specializes in providing comprehensive strategic solutions, spanning areas such as strategic planning, positioning, marketing and market expansion, supply chain management, technology diligence and planning, and organizational development to enhance overall organizational performance and achieve long-term success for its clients. Strategic Consulting Offering strategic advice on market positioning, business growth, and technology adoption to help clients align their business objectives with industry trends and opportunities. Technology Assessment Evaluating and recommending technologies to align with business goals, enhance efficiency, and stay competitive in the rapidly evolving high-tech landscape. Marketing Services Providing comprehensive marketing services, including positioning and branding, promotions, public relations (PR), event planning, and other strategic initiatives to enhance brand visibility and drive market engagement. Contact Us Supply Chain Optimization Advising on supply chain strategies, optimization, and leveraging technology to enhance efficiency, reduce costs, and improve overall supply chain management. Innovation and R&D Advisory Providing guidance on innovation strategies, research and development initiatives, and best practices to foster a culture of continuous innovation. Market Expansion Facilitation of opening new markets and establishing a presence in different regions, including support for market research, entry strategy development, regulatory compliance, and operational setup to ensure successful expansion and sustained growth. Taiwan Practice Global trends offer new opportunities for strategic opportunities between the US and Taiwan.Taiwan’s world-leading semiconductor, supply chain, and manufacturing companies are looking for new opportunities.Castle Peak can help: Bring in international expertise both in operations and financial structuring, including M&A and listing on US exchanges for Taiwan-based companies Leverage US desire for semiconductor supply chain expertise on US soil Help Taiwan companies diversify their operating locations and shareholder diversity Deep Tech Markets and Segments Semiconductor supply chain Material science / new materials MEMS Robotics Camera sensors, lenses, modules AI in sensor-based systems Semiconductor equipment Optics RF Systems and Components Batteries Autonomous systems Display technologies Experience Experience Semiconductors Industry Organizations and IP Business See all Experience Customers / Partners Experience Past Investments of Team Members Experience Meet the Team Eric Almgren Managing Director Dr. Galene Chen Managing Director Steve Venuti Managing Director Joe Nieh Managing Director Get to know our team Get in touch with us! Contact Us Name * First Name Last Name Email * Subject * Message * Thank you! Stay in the loop Sign up with your email address to receive news and updates. Email Address Sign Up Thank you! Castle Peak Advisors, LLCLocation:Austin, TexasSilicon Valley, CaliforniaTaipei, TaiwanEmail: info@castlepeakadvisors.com © 2025 Castle Peak Advisors, LLC. All rights reserved. 0 0 Skip to Content Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Contact Us Open Menu Close Menu Home About Us Experience Meet The Team Home About Us Experience Meet The Team Home About
+
+2025-02-22 18:25:41 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:25:41 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:25:41 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:25:42 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:42 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:43 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:43 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:43 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:25:45 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:45 - DEBUG - Full response from Ollama: {
+    "keywords": "cybersecurity solutions, it services, network protection, small business cybersecurity, enterprise security",
+    "business_name": "Castleberry Inc",
+    "products_services": "IT services, Cybersecurity solutions, Network protection, Managed IT services",
+    "target_audience": "Small businesses, Enterprise companies, Organizations seeking IT and cybersecurity solutions",
+    "location": "Lufkin/Conroe, Bryan/College Station"
+}
+2025-02-22 18:25:45 - DEBUG - Parsed analysis JSON: {'keywords': 'cybersecurity solutions, it services, network protection, small business cybersecurity, enterprise security', 'business_name': 'Castleberry Inc', 'products_services': 'IT services, Cybersecurity solutions, Network protection, Managed IT services', 'target_audience': 'Small businesses, Enterprise companies, Organizations seeking IT and cybersecurity solutions', 'location': 'Lufkin/Conroe, Bryan/College Station'}
+2025-02-22 18:25:45 - DEBUG - Analysis result for URL https://castleberryinc.com: {'keywords': 'cybersecurity solutions, it services, network protection, small business cybersecurity, enterprise security', 'business_name': 'Castleberry Inc', 'products_services': 'IT services, Cybersecurity solutions, Network protection, Managed IT services', 'target_audience': 'Small businesses, Enterprise companies, Organizations seeking IT and cybersecurity solutions', 'location': 'Lufkin/Conroe, Bryan/College Station'}
+2025-02-22 18:25:45 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:45 - DEBUG - Full response from Ollama: {
+    "keywords": "english language courses dublin, study english in ireland, english courses dublin city, academic excellence english, english language learning experience",
+    "business_name": "Castleforbes College",
+    "products_services": "General English Course, placement test, accommodation, jobsearch programme, community blog, Flywire, NexPay, TransferMate",
+    "target_audience": "international students, language learners, Dublin residents, expats, Spain nationals, English language enthusiasts",
+    "location": "Dublin"
+}
+2025-02-22 18:25:45 - DEBUG - Parsed analysis JSON: {'keywords': 'english language courses dublin, study english in ireland, english courses dublin city, academic excellence english, english language learning experience', 'business_name': 'Castleforbes College', 'products_services': 'General English Course, placement test, accommodation, jobsearch programme, community blog, Flywire, NexPay, TransferMate', 'target_audience': 'international students, language learners, Dublin residents, expats, Spain nationals, English language enthusiasts', 'location': 'Dublin'}
+2025-02-22 18:25:45 - DEBUG - Analysis result for URL https://castleforbescollege.com: {'keywords': 'english language courses dublin, study english in ireland, english courses dublin city, academic excellence english, english language learning experience', 'business_name': 'Castleforbes College', 'products_services': 'General English Course, placement test, accommodation, jobsearch programme, community blog, Flywire, NexPay, TransferMate', 'target_audience': 'international students, language learners, Dublin residents, expats, Spain nationals, English language enthusiasts', 'location': 'Dublin'}
+2025-02-22 18:25:45 - DEBUG - Ollama response status code: 200
+2025-02-22 18:25:45 - DEBUG - Full response from Ollama: {
+    "keywords": "semiconductor supply chain management, deep tech consulting services, technology assessment and planning, strategic market expansion, innovation and R&D advisory",
+    "business_name": "Castle Peak Advisors, LLC",
+    "products_services": "strategic consulting, technology assessment, marketing services, supply chain optimization, innovation and R&D advisory, market expansion facilitation",
+    "target_audience": "deep tech companies, Taiwan-based semiconductor companies, US-based high-tech businesses, entrepreneurs, investors",
+    "location": "Austin, Texas; Silicon Valley, California; Taipei, Taiwan"
+}
+2025-02-22 18:25:45 - DEBUG - Parsed analysis JSON: {'keywords': 'semiconductor supply chain management, deep tech consulting services, technology assessment and planning, strategic market expansion, innovation and R&D advisory', 'business_name': 'Castle Peak Advisors, LLC', 'products_services': 'strategic consulting, technology assessment, marketing services, supply chain optimization, innovation and R&D advisory, market expansion facilitation', 'target_audience': 'deep tech companies, Taiwan-based semiconductor companies, US-based high-tech businesses, entrepreneurs, investors', 'location': 'Austin, Texas; Silicon Valley, California; Taipei, Taiwan'}
+2025-02-22 18:25:45 - DEBUG - Analysis result for URL https://castlepeakadvisors.com: {'keywords': 'semiconductor supply chain management, deep tech consulting services, technology assessment and planning, strategic market expansion, innovation and R&D advisory', 'business_name': 'Castle Peak Advisors, LLC', 'products_services': 'strategic consulting, technology assessment, marketing services, supply chain optimization, innovation and R&D advisory, market expansion facilitation', 'target_audience': 'deep tech companies, Taiwan-based semiconductor companies, US-based high-tech businesses, entrepreneurs, investors', 'location': 'Austin, Texas; Silicon Valley, California; Taipei, Taiwan'}
+2025-02-22 18:25:45 - INFO - Function process_basic_analysis took 38.83 seconds
+2025-02-22 18:25:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:47 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:47 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:52 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:52 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:25:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:25:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:29 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:26:57 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:00 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:06 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:07 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:10 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:11 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:25 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:27 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:32 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:33 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:37 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_MODIFY, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:38 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_WRITE, cookie=0, name='app.py'>
+2025-02-22 18:27:43 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:27:43 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:27:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:27:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:27:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:27:46 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:27:51 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:27:51 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:27:51 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:27:51 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:23 - DEBUG - Session initialized: {'authenticated': False, 'processing': False, 'selected_model': 'llama3.1:8b', 'results': None}
+2025-02-22 18:28:23 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-22 18:28:24 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-22 18:28:24 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-22 18:28:24 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_OPEN, cookie=0, name='app.py'>
+2025-02-22 18:28:24 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web/app.py', wd=1, mask=IN_CLOSE_NOWRITE, cookie=0, name='app.py'>
+2025-02-22 18:28:26 - DEBUG - Session initialized: {'results': None, 'authenticated': False, 'FormSubmitter:login-Login': True, 'processing': False, 'selected_model': 'llama3.1:8b'}
+2025-02-22 18:28:26 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-22 18:28:26 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-22 18:28:26 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-22 18:28:26 - DEBUG - Session initialized: {'results': None, 'authenticated': True, 'FormSubmitter:login-Login': False, 'processing': False, 'selected_model': 'llama3.1:8b'}
+2025-02-22 18:28:26 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-22 18:28:26 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-22 18:28:26 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-22 18:28:29 - DEBUG - Session initialized: {'authenticated': True, 'cache_ref_extractor': 'Include', 'cache_ref_comp': 'Include', 'comp_workers': 8, 'processing': False, 'selected_model': 'llama3.1:8b', 'results': None, 'comp_batch': 8, 'submit_api_key': False}
+2025-02-22 18:28:29 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-22 18:28:29 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-22 18:28:29 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-22 18:28:31 - DEBUG - Session initialized: {'authenticated': True, 'cache_ref_extractor': 'Include', 'cache_ref_comp': 'Include', 'comp_workers': 8, 'processing': False, 'selected_model': 'llama3.1:8b', 'start_data_ext': True, 'results': None, 'comp_batch': 8, 'submit_api_key': False}
+2025-02-22 18:28:31 - DEBUG - Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-22 18:28:31 - DEBUG - https://raw.githubusercontent.com:443 "GET /Gops-8/auth-config/main/config.json HTTP/1.1" 200 56
+2025-02-22 18:28:31 - DEBUG - Initialized AdvancedAnalytics with cache.
+2025-02-22 18:28:31 - DEBUG - Using selector: EpollSelector
+2025-02-22 18:28:31 - DEBUG - Processing URL: casasparacompraremorlando.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Processing URL: casatornillos.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Processing URL: casatraca.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Processing URL: casavacanzesulborgo.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Processing URL: cascadeconcretepumping.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://casasparacompraremorlando.com
+2025-02-22 18:28:31 - DEBUG - Processing URL: cascadepowderguides.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Processing URL: cascadeservices.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://casatornillos.com
+2025-02-22 18:28:31 - DEBUG - Processing URL: cascadespringsloan.com with model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://casatraca.com
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://casavacanzesulborgo.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://cascadeconcretepumping.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://cascadepowderguides.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://cascadeservices.com
+2025-02-22 18:28:31 - DEBUG - Using cached data for URL https://cascadespringsloan.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://casasparacompraremorlando.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://casatornillos.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://casatraca.com
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://cascadeservices.com
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://casasparacompraremorlando.com
+Content to analyze:
+Favoritos Entrar (407) 965-8276 Menu A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO Favoritos Entrar (407) 965-8276 Menu A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO Favoritos Entrar Favoritos Entrar (407) 965-8276 Menu A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO (407) 965-8276 Menu Menu A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO A WRA QUEM SOMOS CORRETORES IMÓVEIS ORLANDO ALUGUEL DE IMÓVEIS IMÓVEIS COMERCIAIS BUSINESS NEGÓCIOS A VENDA PROGRAMA DE INVESTIDORES INVESTIMENTO EMPRESARIAL SERVIÇOS ADMINISTRAÇÃO DE IMÓVEIS CONSTRUÇÃO E INCORPORAÇÃO DÚVIDAS FINANCIAMENTO LEGALIZAÇÃO NOS EUA CONTATO ENCONTRE SUA CASA EM ORLANDO City, Postal Code, Address, or Listing ID Price MinPrice MaxBedsBaths Search ENCONTRE AGORA CASAS À VENDA EM ORLANDO CASAS EM ORLANDO MAIS IMÓVEIS Oportunidades COMERCIAIS EM ORLANDO MAIS IMÓVEIS À VENDA NEGÓCIOS Empreenda nos Estados Unidos. Encontre seu negócio. Saiba como a WRA pode ajudar em sua jornada de negócios em Orlando MAIS NEGÓCIOS E-BOOK GRATUITO Vai comprar sua casa em Orlando? Então baixe agora mesmo o Guia do Investidor em Imóveis da Flórida e saiba o passo a passo para realizar seu investimento internacional GUIA DO INVESTIDOR MÍDIA CASAS EM ORLANDO BLOG CASAS EM ORLANDO TUDO SOBRE IMÓVEIS EM ORLANDO NOSSOS PARCEIROS ENCONTRE SUA CASA EM ORLANDO City, Postal Code, Address, or Listing ID Price MinPrice MaxBedsBaths Search ENCONTRE AGORA CASAS À VENDA EM ORLANDO CASAS EM ORLANDO MAIS IMÓVEIS Oportunidades COMERCIAIS EM ORLANDO MAIS IMÓVEIS À VENDA NEGÓCIOS Empreenda nos Estados Unidos. Encontre seu negócio. Saiba como a WRA pode ajudar em sua jornada de negócios em Orlando MAIS NEGÓCIOS E-BOOK GRATUITO Vai comprar sua casa em Orlando? Então baixe agora mesmo o Guia do Investidor em Imóveis da Flórida e saiba o passo a passo para realizar seu investimento internacional GUIA DO INVESTIDOR MÍDIA CASAS EM ORLANDO BLOG CASAS EM ORLANDO TUDO SOBRE IMÓVEIS EM ORLANDO NOSSOS PARCEIROS ENCONTRE SUA CASA EM ORLANDO City, Postal Code, Address, or Listing ID Price MinPrice MaxBedsBaths Search ENCONTRE AGORA CASAS À VENDA EM ORLANDO CASAS EM ORLANDO MAIS IMÓVEIS Oportunidades COMERCIAIS EM ORLANDO MAIS IMÓVEIS À VENDA NEGÓCIOS Empreenda nos Estados Unidos. Encontre seu negócio. Saiba como a WRA pode ajudar em sua jornada de negócios em Orlando 
+
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://casavacanzesulborgo.com
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://casatornillos.com
+Content to analyze:
+Scroll Top Primary Menu Principal Nosotros Empresa Servicios Calidad Productos Tornillos tensión controlada Tornillo tensión controlada A325 Tornillo tensión controlada A490 Pistolas de instalación Tornillos Estructurales Hexagonales A325 y A490 Tornillo hexagonal A325 Tornillo hexagonal A325 GIC Tornillo hexagonal A490 Tornillo hexagonal A490 Geomet Tornillos de Acero Tornillos Inoxidables Perneadora Perno soldable Tuercas Rondanas Varillas Pistolas de instalación para tornillos estructurales Blog Fichas técnicas Contacto TENEMOS TUS TORNILLOS Somos empresa No. 1 en tornillos estructurales, tuercas, rondanas, varillas y pernos soldables del país. MEJOR PRECIO / MEJOR CALIDAD descargar catálogo PISTOLAS DE INSTALACIÓN Somos únicos distribuidores de marca TONE (Japón). Contamos con pistolas para tornillos tensión controlada y para tornillos hexagonales. ver productos LA MEJOR CALIDAD DEL PAÍS Somos altamente reconocidos por nuestra alta calidad y el gran servicio que otorgamos a todos nuestros clientes. No dudes en preguntar por un asesor! descargar catálogo TODO TIPO DE TUERCAS El mayor inventario del país en tuercas 2H, livianas, grado 5, gripco, métricas, nylon, pesadas, especiales y más. Cotiza con nosotros! ver productos Líderes en tornillos, tuercas, pernos y varillas. La Casa de los Tornillos es una de las tornillerías mexicanas más grandes del país. Nos dedicamos a la comercialización de tornillos, tuercas, rondanas, varillas y muchos otros productos de fijación para diferentes industrias como la construcción, estructuras de acero, aeroespacial, eléctrica, agricultura, maquinaría, entre otros. Conoce nuestra empresa Tornillos tensión controlada Tornillos para estructuras metálicas especiales de tensión controlada A325 y A490 con tuerca DH y rondana plana F436 Ver productos Pistolas de instalación de tornillos Degolladoras o pistolas de instalación de tornillos tanto hexagonales como de tensión controlada TONE provenientes de Japón para uso rudo. Ver productos Tornillos de acero Tornillos hexagonales Grado 2, Grado 5, ALLEN, métricos Ver productos Tornillos estructurales Tornillos A325 estructurales y tornillos A490 estructurales. Ver productos Pernos soldables Pernos soldables tipo NELSON con certificado de calidad. Ver productos Tornillos Inoxidables Hexagonales 304 y 316, ALLEN, coche, botón etc. Ver productos Tuercas Tuercas hexagonales, tuercas 2H A194, tuercas de seguridad (nylon), tuerca Grado 5, tuercas inoxidables Ver productos Rondanas Rondana plana, rondana de presión, rondana F-436, rondana DTI, rondana inmersión en caliente, rondanas inoxidables Ver productos Varillas Varilla de acero de 3 pies, varilla de acero de 12 pies, varillas B7 petrolera, varillas inoxidables 304 y 316. Ver productos Entrega inmediata a todo México Contamos con una excelente red de transporte para rastrear y entregar tus productos en la puerta de tu empresa. Hacemos envíos diarios y con entregas de 1 día. Desde Tijuana, Monterrey, Ciudad de México, Querétaro y Guadalajara hasta Mérida, Cancún y cualquier otra ciudad en México. Más información Ahorra dinero sin sacrificar calidad En La Casa de los Tornillos, nos enorgullece ofrecerte la mejor selección de tornillos de alta calidad a precios que no encontrarás en ningún otro lugar. Contamos con descuentos especiales a todos nuestros clientes desde tuercas 2H, tuercas Nylon, inoxidables, tornillos hexagonales hasta los mejores tornillos tensión controlada. Más información Calidad… nuestra principal promesa Creemos que la calidad es la piedra angular de cualquier proyecto exitoso. Por eso, nos enorgullece ofrecerte una línea de tornillos que supera todas las expectativas. Hacemos pruebas científicas propias periódicamente para asegurar la calidad de cada uno de nuestros productos sin importar si es tornillo A307, tornillo A325 , cualquier tuerca o rondanas. También, entregamos certificados de calidad de fábrica a todos nuestros clientes. Más información  Contáctanos Te daremos la mejor
+
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://cascadepowderguides.com
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://casatraca.com
+Content to analyze:
++351 967 479 752|info@casatraca.com ReserverenContactWhatsAppVoor Gastensitemap Casa Traca, Bed and Breakfast Centraal Portugal. Zoeken naar: 66369 HOMEB&B Arganil, PortugalKamersClassic RoomRetro kamerByzanthijnse kamerFar East kamerCasa das Aveleiras, Oliveira do HospitalFaciliteitenHottub arrangementVeelgestelde vragenOmgevingBezienswaardighedenAanbevolen dagtripsExcursiesBoek uw verblijfGroeps familievakantieHottub arrangement B&B Centraal PortugalWerkvakantie Centraal PortugalWorkationAanbiedingenVriendinnen vakantieWerkvakantie Centraal PortugalContact & infoPrijzen B&B Casa TracaContactformulierVeelgestelde vragenBlogsBezienswaardighedenDagtripsTips Casa TracaActiviteiten & ExcursiesOver Casa TracaBed and Breakfast Arganil Loading... B&B Casa Traca, Centraal Portugal Reserveer hier Contact Buitenleven! Buiten ontbijten! Reserveer hier Contact Reserveer hier Contact Honden zijn welkom! Reserveer hier Contact Genieten in de hottub Reserveer hier Contact Loungen & relaxen! Reserveer hier Contact Uitgebreid ontbijt met fruit uit eigen tuin. Reserveer hier Contact Wegdromen in oosterse sferen...... Reserveer hier Contact Bed and Breakfast Arganil Centraal PortugalJose van der Zwan2024-09-07T13:44:23+02:00 Booking widget b24_widget_67b4ce9595336 KamersFaciliteitenHottubOmgevingBed and Breakfast Casa Traca - Genieten en relaxen in Centraal Portugal | Arganil | Valbona Enthousiast geworden? Reserveer dan jouw vakantie!Bed and Breakfast Arganil | Centraal Portugal Ja wij willen komen genieten in Bed & Breakfast Casa Traca!Sinds mei 2016 heet ik mijn gasten van harte welkom in mijn kleinschalige bed & breakfast Arganil (Valbona), in het groene hart van Centraal Portugal. Casa Traca is een kleinschalige en informele Bed and Breakfast in midden Portugal. Een rustige plek weg van het massa toerisme maar toch centraal gelegen in de gemeente Arganil, Coimbra. Bij B&B Casa Traca staat genieten voorop. Genieten van dit mooie land in al haar facetten. Genieten van het niets hoeven, onthaasten en ontstressen. Dit gevoel van thuiskomen op vakantie wil ik mijn gasten graag meegeven! De tuin, met haar vele loungeplekken, staat geheel ter beschikking voor jullie, mijn gasten. B&B Casa Traca ligt halverwege de de berg Monte' Alto . Vanuit de tuin wandelt u zo naar de top van de berg met de prachtige kapel en het fabuleuze uitzicht. Casa Traca beschikt over 4 royale themakamers waar u heerlijk tot rust kan komen, na bijvoorbeeld een vakantiedag naar de watervallen van Fraga da Pena en het leistenendorp Píodão. Gelegen in het beschermde natuurgebied van Serra do Açor; Serra do Açor Protected Landscape . Ik hanteer het hele jaar door dezelfde prijzen. Zo heeft u ook in het hoogseizoen een betaalbare vakantie in onze accommodatie in Arganil om te ontspannen en te genieten! Vanaf € 65,00 per nacht Geschikt voor 2 volwassenen Boek deze kamer Vanaf € 60,00 per nacht Geschikt voor 1 tot 3 personen Boek deze kamer Vanaf € 60,00 per nacht Geschikt voor 1 tot 4 personen Boek deze kamer Vanaf € 55,00 per nacht Geschikt voor 1 of 2 personen Boek deze kamerDe ligging van Valbona Bed and Breakfast Casa Traca is gelegen bij Arganil, in centraal Portugal, op ongeveer 40 minuten afstand van Coimbra, de oude universiteitsstad. U vindt Casa Traca in het authentieke dorpje Valbona. In Valbona lijkt de tijd te hebben stilgestaan. Er is een kleine dorpswinkel annex café. Er zijn bossen om heerlijke wandelingen te maken, bergen voor de prachtigste bergtochten met de auto of de motor. Rivieren om te zwemmen en te kayakken, watervallen om te genieten van de kracht van de natuur. Ook een dagje strand aan de Atlantische Oceaan is geen probleem: Figueira da Foz ligt op een uurtje rijden. Bed and Breakfast Casa Traca in Arganil maakt onderdeel uit van de Serra do Açor Protected Landscape. Casa Traca is hiervoor aangesloten bij de organisatie Natural.pt /ICNF Portugal. Middels deze samenwerking doe ik actief mee aan het behoud van de Serra do Açor als beschermd natuurgebied
+
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://cascadeconcretepumping.com
+2025-02-22 18:28:31 - DEBUG - Starting Ollama analysis for URL: https://cascadespringsloan.com
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cascadeservices.com
+Content to analyze:
+About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company Join Our Family About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company Join Our Family About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company Join Our Family About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company Join Our Family About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company About Leadership Brands News Join Us Inquire Refer a Company Menu About Leadership Brands News Join Us Inquire Refer a Company Menu Join Our Family Join Our Family Join Our Family Your Trusted Home Services Family Cascade Services is a family of independent residential HVAC, plumbing, and electrical contractors that are leaders in their local markets across the South Atlantic and Gulf States. Join Our Family Get In Touch "*" indicates required fields Name* First Last CompanyEmail* Phone*Your Message* Our Brands About Us At Cascade, we partner with best-in-class HVAC, plumbing, and electrical contractors across the South Atlantic and Gulf States to provide technician training and retention, disciplined growth, and outstanding customer service. Our brands are well-established leaders in their respective markets and communities. Here, businesses grow and excel, and employees build fulfilling careers. Read More 11 Brands 24/7 Service 500+ Employees 3 States Our Values We are FLEXIBLE We create flexible, win-win arrangements for founders, whether you would like to keep a significant ownership stake or move into retirement. We are TRANSPARENT We strive to reduce transaction pain points by providing clear and consistent communication about our approach and objectives. We are COLLABORATIVE We solve complex problems by working together as partners before and after the transaction. What You Can Expect From Your Partnership With Cascade Partner-Centric ApproachWe prioritize the well-being of your customers and employees while preserving the reputation and legacy of your business. Operational StrengthWe bring extensive capabilities and expertise to enhance and streamline your local brand operations. Our integrated technology, advanced reporting and analytics, digital marketing, lead generation, and centralized recruiting services are just a few ways we support and amplify your business. Financial SupportWe possess the dedicated capital to execute deals without contingencies. Our strong financial position also allows us to invest in future growth, including hiring technicians, expanding vehicle fleets, and pursuing strategic acquisitions that further strengthen and grow your business. Our Services HVAC Our HVAC contractors provide best-in-class service, repair, and replacement of HVAC systems for our customers. Plumbing From temperature and pressure issues to minor leaks and major repairs, Cascade’s plumbing contractors cover all plumbing needs for our customers. Electrical Our electrical contractors complete rigorous training and electrical education to provide our customers with the highest standards of electrical service. Our Testimonials We were cautiously optimistic when meeting with various companies to evaluate which company would best align with our ethics, team culture, and values that we have been running our business with for four decades. Most of the companies presented themselves well, but after doing further research, we found that we were best aligned with the Cascade approach and team. It was a breath of fresh air to learn how similar our core values were as compared to others we were considering. Cascade has proven to be the ideal partner for our team. It was important for us to make sure our team members and their families were taken ca
+
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://casavacanzesulborgo.com
+Content to analyze:
+Home BOOKING Appartamenti Mare Sport & Outdoor Gallery Contatti Italiano English Français Seleziona una pagina Casa Vacanze Sul Borgodove è facile sentirsi a casa Una stupenda villanell’antico villaggio medievale di Finalborgo Casa Vacanze Sul Borgoun contesto riservato ed esclusivo Casa Vacanze Sul Borgoappartamenti con ampie zone esterne Bikers benvenuti!  Dove Siamo Via Oddone Pascale 14 17024 Finale Ligure (SV) – Italy  14 appartamenti  Biker friendly Prenota Adesso BENVENUTO A Casa Vacanze Sul Borgo La nostra struttura si trova in un’antica villa storica risalente al XVII secolo, nel cuore di Finalborgo, il borgo medievale di Finale Ligure. Ogni appartamento, ristrutturato e dotato di cucina attrezzata con ogni comfort, è composto da una o due camere da letto, soggiorno, servizi, area esterna privata (giardino o terrazzo). Il nostro desiderio è offrire ai nostri ospiti un soggiorno con tutte le comodità di casa, pertanto ogni appartamento è completamente arredato ed accessoriato (TV SAT, connessione Wi-Fi, aria condizionata, etc). A disposizione dei nostri ospiti piscina, parcheggio e per i bikers vi è un’ampia bike room sorvegliata e con officina attrezzata, bike wash e lavanderia rapida con asciugatura. Collocato in un contesto di quiete, tuttavia nelle vicinanze sono dislocati negozi di ogni genere, supermercato e farmacia. In posizione strategica per gli appassionati di mountain bike, Enduro, mtb XC, DH… troverete sicuramente qualcosa per voi.. Hai una domanda? SCRIVICI o CHIAMACI allo +39 3472906798 Nome Cognome Indirizzo e-mail Messaggio Privacy Privacy Acconsento al trattamento dei dati personali (leggi l'informativa) 1 + 11 = Invia Esplora la gallery Scopri i nostri Appartamenti Con i nostri 14 appartamenti offriamo agli ospiti tre diverse tipologie – trilocali, bilocali, monolocale – a seconda delle esigenze. È possibile, inoltre, richiedere letti singoli o matrimoniali. Scopri di più... Appartamenti 6 Trilocali Appartamenti completi, ampi e luminosi, con 2 camere da letto e area esterna privata (giardino o terrazza) Prezzo a Settimana da 630€ a 1.620€ Prenota ora 7 Bilocali Appartamenti completi, con una camera da letto e area esterna privata (giardino o terrazza). Prezzo a Settimana da 450€ a 1.340€ Prenota ora 1 Monolocale Soluzione ideale per una/due persone, completa di cucina, con zona esterna privata. Prezzo a Settimana da 350€ a 820€ Prenota ora ◦ Bike room ◦ Officina ◦ Bike wash ◦ Cartine e libri A misura di biker Bike room, officina, bike wash, disponibilità di libri e cartine a tema, contatti con guide, maestri professionisti e shuttle per ogni esigenza o livello. Alla Casa Vacanze sul Borgo tutto è personalizzato per i biker e appassionati di mtb. Potete dormire sonni tranquilli con le vostre biciclette custodite in una grande bike room senza finestre, con tre livelli diversi di allarme, ingresso con codice e videoregistrata h24. I bikers troveranno in Gianluca una persona che parla la stessa loro lingua, e può darsi che lo incontrerete in qualche giro nei sentieri, nel suo disperato tentativo di rimandare ancora il suo passaggio alla categoria degli ex-bikers… FOR YOU CARD Casa Vacanze sul Borgo è stato premiato come BEST SUPPORTER FOR YOU CARD 2022, grazie ai contributi versati alla manutenzione del territorio. Tutti gli ospiti in possesso di FOR YOU CARD hanno la garanzia che una parte della loro spesa sarà re-investita a beneficio della manutenzione del territorio, della rete sentieristica e delle falesie. Ricordatevi tutti di acquistare la vostra FOR YOU CARD! Scopri i percorsi MTB Informazioni Servizi & Comforts Free Wi-Fi Connessione Wi-Fi libera con accesso da tutte le zone della struttura e dagli appartamenti. Free Parking Parcheggio esterno libero davanti alla struttura. Ampia disponibilità e zona sicura. Comfort in ogni stanza Disponibili a qualsiasi esigenza abbiate nell’adattare le stanze con letti singoli o matrimoniali. Cucina equipaggiata Ogni cucina è provvista di tutti i comfort n
+
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cascadepowderguides.com
+Content to analyze:
+Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies About Yurt Our Team Company Policies Yurt Our Team Company Policies Gallery Area Info Terrain Directions Area Info Terrain Directions Terrain Directions International Trips Ski Chile Japan International Trips Ski Chile Japan Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Deep In TheBackcountryyet so close to home...Book A Trip Washington's premier backcountry skiing and snowboarding operationCascade Powder Guides commands a 1920 acre private powder reserve of epic northwest terrain. We offer day trip and overnight catski and boarding options, avalanche education, and trips to Japan. Centrally located near Stevens Pass, 70 miles from Seattle, CPG's base of operations is a short drive from western and eastern Washington, Oregon, and BC. Overnight Catski Trips Catski day trips japan Avalanche Courses Check trip availability UnbeatableTERRAIN Right out our backyardOur expert guides and instructors lead groups of 8-10 guests through untracked bowls, glades, chutes, and gullies. Blanketed annually with over 450 inches of powder, CPG has plenty of fresh tracks to go around! Our yurt at 4600' is a scenic spot to enjoy a delicious mid day lunch break by the fire. Terrain Details Getting Here Gallery NO CROWDS UP HEREFOMO Free Zone The ExperienceWith no lifts, no lines, and no crowds Cascade Powder Guides truly delivers The Ultimate Backcountry Experience. The Yurt CPG Guides Plan A Trip Back to Top Cascade Powder Guides, 9026 EAST LEAVENWORTH RD, LEAVENWORTH, WA 98826(206) 629-2329INFO@CASCADEPOWDERGUIDES.COM Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies Gallery Area Info Terrain Directions International Trips Ski Chile Japan Book a Trip Home Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan Trips Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan Overnight Catski Trips Catski Day Trips Catski Avalanche Course Japan About Yurt Our Team Company Policies About Yurt Our Team Company Policies Yurt Our Team Company Policies Gallery Area Info Terrain Directions Area Info Terrain Directions Terrain Directions International Trips Ski Chile Japan International Trips Ski Chile Japan Ski Chile Japan Book a Trip Deep In TheBackcountryyet so close to home...Book A Trip Washington's premier backcountry skiing and snowboarding operationCascade Powder Guides commands a 1920 acre private powder reserve of epic northwest terrain. We offer day trip and overnight catski and boarding options, avalanche education, and trips to Japan. Centrally located near Stevens Pass, 70 miles from Seattle, CPG's base of operations is a short drive from western and eastern Washington, Oregon, and BC. Overnight Catski Trip
+
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cascadeconcretepumping.com
+Content to analyze:
+HomeServicesOur WorkTeamContactFAQ720 Fishers Lane, Longview, Washington, 98632HomeServicesOur WorkTeamContactFAQ6 ReviewsCascade Concrete PumpingAll of Your Concrete Pumping Needs(360) 747-4331BookSend MessageNo Job is Too Small to Give It Your AllConcrete Line Pump in LongviewAt Cascade Concrete Pumping, we offer the full range of concrete line pump services, from consultation and flat work, to decommissioning pipes, and foundations. Based in Longview, we are a family-owned and operated business that have the expertise to handle any project, big or small. With over 30 years of ...Learn MoreOur ServicesWe offer a wide range of concrete pumping services to meet all of your construction needs. Whether you need flatwork for a new driveway, decommissioning pipes, or a solid foundation for your new construction project, we have the expertise and equipment to get the job done right. With our commitment to quality, ...Learn MoreOur Experienced TeamAt Cascade Concrete Pumping, we take pride in going above and beyond for our customers. We understand that time is money, which is why we cater to your schedule and arrive early to ensure efficient setup. Our experienced team works quickly and cleanly to get the job done right and make you happy. You can count on ...Learn MoreReviews6 ReviewsThese guys are the best they’re there on time they help you out they’re good people I would definitely hire them again and for all my projects. J A RFeb 5, 2024Roblox_Estefania RamirezWe had them pour and finish a 30x40 slab in our backyard. This included a 4x4 sunken fire pit with curbs. Toby and his team did all the preparations and ...Read moreJun 24, 2023Lisa BakerI was in the market to get a new concrete pad for my backyard and after days of searching around for the best price & most professional crew I realized ...Read moreJun 24, 2023JACEHard working guys, I personally have not used them but I have worked along side them as the delivery driver for the concrete. They always do a great jobJun 24, 2023Josh VanceToby was awesome! Friendly, very helpful, and extremely affordable. Couldn't have asked for a better person or company. Thanks again Cascade Concrete PumpingJun 22, 2023mark reedAdd reviewAll reviewsHighlightsFree consultationFamily-ownedDebit & Credit cards accepted20+ years of experienceTop-notch customer satisfactionGet in TouchAddress720 Fishers Lane, Longview, Washington, 98632Phone Number(360) 747-4331Email[email protected]Social MediaMerchant PoliciesLegal NoticePowered by HomeServicesOur WorkTeamContactFAQ720 Fishers Lane, Longview, Washington, 98632HomeServicesOur WorkTeamContactFAQ6 ReviewsCascade Concrete PumpingAll of Your Concrete Pumping Needs(360) 747-4331BookSend MessageNo Job is Too Small to Give It Your AllConcrete Line Pump in LongviewAt Cascade Concrete Pumping, we offer the full range of concrete line pump services, from consultation and flat work, to decommissioning pipes, and foundations. Based in Longview, we are a family-owned and operated business that have the expertise to handle any project, big or small. With over 30 years of ...Learn MoreOur ServicesWe offer a wide range of concrete pumping services to meet all of your construction needs. Whether you need flatwork for a new driveway, decommissioning pipes, or a solid foundation for your new construction project, we have the expertise and equipment to get the job done right. With our commitment to quality, ...Learn MoreOur Experienced TeamAt Cascade Concrete Pumping, we take pride in going above and beyond for our customers. We understand that time is money, which is why we cater to your schedule and arrive early to ensure efficient setup. Our experienced team works quickly and cleanly to get the job done right and make you happy. You can count on ...Learn MoreReviews6 ReviewsThese guys are the best they’re there on time they help you out they’re good people I would definitely hire them again and for all my projects. J A RFeb 5, 2024Roblox_Estefania RamirezWe had
+
+2025-02-22 18:28:31 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cascadespringsloan.com
+Content to analyze:
+Installment Loans: Complete Guide on Types, Benefits, and Application ProcessFor personal finance, a reliable partner is vital for borrowers who want beneficial financial solutions. It is important to learn about installment loans fully to empower borrowers with financial tools that can empower them to fulfill their diverse needs.According to a recent study by the Consumer Financial Protection Bureau (CFPB), individuals who grasp the fundamentals of installment loans are more likely to manage their finances effectively and avoid common pitfalls.Let’s check out what experts of Cascade Springs Loan have to tell you about installment loans.What Are Installment Loans?At its core, an installment loan is a straightforward financial tool. It’s a sum of money borrowed from a lender that you repay in fixed, regular installments over an agreed-upon period. Each payment covers both the principal amount and interest, providing clarity on your repayment schedule.The mechanics are simple. When you take out an installment loan, you receive a lump sum. You then commit to repaying this amount, plus interest, in fixed portions over the loan term. Monthly payments remain consistent, making budgeting more manageable.Installment loans serve various purposes. They’re often employed for significant expenses like home repairs, medical bills, or unexpected emergencies. Additionally, they can be used for planned investments, such as education or home improvement. The flexibility of installment loans makes them a practical choice for navigating life’s financial challenges with predictability.Types of Installment LoansPayday loans are short-term loans designed to cover immediate expenses until your next paycheck. They typically involve smaller amounts and shorter repayment periods compared to other installment loans.Features and Eligibility CriteriaSpeed: Quick approval and disbursement, often within a day.Eligibility: Usually requires proof of income, a checking account, and identification.Amount: Generally smaller amounts based on your income.Pros and ConsPros:Immediate financial relief.Minimal documentation.Cons:Higher interest rates.Short repayment period can lead to a cycle of borrowing.Installment loans are a more flexible borrowing option. They involve borrowing a lump sum and repaying it in fixed, regular installments over a more extended period.Features and BenefitsPredictable Payments: Monthly payments remain consistent, aiding in budgeting.Higher Amounts: Generally, installment loans allow for larger loan amounts.Extended Terms: Longer repayment periods, providing more time to repay.Wondering how it differs from payday loans? Here are some main variations:Repayment Structure: Paying back in fixed installments over a more extended period.Amount and Terms: Typically involves larger amounts and more extended repayment terms compared to payday loans.Interest Rates: While interest rates vary, they are often more reasonable than payday loans.Understanding the distinctions between payday loans and installment loans empowers borrowers to choose the option that aligns best with their financial needs.Secured vs. Unsecured Installment LoansSecured installment loans involve providing collateral, which is an asset that acts as security for the loan. This can be anything from a vehicle to valuable possessions. If the borrower fails to repay, the lender can claim the collateral.AdvantagesLower Interest Rates: Secured loans often have lower interest rates due to the reduced risk for the lender.Higher Approval Odds: Collateral provides assurance, making approval more likely.DisadvantagesRisk of Asset Loss: Failing to repay could result in the loss of the collateral.Stricter Eligibility: Requirements may include a valuable asset, limiting accessibility for some.Unsecured installment loans do not require collateral. Approval is based on the borrower’s creditworthiness, income, and financial history.BenefitsNo Asset Risk: Borrowers don’t risk losing personal asse
+
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:31 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:28:31 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:32 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:34 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:34 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:34 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:37 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:37 - DEBUG - Full response from Ollama: {
+    "keywords": "Orlando real estate investment, Florida commercial properties for sale, US business opportunities, international property investing, Orlando home buying guide",
+    "business_name": "WRA Corretor de Imóveis",
+    "products_services": "Commercial and residential properties, business opportunities, real estate investment services, property management, construction and incorporation services, legal assistance, financing options",
+    "target_audience": "Individual investors, international buyers, US businesses, entrepreneurs, first-time homebuyers in Orlando",
+    "location": "Orlando, Florida"
+}
+2025-02-22 18:28:37 - DEBUG - Parsed analysis JSON: {'keywords': 'Orlando real estate investment, Florida commercial properties for sale, US business opportunities, international property investing, Orlando home buying guide', 'business_name': 'WRA Corretor de Imóveis', 'products_services': 'Commercial and residential properties, business opportunities, real estate investment services, property management, construction and incorporation services, legal assistance, financing options', 'target_audience': 'Individual investors, international buyers, US businesses, entrepreneurs, first-time homebuyers in Orlando', 'location': 'Orlando, Florida'}
+2025-02-22 18:28:37 - DEBUG - Analysis result for URL https://casasparacompraremorlando.com: {'keywords': 'Orlando real estate investment, Florida commercial properties for sale, US business opportunities, international property investing, Orlando home buying guide', 'business_name': 'WRA Corretor de Imóveis', 'products_services': 'Commercial and residential properties, business opportunities, real estate investment services, property management, construction and incorporation services, legal assistance, financing options', 'target_audience': 'Individual investors, international buyers, US businesses, entrepreneurs, first-time homebuyers in Orlando', 'location': 'Orlando, Florida'}
+2025-02-22 18:28:37 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:37 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:37 - DEBUG - Full response from Ollama: {
+    "keywords": "HVAC contractors in South Atlantic, best plumbing services Gulf States, electrical contractors near me, home service companies in Atlanta, residential HVAC repair",
+    "business_name": "Cascade Services",
+    "products_services": "HVAC, plumbing, electrical contractors, technician training, retention, growth, customer service, 24/7 service, lead generation, digital marketing, centralized recruiting services",
+    "target_audience": "family-owned businesses in South Atlantic and Gulf States, HVAC and plumbing companies looking for expansion, electrical contractors seeking partnership, small business owners in Atlanta region",
+    "location": "South Atlantic and Gulf States"
+}
+2025-02-22 18:28:37 - DEBUG - Parsed analysis JSON: {'keywords': 'HVAC contractors in South Atlantic, best plumbing services Gulf States, electrical contractors near me, home service companies in Atlanta, residential HVAC repair', 'business_name': 'Cascade Services', 'products_services': 'HVAC, plumbing, electrical contractors, technician training, retention, growth, customer service, 24/7 service, lead generation, digital marketing, centralized recruiting services', 'target_audience': 'family-owned businesses in South Atlantic and Gulf States, HVAC and plumbing companies looking for expansion, electrical contractors seeking partnership, small business owners in Atlanta region', 'location': 'South Atlantic and Gulf States'}
+2025-02-22 18:28:37 - DEBUG - Analysis result for URL https://cascadeservices.com: {'keywords': 'HVAC contractors in South Atlantic, best plumbing services Gulf States, electrical contractors near me, home service companies in Atlanta, residential HVAC repair', 'business_name': 'Cascade Services', 'products_services': 'HVAC, plumbing, electrical contractors, technician training, retention, growth, customer service, 24/7 service, lead generation, digital marketing, centralized recruiting services', 'target_audience': 'family-owned businesses in South Atlantic and Gulf States, HVAC and plumbing companies looking for expansion, electrical contractors seeking partnership, small business owners in Atlanta region', 'location': 'South Atlantic and Gulf States'}
+2025-02-22 18:28:38 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:38 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:38 - DEBUG - Full response from Ollama: {
+    "keywords": "finalborgo apartments mountain bike, borgo medievale italy, appartment rentals finale ligure, mtb holiday accommodations, italy vacation rentals finalborgo",
+    "business_name": "Casa Vacanze Sul Borgo",
+    "products_services": "appartamenti con ampie zone esterne, biker friendly accommodations, mtb holiday accommodations, apartments with private outdoor spaces, mountain bike rentals near finale ligure",
+    "target_audience": "mountain bikers, cyclists, families, couples, tourists visiting finale ligure, italy",
+    "location": "Via Oddone Pascale 14, Finale Ligure (SV) – Italy"
+}
+2025-02-22 18:28:38 - DEBUG - Parsed analysis JSON: {'keywords': 'finalborgo apartments mountain bike, borgo medievale italy, appartment rentals finale ligure, mtb holiday accommodations, italy vacation rentals finalborgo', 'business_name': 'Casa Vacanze Sul Borgo', 'products_services': 'appartamenti con ampie zone esterne, biker friendly accommodations, mtb holiday accommodations, apartments with private outdoor spaces, mountain bike rentals near finale ligure', 'target_audience': 'mountain bikers, cyclists, families, couples, tourists visiting finale ligure, italy', 'location': 'Via Oddone Pascale 14, Finale Ligure (SV) – Italy'}
+2025-02-22 18:28:38 - DEBUG - Analysis result for URL https://casavacanzesulborgo.com: {'keywords': 'finalborgo apartments mountain bike, borgo medievale italy, appartment rentals finale ligure, mtb holiday accommodations, italy vacation rentals finalborgo', 'business_name': 'Casa Vacanze Sul Borgo', 'products_services': 'appartamenti con ampie zone esterne, biker friendly accommodations, mtb holiday accommodations, apartments with private outdoor spaces, mountain bike rentals near finale ligure', 'target_audience': 'mountain bikers, cyclists, families, couples, tourists visiting finale ligure, italy', 'location': 'Via Oddone Pascale 14, Finale Ligure (SV) – Italy'}
+2025-02-22 18:28:39 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:40 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:40 - DEBUG - Full response from Ollama: {
+    "keywords": "tornillos estructurales mexico,tuercas 2h precios,tuercas nylon calidad,tornillos tensión controlada,japón tone",
+    "business_name": "La Casa de los Tornillos",
+    "products_services": "Tornillos tensión controlada,Tornillo hexagonal A325,Tornillo hexagonal A490,Pistolas de instalación,Tornillos estructurales,Hexagonales A325 y A490,Pernos soldables,Tuercas,Rondanas,Varillas,",
+    "target_audience": "Empresas construcción,industrias metalúrgicas,aeroespacial,eléctrica,agricultura,maquinaría,",
+    "location": "Tijuana,Monterrey,Ciudad de México,Querétaro,Guadalajara,Mérida,Cancún"
+}
+2025-02-22 18:28:40 - DEBUG - Parsed analysis JSON: {'keywords': 'tornillos estructurales mexico,tuercas 2h precios,tuercas nylon calidad,tornillos tensión controlada,japón tone', 'business_name': 'La Casa de los Tornillos', 'products_services': 'Tornillos tensión controlada,Tornillo hexagonal A325,Tornillo hexagonal A490,Pistolas de instalación,Tornillos estructurales,Hexagonales A325 y A490,Pernos soldables,Tuercas,Rondanas,Varillas,', 'target_audience': 'Empresas construcción,industrias metalúrgicas,aeroespacial,eléctrica,agricultura,maquinaría,', 'location': 'Tijuana,Monterrey,Ciudad de México,Querétaro,Guadalajara,Mérida,Cancún'}
+2025-02-22 18:28:40 - DEBUG - Analysis result for URL https://casatornillos.com: {'keywords': 'tornillos estructurales mexico,tuercas 2h precios,tuercas nylon calidad,tornillos tensión controlada,japón tone', 'business_name': 'La Casa de los Tornillos', 'products_services': 'Tornillos tensión controlada,Tornillo hexagonal A325,Tornillo hexagonal A490,Pistolas de instalación,Tornillos estructurales,Hexagonales A325 y A490,Pernos soldables,Tuercas,Rondanas,Varillas,', 'target_audience': 'Empresas construcción,industrias metalúrgicas,aeroespacial,eléctrica,agricultura,maquinaría,', 'location': 'Tijuana,Monterrey,Ciudad de México,Querétaro,Guadalajara,Mérida,Cancún'}
+2025-02-22 18:28:41 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:41 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:41 - DEBUG - Full response from Ollama: {
+    "keywords": "Installment Loan Types, Benefits, Application Process, Secured Loans",
+    "business_name": "Cascade Springs Loan",
+    "products_services": "Installment loans, Payday loans, Secured installment loans, Unsecured installment loans",
+    "target_audience": "Borrowers seeking financial solutions, Individuals with poor credit history",
+    "location": "USA"
+}
+2025-02-22 18:28:41 - DEBUG - Parsed analysis JSON: {'keywords': 'Installment Loan Types, Benefits, Application Process, Secured Loans', 'business_name': 'Cascade Springs Loan', 'products_services': 'Installment loans, Payday loans, Secured installment loans, Unsecured installment loans', 'target_audience': 'Borrowers seeking financial solutions, Individuals with poor credit history', 'location': 'USA'}
+2025-02-22 18:28:41 - DEBUG - Analysis result for URL https://cascadespringsloan.com: {'keywords': 'Installment Loan Types, Benefits, Application Process, Secured Loans', 'business_name': 'Cascade Springs Loan', 'products_services': 'Installment loans, Payday loans, Secured installment loans, Unsecured installment loans', 'target_audience': 'Borrowers seeking financial solutions, Individuals with poor credit history', 'location': 'USA'}
+2025-02-22 18:28:42 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:42 - DEBUG - Full response from Ollama: {
+    "keywords": "concrete line pump services, concrete pumping needs, longview concrete contractors, cascade concrete pumping, concrete flat work",
+    "business_name": "Cascade Concrete Pumping",
+    "products_services": "concrete line pump services, flatwork for new driveways, decommissioning pipes, solid foundation for construction projects, concrete pumping services",
+    "target_audience": "residential customers, commercial construction companies, contractors, builders, homeowners",
+    "location": "Longview, Washington"
+}
+2025-02-22 18:28:42 - DEBUG - Parsed analysis JSON: {'keywords': 'concrete line pump services, concrete pumping needs, longview concrete contractors, cascade concrete pumping, concrete flat work', 'business_name': 'Cascade Concrete Pumping', 'products_services': 'concrete line pump services, flatwork for new driveways, decommissioning pipes, solid foundation for construction projects, concrete pumping services', 'target_audience': 'residential customers, commercial construction companies, contractors, builders, homeowners', 'location': 'Longview, Washington'}
+2025-02-22 18:28:42 - DEBUG - Analysis result for URL https://cascadeconcretepumping.com: {'keywords': 'concrete line pump services, concrete pumping needs, longview concrete contractors, cascade concrete pumping, concrete flat work', 'business_name': 'Cascade Concrete Pumping', 'products_services': 'concrete line pump services, flatwork for new driveways, decommissioning pipes, solid foundation for construction projects, concrete pumping services', 'target_audience': 'residential customers, commercial construction companies, contractors, builders, homeowners', 'location': 'Longview, Washington'}
+2025-02-22 18:28:42 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:42 - DEBUG - Full response from Ollama: {
+    "keywords": "backcountry skiing northwest, catskiing washington state, japan ski trips, avalanche course training, powder reserve access",
+    "business_name": "Cascade Powder Guides",
+    "products_services": "day trip and overnight catski and boarding options, avalanche education, trips to Japan",
+    "target_audience": "adventure-seeking skiers/snowboarders, backcountry enthusiasts, Washington/Oregon/BC residents, Japan travel seekers",
+    "location": "Leavenworth, WA 98826"
+}
+2025-02-22 18:28:42 - DEBUG - Parsed analysis JSON: {'keywords': 'backcountry skiing northwest, catskiing washington state, japan ski trips, avalanche course training, powder reserve access', 'business_name': 'Cascade Powder Guides', 'products_services': 'day trip and overnight catski and boarding options, avalanche education, trips to Japan', 'target_audience': 'adventure-seeking skiers/snowboarders, backcountry enthusiasts, Washington/Oregon/BC residents, Japan travel seekers', 'location': 'Leavenworth, WA 98826'}
+2025-02-22 18:28:42 - DEBUG - Analysis result for URL https://cascadepowderguides.com: {'keywords': 'backcountry skiing northwest, catskiing washington state, japan ski trips, avalanche course training, powder reserve access', 'business_name': 'Cascade Powder Guides', 'products_services': 'day trip and overnight catski and boarding options, avalanche education, trips to Japan', 'target_audience': 'adventure-seeking skiers/snowboarders, backcountry enthusiasts, Washington/Oregon/BC residents, Japan travel seekers', 'location': 'Leavenworth, WA 98826'}
+2025-02-22 18:28:43 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:43 - DEBUG - Full response from Ollama: {
+    "keywords": "centraal portugal b&b, arganil accommodation, bed and breakfast portugal, serra do açor landscape",
+    "business_name": "Casa Traca, Bed and Breakfast Centraal Portugal",
+    "products_services": "Bed and Breakfast, Accommodation in Arganil, Portugal, Classic Room, Retro kamer, Byzanthijnse kamer, Far East kamer, Hottub arrangement",
+    "target_audience": "tourists, travelers, nature lovers, outdoor enthusiasts, couples, families, groups",
+    "location": "Arganil, Centraal Portugal"
+}
+2025-02-22 18:28:43 - DEBUG - Parsed analysis JSON: {'keywords': 'centraal portugal b&b, arganil accommodation, bed and breakfast portugal, serra do açor landscape', 'business_name': 'Casa Traca, Bed and Breakfast Centraal Portugal', 'products_services': 'Bed and Breakfast, Accommodation in Arganil, Portugal, Classic Room, Retro kamer, Byzanthijnse kamer, Far East kamer, Hottub arrangement', 'target_audience': 'tourists, travelers, nature lovers, outdoor enthusiasts, couples, families, groups', 'location': 'Arganil, Centraal Portugal'}
+2025-02-22 18:28:43 - DEBUG - Analysis result for URL https://casatraca.com: {'keywords': 'centraal portugal b&b, arganil accommodation, bed and breakfast portugal, serra do açor landscape', 'business_name': 'Casa Traca, Bed and Breakfast Centraal Portugal', 'products_services': 'Bed and Breakfast, Accommodation in Arganil, Portugal, Classic Room, Retro kamer, Byzanthijnse kamer, Far East kamer, Hottub arrangement', 'target_audience': 'tourists, travelers, nature lovers, outdoor enthusiasts, couples, families, groups', 'location': 'Arganil, Centraal Portugal'}
+2025-02-22 18:28:43 - DEBUG - Processing URL: cascinabertolotto.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: caseyaltmandesign.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: caseyandcaseylawoffices.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: caseyschuurman.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: cashafish.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: cashandcontrol.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Processing URL: cashdiscount.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://caseyaltmandesign.com
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://cascinabertolotto.com
+2025-02-22 18:28:43 - DEBUG - Processing URL: cashmateonline.com with model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://caseyandcaseylawoffices.com
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://caseyschuurman.com
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://cashafish.com
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://cashandcontrol.com
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://cashdiscount.com
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Using cached data for URL https://cashmateonline.com
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://caseyaltmandesign.com
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://caseyandcaseylawoffices.com
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://cascinabertolotto.com
+2025-02-22 18:28:43 - DEBUG - Initialized ContentAnalyzer with base_url: http://localhost:11434, model: llama3.1:8b
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://caseyschuurman.com
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://cashafish.com
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://caseyaltmandesign.com
+Content to analyze:
+Cart 0 Testimonials Contact Cart 0 Cart 0 Testimonials Contact Testimonials Contact Testimonials Contact Cart 0 TestimonialsContact Scroll Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expectations, and we are 99% referral based. Our services: if it can be done, it will be. Graphic Design. Print Design. Book Design. Branding & Identity. Package Design. Event Branding & Invitation Design. Photography. Infographic Design. Website Design. E-commerce Design + Development. We value the people we work with. Featured See More "Design is so simple, that's why it is so COMPLICATED."-Paul Rand Welcome About Services Clients Quote 3 Casey Altman Design Inc 210 North Mill Street, Aspen, CO, 81611, United States 9179793507 caltman@caseyaltmandesign.com Hours The Team © 2019 Casey Altman Design Inc. All Rights Reserved. Cart 0 Cart 0 TestimonialsContact Scroll Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expectations, and we are 99% referral based. Our services: if it can be done, it will be. Graphic Design. Print Design. Book Design. Branding & Identity. Package Design. Event Branding & Invitation Design. Photography. Infographic Design. Website Design. E-commerce Design + Development. We value the people we work with. Featured See More "Design is so simple, that's why it is so COMPLICATED."-Paul Rand Welcome About Services Clients Quote 3 TestimonialsContact TestimonialsContact TestimonialsContact Scroll Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expectations, and we are 99% referral based. Our services: if it can be done, it will be. Graphic Design. Print Design. Book Design. Branding & Identity. Package Design. Event Branding & Invitation Design. Photography. Infographic Design. Website Design. E-commerce Design + Development. We value the people we work with. Featured See More "Design is so simple, that's why it is so COMPLICATED."-Paul Rand Welcome About Services Clients Quote 3 Scroll Scroll Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design Inc.Cultivating design & creativity. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expectations, and we are 99% referral based. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expectations, and we are 99% referral based. Casey Altman Design is a multidisciplinary, boutique design firm based in Aspen, Colorado. We are constantly exploring new disciplines and evolving our existing offerings to best meet our clients’ needs. We design until we exceed expec
+
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://caseyandcaseylawoffices.com
+Content to analyze:
+top of pageHomeAboutServicesPaymentsResourcesContactMoreUse tab to navigate through the menu items.Casey & Casey Law Offices, PLLCMessage Us!Scott Casey Board Certified Specialist in State Criminal LawALL CONSULTATIONS ARE FREE!Casey & Casey Law Offices, PLLCUpholding a tradition of excellence.Located in downtown Boone, North CarolinaServing both Watauga and Avery CountiesYour Local, Legal ProfessionalsJustice ServedThe Experienced ChoiceAt Casey & Casey Law Offices, we pride ourselves in going above and beyond for our clients. We are consistent, patient and professional, giving each new case the attention it deserves. An integral part of our services is to work closely with our clients so that they can make the right decisions with respect to their legal needs.WHAT PEOPLE SAY — Jeff Sigmon"This group defies the stereotypes usually associated with lawyers. They truly cared for me and my family from the moment we walked in. Their entire staff was nothing short of amazing. They treat people with respect, something that is hard to find these days. Don't think twice about choosing them, they're the best you could ever hope to find."Leave a TestimonialBack to TopCasey & Casey Law Officeshello@caseyandcaseylawoffices.com(828) 262 5075891 West King Street Boone, North Carolina 28607Hours: ​ Monday Tuesday Wednesday Thursday Friday Saturday Sunday​ 8am - 5pm 8am - 5pm 8am - 5pm 8am - 5pm 8am - 5pm Closed Closed©2018 by Casey & Casey Law Offices. Proudly created with Wix.combottom of page top of pageHomeAboutServicesPaymentsResourcesContactMoreUse tab to navigate through the menu items.Casey & Casey Law Offices, PLLCMessage Us!Scott Casey Board Certified Specialist in State Criminal LawALL CONSULTATIONS ARE FREE!Casey & Casey Law Offices, PLLCUpholding a tradition of excellence.Located in downtown Boone, North CarolinaServing both Watauga and Avery CountiesYour Local, Legal ProfessionalsJustice ServedThe Experienced ChoiceAt Casey & Casey Law Offices, we pride ourselves in going above and beyond for our clients. We are consistent, patient and professional, giving each new case the attention it deserves. An integral part of our services is to work closely with our clients so that they can make the right decisions with respect to their legal needs.WHAT PEOPLE SAY — Jeff Sigmon"This group defies the stereotypes usually associated with lawyers. They truly cared for me and my family from the moment we walked in. Their entire staff was nothing short of amazing. They treat people with respect, something that is hard to find these days. Don't think twice about choosing them, they're the best you could ever hope to find."Leave a TestimonialBack to TopCasey & Casey Law Officeshello@caseyandcaseylawoffices.com(828) 262 5075891 West King Street Boone, North Carolina 28607Hours: ​ Monday Tuesday Wednesday Thursday Friday Saturday Sunday​ 8am - 5pm 8am - 5pm 8am - 5pm 8am - 5pm 8am - 5pm Closed Closed©2018 by Casey & Casey Law Offices. Proudly created with Wix.combottom of page top of page HomeAboutServicesPaymentsResourcesContactMoreUse tab to navigate through the menu items.Casey & Casey Law Offices, PLLCMessage Us!Scott Casey Board Certified Specialist in State Criminal LawALL CONSULTATIONS ARE FREE!Casey & Casey Law Offices, PLLCUpholding a tradition of excellence.Located in downtown Boone, North CarolinaServing both Watauga and Avery CountiesYour Local, Legal ProfessionalsJustice ServedThe Experienced ChoiceAt Casey & Casey Law Offices, we pride ourselves in going above and beyond for our clients. We are consistent, patient and professional, giving each new case the attention it deserves. An integral part of our services is to work closely with our clients so that they can make the right decisions with respect to their legal needs.WHAT PEOPLE SAY — Jeff Sigmon"This group defies the stereotypes usually associated with lawyers. They truly cared for me and my family from the moment we walked in. Their entire staff was nothing short of amazing. The
+
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://cashandcontrol.com
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://cashdiscount.com
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cascinabertolotto.com
+Content to analyze:
+MENU I Nostri Vini Le Nostre Grappe Artigianali Negozio/Store Carrello/Cart Pagamento Degustazioni Guidate Eventi Privati Cascina Bertolotto Wine Resort Camere e Suites Prenotazione Camere Per i Piu Piccoli I Nostri Amici a Quattro Zampe La Colazione Contatti Newsletter Accedi/Registrati Home Rassegna Stampa Galleria Vite in affido Languages Italiano English (Inglese) Français (Francese) Deutsch (Tedesco) Vitivinicoltori in Piemonte dal 1816 Cascina Bertolotto, sita ad un’altitudine di 400 metri sul livello del mare e confinante con la regione langhe patrimonio dell’Unesco, si erge tra le colline dove il suolo è stato pazientemente coltivato nel corso degli anni da generazioni di agricoltori, che lo hanno reso così un terreno ricco e fertile. Oggi, sotto l’egida della famiglia Galantini, Cascina Bertolotto conserva il carattere di innata ruralità e genuinità, in un connubio di innovazione e tradizione di cui poche realtà hanno l’onore di potersi fregiare. Grazie a questo connubio, il vino prodotto in Cascina Bertolotto compare nelle carte dei vini dei migliori ristoranti e nelle cantine degli intenditori di vino più esigenti. Questo successo nato dalla lunga esperienza tramandata negli anni, continua oggi con l’impegno della famiglia Galantini nel selezionare con cura le migliori uve, provenienti esclusivamente dai vigneti di proprietà.I nostri Vini Wine ResortDegustazioni guidate Adotta un filare Regione Rocchetta – SpignoMonferrato (AL) – Piemonte – ITALIATel. 0144 91551 – Fax 0144 95003e-mail: info@cascinabertolotto.itWhatsapp: 375 6582665Codice fiscale e P. IVA 02626970061 cascina.bertolotto Info e prenotazioni: Tel. | +39 0144 91551 Mail | info@cascinabertolotto.it Whatsapp | +39 375 6582665 Per San Valentino regala al tuo amore un’esperie Post su Instagram 18163354411327561 Non avete ancora programmato nulla per la festa de VEGLIONE DI CAPODANNO a Cascina Bertolotto Wine Re Vieni a scoprire il Monferrato in un modo unico e WINE & GRILL 🍷🥩 ⏱️ SABATO 29 GIUGNO da Presenti con il nostro Brachetto d’Acqui DOCG al Intorno al fungo più nobile del mondo sono nate s Carica altro… Segui su Instagram Condividi:WhatsApp MENU I Nostri Vini Le Nostre Grappe Artigianali Negozio/Store Carrello/Cart Pagamento Degustazioni Guidate Eventi Privati Cascina Bertolotto Wine Resort Camere e Suites Prenotazione Camere Per i Piu Piccoli I Nostri Amici a Quattro Zampe La Colazione Contatti Newsletter Accedi/Registrati Home Rassegna Stampa Galleria Vite in affido Languages Italiano English (Inglese) Français (Francese) Deutsch (Tedesco) Vitivinicoltori in Piemonte dal 1816 Cascina Bertolotto, sita ad un’altitudine di 400 metri sul livello del mare e confinante con la regione langhe patrimonio dell’Unesco, si erge tra le colline dove il suolo è stato pazientemente coltivato nel corso degli anni da generazioni di agricoltori, che lo hanno reso così un terreno ricco e fertile. Oggi, sotto l’egida della famiglia Galantini, Cascina Bertolotto conserva il carattere di innata ruralità e genuinità, in un connubio di innovazione e tradizione di cui poche realtà hanno l’onore di potersi fregiare. Grazie a questo connubio, il vino prodotto in Cascina Bertolotto compare nelle carte dei vini dei migliori ristoranti e nelle cantine degli intenditori di vino più esigenti. Questo successo nato dalla lunga esperienza tramandata negli anni, continua oggi con l’impegno della famiglia Galantini nel selezionare con cura le migliori uve, provenienti esclusivamente dai vigneti di proprietà.I nostri Vini Wine ResortDegustazioni guidate Adotta un filare Regione Rocchetta – SpignoMonferrato (AL) – Piemonte – ITALIATel. 0144 91551 – Fax 0144 95003e-mail: info@cascinabertolotto.itWhatsapp: 375 6582665Codice fiscale e P. IVA 02626970061 cascina.bertolotto Info e prenotazioni: Tel. | +39 0144 91551 Mail | info@cascinabertolotto.it Whatsapp | +39 375 6582665 Per San Valentino regala al tuo amore un’esperie Post su Instagram 18163354411327561 Non avete ancora programmato nulla p
+
+2025-02-22 18:28:43 - DEBUG - Starting Ollama analysis for URL: https://cashmateonline.com
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://caseyschuurman.com
+Content to analyze:
+0 Skip to Content Work About Contact Shop Open Menu Close Menu Open Menu Close Menu Work About Contact Shop Work About Contact Shop Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Art Class — Book Design Lifeline Australia — Campaign Lettering Assorted Custom Lettering Puzzle Packaging — Thames & Hudson Small Kitchen Cook — Book Design Game Packaging — Thames & Hudson Collage Kit — Book Design Personal Work Cosmic Catastrophes — Book Design Colouring Book Design Sunny Says Cover Lettering — The Big Issue Art Search — Book Design Letter—Form Exhibitions Frankie Feel-Good Vol 4 — Magazine Design Illustrated Cards — Frankie Magazine Pen Pal Stickers — Frankie Magazine 36 Days of Type The Hunter & The Gatherer — Book Design Layout & Illustration — Frankie Magazine Comparison Kills Brand Identity — Felix Wine & Espresso Brand Identity — Frankie Fellows Assorted Logotypes Logotype — Plant Runner Travel Drawing Diary More Work Sign up for my monthly newsletter of noteworthy updates. Links, resources, events and more (probably dog pics). SUBSCRIBE HERE Read Client Testimonials View My Digital Design Work Contact —To talk ideas, collaborationsand beyond; get in touch here. Please know, I’m based in Australia. More —NewsletterResourcesType Gallery Acknowledgment of Country —I acknowledge the Dja Dja Wurrung people as the Traditional Owners and Custodians of the land on which I live and work. I pay respect to their Elders, past and present. Always was, always will be. © Casey Schuurman 2024 • Terms & Privacy 0 0 Skip to Content Work About Contact Shop Open Menu Close Menu Open Menu Close Menu Work About Contact Shop Work About Contact Shop Open Menu Close Menu Open Menu Close Menu Work About Contact Shop Work About Contact Shop Open Menu Close Menu Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Open Menu Close Menu Open Menu Close Menu Work About Contact Shop Open Menu Close Menu Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work About Contact Shop Work Work About About Contact Contact Shop Shop Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Casey Schuurman is a designer with an eye for detail, that specialises in book design, lettering & illustration, packaging and type-centric branding. Art Class — Book Design Lifeline Australia — Campaign Lettering Assorted Custom Lettering Puzzle Packaging — Thames & Hudson Small Kitchen Cook — Book Design Game Packaging — Thames & Hudson Collage Kit — Book Design Personal Work Cosmic Catastrophes — Book Design Colouring Book Design Sunny Says Cover Lettering — The Big Issue Art
+
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cashafish.com
+Content to analyze:
+info@cashafish.com Ielogoties / Reģistrēties Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk 1/ Facebook Instagram Makšķerē no krasta Atļauts makšķerēt no krasta publiski pieejamos ūdeņos saskaņā ar Makšķerēšanas noteikumiem. Makšķerē no laivas Atļauts makšķerēt no jebkura izmēra laivas un citiem peldlīdzekļiem saskaņā ar Makšķerēšanas noteikumiem. Makšķerē zem ledus Ledus periodā atļauts ķert ar zemledus makšķerēm saskaņā ar Makšķerēšanas noteikumiem. Makšķerē legāli! Esi godīgs pret citiem dalībniekiem – par negodīgi iegūta loma reģistrāciju dalībniekam tiks liegts turpmāk piedalīties Cash a fish turnīros. Par projektu CASHaFISH - pelni makšķerējot! CASHaFISH ir Latvijā, Baltijā un arī Eiropā pirmā tautas klases makšķerēšanas turnīru platforma, kas dod vienlīdzīgu iespēju ikvienam makšķerniekam saņemt lieliskas naudas balvas, vienkārši nodarbojoties ar savu hobiju. Lai to paveiktu, ir jāreģistrējas kādā no aktīvajiem turnīriem un tā ietvaros paša izvēlētā upē, ezerā vai jūras piekrastē jānoķer turnīra mērķa zivs norādītajā izmērā. Turnīru platformu radījuši trīs azartiski makšķernieki – Normunds Ikomass, Gints Klēģers un Gunārs Klēģers. Lasīt vairāk Reģistrācija turnīriem Nepalaid garām iespēju nopelnīt naudu ar makšķerēšanu un reģistrējies kādā no zemāk redzamajiem aktīvajiem turnīriem. 01.05.2022 - 15.05.2022 STRIKE PRO Līdaka 2022 Lasīt vairāk 30.10.2021 - 30.11.2021 LOCKDOWN OPEN 2021 Lasīt vairāk 28.08.2021 - 30.09.2021 Augusta copes festivāls 2021 Lasīt vairāk Visi turnīri Mūsu atbalstītāji Pieteikties jaunumiem Nosūtīt Par mums Turnīru platformu radījuši trīs azartiski makšķernieki ar vairāku gadu sporta un atpūtas makšķerēšanas pieredzi – Normunds Ikomass, Gints Klēģers un Gunārs Klēģers. Rekvizīti “GNG Brothers” SIA, reģ.nr. 40203306602 Juridiskā adrese: Vīlandes iela 18-10, Rīga, LV-1010 Kontakti +371 26 436 492 info@cashafish.com © 2025 Cash a Fish. Visas tiesības paturētas. | Izstrāde: WebProjekts Privātuma politika Nolikums Kontakti info@cashafish.com Ielogoties / Reģistrēties Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU info@cashafish.com Ielogoties / Reģistrēties info@cashafish.com Ielogoties / Reģistrēties info@cashafish.com Ielogoties / Reģistrēties info@cashafish.com Ielogoties / Reģistrēties Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU Turnīri Kā piedalīties / BUJ Nolikums Par projektu Darbnīca Veikals 0 LV RU LV RU Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk 1/ Facebook Instagram Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! Lasīt vairāk Strike PRO Līdaka 2022 1. maijā startē līdaku turnīrs visiem - balvu fonds 2000 EUR! 1/ 1/ Makšķerē no krasta Atļauts makšķerēt no krasta publiski pieejamos ūdeņos saskaņā ar Makšķerēšanas noteikumiem. Makšķerē no laivas Atļauts makšķerēt no jebkura izmēra laivas un citiem peldlīdzekļiem saskaņā ar Makšķerēšanas noteikumiem. Makšķerē zem ledus Ledus periodā atļauts ķert ar zemledus makšķerēm saskaņā ar Makšķerēšanas noteikumiem. Makšķerē legāli! Esi godīgs pret citiem da
+
+2025-02-22 18:28:43 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:43 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cashandcontrol.com
+Content to analyze:
+USD USD CAD GBP AUD EUR JPY Home T-shirts T-shirts Tanks Tops Crop Tops Hats Hoodies & Sweatshirts Hoodies & Sweatshirts CROP HOODIES Long-Sleeve Zip Hoodies Shoes Men Shoes Women Shoes Kid Shoes Accessories Sunglasses Fanny Packs Backpacks Teddy Bear Jewelry Scarves & Bandanas iPhone Case Socks Tote bag Stickers Prints and Canvas Log in Search Contact 800-495-7139 customerservice@cashandcontrol.com Facebook Twitter Pinterest Instagram CUSTOM MADE PRODUCTS DUE TO COVID-19 SHIPPING MAY TAKE UP TO 20 to 30 days after orders processed - Cash&Control™ Menu Search Cart Home T-shirts T-shirts Tanks Tops Crop Tops Hats Hoodies & Sweatshirts Hoodies & Sweatshirts CROP HOODIES Long-Sleeve Zip Hoodies Shoes Men Shoes Women Shoes Kid Shoes Accessories Sunglasses Fanny Packs Backpacks Teddy Bear Jewelry Scarves & Bandanas iPhone Case Socks Tote bag Stickers Prints and Canvas Log in USD USD CAD GBP AUD EUR JPY Cart (0) Search content_copy just lovin' life puta SHOP NOW COLLECTION - BACK PACKS SHOP NOW COLLECTION - HATS SHOP NOW SWim suits Shop Now COLLECTION - WINDBREAKERS Shop now LOVIN' LIFE - money smile - hoodie Learn more Regular price $100.00 Unit price / per s / black s / light pink s / white m / black m / light pink m / white l / black l / light pink l / white xl / black xl / light pink xl / white xxl / black xxl / light pink xxl / white xxxl / black xxxl / light pink xxxl / white 4xl / black 4xl / light pink 4xl / white 5xl / black 5xl / light pink 5xl / white Size s m l xl xxl xxxl 4xl 5xl Color black light pink white Quantity only -1 left in stock Add to Cart This item is a recurring or deferred purchase. By continuing, I agree to the cancellation policy and authorize you to charge my payment method at the prices, frequency and dates listed on this page until my order is fulfilled or I cancel, if permitted. Hats Add to Cart C&C Lovin Life Puta Tie dye hat $35.00 Select Options C&C $$$$ bucket $55.00 Select Options C&C Cuban links and razors $55.00 Select Options C&C Ribbed knit beanie $25.00 mustard light-grey-melange beige Select Options C&C Freddy Trucker Cap $30.50 black navy charcoal-white black-white-black Add to Cart C&C Just Lovin Puta Ribbed knit beanie $21.00 Select Options C&C CHAMPS Bucket Hat $52.00 Select Options CC Crew bucket hat $48.00 View all BAGS & BACKPACK Add to Cart CC champs Duffle bag $77.00 Add to Cart C&C Backpack $44.00 Add to Cart CC pink Camo Duffle bag $77.00 Add to Cart poetic Backpack $44.50 Add to Cart Blue Red makes $$$$$ Duffle bag $77.00 Add to Cart C&C Freddy Backpack $50.50 Add to Cart C&C menace Duffle bag $77.00 Add to Cart C&C Freddy Backpack $47.50 View all AIMER LA VIE BY LOVIN' LIFE - supa 4.2 oz., 100% airlume combed and ringspun cotton, ash is 99/1 airlume combed and ringspun cotton/polyester coverstitched collar and sleeves... Learn more Regular price $35.00 Unit price / per xs / Pink xs / white xs / red xs / true royal xs / Gold xs / Athletic Heather xs / mint xs / coral s / Pink s / white s / red s / true royal s / Gold s / Athletic Heather s / mint s / coral m / Pink m / white m / red m / true royal m / Gold m / Athletic Heather m / mint m / coral l / Pink l / white l / red l / true royal l / Gold l / Athletic Heather l / mint l / coral xl / Pink xl / white xl / red xl / true royal xl / Gold xl / Athletic Heather xl / mint xl / coral xxl / Pink xxl / white xxl / red xxl / true royal xxl / Gold xxl / Athletic Heather xxl / mint xxl / coral xxxl / Pink xxxl / white xxxl / red xxxl / true royal xxxl / Gold xxxl / Athletic Heather xxxl / mint xxxl / coral Size xs s m l xl xxl xxxl Color Pink white red true royal Gold Athletic Heather mint coral Quantity only 0 left in stock Add to Cart This item is a recurring or deferred purchase. By continuing, I agree to the cancellation policy and authorize you to charge my payment method at the prices, frequency and dates listed on this page until my order is fulfilled or I cancel, if permitted. windbreakers Select Options pagar impuestos diaria
+
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cashdiscount.com
+Content to analyze:
+How It Works Cash Discount Rules Poynt Cash Discount App App Support App Set Up Submit Ticket My Tickets iOS App Best Cash Discount Processors Resources Blog FAQs Menu ZERO Fee Processing Learn everything you need to know about Cash Discount, including the requirements and how your business can save money. Cash Discount App Update Release – June 2019 It’s finally here! We know there are agents and merchants anxiously waiting for this update and we’re really excited to bring it to you. In the release notes document, you’ll find a link to the updated Quickstart Guide which is everything you’ll need to get up and running immediately! Thank you for choosing Cash Discount! – Cash Discount LLC Team Rules and Regulations Through this site you can learn more about the Cash Discount Program, including rules and regulations, integration and other general inquiries. What is Cash Discount? When a merchant provides a discount to a customer for paying cash, this is referred to as a “Cash Discount”. Quick Setup With a compatible point-of-sale terminal, you can start providing a Cash Discount to your customers. Completely Legal As stated in the Durbin Amendment (part of the 2010 Dodd-Frank law) businesses are permitted to offer a discount to customers paying cash. How Do I Use It Correctly? Obtain a compatible point-of-sale terminal, display signs at entryways and point-of-sale locations and display fees and discounts on receipts. The Perfect Partner for your Business Run your entire business directly from your Point of Sale. PreviousNext Point Of Sale System Chip Cards Apple Pay Point Of Sale System Chip Cards Apple Pay Point Of Sale System Chip Cards Apple Pay Credit Card Terminal Chip Cards Apple Pay Read More E commerce Ecommerce Website Mobile Chip Cards Apple Pay See how you and your customers can benefit by using Cash Discount I saved $0.50 on my latte! Top Cash Discount Processors We've ranked the Top 5 Cash Discount Processors for you. Learn More How It Works Run your entire business directly from your Point of Sale. chip card swipe card Cash Discount offers personalized payment solutions for every business, big and small. We let you accept all types of credit and debit card payments, so you can create more convenience for your customers... Cash Discount can benefit businesses of all types Retail Food and Beverage Lodging Commerce Services Business Transportation Health and Fitness Beauty Property Management Pay at the Pump Retail Attorneys Join The Newsletter Leave this field empty if you're human: Quick Links Cash Discount Personal Info Pages Link How It Works Cash Discount Rules Who Its For Blog FAQs Contact Us [email protected] Social Media © Copyright Cash Discount, LLC, 2018 All Rights Reserved.Terms & ConditionsPrivacy Policy How It Works Cash Discount Rules Poynt Cash Discount App App Support App Set Up Submit Ticket My Tickets iOS App Best Cash Discount Processors Resources Blog FAQs Menu How It Works Cash Discount Rules Poynt Cash Discount App App Support App Set Up Submit Ticket My Tickets iOS App Best Cash Discount Processors Resources Blog FAQs Menu How It Works Cash Discount Rules Poynt Cash Discount App App Support App Set Up Submit Ticket My Tickets iOS App Best Cash Discount Processors Resources Blog FAQs Menu How It Works Cash Discount Rules Poynt Cash Discount App App Support App Set Up Submit Ticket My Tickets iOS App Best Cash Discount Processors Resources Blog FAQs Menu ZERO Fee Processing Learn everything you need to know about Cash Discount, including the requirements and how your business can save money. Cash Discount App Update Release – June 2019 It’s finally here! We know there are agents and merchants anxiously waiting for this update and we’re really excited to bring it to you. In the release notes document, you’ll find a link to the updated Quickstart Guide which is everything you’ll need to get up and running immediately! Thank you for choosing Cash Discount! – Cash Discount LLC Team Rules and Regulati
+
+2025-02-22 18:28:43 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:43 - DEBUG - Formatted prompt: 
+You are a marketing expert. Analyze the website content provided below and extract key marketing insights in valid JSON format. Respond ONLY with the JSON and no additional text.
+
+Instructions:
+1. "keywords": Identify five detailed, long-tail keywords related to the product or service. Each keyword must be between 2 to 5 words, reflect user's search intent, Separate the keywords with commas.
+2. "business_name": Extract the exact name of the business as mentioned on the website.
+3. "products_services": Identify and list the products or services offered. Provide a clear, concise, comma-separated list.
+4. "target_audience": Summarize the target audience in a focused statement using 4 to 6 words per group. If there are multiple groups, separate them with commas. 
+5. "location": Extract the business location if mentioned; otherwise, Ensure there are no commas within the location string.
+
+Guidelines:
+- Base your analysis on a thorough review of the website's homepage, About Us, and product/service descriptions.
+- Do NOT use the domain name to determine keywords.
+- Ensure the JSON is valid, with no newlines, leading spaces, or extraneous characters.
+
+Required JSON structure:
+[
+    "keywords": "string",
+    "business_name": "string",
+    "products_services": "string",
+    "target_audience": "string",
+    "location": "string"
+]
+
+Website URL: https://cashmateonline.com
+Content to analyze:
+Cashmate Instagram connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM Menu HomeAbout UsLoansPersonal LoanBusiness LoanHome LoanLoan Against Property (Mortgage Loan)Education LoanGold LoanCar LoanCredit CardsAxis BankHDFC BankStandard CharteredIndus IndChannel PartnerBlogContact Us Welcome to Cashmate Welcome to CashmateBuilding A Brighter Financial FutureSimple & Secure Payment ProcessConnecting Your Loan NeedsWhat We’re OfferingAll Loans ServicesPersonal LoanUnlock financial freedom with a personal loan: Your flexible, collateral-free solution, no strings attached! Apply nowBusiness LoanFuel your business dreams with a bank-backed boost – a business loan for growth, gear, and get-ahead capital! Apply nowHome LoanTurn the key to your dream home with a mortgage magic – your ticket to home sweet home! Apply nowMortgage LoanUnlock your property’s potential with a Loan Against Property – secure funds for growth, education, or medical needs, backed by what you own! Apply nowEducation LoanInvest in your future with an education loan – your ticket to higher learning, without financial worries! Apply nowGold LoanA secured gold loan – your golden key to instant cash! Apply now5+ years of working experience Our BenefitsWhy Choose Us?Choose us as your trusted finance broker because we offer personalised financial solutions tailored to your unique needs. With our extensive industry experience and a commitment to securing the best deals for our clients, we are your partner in achieving your financial goals. Professional TeamOur team of experienced financial professionals is dedicated to guiding you towards financial success. Quick PaymentsExperience the convenience of swift and secure payments, ensuring your financial transactions are processed with speed and precision.Loan Process 90% Consultancy 80% Payment Benefits 85% We connect you withOur Lenders Aditya Birla Axis Finance Bajaj Finserv Bandhan Bank Chola Credit Saison DBS Deutsche Bank Edelweiss Federal Bank Fibe Finnable Flexi Loans Fullerton India Godrej Capital HDFC HeroFinCorp ICICI Bank IDFC First Bank IIFL Finance InCred IndusInd Bank Kotak Mahindra Bank L and T Finance Lending Kart Loan Tap Mahindra Finance Money View Money Wide Muthoot Finance Piramal Finance Poonawalla Fincorp Protium SBM Shriram Finance South Indian Bank Standard Chartered Tata Capital Utkarsh Small Finance Bank Yes BankReady to seize the opportunity and invest in the future of finance with us?Opportunity for Investors Join now Cashmate is an innovative one-stop-shop for all your financial needs, including Home Loans, Personal Loans, Credit Cards, Business Loans, Balance Transfers and more. Loans MenuPersonal LoanBusiness LoanHome LoanLoan Against PropertyEducation LoanGold LoanCar LoanContact connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM No. S -1869, 1st H main road, D Block, 2nd stage, Rajajinagar, Bangalore - 560010© 2023 Rakshitha Finserve pvt ltd. All right reservedPrivacy Policy Instagram Cashmate Instagram connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM Menu HomeAbout UsLoansPersonal LoanBusiness LoanHome LoanLoan Against Property (Mortgage Loan)Education LoanGold LoanCar LoanCredit CardsAxis BankHDFC BankStandard CharteredIndus IndChannel PartnerBlogContact Us Instagram connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM Instagram connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM Instagram Instagram Instagram Instagram connect@cashmateonline.com connect@cashmateonline.com connect@cashmateonline.com Mon - Sat 9:00 AM - 6:00 PM Mon - Sat 9:00 AM - 6:00 PM Mon - Sat 9:00 AM - 6:00 PM Menu HomeAbout UsLoansPersonal LoanBusiness LoanHome LoanLoan Against Property (Mortgage Loan)Education LoanGold LoanCar LoanCredit CardsAxis BankHDFC BankStandard CharteredIndus IndChannel PartnerBlogContact Us Menu HomeAbout UsLoansPersonal LoanBusiness LoanHome LoanLoan Against Property (Mortgage Loan)Education LoanGold LoanCar LoanCredit CardsAxis BankHDFC BankStandard CharteredIndus IndChan
+
+2025-02-22 18:28:43 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:43 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:44 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:44 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:44 - DEBUG - Starting new HTTP connection (1): localhost:11434
+2025-02-22 18:28:44 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:44 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:45 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:45 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:48 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:48 - DEBUG - Full response from Ollama: {
+    "keywords": "book design, lettering illustration, custom packaging branding",
+    "business_name": "Casey Schuurman",
+    "products_services": "book design, lettering & illustration, packaging, type-centric branding, art classes, campaign design, custom lettering, puzzle packaging, game packaging, collage kits, colouring book design",
+    "target_audience": "creative professionals, designers, publishers, small business owners, entrepreneurs",
+    "location": "Australia"
+}
+2025-02-22 18:28:48 - DEBUG - Parsed analysis JSON: {'keywords': 'book design, lettering illustration, custom packaging branding', 'business_name': 'Casey Schuurman', 'products_services': 'book design, lettering & illustration, packaging, type-centric branding, art classes, campaign design, custom lettering, puzzle packaging, game packaging, collage kits, colouring book design', 'target_audience': 'creative professionals, designers, publishers, small business owners, entrepreneurs', 'location': 'Australia'}
+2025-02-22 18:28:48 - DEBUG - Analysis result for URL https://caseyschuurman.com: {'keywords': 'book design, lettering illustration, custom packaging branding', 'business_name': 'Casey Schuurman', 'products_services': 'book design, lettering & illustration, packaging, type-centric branding, art classes, campaign design, custom lettering, puzzle packaging, game packaging, collage kits, colouring book design', 'target_audience': 'creative professionals, designers, publishers, small business owners, entrepreneurs', 'location': 'Australia'}
+2025-02-22 18:28:48 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:48 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:48 - DEBUG - Full response from Ollama: {
+    "keywords": "cash discount processing fees, cash discount app developers, business savings with cash discounts, merchant benefits of cash discounts, zero fee payment solutions",
+    "business_name": "Cash Discount",
+    "products_services": "Cash Discount App, Point of Sale System, Chip Cards, Apple Pay, Credit Card Terminal, E-commerce Website, Mobile Payment Solutions, Payment Processing Services",
+    "target_audience": "small to medium-sized businesses, retailers, food and beverage establishments, lodging operators, commerce services providers, transportation industry",
+    "location": "Not specified"
+}
+2025-02-22 18:28:48 - DEBUG - Parsed analysis JSON: {'keywords': 'cash discount processing fees, cash discount app developers, business savings with cash discounts, merchant benefits of cash discounts, zero fee payment solutions', 'business_name': 'Cash Discount', 'products_services': 'Cash Discount App, Point of Sale System, Chip Cards, Apple Pay, Credit Card Terminal, E-commerce Website, Mobile Payment Solutions, Payment Processing Services', 'target_audience': 'small to medium-sized businesses, retailers, food and beverage establishments, lodging operators, commerce services providers, transportation industry', 'location': 'Not specified'}
+2025-02-22 18:28:48 - DEBUG - Analysis result for URL https://cashdiscount.com: {'keywords': 'cash discount processing fees, cash discount app developers, business savings with cash discounts, merchant benefits of cash discounts, zero fee payment solutions', 'business_name': 'Cash Discount', 'products_services': 'Cash Discount App, Point of Sale System, Chip Cards, Apple Pay, Credit Card Terminal, E-commerce Website, Mobile Payment Solutions, Payment Processing Services', 'target_audience': 'small to medium-sized businesses, retailers, food and beverage establishments, lodging operators, commerce services providers, transportation industry', 'location': 'Not specified'}
+2025-02-22 18:28:49 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:28:49 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:49 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:28:49 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:50 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:50 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:50 - DEBUG - Full response from Ollama: {
+    "keywords": "personal loan india, business loan in india, home loan rates, mortgage loan in india, education loan interest rates",
+    "business_name": "Cashmate",
+    "products_services": "Personal Loan,Business Loan,Home Loan,Mortgage Loan,Educational Loan,Gold Loan,Credit Cards",
+    "target_audience": "Indians seeking personal loans, businesses looking for funding, homebuyers in need of mortgage loans",
+    "location": "No. S -1869, 1st H main road, D Block, 2nd stage, Rajajinagar, Bangalore - 560010"
+}
+2025-02-22 18:28:50 - DEBUG - Parsed analysis JSON: {'keywords': 'personal loan india, business loan in india, home loan rates, mortgage loan in india, education loan interest rates', 'business_name': 'Cashmate', 'products_services': 'Personal Loan,Business Loan,Home Loan,Mortgage Loan,Educational Loan,Gold Loan,Credit Cards', 'target_audience': 'Indians seeking personal loans, businesses looking for funding, homebuyers in need of mortgage loans', 'location': 'No. S -1869, 1st H main road, D Block, 2nd stage, Rajajinagar, Bangalore - 560010'}
+2025-02-22 18:28:50 - DEBUG - Analysis result for URL https://cashmateonline.com: {'keywords': 'personal loan india, business loan in india, home loan rates, mortgage loan in india, education loan interest rates', 'business_name': 'Cashmate', 'products_services': 'Personal Loan,Business Loan,Home Loan,Mortgage Loan,Educational Loan,Gold Loan,Credit Cards', 'target_audience': 'Indians seeking personal loans, businesses looking for funding, homebuyers in need of mortgage loans', 'location': 'No. S -1869, 1st H main road, D Block, 2nd stage, Rajajinagar, Bangalore - 560010'}
+2025-02-22 18:28:50 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:50 - DEBUG - Full response from Ollama: {
+    "keywords": "aspen colorado graphic design, boutique design firms, multidisciplinary design services, branding and identity design, website development",
+    "business_name": "Casey Altman Design Inc.",
+    "products_services": "Graphic Design, Print Design, Book Design, Branding & Identity, Package Design, Event Branding & Invitation Design, Photography, Infographic Design, Website Design, E-commerce Design + Development",
+    "target_audience": "Small businesses in Aspen, Colorado, Entrepreneurs seeking design services, Creative agencies and studios",
+    "location": "210 North Mill Street, Aspen, CO 81611, United States"
+}
+2025-02-22 18:28:50 - DEBUG - Parsed analysis JSON: {'keywords': 'aspen colorado graphic design, boutique design firms, multidisciplinary design services, branding and identity design, website development', 'business_name': 'Casey Altman Design Inc.', 'products_services': 'Graphic Design, Print Design, Book Design, Branding & Identity, Package Design, Event Branding & Invitation Design, Photography, Infographic Design, Website Design, E-commerce Design + Development', 'target_audience': 'Small businesses in Aspen, Colorado, Entrepreneurs seeking design services, Creative agencies and studios', 'location': '210 North Mill Street, Aspen, CO 81611, United States'}
+2025-02-22 18:28:50 - DEBUG - Analysis result for URL https://caseyaltmandesign.com: {'keywords': 'aspen colorado graphic design, boutique design firms, multidisciplinary design services, branding and identity design, website development', 'business_name': 'Casey Altman Design Inc.', 'products_services': 'Graphic Design, Print Design, Book Design, Branding & Identity, Package Design, Event Branding & Invitation Design, Photography, Infographic Design, Website Design, E-commerce Design + Development', 'target_audience': 'Small businesses in Aspen, Colorado, Entrepreneurs seeking design services, Creative agencies and studios', 'location': '210 North Mill Street, Aspen, CO 81611, United States'}
+2025-02-22 18:28:52 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:52 - DEBUG - http://localhost:11434 "POST /api/generate HTTP/1.1" 200 None
+2025-02-22 18:28:52 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:28:52 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:54 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:54 - DEBUG - Full response from Ollama: {
+    "keywords": "Boone NC Criminal Defense Attorneys, State Criminal Law Specialists, North Carolina Lawyers, Watauga County Legal Services, Avery County Defense Lawyers",
+    "business_name": "Casey & Casey Law Offices, PLLC",
+    "products_services": "State Criminal Law, Criminal Defense, Legal Representation, Consultations, Lawyers in Boone NC, Lawyers in Watauga County, Lawyers in Avery County",
+    "target_audience": "People with State Criminal Cases, Residents of North Carolina, Individuals facing Criminal Charges",
+    "location": "Downtown Boone, North Carolina"
+}
+2025-02-22 18:28:54 - DEBUG - Parsed analysis JSON: {'keywords': 'Boone NC Criminal Defense Attorneys, State Criminal Law Specialists, North Carolina Lawyers, Watauga County Legal Services, Avery County Defense Lawyers', 'business_name': 'Casey & Casey Law Offices, PLLC', 'products_services': 'State Criminal Law, Criminal Defense, Legal Representation, Consultations, Lawyers in Boone NC, Lawyers in Watauga County, Lawyers in Avery County', 'target_audience': 'People with State Criminal Cases, Residents of North Carolina, Individuals facing Criminal Charges', 'location': 'Downtown Boone, North Carolina'}
+2025-02-22 18:28:54 - DEBUG - Analysis result for URL https://caseyandcaseylawoffices.com: {'keywords': 'Boone NC Criminal Defense Attorneys, State Criminal Law Specialists, North Carolina Lawyers, Watauga County Legal Services, Avery County Defense Lawyers', 'business_name': 'Casey & Casey Law Offices, PLLC', 'products_services': 'State Criminal Law, Criminal Defense, Legal Representation, Consultations, Lawyers in Boone NC, Lawyers in Watauga County, Lawyers in Avery County', 'target_audience': 'People with State Criminal Cases, Residents of North Carolina, Individuals facing Criminal Charges', 'location': 'Downtown Boone, North Carolina'}
+2025-02-22 18:28:54 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_ISDIR|IN_OPEN, cookie=0, name=''>
+2025-02-22 18:28:54 - DEBUG - in-event <InotifyEvent: src_path=b'/home/gops/work/DigitalHive/src/web', wd=1, mask=IN_CLOSE_NOWRITE|IN_ISDIR, cookie=0, name=''>
+2025-02-22 18:28:55 - DEBUG - Ollama response status code: 200
+2025-02-22 18:28:55 - DEBUG - Full response from Ollama: {
+  "keywords": "t-shirts,hats,basketball hoodies,cash control apparel,hoodie sweatshirts",
+  "business_name": "Cash&Control",
+  "products_services": "T-shirts,Hats,Hoodies & Sweatshirts,Shoes,Accessories,Sunglasses,Fanny Packs,Backpacks,Teddy Bear Jewelry,Stickers,Prints and Canvas",
+  "target_audience": "young adults,sporty crowd,fashion enthusiasts,casual buyers",
+  "location": "United States"
+}
+2025-02-22 18:28:55 - DEBUG - Parsed analysis JSON: {'keywords': 't-shirts,hats,basketball hoodies,cash control apparel,hoodie sweatshirts', 'business_name': 'Cash&Control', 'products_services': 'T-shirts,Hats,Hoodies & Sweatshirts,Shoes,Accessories,Sunglasses,Fanny Packs,Backpacks,Teddy Bear Jewelry,Stickers,Prints and Canvas', 'target_audience': 'young adults,sporty crowd,fashion enthusiasts,casual buyers', 'location': 'United States'}
+2025-02-22 18:28:55 - DEBUG - Analysis result for URL https://cashandcontrol.com: {'keywords': 't-shirts,hats,basketball hoodies,cash control apparel,hoodie sweatshirts', 'business_name': 'Cash&Control', 'products_services': 'T-shirts,Hats,Hoodies & Sweatshirts,Shoes,Accessories,Sunglasses,Fanny Packs,Backpacks,Teddy Bear Jewelry,Stickers,Prints and Canvas', 'target_audience': 'young adults,sporty crowd,fashion enthusiasts,casual buyers', 'location': 'United States'}

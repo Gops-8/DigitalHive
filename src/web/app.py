@@ -290,21 +290,22 @@ class WebApp:
                         logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
                         result = {
                             "Domain": batch_rows[idx].get("Domain", ""),
+                            "Email ID": batch_rows[idx].get("Email ID", ""),
                             "Business Name": "",
                             "Business Location": "",
                             "Status": "error",
-                            "Error": f"Timeout after {TIMEOUT_SECONDS} seconds",
-                            "Email ID": batch_rows[idx].get("Email ID", "")
+                            "Error": f"Timeout after {TIMEOUT_SECONDS} seconds"
+        
                         }
                     elif isinstance(result, Exception):
                         logging.error("Error processing URL %s: %s", batch_rows[idx].get("Domain"), str(result))
                         result = {
                             "Domain": batch_rows[idx].get("Domain", ""),
+                            "Email ID": batch_rows[idx].get("Email ID", ""),
                             "Business Name": "",
                             "Business Location": "",
                             "Status": "error",
-                            "Error": str(result),
-                            "Email ID": batch_rows[idx].get("Email ID", "")
+                            "Error": str(result)
                         }
                     results.append(result)
                 progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
@@ -597,6 +598,7 @@ class WebApp:
             
             result = {}
             result["Domain"] = url
+            result["Email ID"] = email_id
             result["Business Name"] = business_name
             result["Business Location"] = location
             
@@ -611,18 +613,19 @@ class WebApp:
             
             result["Status"] = "success"
             result["Error"] = ""
-            result["Email ID"] = email_id  # Pass along the Email ID
+              # Pass along the Email ID
             
             return result
 
         except Exception as e:
             return {
                 "Domain": url,
+                "Email ID": email_id,
                 "Business Name": "",
                 "Business Location": "",
                 "Status": "error",
-                "Error": str(e),
-                "Email ID": email_id
+                "Error": str(e)
+                
             }
 
     @staticmethod

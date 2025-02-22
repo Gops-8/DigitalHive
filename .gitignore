@@ -13,6 +13,7 @@ src/core/__pycache__/*
 *.so
 input/
 output/
+logs/
 # Distribution / packaging
 
 .Python
@@ -52,7 +53,6 @@ logs/debug.log
 .python-version
 config/exculed_domain_list.txt
 
-
 Environments
 .env
 .venv
@@ -61,8 +61,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-
 # Streamlit
 .streamlit/
 

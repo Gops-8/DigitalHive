@@ -34,8 +34,7 @@ if not os.path.exists("logs"):
 import time
 class ISTFormatter(logging.Formatter):
     def converter(self, timestamp):
-        # Offset of 19800 seconds equals 5.5 hours (IST)
-        return time.gmtime(timestamp + 19800)
+        return time.gmtime(timestamp + 19800)  # IST offset: 5.5 hours
 
     def formatTime(self, record, datefmt=None):
         ct = self.converter(record.created)
@@ -51,7 +50,7 @@ file_handler.setFormatter(formatter)
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     handlers=[file_handler, stream_handler]
 )
 
@@ -66,9 +65,7 @@ from src.core.advanced_analytics import AdvancedAnalytics
 from src.utils.cache import AnalysisCache
 
 def fix_keyword_spacing(keyword: str) -> str:
-    # Replace underscores with spaces
     keyword = keyword.replace('_', ' ')
-    # Insert a space before capital letters (if preceded by a lowercase letter)
     keyword = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', keyword)
     return keyword.strip()
 
@@ -80,9 +77,11 @@ class WebApp:
         self.scraper = WebScraper()
         self.processor = DataProcessor()
         self.auth_manager = AuthManager()
+        # Initialize AdvancedAnalytics with competitor caching folder.
         self.analytics = AdvancedAnalytics()
-        self.cache = AnalysisCache()
-        self.model = None
+        # Create separate cache instances:
+        self.cache_extractor = AnalysisCache(cache_dir="output/cache_extractor")
+        self.cache_competitor = AnalysisCache(cache_dir="output/cache_competitor")
 
     def init_session(self):
         if 'authenticated' not in st.session_state:
@@ -104,14 +103,11 @@ class WebApp:
         st.markdown(
             """
             <style>
-            /* Gradient background for the main app container */
             [data-testid="stAppViewContainer"] {
                 background-image: linear-gradient(135deg, #ffffff,rgb(211, 211, 211)) !important;
                 background-size: cover !important;
                 background-position: center !important;
             }
-            
-            /* Green button styling for all Streamlit buttons */
             div.stButton > button {
                 background-color: #4CAF50 !important;
                 color: white !important;
@@ -120,8 +116,6 @@ class WebApp:
                 font-size: 14px !important;
                 cursor: pointer !important;
             }
-            
-            /* Optional hover effect */
             div.stButton > button:hover {
                 background-color: #45a049 !important;
             }
@@ -177,7 +171,7 @@ class WebApp:
             selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
             base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
-            # NEW: Cache Reference Option for AI extractor
+            # Cache Reference Option for AI extractor
             cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_extractor")
             
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
@@ -194,6 +188,8 @@ class WebApp:
           · Top Competitor 2 (Website Only)  
           · Top Competitor 1 SERP Rank  
           · Top Competitor 2 SERP Rank  
+          · Top Competitor 3 SERP Rank  
+          · **Domain Rank:** Position if the origin URL appears in the search results; otherwise, “not ranked.”
 
           · **Input Format:** (CSV/XLS/XLSX) with the columns **Domain**, **Keyword 1**, **Product/Service 1**.  
           · **Output Format:** Displayed on screen
@@ -227,7 +223,7 @@ class WebApp:
             comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
             base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
             comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
-            # NEW: Cache Reference Option for Competitive Analysis
+            # Cache Reference Option for Competitive Analysis
             cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")
             
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
@@ -261,7 +257,6 @@ class WebApp:
             st.error("Input file must have a column named 'Domain'.")
             return
 
-        # Email ID column will be preserved if present in df_input
         rows = df_input.to_dict(orient="records")
         progress_bar = st.progress(0.0)
         status_text = st.empty()
@@ -272,7 +267,7 @@ class WebApp:
 
         async def process_batches():
             results = []
-            TIMEOUT_SECONDS = 240  # Timeout per URL processing task (in seconds)
+            TIMEOUT_SECONDS = 240
             for i in range(0, len(rows), batch_size):
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
@@ -284,7 +279,6 @@ class WebApp:
                     )
                     tasks.append(task)
                 batch_results = await asyncio.gather(*tasks, return_exceptions=True)
-                # Process task results – catch timeouts or other exceptions
                 for idx, result in enumerate(batch_results):
                     if isinstance(result, asyncio.TimeoutError):
                         logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
@@ -295,7 +289,6 @@ class WebApp:
                             "Business Location": "",
                             "Status": "error",
                             "Error": f"Timeout after {TIMEOUT_SECONDS} seconds"
-        
                         }
                     elif isinstance(result, Exception):
                         logging.error("Error processing URL %s: %s", batch_rows[idx].get("Domain"), str(result))
@@ -325,11 +318,9 @@ class WebApp:
                         "Target Audience 1", "Target Audience 2", "Target Audience 3",
                         "Status", "Error"]
         })
-        # Preserve "Email ID" if it exists in the input
         if "Email ID" in df_input.columns:
             st.session_state.results["Email ID"] = df_input["Email ID"]
         self.components.display_results(st.session_state.results)
-        # NEW: Provide an Excel download button for the results
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
 
     @timer
@@ -393,6 +384,7 @@ class WebApp:
                         "Top Competitor 1", "Serp Rank 1",
                         "Top Competitor 2", "Serp Rank 2",
                         "Top Competitor 3", "Serp Rank 3",
+                        "Domain Rank",
                         "GMB Status", "Error", "Status"]
         })
         self.components.display_results(st.session_state.results)
@@ -416,6 +408,7 @@ class WebApp:
                     "Serp Rank 2": "",
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
+                    "Domain Rank": "not ranked",
                     "GMB Status": "",
                     "Status": "error",
                     "Error": "Missing Domain"
@@ -433,15 +426,16 @@ class WebApp:
                     "Serp Rank 2": "",
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
+                    "Domain Rank": "not ranked",
                     "GMB Status": "",
                     "Status": "error",
                     "Error": "No valid search query"
                 }
-            # NEW: Competitive Analysis Caching based on cache_ref_comp option
+            # Competitive Analysis Caching using competitor cache
             cache_key = f"comp::{domain}::{search_query}"
             use_cache = st.session_state.get("cache_ref_comp", "Include") == "Include"
             if use_cache:
-                cached_result = self.cache.get(cache_key)
+                cached_result = self.cache_competitor.get(cache_key)
             else:
                 cached_result = None
             if cached_result:
@@ -464,12 +458,12 @@ class WebApp:
                         "Serp Rank 2": "",
                         "Top Competitor 3": "",
                         "Serp Rank 3": "",
+                        "Domain Rank": "not ranked",
                         "GMB Status": "",
                         "Status": "error",
                         "Error": search_result.get("error", "No search results")
                     }
-                    if use_cache:
-                        self.cache.set(cache_key, result)
+                    self.cache_competitor.set(cache_key, result)
                     return result
             except Exception as e:
                 result = {
@@ -483,33 +477,28 @@ class WebApp:
                     "Serp Rank 2": "",
                     "Top Competitor 3": "",
                     "Serp Rank 3": "",
+                    "Domain Rank": "not ranked",
                     "GMB Status": "",
                     "Status": "error",
                     "Error": str(e)
                 }
-                if use_cache:
-                    self.cache.set(cache_key, result)
+                self.cache_competitor.set(cache_key, result)
                 return result
             competitors = self.analytics.clean_and_filter_urls(search_result, domain)
-            if not competitors:
-                result = {
-                    "Domain": domain,
-                    "Keyword 1": keyword,
-                    "Product/Service 1": product,
-                    "Search Query": search_query,
-                    "Top Competitor 1": "",
-                    "Serp Rank 1": "",
-                    "Top Competitor 2": "",
-                    "Serp Rank 2": "",
-                    "Top Competitor 3": "",
-                    "Serp Rank 3": "",
-                    "GMB Status": "",
-                    "Status": "error",
-                    "Error": "No valid competitors"
-                }
-                if use_cache:
-                    self.cache.set(cache_key, result)
-                return result
+            # Compute Domain Rank by checking raw search_result for the origin domain.
+            domain_rank = "not ranked"
+            from urllib.parse import urlparse
+            parsed_origin = urlparse(domain)
+            origin_netloc = parsed_origin.netloc.lower() if parsed_origin.netloc else domain.lower()
+            if isinstance(search_result, list):
+                for entry in search_result:
+                    competitor_link = entry.get("link", "") if isinstance(entry, dict) else entry
+                    parsed_comp = urlparse(competitor_link)
+                    competitor_netloc = parsed_comp.netloc.lower() if parsed_comp.netloc else competitor_link.lower()
+                    if origin_netloc in competitor_netloc or competitor_netloc in origin_netloc:
+                        domain_rank = entry.get("position", "not ranked") if isinstance(entry, dict) else "not ranked"
+                        break
+
             result = {
                 "Domain": domain,
                 "Keyword 1": keyword,
@@ -520,10 +509,12 @@ class WebApp:
             for i in range(3):
                 if i < len(competitors):
                     result[f"Top Competitor {i+1}"] = competitors[i].get("link", "")
-                    result[f"Serp Rank {i+1}"] = competitors[i].get("position", "")
+                    position = competitors[i].get("position")
+                    result[f"Serp Rank {i+1}"] = position if position is not None else "not ranked"
                 else:
                     result[f"Top Competitor {i+1}"] = ""
-                    result[f"Serp Rank {i+1}"] = ""
+                    result[f"Serp Rank {i+1}"] = "not ranked"
+            result["Domain Rank"] = domain_rank
             if gmb_check:
                 gmb_result = self.analytics.check_gmb_listing(keyword, domain)
                 result["GMB Status"] = "Found" if gmb_result.get("exists") else "Not Found"
@@ -531,7 +522,7 @@ class WebApp:
                 result["GMB Status"] = "Not Checked"
             result["Status"] = "success"
             result["Error"] = ""
-            self.cache.set(cache_key, result)
+            self.cache_competitor.set(cache_key, result)
             return result
         except Exception as e:
             return {
@@ -545,6 +536,7 @@ class WebApp:
                 "Serp Rank 2": "",
                 "Top Competitor 3": "",
                 "Serp Rank 3": "",
+                "Domain Rank": "not ranked",
                 "GMB Status": "",
                 "Status": "error",
                 "Error": str(e)
@@ -554,15 +546,15 @@ class WebApp:
         logging.debug("Processing URL: %s with model: %s", url, model)
         try:
             clean_url = self.processor.clean_url(url)
-            # NEW: Check extractor cache option
+            # Check extractor cache option
             use_cache = st.session_state.get("cache_ref_extractor", "Include") == "Include"
             if use_cache:
-                cached_data = self.cache.get(clean_url)
+                cached_data = self.cache_extractor.get(clean_url)
             else:
                 cached_data = None
             if not cached_data:
                 scraped_data = self.scraper.scrape_website(clean_url)
-                self.cache.set(clean_url, scraped_data)
+                self.cache_extractor.set(clean_url, scraped_data)
                 logging.debug("Scraped data for URL %s", clean_url)
             else:
                 scraped_data = cached_data
@@ -613,7 +605,6 @@ class WebApp:
             
             result["Status"] = "success"
             result["Error"] = ""
-              # Pass along the Email ID
             
             return result
 
@@ -625,13 +616,11 @@ class WebApp:
                 "Business Location": "",
                 "Status": "error",
                 "Error": str(e)
-                
             }
 
     @staticmethod
     @st.fragment
     def download_results_excel_static(results, timestamp):
-        # Provide a download button for the final results
         if results is not None:
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:

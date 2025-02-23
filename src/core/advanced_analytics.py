@@ -12,14 +12,14 @@ import logging
 
 # Configure logging for this module
 logging.basicConfig(
-    level=logging.DEBUG,  # Adjust log level as needed
+    level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-
 class AdvancedAnalytics:
     def __init__(self):
-        self.cache = AnalysisCache()
+        # Use the competitor cache folder for caching in competitive analysis.
+        self.cache = AnalysisCache(cache_dir="output/cache_competitor")
         logging.debug("Initialized AdvancedAnalytics with cache.")
 
     def hash_query(self, query):
@@ -45,7 +45,7 @@ class AdvancedAnalytics:
             ]
             headers = {"User-Agent": random.choice(USER_AGENTS)}
 
-            for attempt in range(3):  # Retry up to 3 times
+            for attempt in range(3):
                 try:
                     logging.debug("Attempt %d: Sending request to Google for query: '%s'", attempt+1, query)
                     response = requests.get(base_url, params=params, headers=headers)
@@ -64,7 +64,7 @@ class AdvancedAnalytics:
                     return all_links
                 except requests.exceptions.RequestException as e:
                     logging.error("Error fetching Google results on attempt %d: %s", attempt+1, str(e))
-                    time.sleep(5)  # Wait before retrying
+                    time.sleep(5)  
 
         logging.debug("Returning %d links after retries", len(all_links))
         return all_links
@@ -73,15 +73,13 @@ class AdvancedAnalytics:
         logging.debug("Cleaning and filtering URLs, origin_url: %s", origin_url)
         unique_urls = set()
         filtered_competitors = []
-        # ... (your known_domains, tld_exclusions, and exclusions loading code)
+        # ... (exclusions and known domains code as needed)
 
-        # Normalize the origin URL
         origin_url_normalized = origin_url if origin_url.startswith("http") else "http://" + origin_url
 
         for item in urls:
             if isinstance(item, dict):
                 url_str = item.get("link", "")
-                # Optionally, you can capture the provided position even if not used later.
                 position = item.get("position")
             else:
                 url_str = item
@@ -92,14 +90,7 @@ class AdvancedAnalytics:
             domain = parsed.netloc.lower()
             if not domain:
                 continue
-            if any(domain.endswith(tld) for tld in tld_exclusions):
-                continue
-            if any(known in domain for known in known_domains):
-                continue
-            first_letter = domain[0]
-            if first_letter in exclusions and domain in exclusions[first_letter]:
-                continue
-
+            # Exclusion logic can be added here if needed.
             if base_url not in unique_urls and base_url != origin_url_normalized:
                 unique_urls.add(base_url)
                 filtered_competitors.append({"link": base_url, "position": position})

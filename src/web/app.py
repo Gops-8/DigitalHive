@@ -431,41 +431,13 @@ class WebApp:
                     "Status": "error",
                     "Error": "No valid search query"
                 }
-            # Competitive Analysis Caching using competitor cache
-            cache_key = f"comp::{domain}::{search_query}"
+            # Decide whether to use cache based on the radio button.
             use_cache = st.session_state.get("cache_ref_comp", "Include") == "Include"
-            if use_cache:
-                cached_result = self.cache_competitor.get(cache_key)
+            if search_method == "Serper.dev API" and api_key:
+                raw_search_result = self.analytics.search_serper(search_query, api_key, use_cache=use_cache)
             else:
-                cached_result = None
-            if cached_result:
-                logging.debug("Using cached competitor analysis for key %s", cache_key)
-                return cached_result
-            try:
-                if search_method == "Serper.dev API" and api_key:
-                    search_result = self.analytics.search_serper(search_query, api_key)
-                else:
-                    search_result = self.analytics.fetch_google_results(search_query, domain, pages=no_of_pages)
-                if not search_result or (isinstance(search_result, dict) and "error" in search_result):
-                    result = {
-                        "Domain": domain,
-                        "Keyword 1": keyword,
-                        "Product/Service 1": product,
-                        "Search Query": search_query,
-                        "Top Competitor 1": "",
-                        "Serp Rank 1": "",
-                        "Top Competitor 2": "",
-                        "Serp Rank 2": "",
-                        "Top Competitor 3": "",
-                        "Serp Rank 3": "",
-                        "Domain Rank": "not ranked",
-                        "GMB Status": "",
-                        "Status": "error",
-                        "Error": search_result.get("error", "No search results")
-                    }
-                    self.cache_competitor.set(cache_key, result)
-                    return result
-            except Exception as e:
+                raw_search_result = self.analytics.fetch_google_results(search_query, domain, pages=no_of_pages)
+            if not raw_search_result or (isinstance(raw_search_result, dict) and "error" in raw_search_result):
                 result = {
                     "Domain": domain,
                     "Keyword 1": keyword,
@@ -480,23 +452,32 @@ class WebApp:
                     "Domain Rank": "not ranked",
                     "GMB Status": "",
                     "Status": "error",
-                    "Error": str(e)
+                    "Error": raw_search_result.get("error", "No search results")
                 }
-                self.cache_competitor.set(cache_key, result)
                 return result
-            competitors = self.analytics.clean_and_filter_urls(search_result, domain)
-            # Compute Domain Rank by checking raw search_result for the origin domain.
+
+            # Process raw search result (which is now cached only for the raw query) to compute competitor analysis.
+            competitors = self.analytics.clean_and_filter_urls(raw_search_result, domain)
+
+            # Compute Domain Rank by checking raw search result for the origin domain.
             domain_rank = "not ranked"
             from urllib.parse import urlparse
             parsed_origin = urlparse(domain)
             origin_netloc = parsed_origin.netloc.lower() if parsed_origin.netloc else domain.lower()
-            if isinstance(search_result, list):
-                for entry in search_result:
-                    competitor_link = entry.get("link", "") if isinstance(entry, dict) else entry
+            if isinstance(raw_search_result, list):
+                for entry in raw_search_result:
+                    if isinstance(entry, dict):
+                        competitor_link = entry.get("link", "")
+                        competitor_position = entry.get("position", "not ranked")
+                    elif isinstance(entry, str):
+                        competitor_link = entry
+                        competitor_position = "not ranked"
+                    else:
+                        continue
                     parsed_comp = urlparse(competitor_link)
                     competitor_netloc = parsed_comp.netloc.lower() if parsed_comp.netloc else competitor_link.lower()
                     if origin_netloc in competitor_netloc or competitor_netloc in origin_netloc:
-                        domain_rank = entry.get("position", "not ranked") if isinstance(entry, dict) else "not ranked"
+                        domain_rank = competitor_position
                         break
 
             result = {
@@ -522,7 +503,6 @@ class WebApp:
                 result["GMB Status"] = "Not Checked"
             result["Status"] = "success"
             result["Error"] = ""
-            self.cache_competitor.set(cache_key, result)
             return result
         except Exception as e:
             return {

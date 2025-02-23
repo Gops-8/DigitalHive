@@ -9,8 +9,12 @@ import pandas as pd
 from src.utils.cache import AnalysisCache
 from src.utils.rate_limiter import RateLimiter
 import logging
+import os
+try:
+    import streamlit as st
+except ImportError:
+    st = None
 
-# Configure logging for this module
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -70,28 +74,86 @@ class AdvancedAnalytics:
         return all_links
 
     def clean_and_filter_urls(self, urls, origin_url):
+        """Clean and filter URLs to extract unique competitors."""
         logging.debug("Cleaning and filtering URLs, origin_url: %s", origin_url)
+        logging.debug("Raw URLs from search: %s", urls)
+        
         unique_urls = set()
         filtered_competitors = []
-        # ... (exclusions and known domains code as needed)
+        known_domains = {
+            "twitter", "paypal", "cloudflare", "google", "facebook", "pinterest",
+            "apple", "youtube", "shopify", "amazon", "tiktok", "squarespace",
+            "gmail", "blogspot.com", "adobe", "tumblr", "medium", "soundcloud",
+            "gravatar", "nytimes", "jquery", "microsoft", "stripe", "reuters",
+            "ebay", "wordpress"
+        }
+        tld_exclusions = {".gov", ".org", ".edu", ".chat", ".blog", ".kpmg"}
+        
+        # Read excluded domains from file "assets/domain_list.txt"
+        exclusions = set()
+        file_path = "assets/domain_list.txt"
+        if not os.path.exists(file_path):
+            message = f"Excluded domain file missing: {os.path.abspath(file_path)}"
+            logging.error(message)
+            if st is not None:
+                if not getattr(AdvancedAnalytics, '_exclusion_warning_shown', False):
+                    st.warning(message)
+                    AdvancedAnalytics._exclusion_warning_shown = True
+            exclusions = set()
+        else:
+            try:
+                with open(file_path, 'r') as file:
+                    for line in file:
+                        domain_line = line.strip().lower()
+                        if domain_line:
+                            exclusions.add(domain_line)
+            except Exception as e:
+                message = f"Error reading excluded domains from {os.path.abspath(file_path)}: {str(e)}"
+                logging.error(message)
+                if st is not None and not getattr(AdvancedAnalytics, '_exclusion_warning_shown', False):
+                    st.warning(message)
+                    AdvancedAnalytics._exclusion_warning_shown = True
 
+        # Normalize origin URL
         origin_url_normalized = origin_url if origin_url.startswith("http") else "http://" + origin_url
 
+        def normalize_domain(url):
+            parsed = urlparse(url)
+            netloc = parsed.netloc.lower()
+            if netloc.startswith("www."):
+                netloc = netloc[4:]
+            return netloc
+
+        origin_norm = normalize_domain(origin_url_normalized)
+
         for item in urls:
+            # Only process if item is a dict or a string.
             if isinstance(item, dict):
                 url_str = item.get("link", "")
                 position = item.get("position")
-            else:
+            elif isinstance(item, str):
                 url_str = item
                 position = None
+            else:
+                continue
 
             parsed = urlparse(url_str)
             base_url = f"{parsed.scheme}://{parsed.netloc}"
             domain = parsed.netloc.lower()
             if not domain:
                 continue
-            # Exclusion logic can be added here if needed.
-            if base_url not in unique_urls and base_url != origin_url_normalized:
+            if any(domain.endswith(tld) for tld in tld_exclusions):
+                continue
+            if any(known in domain for known in known_domains):
+                continue
+            if domain in exclusions:
+                continue
+
+            competitor_norm = normalize_domain(base_url)
+            if competitor_norm == origin_norm:
+                continue
+
+            if base_url not in unique_urls:
                 unique_urls.add(base_url)
                 filtered_competitors.append({"link": base_url, "position": position})
             if len(filtered_competitors) == 3:
@@ -99,6 +161,8 @@ class AdvancedAnalytics:
 
         logging.debug("Filtered competitors: %s", filtered_competitors)
         return filtered_competitors
+
+
 
     def check_gmb_listing(self, business_name, location):
         logging.debug("Checking GMB listing for business: '%s', location: '%s'", business_name, location)
@@ -140,45 +204,47 @@ class AdvancedAnalytics:
             logging.error("Error fetching sitemap from %s: %s", sitemap_url, e)
             return 0
 
-    def search_serper(self, query, api_key):
-        logging.debug("Performing Serper.dev API search for query: '%s'", query)
-        cache_key = self.hash_query(query)
-        cached_result = self.cache.get(cache_key)
-        if cached_result:
-            logging.debug("Cache hit for Serper.dev query: '%s'", query)
-            return cached_result
-        headers = {
-            "X-API-KEY": api_key,
-            "Content-Type": "application/json"
-        }
-        payload = json.dumps({
-            "q": query,
-            "hl": "en",
-            "gl": "us",
-            "num": 10
-        })
-        url = "https://google.serper.dev/search"
-        try:
-            response = requests.post(url, headers=headers, data=payload)
-            logging.debug("Serper.dev API response status code: %s", response.status_code)
-            response.raise_for_status()
-            result = response.json()
-            results_list = [
-                {"link": item.get("link"), "position": item.get("position")}
-                for item in result.get("organic", [])
-                if item.get("link")
-            ]
-            if not results_list:
-                logging.warning("No results found for query: '%s'", query)
-                return {"error": f"No results found for query: {query}"}
-            self.cache.set(cache_key, results_list)
-            logging.info("Retrieved %d results for query: '%s'", len(results_list), query)
-            return results_list
-        except requests.exceptions.RequestException as e:
-            error_message = f"API request failed: {str(e)}"
-            logging.error("Serper.dev API request failed for query '%s': %s", query, error_message)
-            return {"error": error_message}
-        except json.JSONDecodeError:
-            error_message = f"Failed to parse JSON response from Serper.dev for query: {query}"
-            logging.error("JSON decode error for query '%s': %s", query, error_message)
-            return {"error": error_message}
+    def search_serper(self, query, api_key, use_cache=True):
+          logging.debug("Performing Serper.dev API search for query: '%s'", query)
+          cache_key = self.hash_query(query)
+          if use_cache:
+              cached_result = self.cache.get(cache_key)
+              if cached_result:
+                  logging.debug("Cache hit for Serper.dev query: '%s'", query)
+                  return cached_result
+          headers = {
+              "X-API-KEY": api_key,
+              "Content-Type": "application/json"
+          }
+          payload = json.dumps({
+              "q": query,
+              "hl": "en",
+              "gl": "us",
+              "num": 10
+          })
+          url = "https://google.serper.dev/search"
+          try:
+              response = requests.post(url, headers=headers, data=payload)
+              logging.debug("Serper.dev API response status code: %s", response.status_code)
+              response.raise_for_status()
+              result = response.json()
+              results_list = [
+                  {"link": item.get("link"), "position": item.get("position")}
+                  for item in result.get("organic", [])
+                  if item.get("link")
+              ]
+              if not results_list:
+                  logging.warning("No results found for query: '%s'", query)
+                  return {"error": f"No results found for query: {query}"}
+              # Always update the cache with fresh results.
+              self.cache.set(cache_key, results_list)
+              logging.info("Retrieved %d results for query: '%s'", len(results_list), query)
+              return results_list
+          except requests.exceptions.RequestException as e:
+              error_message = f"API request failed: {str(e)}"
+              logging.error("Serper.dev API request failed for query '%s': %s", query, error_message)
+              return {"error": error_message}
+          except json.JSONDecodeError:
+              error_message = f"Failed to parse JSON response from Serper.dev for query: {query}"
+              logging.error("JSON decode error for query '%s': %s", query, error_message)
+              return {"error": error_message}

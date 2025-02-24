@@ -13,7 +13,11 @@ class AuthManager:
             return response.json()
         except:
             # Fallback to local credentials if remote fetch fails
-            return {"admin": "password123"}
+            return {
+                    "admin": "ranking#1",
+                    "root": "collection#1",
+                    "dev": " "
+                  }
 
     def verify_credentials(self, username: str, password: str) -> bool:
         if username not in self.credentials:

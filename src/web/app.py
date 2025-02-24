@@ -271,7 +271,8 @@ class WebApp:
             for i in range(0, len(rows), batch_size):
                 current_batch = i // batch_size + 1
                 # Show batch status immediately before processing starts
-                status_text.text(f"Starting Batch {current_batch} of {total_batches}")
+                status_text.text(f"Processing Batch {current_batch} of {total_batches}")
+                progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
                 tasks = []

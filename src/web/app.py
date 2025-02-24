@@ -172,7 +172,7 @@ class WebApp:
             base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
             selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
             # Cache Reference Option for AI extractor
-            cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_extractor")
+            cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=1, key="cache_ref_extractor")
             
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
@@ -269,6 +269,9 @@ class WebApp:
             results = []
             TIMEOUT_SECONDS = 240
             for i in range(0, len(rows), batch_size):
+                current_batch = i // batch_size + 1
+                # Show batch status immediately before processing starts
+                status_text.text(f"Starting Batch {current_batch} of {total_batches}")
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
                 tasks = []
@@ -282,11 +285,23 @@ class WebApp:
                 for idx, result in enumerate(batch_results):
                     if isinstance(result, asyncio.TimeoutError):
                         logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
+                        # Return a complete dict with all expected keys
                         result = {
                             "Domain": batch_rows[idx].get("Domain", ""),
                             "Email ID": batch_rows[idx].get("Email ID", ""),
                             "Business Name": "",
                             "Business Location": "",
+                            "Keyword 1": "",
+                            "Keyword 2": "",
+                            "Keyword 3": "",
+                            "Keyword 4": "",
+                            "Keyword 5": "",
+                            "Product/Service 1": "",
+                            "Product/Service 2": "",
+                            "Product/Service 3": "",
+                            "Target Audience 1": "",
+                            "Target Audience 2": "",
+                            "Target Audience 3": "",
                             "Status": "error",
                             "Error": f"Timeout after {TIMEOUT_SECONDS} seconds"
                         }
@@ -297,13 +312,23 @@ class WebApp:
                             "Email ID": batch_rows[idx].get("Email ID", ""),
                             "Business Name": "",
                             "Business Location": "",
+                            "Keyword 1": "",
+                            "Keyword 2": "",
+                            "Keyword 3": "",
+                            "Keyword 4": "",
+                            "Keyword 5": "",
+                            "Product/Service 1": "",
+                            "Product/Service 2": "",
+                            "Product/Service 3": "",
+                            "Target Audience 1": "",
+                            "Target Audience 2": "",
+                            "Target Audience 3": "",
                             "Status": "error",
                             "Error": str(result)
                         }
                     results.append(result)
                 progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
-                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-                timer_text.text(f"Batch {i // batch_size + 1} processed in {time.perf_counter() - batch_start:.2f} seconds")
+                timer_text.text(f"Batch {current_batch} processed in {time.perf_counter() - batch_start:.2f} seconds")
                 interim_df = pd.DataFrame(results)
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
@@ -320,73 +345,6 @@ class WebApp:
         })
         if "Email ID" in df_input.columns:
             st.session_state.results["Email ID"] = df_input["Email ID"]
-        self.components.display_results(st.session_state.results)
-        WebApp.download_results_excel_static(st.session_state.results, timestamp)
-
-    @timer
-    def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
-        os.makedirs('input', exist_ok=True)
-        os.makedirs('output/analysis', exist_ok=True)
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        ext = uploaded_file.name.split('.')[-1]
-        input_path = f"input/temp_{timestamp}.{ext}"
-        with open(input_path, 'wb') as f:
-            f.write(uploaded_file.getbuffer())
-        try:
-            if uploaded_file.name.endswith('.csv'):
-                try:
-                    df = pd.read_csv(input_path)
-                except UnicodeDecodeError:
-                    df = pd.read_csv(input_path, encoding='ISO-8859-1')
-            elif uploaded_file.name.endswith('.xlsx'):
-                df = pd.read_excel(input_path)
-            else:
-                st.error("Unsupported file format. Please upload a CSV or Excel file.")
-                return
-        except Exception as e:
-            st.error(f"Error reading file: {e}")
-            return
-        required_columns = {"Domain", "Keyword 1", "Product/Service 1"}
-        if not required_columns.issubset(set(df.columns)):
-            st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
-            return
-        results = []
-        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
-        progress_bar = st.progress(0.0)
-        status_text = st.empty()
-        status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
-        
-        with st.spinner("Processing advanced analysis..."):
-            for i in range(0, len(df), batch_size):
-                batch_start = time.perf_counter()
-                batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
-                batch_results = []
-                for row in batch_rows:
-                    rec_start = time.perf_counter()
-                    res = self.process_row(row, search_method, api_key, gmb_check, no_of_pages)
-                    rec_elapsed = time.perf_counter() - rec_start
-                    logging.debug("Processed record for URL %s in advanced analysis in %.2f seconds", row.get("Domain", "N/A"), rec_elapsed)
-                    batch_results.append(res)
-                results.extend(batch_results)
-                progress_bar.progress(min((i + batch_size) / len(df), 1.0))
-                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
-                batch_end = time.perf_counter()
-                elapsed = batch_end - batch_start
-                logging.debug("Batch %d processed in %.2f seconds", i // batch_size + 1, elapsed)
-                interim_df = pd.DataFrame(results)
-                if not interim_df.empty:
-                    self.components.display_results(interim_df)
-        
-        logging.debug("Advanced analysis completed.")
-        st.session_state.results = df.assign(**{
-            col: [result.get(col, "") for result in results]
-            for col in ["Keyword 1", "Product/Service 1", "Search Query",
-                        "Top Competitor 1", "Serp Rank 1",
-                        "Top Competitor 2", "Serp Rank 2",
-                        "Top Competitor 3", "Serp Rank 3",
-                        "Domain Rank",
-                        "GMB Status", "Error", "Status"]
-        })
         self.components.display_results(st.session_state.results)
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
 

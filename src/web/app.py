@@ -156,23 +156,28 @@ class WebApp:
           · **Output Format:** XLSX/CSV 
         """
         )
-        col1, col2 = st.columns([4, 2])
+        col1, col2 = st.columns([2, 2])
         with col1:
-            st.subheader("1. Upload File")
+            st.subheader(" Upload File and Model Selection ")
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
-            st.subheader("2. Select Model")
             st.session_state.selected_model = st.selectbox(
                 "Select Model", 
                 ["llama3.1:8b", "llama3.3:70b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5:7b", "deepseek-r1:32b", "olmo2:13b"]
             )
         with col2:
-            st.subheader("3. Advanced Options")
-            max_workers_options = [8, 16, 20, 24, 25, 28, 50]
-            selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
-            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
-            selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
+            st.subheader(" Choose Run Configuration ")
+            col3,col4 = st.columns([1,1])
+            with col3:
+                max_workers_options = [8, 16, 20, 24, 25, 28, 50]
+                selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options)
+                cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=1, key="cache_ref_extractor")
+            with col4:
+                base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
+                selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
+                file_store_option = st.radio("Save intermediate Files", options=["Save", "Do Not Save"], index=1, key="file_save_ref")
             # Cache Reference Option for AI extractor
-            cache_option = st.radio("Reference from Cache", options=["Include", "Exclude"], index=1, key="cache_ref_extractor")
+
+            
             
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
@@ -195,7 +200,7 @@ class WebApp:
           · **Output Format:** Displayed on screen
         """
         )
-        row1 = st.columns([1.3, 2, 1])
+        row1 = st.columns([2, 2, 1])
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
         with row1[1]:
@@ -216,13 +221,19 @@ class WebApp:
         row2 = st.columns([2, 2])
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
-            gmb_check = st.checkbox("Check Google My Business (GMB)")
-            no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
+            row20 = st.columns([1, 1])
+            with row20[0]:
+                gmb_check = st.checkbox("Check Google My Business (GMB)")
+            with row20[1]:
+                no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
         with row2[1]:
-            max_workers_options = [8, 16, 24, 25, 28, 32]
-            comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
-            base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
-            comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
+            row21 = st.columns([1, 1])
+            with row21[0]:
+                 max_workers_options = [8, 16, 24, 25, 28, 32]
+                 comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
+            with row21[1]:  
+                base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
+                comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
             # Cache Reference Option for Competitive Analysis
             cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")
             
@@ -241,7 +252,7 @@ class WebApp:
 
     @timer
     def process_basic_analysis(self, uploaded_file, batch_size, max_workers):
-        st.write("Processing basic analysis asynchronously...")
+        st.write("Processing AI Based Data Extraction")
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -271,8 +282,8 @@ class WebApp:
             for i in range(0, len(rows), batch_size):
                 current_batch = i // batch_size + 1
                 # Show batch status immediately before processing starts
-                status_text.text(f"Processing Batch {current_batch} of {total_batches}")
-                progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
+                status_text.text(f"Processing Batch {current_batch} of {total_batches} from {len(rows)} datas ")
+    
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
                 tasks = []
@@ -329,10 +340,13 @@ class WebApp:
                         }
                     results.append(result)
                 progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
-                timer_text.text(f"Batch {current_batch} processed in {time.perf_counter() - batch_start:.2f} seconds")
                 interim_df = pd.DataFrame(results)
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
+                    save_file = st.session_state.get("file_save_ref", "Save") == "Save"
+                    if save_file:
+                        if (current_batch%10==0) and (current_batch>0):
+                            interim_df.to_excel(f"output/analysis/interim_{timestamp}_{current_batch}.xlsx")
             return results
 
         results = asyncio.run(process_batches())
@@ -348,7 +362,74 @@ class WebApp:
             st.session_state.results["Email ID"] = df_input["Email ID"]
         self.components.display_results(st.session_state.results)
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
-
+        
+    @timer
+    def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
+        os.makedirs('input', exist_ok=True)
+        os.makedirs('output/analysis', exist_ok=True)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        ext = uploaded_file.name.split('.')[-1]
+        input_path = f"input/temp_{timestamp}.{ext}"
+        with open(input_path, 'wb') as f:
+            f.write(uploaded_file.getbuffer())
+        try:
+            if uploaded_file.name.endswith('.csv'):
+                try:
+                    df = pd.read_csv(input_path)
+                except UnicodeDecodeError:
+                    df = pd.read_csv(input_path, encoding='ISO-8859-1')
+            elif uploaded_file.name.endswith('.xlsx'):
+                df = pd.read_excel(input_path)
+            else:
+                st.error("Unsupported file format. Please upload a CSV or Excel file.")
+                return
+        except Exception as e:
+            st.error(f"Error reading file: {e}")
+            return
+        required_columns = {"Domain", "Keyword 1", "Product/Service 1"}
+        if not required_columns.issubset(set(df.columns)):
+            st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
+            return
+        results = []
+        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
+        progress_bar = st.progress(0.0)
+        status_text = st.empty()
+        status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
+        
+        with st.spinner("Processing Competitor Analyzer analysis..."):
+            for i in range(0, len(df), batch_size):
+                batch_start = time.perf_counter()
+                batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
+                batch_results = []
+                for row in batch_rows:
+                    rec_start = time.perf_counter()
+                    res = self.process_row(row, search_method, api_key, gmb_check, no_of_pages)
+                    rec_elapsed = time.perf_counter() - rec_start
+                    logging.debug("Processed record for URL %s in advanced analysis in %.2f seconds", row.get("Domain", "N/A"), rec_elapsed)
+                    batch_results.append(res)
+                results.extend(batch_results)
+                progress_bar.progress(min((i + batch_size) / len(df), 1.0))
+                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
+                batch_end = time.perf_counter()
+                elapsed = batch_end - batch_start
+                logging.debug("Batch %d processed in %.2f seconds", i // batch_size + 1, elapsed)
+                interim_df = pd.DataFrame(results)
+                if not interim_df.empty:
+                    self.components.display_results(interim_df)
+        
+        logging.debug("Advanced analysis completed.")
+        st.session_state.results = df.assign(**{
+            col: [result.get(col, "") for result in results]
+            for col in ["Keyword 1", "Product/Service 1", "Search Query",
+                        "Top Competitor 1", "Serp Rank 1",
+                        "Top Competitor 2", "Serp Rank 2",
+                        "Top Competitor 3", "Serp Rank 3",
+                        "Domain Rank",
+                        "GMB Status", "Error", "Status"]
+        })
+        self.components.display_results(st.session_state.results)
+        WebApp.download_results_excel_static(st.session_state.results, timestamp)
+        
     def process_row(self, row, search_method, api_key, gmb_check, no_of_pages):
         logging.debug("Processing row: %s", row)
         try:

@@ -96,8 +96,8 @@ class WebApp:
 
     def run(self):
         st.set_page_config(
-            page_title="Corporate Ranking AI", 
-            layout="wide", 
+            page_title="Corporate Ranking AI",
+            layout="wide",
             page_icon="assets/logo.jpg"
         )
         st.markdown(
@@ -123,7 +123,7 @@ class WebApp:
             """,
             unsafe_allow_html=True
         )
-        
+
         if not st.session_state.authenticated:
             self.components.show_login(auth_manager=self.auth_manager)
         else:
@@ -146,14 +146,14 @@ class WebApp:
         """
           **DATA EXTRACTION FACTORS**
 
-          · **Business Name**  
-          · **Business Location**  
-          · **Keywords (5)**  
-          · **Product/Service (3)**  
-          · **Target Audience (3)**  
+          · **Business Name**
+          · **Business Location**
+          · **Keywords (5)**
+          · **Product/Service (3)**
+          · **Target Audience (3)**
 
-          · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).  
-          · **Output Format:** XLSX/CSV 
+          · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).
+          · **Output Format:** XLSX/CSV
         """
         )
         col1, col2 = st.columns([2, 2])
@@ -161,7 +161,7 @@ class WebApp:
             st.subheader(" Upload File and Model Selection ")
             uploaded_file = st.file_uploader("Upload Excel file with URLs", type=['xlsx', 'xls'])
             st.session_state.selected_model = st.selectbox(
-                "Select Model", 
+                "Select Model",
                 ["llama3.1:8b", "llama3.3:70b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5:7b", "deepseek-r1:32b", "olmo2:13b"]
             )
         with col2:
@@ -176,9 +176,6 @@ class WebApp:
                 selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes)
                 file_store_option = st.radio("Save intermediate Files", options=["Save", "Do Not Save"], index=1, key="file_save_ref")
             # Cache Reference Option for AI extractor
-
-            
-            
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Data Extraction", key="start_data_ext"):
             self.process_basic_analysis(uploaded_file, selected_batch_size, selected_max_workers)
@@ -189,18 +186,18 @@ class WebApp:
         """
           **COMPETITIVE ANALYSIS FACTORS**
 
-          · Top Competitor 1 (Website Only)  
-          · Top Competitor 2 (Website Only)  
-          · Top Competitor 1 SERP Rank  
-          · Top Competitor 2 SERP Rank  
-          · Top Competitor 3 SERP Rank  
+          · Top Competitor 1 (Website Only)
+          · Top Competitor 2 (Website Only)
+          · Top Competitor 1 SERP Rank
+          · Top Competitor 2 SERP Rank
+          · Top Competitor 3 SERP Rank
           · **Domain Rank:** Position if the origin URL appears in the search results; otherwise, “not ranked.”
 
-          · **Input Format:** (CSV/XLS/XLSX) with the columns **Domain**, **Keyword 1**, **Product/Service 1**.  
+          · **Input Format:** (CSV/XLS/XLSX) with the columns **Domain**, **Keyword 1**, **Product/Service 1**.
           · **Output Format:** Displayed on screen
         """
         )
-        row1 = st.columns([2, 2, 1])
+        row1 = st.columns([1.7, 2.2, 0.8])
         with row1[0]:
             search_method = st.selectbox("Select Search Method", ("Serper.dev API", "Basic Google Search"))
         with row1[1]:
@@ -221,22 +218,24 @@ class WebApp:
         row2 = st.columns([2, 2])
         with row2[0]:
             uploaded_file = st.file_uploader("Upload Competitive Analysis Input File", type=['csv', 'xlsx', 'xls'])
-            row20 = st.columns([1, 1])
-            with row20[0]:
-                gmb_check = st.checkbox("Check Google My Business (GMB)")
-            with row20[1]:
-                no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
+            gmb_check = st.checkbox("Check Google My Business (GMB)")
+
         with row2[1]:
             row21 = st.columns([1, 1])
             with row21[0]:
                  max_workers_options = [8, 16, 24, 25, 28, 32]
                  comp_selected_max_workers = st.selectbox("Select Max Workers", options=max_workers_options, key="comp_workers")
-            with row21[1]:  
+            with row21[1]:
                 base_batch_sizes = [8, 16, 24, 25, 28, 32, 40, 48, 50, 56, 64, 72, 75, 80, 84, 96, 100, 112, 120, 140]
                 comp_selected_batch_size = st.selectbox("Select Batch Size", options=base_batch_sizes, key="comp_batch")
             # Cache Reference Option for Competitive Analysis
-            cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")
-            
+            row20 = st.columns([1, 1])
+            with row20[0]:
+                cache_option_comp = st.radio("Reference from Cache", options=["Include", "Exclude"], index=0, key="cache_ref_comp")
+            with row20[1]:
+                no_of_pages = st.radio("Number of SERP Pages", options=[1, 2])
+
+
         st.markdown('<div class="small-button">', unsafe_allow_html=True)
         if uploaded_file and st.button("Start Analysis", key="start_comp_analysis"):
             self.process_advanced_analysis(
@@ -283,7 +282,7 @@ class WebApp:
                 current_batch = i // batch_size + 1
                 # Show batch status immediately before processing starts
                 status_text.text(f"Processing Batch {current_batch} of {total_batches} from {len(rows)} datas ")
-    
+
                 batch_start = time.perf_counter()
                 batch_rows = rows[i:i+batch_size]
                 tasks = []
@@ -341,12 +340,14 @@ class WebApp:
                     results.append(result)
                 progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
                 interim_df = pd.DataFrame(results)
+                timer_text.text(f"Batch {current_batch} processed in {time.perf_counter() - batch_start:.2f} seconds")
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
                     save_file = st.session_state.get("file_save_ref", "Save") == "Save"
                     if save_file:
                         if (current_batch%10==0) and (current_batch>0):
-                            interim_df.to_excel(f"output/analysis/interim_{timestamp}_{current_batch}.xlsx")
+                            interim_df.index = interim_df.index + 1
+                            interim_df.to_excel(f"output/analysis/interim_{timestamp}_{current_batch}.xlsx",index=True)
             return results
 
         results = asyncio.run(process_batches())
@@ -362,7 +363,7 @@ class WebApp:
             st.session_state.results["Email ID"] = df_input["Email ID"]
         self.components.display_results(st.session_state.results)
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
-        
+
     @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
         os.makedirs('input', exist_ok=True)
@@ -391,16 +392,19 @@ class WebApp:
             st.error("Input file must have columns: Domain, Keyword 1, Product/Service 1")
             return
         results = []
-        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
+
         progress_bar = st.progress(0.0)
         status_text = st.empty()
+        timer_text = st.empty()
+        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
         status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
-        
-        with st.spinner("Processing Competitor Analyzer analysis..."):
+
+        with st.spinner("Processing Competitor  Analyzer..."):
             for i in range(0, len(df), batch_size):
                 batch_start = time.perf_counter()
                 batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
                 batch_results = []
+                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
                 for row in batch_rows:
                     rec_start = time.perf_counter()
                     res = self.process_row(row, search_method, api_key, gmb_check, no_of_pages)
@@ -409,14 +413,15 @@ class WebApp:
                     batch_results.append(res)
                 results.extend(batch_results)
                 progress_bar.progress(min((i + batch_size) / len(df), 1.0))
-                status_text.text(f"Processing Batch {i // batch_size + 1} of {total_batches}")
+
                 batch_end = time.perf_counter()
                 elapsed = batch_end - batch_start
+
                 logging.debug("Batch %d processed in %.2f seconds", i // batch_size + 1, elapsed)
                 interim_df = pd.DataFrame(results)
                 if not interim_df.empty:
                     self.components.display_results(interim_df)
-        
+
         logging.debug("Advanced analysis completed.")
         st.session_state.results = df.assign(**{
             col: [result.get(col, "") for result in results]
@@ -429,7 +434,7 @@ class WebApp:
         })
         self.components.display_results(st.session_state.results)
         WebApp.download_results_excel_static(st.session_state.results, timestamp)
-        
+
     def process_row(self, row, search_method, api_key, gmb_check, no_of_pages):
         logging.debug("Processing row: %s", row)
         try:
@@ -579,53 +584,53 @@ class WebApp:
             else:
                 scraped_data = cached_data
                 logging.debug("Using cached data for URL %s", clean_url)
-            
+
             analyzer = ContentAnalyzer(model=model)
             analysis = analyzer.analyze_with_ollama(scraped_data['content'], clean_url)
             logging.debug("Analysis result for URL %s: %s", clean_url, analysis)
-            
+
             business_name = analysis.get('business_name', '')
             location = analysis.get('location', '')
-            
+
             keywords = analysis.get('keywords', [])
             if isinstance(keywords, str):
                 keywords = [kw.strip() for kw in keywords.split(',')]
-            US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
-                         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
-                         "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
-                         "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+            US_STATES = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                         "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                         "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
                          "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"}
             keywords = [fix_keyword_spacing(kw) for kw in keywords if kw.upper() not in US_STATES]
             keywords = (keywords + [""] * 5)[:5]
-            
+
             product_services = analysis.get('products_services', [])
             if isinstance(product_services, str):
                 product_services = [ps.strip() for ps in product_services.split(',')]
             product_services = (product_services + [""] * 3)[:3]
-            
+
             target_audiences = analysis.get('target_audience', [])
             if isinstance(target_audiences, str):
                 target_audiences = [ta.strip() for ta in target_audiences.split(',')]
             target_audiences = (target_audiences + [""] * 3)[:3]
-            
+
             result = {}
             result["Domain"] = url
             result["Email ID"] = email_id
             result["Business Name"] = business_name
             result["Business Location"] = location
-            
+
             for i, kw in enumerate(keywords, start=1):
                 result[f"Keyword {i}"] = kw
-            
+
             for i, ps in enumerate(product_services, start=1):
                 result[f"Product/Service {i}"] = ps
-            
+
             for i, ta in enumerate(target_audiences, start=1):
                 result[f"Target Audience {i}"] = ta
-            
+
             result["Status"] = "success"
             result["Error"] = ""
-            
+
             return result
 
         except Exception as e:

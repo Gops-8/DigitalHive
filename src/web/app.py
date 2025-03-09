@@ -145,15 +145,15 @@ class WebApp:
         st.markdown(
         """
           **DATA EXTRACTION FACTORS**
+            - **Business Name**
+            - **Business Location**
+            - **Keywords (5)**
+            - **Product/Service (3)**
+            - **Target Audience (3)**
+          
+           **Input Format:** (CSV/XLS/XLSX) with the website’s URL as input (the column header must be **Domain**).
 
-          · **Business Name**
-          · **Business Location**
-          · **Keywords (5)**
-          · **Product/Service (3)**
-          · **Target Audience (3)**
-
-          · **Input Format:** (CSV/XLS/XLSX) with the website’s name as input (the column header must be **Domain**).
-          · **Output Format:** XLSX/CSV
+           **Output Format:** XLSX/CSV
         """
         )
         col1, col2 = st.columns([2, 2])
@@ -186,15 +186,14 @@ class WebApp:
         """
           **COMPETITIVE ANALYSIS FACTORS**
 
-          · Top Competitor 1 (Website Only)
-          · Top Competitor 2 (Website Only)
-          · Top Competitor 1 SERP Rank
-          · Top Competitor 2 SERP Rank
-          · Top Competitor 3 SERP Rank
-          · **Domain Rank:** Position if the origin URL appears in the search results; otherwise, “not ranked.”
+            - **Competitor 1**, **Competitor 2**, **Competitor 3** (Website Only)
+            - **Competitor 1 SERP Rank**,**Competitor 2 SERP Rank**,**Competitor 3** SERP Rank
+            - **Domain Rank:** Position if the origin URL appears in the search results; otherwise, “not ranked.”
+            - **GMB Status:** Found/Not Found
 
-          · **Input Format:** (CSV/XLS/XLSX) with the columns **Domain**, **Keyword 1**, **Product/Service 1**.
-          · **Output Format:** Displayed on screen
+           **Input Format:** (CSV/XLS/XLSX) with the mandatory columns **Domain**, **Keyword 1**, **Product/Service 1**.
+
+           **Output Format:** XLSX/CSV
         """
         )
         row1 = st.columns([1.7, 2.2, 0.8])
@@ -251,7 +250,7 @@ class WebApp:
 
     @timer
     def process_basic_analysis(self, uploaded_file, batch_size, max_workers):
-        st.write("Processing AI Based Data Extraction")
+
         os.makedirs('input', exist_ok=True)
         os.makedirs('output/analysis', exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -266,103 +265,103 @@ class WebApp:
         if "Domain" not in df_input.columns:
             st.error("Input file must have a column named 'Domain'.")
             return
+        with st.spinner("Processing AI Based Data Extraction"):
+            rows = df_input.to_dict(orient="records")
+            progress_bar = st.progress(0.0)
+            status_text = st.empty()
+            timer_text = st.empty()
+            total_batches = len(rows) // batch_size + (1 if len(rows) % batch_size > 0 else 0)
+            status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
+            selected_model = st.session_state.selected_model
 
-        rows = df_input.to_dict(orient="records")
-        progress_bar = st.progress(0.0)
-        status_text = st.empty()
-        timer_text = st.empty()
-        total_batches = len(rows) // batch_size + (1 if len(rows) % batch_size > 0 else 0)
-        status_text.text(f"Total Rows: {len(rows)} | Processing in {total_batches} batches")
-        selected_model = st.session_state.selected_model
+            async def process_batches():
+                results = []
+                TIMEOUT_SECONDS = 240
+                for i in range(0, len(rows), batch_size):
+                    current_batch = i // batch_size + 1
+                    # Show batch status immediately before processing starts
+                    status_text.text(f"Processing Batch {current_batch} of {total_batches} from {len(rows)} datas ")
 
-        async def process_batches():
-            results = []
-            TIMEOUT_SECONDS = 240
-            for i in range(0, len(rows), batch_size):
-                current_batch = i // batch_size + 1
-                # Show batch status immediately before processing starts
-                status_text.text(f"Processing Batch {current_batch} of {total_batches} from {len(rows)} datas ")
+                    batch_start = time.perf_counter()
+                    batch_rows = rows[i:i+batch_size]
+                    tasks = []
+                    for row in batch_rows:
+                        task = asyncio.wait_for(
+                            asyncio.to_thread(self.process_url, row["Domain"], selected_model, row.get("Email ID", "")),
+                            timeout=TIMEOUT_SECONDS
+                        )
+                        tasks.append(task)
+                    batch_results = await asyncio.gather(*tasks, return_exceptions=True)
+                    for idx, result in enumerate(batch_results):
+                        if isinstance(result, asyncio.TimeoutError):
+                            logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
+                            # Return a complete dict with all expected keys
+                            result = {
+                                "Email ID": batch_rows[idx].get("Email ID", ""),
+                                "Domain": batch_rows[idx].get("Domain", ""),
+                                "Business Name": "",
+                                "Business Location": "",
+                                "Keyword 1": "",
+                                "Keyword 2": "",
+                                "Keyword 3": "",
+                                "Keyword 4": "",
+                                "Keyword 5": "",
+                                "Product/Service 1": "",
+                                "Product/Service 2": "",
+                                "Product/Service 3": "",
+                                "Target Audience 1": "",
+                                "Target Audience 2": "",
+                                "Target Audience 3": "",
+                                "Status": "error",
+                                "Error": f"Timeout after {TIMEOUT_SECONDS} seconds"
+                            }
+                        elif isinstance(result, Exception):
+                            logging.error("Error processing URL %s: %s", batch_rows[idx].get("Domain"), str(result))
+                            result = {
+                                "Email ID": batch_rows[idx].get("Email ID", ""),
+                                "Domain": batch_rows[idx].get("Domain", ""),
+                                "Business Name": "",
+                                "Business Location": "",
+                                "Keyword 1": "",
+                                "Keyword 2": "",
+                                "Keyword 3": "",
+                                "Keyword 4": "",
+                                "Keyword 5": "",
+                                "Product/Service 1": "",
+                                "Product/Service 2": "",
+                                "Product/Service 3": "",
+                                "Target Audience 1": "",
+                                "Target Audience 2": "",
+                                "Target Audience 3": "",
+                                "Status": "error",
+                                "Error": str(result)
+                            }
+                        results.append(result)
+                    progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
+                    interim_df = pd.DataFrame(results)
+                    timer_text.text(f"Batch {current_batch} processed in {time.perf_counter() - batch_start:.2f} seconds")
+                    if not interim_df.empty:
+                        self.components.display_results(interim_df)
+                        save_file = st.session_state.get("file_save_ref", "Save") == "Save"
+                        if save_file:
+                            if (current_batch%10==0) and (current_batch>0):
+                                interim_df.index = interim_df.index + 1
+                                interim_df.to_excel(f"output/Interim/interim_{timestamp}_{current_batch}.xlsx",index=True)
+                return results
 
-                batch_start = time.perf_counter()
-                batch_rows = rows[i:i+batch_size]
-                tasks = []
-                for row in batch_rows:
-                    task = asyncio.wait_for(
-                        asyncio.to_thread(self.process_url, row["Domain"], selected_model, row.get("Email ID", "")),
-                        timeout=TIMEOUT_SECONDS
-                    )
-                    tasks.append(task)
-                batch_results = await asyncio.gather(*tasks, return_exceptions=True)
-                for idx, result in enumerate(batch_results):
-                    if isinstance(result, asyncio.TimeoutError):
-                        logging.error("Timeout processing URL: %s", batch_rows[idx].get("Domain"))
-                        # Return a complete dict with all expected keys
-                        result = {
-                            "Domain": batch_rows[idx].get("Domain", ""),
-                            "Email ID": batch_rows[idx].get("Email ID", ""),
-                            "Business Name": "",
-                            "Business Location": "",
-                            "Keyword 1": "",
-                            "Keyword 2": "",
-                            "Keyword 3": "",
-                            "Keyword 4": "",
-                            "Keyword 5": "",
-                            "Product/Service 1": "",
-                            "Product/Service 2": "",
-                            "Product/Service 3": "",
-                            "Target Audience 1": "",
-                            "Target Audience 2": "",
-                            "Target Audience 3": "",
-                            "Status": "error",
-                            "Error": f"Timeout after {TIMEOUT_SECONDS} seconds"
-                        }
-                    elif isinstance(result, Exception):
-                        logging.error("Error processing URL %s: %s", batch_rows[idx].get("Domain"), str(result))
-                        result = {
-                            "Domain": batch_rows[idx].get("Domain", ""),
-                            "Email ID": batch_rows[idx].get("Email ID", ""),
-                            "Business Name": "",
-                            "Business Location": "",
-                            "Keyword 1": "",
-                            "Keyword 2": "",
-                            "Keyword 3": "",
-                            "Keyword 4": "",
-                            "Keyword 5": "",
-                            "Product/Service 1": "",
-                            "Product/Service 2": "",
-                            "Product/Service 3": "",
-                            "Target Audience 1": "",
-                            "Target Audience 2": "",
-                            "Target Audience 3": "",
-                            "Status": "error",
-                            "Error": str(result)
-                        }
-                    results.append(result)
-                progress_bar.progress(min((i + batch_size) / len(rows), 1.0))
-                interim_df = pd.DataFrame(results)
-                timer_text.text(f"Batch {current_batch} processed in {time.perf_counter() - batch_start:.2f} seconds")
-                if not interim_df.empty:
-                    self.components.display_results(interim_df)
-                    save_file = st.session_state.get("file_save_ref", "Save") == "Save"
-                    if save_file:
-                        if (current_batch%10==0) and (current_batch>0):
-                            interim_df.index = interim_df.index + 1
-                            interim_df.to_excel(f"output/analysis/interim_{timestamp}_{current_batch}.xlsx",index=True)
-            return results
-
-        results = asyncio.run(process_batches())
-        st.session_state.results = df_input.assign(**{
-            col: [result.get(col, "") for result in results]
-            for col in ["Business Name", "Business Location",
-                        "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
-                        "Product/Service 1", "Product/Service 2", "Product/Service 3",
-                        "Target Audience 1", "Target Audience 2", "Target Audience 3",
-                        "Status", "Error"]
-        })
-        if "Email ID" in df_input.columns:
-            st.session_state.results["Email ID"] = df_input["Email ID"]
-        self.components.display_results(st.session_state.results)
-        WebApp.download_results_excel_static(st.session_state.results, timestamp)
+            results = asyncio.run(process_batches())
+            st.session_state.results = df_input.assign(**{
+                col: [result.get(col, "") for result in results]
+                for col in ["Business Name", "Business Location",
+                            "Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4", "Keyword 5",
+                            "Product/Service 1", "Product/Service 2", "Product/Service 3",
+                            "Target Audience 1", "Target Audience 2", "Target Audience 3",
+                            "Status", "Error"]
+            })
+            if "Email ID" in df_input.columns:
+                st.session_state.results["Email ID"] = df_input["Email ID"]
+            self.components.display_results(st.session_state.results)
+            WebApp.download_results_excel_static(st.session_state.results, timestamp)
 
     @timer
     def process_advanced_analysis(self, uploaded_file, gmb_check, no_of_pages, search_method, api_key, batch_size, max_workers):
@@ -393,13 +392,18 @@ class WebApp:
             return
         results = []
 
-        progress_bar = st.progress(0.0)
-        status_text = st.empty()
-        timer_text = st.empty()
-        total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
-        status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
+        # progress_bar = st.progress(0.0)
+        # status_text = st.empty()
+        # timer_text = st.empty()
+        # total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
+        # status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
 
-        with st.spinner("Processing Competitor  Analyzer..."):
+        with st.spinner("Processing Competitor  Analysis..."):
+            progress_bar = st.progress(0.0)
+            status_text = st.empty()
+            timer_text = st.empty()
+            total_batches = len(df) // batch_size + (1 if len(df) % batch_size > 0 else 0)
+            status_text.text(f"Total Rows: {len(df)} | Processing in {total_batches} batches")
             for i in range(0, len(df), batch_size):
                 batch_start = time.perf_counter()
                 batch_rows = df.iloc[i:i+batch_size].to_dict(orient="records")
@@ -614,8 +618,8 @@ class WebApp:
             target_audiences = (target_audiences + [""] * 3)[:3]
 
             result = {}
-            result["Domain"] = url
             result["Email ID"] = email_id
+            result["Domain"] = url
             result["Business Name"] = business_name
             result["Business Location"] = location
 
@@ -635,8 +639,8 @@ class WebApp:
 
         except Exception as e:
             return {
-                "Domain": url,
                 "Email ID": email_id,
+                "Domain": url,
                 "Business Name": "",
                 "Business Location": "",
                 "Status": "error",
